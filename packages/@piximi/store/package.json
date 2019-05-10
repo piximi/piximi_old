@@ -11,7 +11,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "name": "@cytoai/cyto-store",
+  "name": "@cytoai/store",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
