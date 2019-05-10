@@ -4,7 +4,7 @@ deploy:
   email: allen.goodman@icloud.com
   on:
     tags: true
-    repo: cytoai/cyto-store
+    repo: cytoai/store
   provider: npm
 language: node_js
 node_js:
