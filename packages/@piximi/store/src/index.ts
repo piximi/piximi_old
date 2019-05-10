@@ -16,23 +16,25 @@ import {
 } from "./actions";
 
 import {
-  reducer
-} from "./reducers";
+  persistor,
+  store
+} from "./store";
 
 export {
-  reducer,
   createCategoryAction,
+  createClassifierAction,
   createImageAction,
   createImageScoreAction,
-  createClassifierAction,
-  deleteImageAction,
   deleteCategoryAction,
-  updateImageContrastAction,
-  updateImageBrightnessAction,
+  deleteImageAction,
+  persistor,
+  store,
   updateCategoryColorAction,
   updateCategoryDescriptionAction,
   updateCategoryVisibilityAction,
   updateClassifierNameAction,
+  updateImageBrightnessAction,
   updateImageCategoryAction,
+  updateImageContrastAction,
   updateImageVisibilityAction
 }

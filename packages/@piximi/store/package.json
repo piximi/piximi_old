@@ -1,8 +1,13 @@
 {
   "dependencies": {
+    "@manaflair/redux-batch": "^1.0.0",
     "@types/jest": "24.0.12",
     "@types/node": "12.0.0",
+    "@types/redux-logger": "^3.0.7",
     "react-scripts": "3.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.10.0",
+    "redux-saga": "^1.0.2",
     "redux-starter-kit": "^0.5.1",
     "typescript": "3.4.5"
   },
