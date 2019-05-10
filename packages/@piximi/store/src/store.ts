@@ -1,5 +1,3 @@
-import logger from 'redux-logger';
-
 import {
   persistReducer,
   persistStore
@@ -23,8 +21,7 @@ import {
 const enhancers: StoreEnhancer[] = [];
 
 const middleware: Middleware<{}, any>[] = [
-  ...getDefaultMiddleware(),
-  logger
+  ...getDefaultMiddleware()
 ];
 
 const preloadedState = {};
