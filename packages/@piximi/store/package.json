@@ -10,6 +10,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "license" : "MIT",
   "name": "@cytoai/store",
   "scripts": {
     "start": "react-scripts start",
@@ -17,5 +18,5 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "version": "0.1.1"
+  "version": "0.1.2"
 }
