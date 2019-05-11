@@ -41,7 +41,7 @@ export type Settings = {
 
 export type ImageVisualization = {
   brightness: number;
-  visibleChannels: number[];
   contrast: number;
   visible: boolean;
+  visibleChannels: number[];
 };
