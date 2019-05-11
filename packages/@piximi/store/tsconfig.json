@@ -2,6 +2,7 @@
   "compilerOptions": {
       "baseUrl": "./",
       "declaration": true,
+      "esModuleInterop": true,
       "moduleResolution": "Node",
       "outDir": "./dist",
       "sourceMap": true,
