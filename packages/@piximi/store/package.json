@@ -19,7 +19,7 @@
     "testEnvironment": "node"
   },
   "license": "MIT",
-  "main": "index.ts",
+  "main": "./dist/index.ts",
   "name": "@cytoai/store",
   "private": false,
   "repository": "https://github.com/cytoai/store",
@@ -27,5 +27,6 @@
     "build": "rm -rf ./dist && tsc -p ./tsconfig.json",
     "test": "jest"
   },
+  "types": "./dist/index.d.ts",
   "version": "0.1.3"
 }
