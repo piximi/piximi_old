@@ -1,7 +1,3 @@
-export type Blob = {
-  checksum: string;
-}
-
 export type Category = {
   color: string;
   description: string;
