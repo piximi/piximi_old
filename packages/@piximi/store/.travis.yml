@@ -5,7 +5,8 @@ deploy:
   on:
     tags: true
     repo: cytoai/store
-  provider: npm
+  provider: npm 
+  skip_cleanup: true
 language: node_js
 node_js:
   - stable
