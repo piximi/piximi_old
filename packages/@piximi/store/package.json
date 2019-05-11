@@ -14,12 +14,15 @@
     "ts-jest": "^24.0.2",
     "typescript": "^3.4.5"
   },
+  "files": [
+    "dist"
+  ],
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
   },
   "license": "MIT",
-  "main": "./dist/index.ts",
+  "main": "./dist/index.js",
   "name": "@cytoai/store",
   "private": false,
   "repository": "https://github.com/cytoai/store",
@@ -28,5 +31,5 @@
     "test": "jest"
   },
   "types": "./dist/index.d.ts",
-  "version": "0.1.9"
+  "version": "0.1.10"
 }
