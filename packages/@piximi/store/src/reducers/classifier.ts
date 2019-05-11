@@ -24,7 +24,7 @@ import {
   Category,
   Classifier,
   Image
-} from "../types";
+} from "@cytoai/types";
 
 const findCategoryIndex = (
   categories: Category[],

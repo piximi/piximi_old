@@ -1,6 +1,7 @@
 {
   "author": "Allen Goodman",
   "dependencies": {
+    "@cytoai/types": "^0.1.0",
     "react": "^16.8.6",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",

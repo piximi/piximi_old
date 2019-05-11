@@ -139,6 +139,11 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@cytoai/types@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@cytoai/types/-/types-0.1.0.tgz#c663c2abd46ba74f7085d8efa225c89e9e12f7f7"
+  integrity sha512-8HjAZqcjDKcOkq2RAOVKJ6iG8Q5qkocSjX4/aRPoAIkskF2FUkKJdb7eaq5QOIKZUvUHG4m+ecem3JghS91mGQ==
+
 "@jest/console@^24.7.1":
   version "24.7.1"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.7.1.tgz#32a9e42535a97aedfe037e725bd67e954b459545"
