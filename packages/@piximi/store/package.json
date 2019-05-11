@@ -1,22 +1,31 @@
 {
+  "author": "Allen Goodman",
   "dependencies": {
-    "@types/jest": "24.0.12",
-    "@types/node": "12.0.0",
-    "react-scripts": "3.0.1",
+    "react": "^16.8.6",
+    "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
-    "redux-starter-kit": "^0.5.1",
-    "typescript": "3.4.5"
+    "redux-starter-kit": "^0.5.1"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "devDependencies": {
+    "@types/jest": "^24.0.12",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.8.17",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
   },
-  "license" : "MIT",
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "license": "MIT",
+  "main": "index.ts",
   "name": "@cytoai/store",
+  "private": false,
+  "repository": "https://github.com/cytoai/store",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "rm -rf ./dist && tsc -p ./tsconfig.json",
+    "test": "jest"
   },
-  "version": "0.1.2"
+  "version": "0.1.3"
 }
