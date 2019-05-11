@@ -1,0 +1,14 @@
+.DS_Store
+.env.development.local
+.env.local
+.env.production.local
+.env.test.local
+.idea
+.pnp.js
+/.pnp
+/coverage
+/dist
+/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
