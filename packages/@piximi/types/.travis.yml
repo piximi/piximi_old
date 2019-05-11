@@ -1,0 +1,14 @@
+deploy:
+  api_key:
+    secure: 5+HFZU0rlf7L2LqR9GWL7J2sGtlR9bTNMe+qy0kxpaYoYdLmamo499RdxuaGYSRt+ipU1h8aIZMV7vMZTfkEZaM/2ni7YzIUBWINXI+OY+qArPq1U0vUs1Isbrmc9JlHgs39Lbb71eqlsUKyVtqw4QW8akZQtR7JOK4N4OFl8veKgr+Q5opVfQHzVn+ts2HfWhW0zlX0HzWxElWIsQmqqxehE4xUyhM/7jpBc8nG9KwvB6RuoxMYR+PtMdmu97njOWdQ9p9GValXYVL21XnDLqN1hDDhAaT/pTWURTgVu+HUlNeoUzgVNOIR/DdoWoJCudnrS8sHnAS9PeVcxz/lBXhSnF+5Ym7YdhyC+6SmuTyLw4gUsLpuisfu85y6TRwcWaUgFWGiiQ2jVpFuMW3rSshrzBy/qH7FCjW1Vro4v0SaElH9ZZP3nDeSzWvaThPUFLkMKjz5Sp6taIEKxGVHog2jCT5G46YvePvv8gYPjKrs3nAfeucFGKDB6YKgLVpx6hy3G34RIzToZwtSHa/6XqtMcz5I4dsEoLXCwAG8BedU5Kw9SAcvxSTrbA2hYnkH32o8lvtFLQ5n5ZxO1bwawiFYY7Iq1z04I9Xhta0vS+Kam3AkEuirpOol8UcCyKm6wfw//ty27D5N41Z5h5xzl2i/+5WkbaBNir/nNu+vxKk=
+  email: allen.goodman@icloud.com
+  on:
+    tags: true
+    repo: cytoai/types
+  provider: npm 
+  skip_cleanup: true
+language: node_js
+node_js:
+  - stable
+script:
+  - yarn build
