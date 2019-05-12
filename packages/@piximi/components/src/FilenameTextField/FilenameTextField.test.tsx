@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import FilenameTextField from './FilenameTextField';
 
-it('renders without crashing', () => {
+it('FilenameTextField', () => {
   const filename = '';
 
   const onFilenameChange = () => {};

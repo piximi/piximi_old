@@ -9,10 +9,12 @@ import styles from './ColorIconMenu.css';
 const useStyles = makeStyles(styles);
 
 type Props = {
-  anchorEl: HTMLElement | ((element: HTMLElement) => HTMLElement);
+  anchorEl: null | HTMLElement | ((element: HTMLElement) => HTMLElement);
   closeMenu: any;
+  color: string;
   onColorChange: (color: string) => void;
   openedMenu: boolean;
+  openMenu: any;
 };
 
 const ColorIconMenu = (props: Props) => {

@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import DialogTitle from './DialogTitle';
 
-it('renders without crashing', () => {
+it('DialogTitle', () => {
   const title = '';
 
   const e = <DialogTitle title={title} />;

@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import CategoryDescriptionTextField from './CategoryDescriptionTextField';
 
-it('renders without crashing', () => {
+it('CategoryDescriptionTextField', () => {
   const description: string = '';
 
   const onDescriptionChange = () => {};

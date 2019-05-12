@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import ColorIconButton from './ColorIconButton';
 
-it('renders without crashing', () => {
+it('ColorIconButton', () => {
   const color = '';
 
   const onColorChange = () => {};

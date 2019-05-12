@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import DialogContent from './DialogContent';
 
-it('renders without crashing', () => {
+it('DialogContent', () => {
   const e = (
     <DialogContent>
       <div />

@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import Snackbar from './Snackbar';
 
-it('renders without crashing', () => {
+it('Snackbar', () => {
   const closeSnackbar = () => {};
 
   const message = '';

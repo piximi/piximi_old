@@ -7,36 +7,35 @@ type Props = {
   onChange: any;
 };
 
-const colors = [
-  '#f44336',
-  '#e91e63',
-  '#9c27b0',
-  '#673ab7',
-  '#3f51b5',
-  '#2196f3',
-  '#03a9f4',
-  '#00bcd4',
-  '#4caf50',
-  '#8bc34a',
-  '#cddc39',
-  '#ffeb3b',
-  '#ffc107',
-  '#ff9800',
-  '#ff5722',
+export const colors = [
+  '#F44336',
+  '#E91E63',
+  '#9C27B0',
+  '#673AB7',
+  '#3F51B5',
+  '#2196F3',
+  '#03A9F4',
+  '#00BCD4',
+  '#4CAF50',
+  '#8BC34A',
+  '#CDDC39',
+  '#FFEB3B',
+  '#FFC107',
+  '#FF9800',
+  '#FF5722',
   '#795548',
-  '#9e9e9e',
-  '#607d8b'
+  '#9E9E9E',
+  '#607D8B'
 ];
 
-const unusedColors = (categories: Category[]): string[] | [] => {
-  return colors.filter((color: string) => {
-    const s: string = color.toUpperCase();
-
-    return !usedColors(categories).includes(s);
+export const unusedColors = (categories: Category[]): string[] | [] => {
+  return colors.filter(color => {
+    // @ts-ignore
+    return !usedColors(categories).includes(color.toUpperCase());
   });
 };
 
-const usedColors = (categories: Category[]): string[] | [] => {
+export const usedColors = (categories: Category[]): string[] | [] => {
   if (categories) {
     return categories.map((category: Category) => {
       return category.color.toUpperCase();

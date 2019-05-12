@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import ImageDragSource from './ImageDragSource';
 
-it('renders without crashing', () => {
+it('ImageDragSource', () => {
   const item = '';
 
   const onmousedown = () => {};

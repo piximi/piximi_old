@@ -3,7 +3,7 @@ import React from "react";
 
 import Image from "./Image";
 
-it('renders without crashing', () => {
+it('Image', () => {
   const e = (
     <Image/>
   );

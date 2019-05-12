@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import Dialog from './Dialog';
 
-it('renders without crashing', () => {
+it('Dialog', () => {
   const open = true;
 
   const onClose = () => {};

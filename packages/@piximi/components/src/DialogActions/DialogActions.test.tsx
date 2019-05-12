@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import DialogActions from './DialogActions';
 
-it('renders without crashing', () => {
+it('DialogActions', () => {
   const acceptanceTitle = '';
 
   const cancellationTitle = '';
