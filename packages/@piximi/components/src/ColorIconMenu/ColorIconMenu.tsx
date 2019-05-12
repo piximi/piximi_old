@@ -1,32 +1,22 @@
 import * as React from 'react';
-import styles from './ColorIconMenu.css';
 import { makeStyles } from '@material-ui/styles';
-import LabelIcon from '@material-ui/icons/Label';
-import { useMenu } from '@cytoai/hooks';
-import { ColorPicker } from '..';
 import * as MaterialUI from '@material-ui/core';
-import { PopoverOrigin } from "@material-ui/core/Popover";
+import { PopoverOrigin } from '@material-ui/core/Popover';
+
+import { ColorPicker } from '..';
+import styles from './ColorIconMenu.css';
 
 const useStyles = makeStyles(styles);
 
 type Props = {
   anchorEl: any;
   closeMenu: any;
-  color: string;
   onColorChange: (color: string) => void;
   openedMenu: boolean;
-  openMenu: any;
 };
 
 const ColorIconMenu = (props: Props) => {
-  const {
-    anchorEl,
-    closeMenu,
-    color,
-    onColorChange,
-    openedMenu,
-    openMenu
-  } = props;
+  const { anchorEl, closeMenu, onColorChange, openedMenu } = props;
 
   const classes = useStyles();
 
@@ -55,7 +45,7 @@ const ColorIconMenu = (props: Props) => {
       transformOrigin={transformOrigin}
     >
       <div className={classes.colorPicker}>
-        <ColorPicker onChange={onChange} categories={[]}/>
+        <ColorPicker onChange={onChange} categories={[]} />
       </div>
     </MaterialUI.Popover>
   );

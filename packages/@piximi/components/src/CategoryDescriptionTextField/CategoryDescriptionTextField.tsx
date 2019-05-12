@@ -1,8 +1,9 @@
-import * as React from 'react';
-import styles from './CategoryDescriptionTextField.css';
-import { useTranslation } from 'react-i18next';
+import { TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import { TextField } from "@material-ui/core";
+import { useTranslation } from 'react-i18next';
+import * as React from 'react';
+
+import styles from './CategoryDescriptionTextField.css';
 
 const useStyles = makeStyles(styles);
 

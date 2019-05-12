@@ -1,10 +1,11 @@
 import * as React from 'react';
-import styles from './ColorIconButton.css';
 import { makeStyles } from '@material-ui/styles';
 import LabelIcon from '@material-ui/icons/Label';
 import { useMenu } from '@cytoai/hooks';
 import * as MaterialUI from '@material-ui/core';
-import { ColorIconMenu } from "..";
+
+import { ColorIconMenu } from '..';
+import styles from './ColorIconButton.css';
 
 const useStyles = makeStyles(styles);
 
@@ -22,7 +23,10 @@ const ColorIconButton = (props: Props) => {
 
   return (
     <React.Fragment>
-      <MaterialUI.IconButton classes={{ root: classes.iconButton }} onClick={openMenu}>
+      <MaterialUI.IconButton
+        classes={{ root: classes.iconButton }}
+        onClick={openMenu}
+      >
         <MaterialUI.Avatar classes={{ root: classes.avatar }}>
           <LabelIcon style={{ color: color }} />
         </MaterialUI.Avatar>

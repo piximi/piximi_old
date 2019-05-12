@@ -1,8 +1,9 @@
 import * as React from 'react';
-import styles from './FilenameTextField.css';
 import * as MaterialUI from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/styles';
+
+import styles from './FilenameTextField.css';
 
 const useStyles = makeStyles(styles);
 

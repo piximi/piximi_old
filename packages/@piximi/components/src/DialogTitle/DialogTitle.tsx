@@ -1,13 +1,14 @@
 import * as React from 'react';
-import styles from './DialogTitle.css';
 import * as MaterialUI from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/styles';
 
+import styles from './DialogTitle.css';
+
 const useStyles = makeStyles(styles);
 
 type Props = {
-  title: string
+  title: string;
 };
 
 const DialogTitle = (props: Props) => {

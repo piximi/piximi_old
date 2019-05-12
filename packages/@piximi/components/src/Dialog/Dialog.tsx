@@ -1,7 +1,8 @@
 import * as React from 'react';
-import styles from './Dialog.css';
 import { makeStyles } from '@material-ui/styles';
 import * as MaterialUI from '@material-ui/core';
+
+import styles from './Dialog.css';
 
 const useStyles = makeStyles(styles);
 

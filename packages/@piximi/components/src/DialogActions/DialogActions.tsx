@@ -1,8 +1,9 @@
 import * as React from 'react';
-import styles from './DialogActions.css';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/styles';
 import * as MaterialUI from '@material-ui/core';
+
+import styles from './DialogActions.css';
 
 const useStyles = makeStyles(styles);
 
@@ -27,11 +28,17 @@ const DialogActions = (props: Props) => {
 
   return (
     <MaterialUI.DialogActions>
-      <MaterialUI.Button classes={{root: classes.button}} onClick={onCancellation}>
+      <MaterialUI.Button
+        classes={{ root: classes.button }}
+        onClick={onCancellation}
+      >
         {translation(cancellationTitle)}
       </MaterialUI.Button>
 
-      <MaterialUI.Button classes={{root: classes.button}} onClick={onAcceptance}>
+      <MaterialUI.Button
+        classes={{ root: classes.button }}
+        onClick={onAcceptance}
+      >
         {translation(acceptanceTitle)}
       </MaterialUI.Button>
     </MaterialUI.DialogActions>
