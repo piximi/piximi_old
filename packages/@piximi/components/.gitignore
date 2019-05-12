@@ -4,9 +4,9 @@
 .env.production.local
 .env.test.local
 .idea
-/build
-/coverage
-/node_modules
+coverage
+dist
+node_modules
 npm-debug.log*
 package-lock.json
 yarn-debug.log*

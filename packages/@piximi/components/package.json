@@ -49,11 +49,12 @@
       "git add"
     ]
   },
+  "main": "./dist/index.js",
   "name": "@cytoai/components",
   "private": false,
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
-    "build": "react-scripts build",
+    "build": "rm -rf ./dist && tsc -p ./tsconfig.json",
     "eject": "react-scripts eject",
     "precommit": "lint-staged",
     "predeploy": "npm run build",

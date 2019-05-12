@@ -1,6 +1,7 @@
 import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from 'react-dnd';
-const { useDrag } = dnd;
 import React from 'react';
+
+const { useDrag } = dnd;
 
 type Props = {
   children: React.ReactNode;
