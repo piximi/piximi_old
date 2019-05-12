@@ -37,6 +37,9 @@
     "source-map-explorer": "^1.6.0",
     "typescript": "^3.4.1"
   },
+  "files": [
+    "dist"
+  ],
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
