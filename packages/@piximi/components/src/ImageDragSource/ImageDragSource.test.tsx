@@ -1,6 +1,7 @@
-import ReactDOM from "react-dom";
-import ImageDragSource from "./ImageDragSource";
-import * as React from "react";
+import ReactDOM from 'react-dom';
+import * as React from 'react';
+
+import ImageDragSource from './ImageDragSource';
 
 it('renders without crashing', () => {
   const item = '';
@@ -15,9 +16,7 @@ it('renders without crashing', () => {
       onmousedown={onmousedown}
       selectedItems={selectedItems}
     >
-      <div>
-
-      </div>
+      <div />
     </ImageDragSource>
   );
 

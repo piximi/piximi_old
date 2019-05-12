@@ -1,6 +1,7 @@
-import ReactDOM from "react-dom";
-import Snackbar from "./Snackbar";
-import * as React from "react";
+import ReactDOM from 'react-dom';
+import * as React from 'react';
+
+import Snackbar from './Snackbar';
 
 it('renders without crashing', () => {
   const closeSnackbar = () => {};

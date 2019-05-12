@@ -1,6 +1,7 @@
-import ReactDOM from "react-dom";
-import FilenameTextField from "./FilenameTextField";
-import * as React from "react";
+import ReactDOM from 'react-dom';
+import * as React from 'react';
+
+import FilenameTextField from './FilenameTextField';
 
 it('renders without crashing', () => {
   const filename = '';

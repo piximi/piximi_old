@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { makeStyles } from '@material-ui/styles';
 import * as MaterialUI from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+import * as React from 'react';
 
 import styles from './Dialog.css';
 

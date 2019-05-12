@@ -1,6 +1,6 @@
-import * as React from "react";
-import { CirclePicker } from "react-color";
-import { Category } from "@cytoai/types";
+import { Category } from '@cytoai/types';
+import { CirclePicker } from 'react-color';
+import * as React from 'react';
 
 type Props = {
   categories: Category[];
@@ -28,7 +28,7 @@ const colors = [
   '#607d8b'
 ];
 
-const unusedColors = (categories: Category[]): (string[] | []) => {
+const unusedColors = (categories: Category[]): string[] | [] => {
   return colors.filter((color: string) => {
     const s: string = color.toUpperCase();
 
@@ -36,7 +36,7 @@ const unusedColors = (categories: Category[]): (string[] | []) => {
   });
 };
 
-const usedColors = (categories: Category[]): (string[] | []) => {
+const usedColors = (categories: Category[]): string[] | [] => {
   if (categories) {
     return categories.map((category: Category) => {
       return category.color.toUpperCase();
@@ -51,9 +51,7 @@ const ColorPicker = (props: Props) => {
 
   const colors: string[] = unusedColors(categories);
 
-  return (
-    <CirclePicker colors={colors} onChange={onChange}/>
-  );
+  return <CirclePicker colors={colors} onChange={onChange} />;
 };
 
 export default ColorPicker;

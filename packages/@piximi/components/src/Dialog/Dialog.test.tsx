@@ -1,6 +1,7 @@
-import ReactDOM from "react-dom";
-import Dialog from "./Dialog";
-import * as React from "react";
+import ReactDOM from 'react-dom';
+import * as React from 'react';
+
+import Dialog from './Dialog';
 
 it('renders without crashing', () => {
   const open = true;
@@ -9,9 +10,7 @@ it('renders without crashing', () => {
 
   const e = (
     <Dialog open={open} onClose={onClose}>
-      <div>
-
-      </div>
+      <div />
     </Dialog>
   );
 

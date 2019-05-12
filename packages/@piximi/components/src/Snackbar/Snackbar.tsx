@@ -1,6 +1,6 @@
-import * as React from 'react';
 import * as MaterialUI from '@material-ui/core';
-import { PopoverOrigin } from "@material-ui/core/Popover";
+import { SnackbarOrigin } from '@material-ui/core/Snackbar';
+import * as React from 'react';
 
 type Props = {
   closeSnackbar: () => void;
@@ -11,19 +11,19 @@ type Props = {
 const Snackbar = (props: Props) => {
   const { closeSnackbar, message, openedSnackbar } = props;
 
-  const anchorOrigin: PopoverOrigin = {
+  const anchorOrigin: SnackbarOrigin = {
     horizontal: 'left',
     vertical: 'bottom'
   };
 
   return (
     <MaterialUI.Snackbar
-      anchorOrigin={anchorOrigin}
-      open={openedSnackbar}
-      autoHideDuration={6000}
-      onClose={closeSnackbar}
-      message={<span id="message-id">{message}</span>}
       action={[]}
+      anchorOrigin={anchorOrigin}
+      autoHideDuration={6000}
+      message={<span id="message-id">{message}</span>}
+      onClose={closeSnackbar}
+      open={openedSnackbar}
     />
   );
 };

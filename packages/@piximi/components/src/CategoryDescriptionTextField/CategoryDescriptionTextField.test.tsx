@@ -1,6 +1,7 @@
-import ReactDOM from "react-dom";
-import CategoryDescriptionTextField from "./CategoryDescriptionTextField";
-import * as React from "react";
+import ReactDOM from 'react-dom';
+import * as React from 'react';
+
+import CategoryDescriptionTextField from './CategoryDescriptionTextField';
 
 it('renders without crashing', () => {
   const description: string = '';

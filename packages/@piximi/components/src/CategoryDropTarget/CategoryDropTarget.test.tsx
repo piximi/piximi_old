@@ -1,11 +1,11 @@
-import ReactDOM from "react-dom";
-import CategoryDropTarget from "./CategoryDropTarget";
-import * as React from "react";
-import { Category } from "../types";
+import { Category } from '@cytoai/types';
+import ReactDOM from 'react-dom';
+import * as React from 'react';
+
+import CategoryDropTarget from './CategoryDropTarget';
 
 it('renders without crashing', () => {
   const category: Category = {
-    classifierIdentifier: '',
     color: '',
     description: '',
     identifier: '',
@@ -20,7 +20,7 @@ it('renders without crashing', () => {
       category={category}
       updateImageCategory={updateImageCategory}
     >
-      <div/>
+      <div />
     </CategoryDropTarget>
   );
 

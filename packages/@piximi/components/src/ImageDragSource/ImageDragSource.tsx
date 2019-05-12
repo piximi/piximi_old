@@ -1,13 +1,15 @@
-import React from 'react';
 import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from 'react-dnd';
 const { useDrag } = dnd;
+import React from 'react';
 
-const ImageDragSource = (props: {
-  children: any;
+type Props = {
+  children: React.ReactNode;
   selectedItems: any;
   onmousedown: any;
   item: any;
-}) => {
+};
+
+const ImageDragSource = (props: Props) => {
   const { children, selectedItems, onmousedown, item } = props;
 
   const spec = {
@@ -23,10 +25,10 @@ const ImageDragSource = (props: {
 
   return (
     <div
-      key={'div' + item.identifier}
-      ref={dragSource}
-      onMouseDown={() => onmousedown(item.identifier)}
       className={selected ? 'selected' : 'unselected'}
+      key={'div' + item.identifier}
+      onMouseDown={() => onmousedown(item.identifier)}
+      ref={dragSource}
     >
       {children}
     </div>

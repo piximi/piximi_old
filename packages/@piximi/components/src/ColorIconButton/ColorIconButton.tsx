@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { makeStyles } from '@material-ui/styles';
-import LabelIcon from '@material-ui/icons/Label';
 import { useMenu } from '@cytoai/hooks';
 import * as MaterialUI from '@material-ui/core';
+import { Label } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/styles';
+import * as React from 'react';
 
 import { ColorIconMenu } from '..';
 import styles from './ColorIconButton.css';
@@ -28,7 +28,7 @@ const ColorIconButton = (props: Props) => {
         onClick={openMenu}
       >
         <MaterialUI.Avatar classes={{ root: classes.avatar }}>
-          <LabelIcon style={{ color: color }} />
+          <Label style={{ color: color }} />
         </MaterialUI.Avatar>
       </MaterialUI.IconButton>
 

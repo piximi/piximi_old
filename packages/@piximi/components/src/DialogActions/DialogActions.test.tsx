@@ -1,6 +1,7 @@
-import ReactDOM from "react-dom";
-import DialogActions from "./DialogActions";
-import * as React from "react";
+import ReactDOM from 'react-dom';
+import * as React from 'react';
+
+import DialogActions from './DialogActions';
 
 it('renders without crashing', () => {
   const acceptanceTitle = '';

@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from 'react-dnd';
 import { Category } from '@cytoai/types';
+import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from 'react-dnd';
 const { useDrop } = dnd;
+import * as React from 'react';
 
 type Props = {
   category: Category;

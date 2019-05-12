@@ -1,13 +1,12 @@
-import ReactDOM from "react-dom";
-import DialogContent from "./DialogContent";
-import * as React from "react";
+import ReactDOM from 'react-dom';
+import * as React from 'react';
+
+import DialogContent from './DialogContent';
 
 it('renders without crashing', () => {
   const e = (
     <DialogContent>
-      <div>
-
-      </div>
+      <div />
     </DialogContent>
   );
 

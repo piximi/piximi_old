@@ -1,7 +1,7 @@
-import * as React from 'react';
 import * as MaterialUI from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
+import * as React from 'react';
 
 import styles from './FilenameTextField.css';
 
@@ -26,11 +26,11 @@ const FilenameTextField = (props: Props) => {
   return (
     <MaterialUI.TextField
       autoFocus
-      margin="dense"
       fullWidth
       id="description"
       inputProps={inputProps}
       label={translation('Filename')}
+      margin="dense"
       onChange={onFilenameChange}
       type="text"
       value={filename}

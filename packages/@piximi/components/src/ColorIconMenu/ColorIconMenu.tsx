@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { makeStyles } from '@material-ui/styles';
 import * as MaterialUI from '@material-ui/core';
 import { PopoverOrigin } from '@material-ui/core/Popover';
+import { makeStyles } from '@material-ui/styles';
+import * as React from 'react';
 
 import { ColorPicker } from '..';
 import styles from './ColorIconMenu.css';
@@ -9,7 +9,7 @@ import styles from './ColorIconMenu.css';
 const useStyles = makeStyles(styles);
 
 type Props = {
-  anchorEl: any;
+  anchorEl: HTMLElement | ((element: HTMLElement) => HTMLElement);
   closeMenu: any;
   onColorChange: (color: string) => void;
   openedMenu: boolean;
