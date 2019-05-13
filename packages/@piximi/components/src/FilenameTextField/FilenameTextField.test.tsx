@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 
 import FilenameTextField from './FilenameTextField';
@@ -15,5 +15,5 @@ it('FilenameTextField', () => {
     />
   );
 
-  ReactDOM.render(e, document.createElement('div'));
+  shallow(e);
 });

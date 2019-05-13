@@ -1,5 +1,5 @@
 import { Category } from '@cytoai/types';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 
 import ColorPicker, { unusedColors, usedColors } from './ColorPicker';
@@ -73,5 +73,5 @@ it('ColorPicker', () => {
 
   const e = <ColorPicker categories={categories} onChange={onChange} />;
 
-  ReactDOM.render(e, document.createElement('div'));
+  shallow(e);
 });

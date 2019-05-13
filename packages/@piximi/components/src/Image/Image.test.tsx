@@ -1,10 +1,12 @@
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 
 import Image from './Image';
 
 it('Image', () => {
-  const e = <Image />;
+  const e = (
+    <Image width={0} src={''} openImageViewerDialog={() => {}} height={0} />
+  );
 
-  ReactDOM.render(e, document.createElement('div'));
+  shallow(e);
 });

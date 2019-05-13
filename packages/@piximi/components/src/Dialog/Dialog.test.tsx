@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 
 import Dialog from './Dialog';
@@ -14,5 +14,5 @@ it('Dialog', () => {
     </Dialog>
   );
 
-  ReactDOM.render(e, document.createElement('div'));
+  shallow(e);
 });

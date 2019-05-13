@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 
 import CategoryDescriptionTextField from './CategoryDescriptionTextField';
@@ -15,5 +15,5 @@ it('CategoryDescriptionTextField', () => {
     />
   );
 
-  ReactDOM.render(e, document.createElement('div'));
+  shallow(e);
 });

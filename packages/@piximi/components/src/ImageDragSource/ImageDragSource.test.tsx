@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 
 import ImageDragSource from './ImageDragSource';
@@ -20,5 +20,5 @@ it('ImageDragSource', () => {
     </ImageDragSource>
   );
 
-  ReactDOM.render(e, document.createElement('div'));
+  shallow(e);
 });

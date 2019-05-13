@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 
 import Snackbar from './Snackbar';
@@ -18,5 +18,5 @@ it('Snackbar', () => {
     />
   );
 
-  ReactDOM.render(e, document.createElement('div'));
+  shallow(e);
 });

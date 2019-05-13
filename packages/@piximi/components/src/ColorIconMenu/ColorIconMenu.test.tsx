@@ -1,5 +1,5 @@
 import { useMenu } from '@cytoai/hooks';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 
 import ColorIconMenu from './ColorIconMenu';
@@ -22,5 +22,5 @@ it('ColorIconMenu', () => {
     />
   );
 
-  ReactDOM.render(e, document.createElement('div'));
+  shallow(e);
 });

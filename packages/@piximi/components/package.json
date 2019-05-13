@@ -2,18 +2,13 @@
   "dependencies": {
     "@cytoai/hooks": "^0.1.1",
     "@cytoai/types": "^0.1.0",
-    "@material-ui/core": "3.9.3",
-    "@material-ui/icons": "3.0.2",
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
     "@material-ui/styles": "^3.0.0-alpha.10",
-    "i18next": "^15.0.9",
-    "react": "^16.8.0",
-    "react-color": "^2.14.1",
-    "react-dnd": "7.4.5",
-    "react-dnd-html5-backend": "7.4.4",
-    "react-dom": "^16.8.0",
-    "react-i18next": "^10.8.1",
-    "react-portal": "^4.2.0",
-    "react-scripts": "3.0.1"
+    "react": "^16.8.6",
+    "react-dnd": "^7.4.5",
+    "react-dom": "^16.8.6",
+    "react-i18next": "^10.9.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.0.11",
@@ -22,35 +17,30 @@
     "@storybook/react": "^5.0.11",
     "@types/enzyme": "^3.9.1",
     "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/jest": "^24.0.11",
-    "@types/node": "^11.13.0",
-    "@types/react": "^16.8.10",
-    "@types/react-color": "^3.0.0",
-    "@types/react-dom": "^16.8.3",
+    "@types/jest": "^24.0.12",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.8.17",
+    "@types/react-dom": "^16.8.4",
     "@types/storybook__react": "^4.0.1",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-loader": "^8.0.6",
-    "babel-runtime": "^6.26.0",
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.12.1",
-    "enzyme-to-json": "^3.3.4",
-    "husky": "^0.14.3",
+    "enzyme-adapter-react-16": "^1.13.0",
+    "jest": "^24.8.0",
     "jest-enzyme": "^7.0.2",
-    "jsdoc": "^3.6.2",
-    "lint-staged": "^7.1.0",
-    "prettier": "^1.12.1",
-    "react-testing-library": "^7.0.0",
-    "redux-devtools-extension": "^2.13.7",
-    "source-map-explorer": "^1.6.0",
-    "typescript": "^3.4.1"
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "files": [
     "dist"
   ],
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "preset": "ts-jest",
+    "setupFilesAfterEnv": [
+      "./src/setupTests.ts"
+    ],
+    "testEnvironment": "node"
   },
   "license": "MIT",
   "lint-staged": {
@@ -63,15 +53,11 @@
   "name": "@cytoai/components",
   "private": false,
   "scripts": {
-    "analyze": "source-map-explorer build/static/js/main.*",
     "build": "rm -rf ./dist && tsc -p ./tsconfig.json",
-    "eject": "react-scripts eject",
     "precommit": "lint-staged",
-    "predeploy": "npm run build",
-    "start": "react-scripts start",
-    "test": "react-scripts test",
-    "storybook": "start-storybook -p 9009",
-    "build-storybook": "build-storybook"
+    "test": "jest",
+    "storybook": "start-storybook -p 9009"
   },
+  "types": "./dist/index.d.ts",
   "version": "0.1.4"
 }

@@ -1,5 +1,5 @@
 import { Category } from '@cytoai/types';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 
 import CategoryDropTarget from './CategoryDropTarget';
@@ -24,5 +24,5 @@ it('CategoryDropTarget', () => {
     </CategoryDropTarget>
   );
 
-  ReactDOM.render(e, document.createElement('div'));
+  shallow(e);
 });
