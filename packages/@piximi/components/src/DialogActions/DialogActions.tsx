@@ -14,6 +14,11 @@ type Props = {
   onCancellation: () => void;
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const DialogActions = (props: Props) => {
   const {
     acceptanceTitle,

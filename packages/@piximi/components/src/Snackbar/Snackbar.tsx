@@ -8,6 +8,11 @@ type Props = {
   openedSnackbar: boolean;
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const Snackbar = (props: Props) => {
   const { closeSnackbar, message, openedSnackbar } = props;
 

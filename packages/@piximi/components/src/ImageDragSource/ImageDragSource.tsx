@@ -10,6 +10,11 @@ type Props = {
   item: any;
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const ImageDragSource = (props: Props) => {
   const { children, selectedItems, onmousedown, item } = props;
 

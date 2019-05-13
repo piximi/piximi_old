@@ -12,6 +12,11 @@ type Props = {
   onDescriptionChange: (event: React.FormEvent<EventTarget>) => void;
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const CategoryDescriptionTextField = (props: Props) => {
   const { description, onDescriptionChange } = props;
 

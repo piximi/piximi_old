@@ -12,6 +12,11 @@ type Props = {
   onFilenameChange: (event: React.FormEvent<EventTarget>) => void;
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const FilenameTextField = (props: Props) => {
   const { filename, onFilenameChange } = props;
 

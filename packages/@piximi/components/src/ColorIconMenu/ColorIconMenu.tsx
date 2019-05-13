@@ -17,6 +17,11 @@ type Props = {
   openMenu: any;
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const ColorIconMenu = (props: Props) => {
   const { anchorEl, closeMenu, onColorChange, openedMenu } = props;
 

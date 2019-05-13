@@ -10,6 +10,11 @@ type Props = {
   children: React.ReactNode;
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const DialogContent = (props: Props) => {
   const { children } = props;
 

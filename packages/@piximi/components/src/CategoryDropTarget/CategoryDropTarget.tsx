@@ -10,6 +10,11 @@ type Props = {
   updateImageCategory: (identifier: string, categoryIdentifier: string) => void;
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const CategoryDropTarget = (props: Props) => {
   const { category, children, updateImageCategory } = props;
 

@@ -12,6 +12,11 @@ type Props = {
   onClose: () => void;
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const Dialog = (props: Props) => {
   const { children, open, onClose } = props;
 

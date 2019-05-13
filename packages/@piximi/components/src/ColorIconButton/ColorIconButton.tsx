@@ -14,6 +14,11 @@ type Props = {
   onColorChange: (color: string) => void;
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const ColorIconButton = (props: Props) => {
   const { color, onColorChange } = props;
 

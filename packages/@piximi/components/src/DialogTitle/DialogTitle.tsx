@@ -11,6 +11,11 @@ type Props = {
   title: string;
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const DialogTitle = (props: Props) => {
   const { title } = props;
 

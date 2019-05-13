@@ -28,6 +28,10 @@ export const colors = [
   '#607D8B'
 ];
 
+/**
+ *
+ * @param categories
+ */
 export const unusedColors = (categories: Category[]): string[] | [] => {
   return colors.filter(color => {
     // @ts-ignore
@@ -35,6 +39,10 @@ export const unusedColors = (categories: Category[]): string[] | [] => {
   });
 };
 
+/**
+ *
+ * @param categories
+ */
 export const usedColors = (categories: Category[]): string[] | [] => {
   if (categories) {
     return categories.map((category: Category) => {
@@ -45,6 +53,11 @@ export const usedColors = (categories: Category[]): string[] | [] => {
   }
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const ColorPicker = (props: Props) => {
   const { onChange, categories } = props;
 

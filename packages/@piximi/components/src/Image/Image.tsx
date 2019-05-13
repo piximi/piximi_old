@@ -10,6 +10,11 @@ type Props = {
   width: number;
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 const Image = (props: Props) => {
   const {
     brightness,
