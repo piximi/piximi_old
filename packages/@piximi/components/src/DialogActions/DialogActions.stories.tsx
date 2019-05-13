@@ -2,21 +2,27 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { DialogActions } from '..';
+import { Dialog, DialogActions } from '..';
 
-const acceptanceTitle = '';
+const acceptanceTitle: string = 'OK';
 
-const cancellationTitle = '';
+const cancellationTitle: string = 'Cancel';
+
+const open: boolean = true;
 
 const onAcceptance = () => {};
 
 const onCancellation = () => {};
 
+const onClose = () => {};
+
 storiesOf('DialogActions', module).add('example', () => (
-  <DialogActions
-    acceptanceTitle={acceptanceTitle}
-    cancellationTitle={cancellationTitle}
-    onAcceptance={onAcceptance}
-    onCancellation={onCancellation}
-  />
+  <Dialog onClose={onClose} open={open}>
+    <DialogActions
+      acceptanceTitle={acceptanceTitle}
+      cancellationTitle={cancellationTitle}
+      onAcceptance={onAcceptance}
+      onCancellation={onCancellation}
+    />
+  </Dialog>
 ));
