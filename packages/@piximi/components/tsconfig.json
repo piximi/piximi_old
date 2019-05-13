@@ -23,11 +23,11 @@
   },
   "exclude": [
     "src/setupTests.ts",
+    "src/**/*.stories.tsx",
     "src/**/*.test.tsx"
   ],
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.test.tsx"
+    "src/**/*.tsx"
   ]
 }
