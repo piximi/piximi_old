@@ -4,9 +4,19 @@ import { storiesOf } from '@storybook/react';
 
 import { ImageDragSource } from "..";
 
+const item = '';
+
+const onmousedown = () => {};
+
+const selectedItems = [];
+
 storiesOf('ImageDragSource', module)
   .add('example', () => (
-    <ImageDragSource selectedItems={} onmousedown={} item={}>
+    <ImageDragSource
+      selectedItems={selectedItems}
+      onmousedown={onmousedown}
+      item={item}
+    >
       <div/>
     </ImageDragSource>
   ));

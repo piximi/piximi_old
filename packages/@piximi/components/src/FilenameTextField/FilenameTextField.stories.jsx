@@ -4,7 +4,14 @@ import { storiesOf } from '@storybook/react';
 
 import { FilenameTextField } from "..";
 
+const filename = '';
+
+const onFilenameChange = () => {};
+
 storiesOf('FilenameTextField', module)
   .add('example', () => (
-    <FilenameTextField filename={} onFilenameChange={}/>
+    <FilenameTextField
+      filename={filename}
+      onFilenameChange={onFilenameChange}
+    />
   ));
