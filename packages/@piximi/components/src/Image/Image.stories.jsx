@@ -6,5 +6,12 @@ import { Image } from "..";
 
 storiesOf('Image', module)
   .add('example', () => (
-    <Image brightness={} contrast={} height={} openImageViewerDialog={} src={} width={}/>
+    <Image
+      brightness={}
+      contrast={}
+      height={}
+      openImageViewerDialog={}
+      src={}
+      width={}
+    />
   ));

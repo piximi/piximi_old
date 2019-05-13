@@ -6,5 +6,5 @@ import { DialogTitle } from "..";
 
 storiesOf('DialogTitle', module)
   .add('example', () => (
-    <DialogTitle title={}/>
+    <DialogTitle title={'example'}/>
   ));

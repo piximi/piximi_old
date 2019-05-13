@@ -6,5 +6,13 @@ import { ColorIconMenu } from "..";
 
 storiesOf('ColorIconMenu', module)
   .add('example', () => (
-    <ColorIconMenu anchorEl={} closeMenu={} color={} onColorChange={} openedMenu={} openMenu={}/>
+    <ColorIconMenu
+      anchorEl={}
+      closeMenu={}
+      color={}
+      onColorChange={}
+      openedMenu={}
+      openMenu={}
+    />
   ));
+s
