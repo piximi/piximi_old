@@ -1,15 +1,15 @@
+import logger from 'redux-logger'
 import {
   persistReducer,
   persistStore
 } from 'redux-persist'
-
+import thunk from 'redux-thunk'
 import storage from 'redux-persist/lib/storage'
 
 import {
   AnyAction,
   configureStore,
   EnhancedStore,
-  getDefaultMiddleware,
   Middleware,
   StoreEnhancer
 } from "redux-starter-kit";
@@ -21,7 +21,8 @@ import {
 const enhancers: StoreEnhancer[] = [];
 
 const middleware: Middleware<{}, any>[] = [
-  ...getDefaultMiddleware()
+  logger,
+  thunk
 ];
 
 const preloadedState = {};
