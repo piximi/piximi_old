@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { ColorPicker } from "..";
+import { ColorPicker } from '..';
 
 const categories = [
   {
@@ -16,7 +16,6 @@ const categories = [
 
 const onChange = () => {};
 
-storiesOf('ColorPicker', module)
-  .add('example', () => (
-    <ColorPicker categories={categories} onChange={onChange}/>
-  ));
+storiesOf('ColorPicker', module).add('example', () => (
+  <ColorPicker categories={categories} onChange={onChange} />
+));

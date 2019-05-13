@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { CategoryDropTarget } from "..";
+import { CategoryDropTarget } from '..';
 
 const category = {
   color: '#F44336',
@@ -13,12 +13,11 @@ const category = {
 
 const updateImageCategory = () => {};
 
-storiesOf('CategoryDropTarget', module)
-  .add('example', () => (
-    <CategoryDropTarget
-      category={category}
-      updateImageCategory={updateImageCategory}
-    >
-      <div/>
-    </CategoryDropTarget>
-  ));
+storiesOf('CategoryDropTarget', module).add('example', () => (
+  <CategoryDropTarget
+    category={category}
+    updateImageCategory={updateImageCategory}
+  >
+    <div />
+  </CategoryDropTarget>
+));
