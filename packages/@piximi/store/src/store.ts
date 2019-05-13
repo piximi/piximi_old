@@ -4,6 +4,7 @@ import {
   persistStore
 } from 'redux-persist'
 import thunk from 'redux-thunk'
+import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 import storage from 'redux-persist/lib/storage'
 
 import {
@@ -29,7 +30,8 @@ const preloadedState = {};
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  stateReconciler: autoMergeLevel2
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);
