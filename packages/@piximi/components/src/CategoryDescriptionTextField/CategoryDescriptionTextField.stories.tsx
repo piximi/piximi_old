@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { CategoryDescriptionTextField } from '..';
 
-const description = '';
+const description: string = 'example';
 
 const onDescriptionChange = () => {};
 

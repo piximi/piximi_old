@@ -4,7 +4,7 @@ import * as React from 'react';
 import CategoryDescriptionTextField from './CategoryDescriptionTextField';
 
 it('CategoryDescriptionTextField', () => {
-  const description: string = '';
+  const description: string = 'example';
 
   const onDescriptionChange = () => {};
 

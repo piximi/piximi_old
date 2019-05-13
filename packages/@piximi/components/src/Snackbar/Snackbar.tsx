@@ -2,7 +2,7 @@ import * as MaterialUI from '@material-ui/core';
 import { SnackbarOrigin } from '@material-ui/core/Snackbar';
 import * as React from 'react';
 
-type Props = {
+type SnackbarProps = {
   closeSnackbar: () => void;
   message: string;
   openedSnackbar: boolean;
@@ -13,7 +13,7 @@ type Props = {
  * @param props
  * @constructor
  */
-const Snackbar = (props: Props) => {
+const Snackbar = (props: SnackbarProps) => {
   const { closeSnackbar, message, openedSnackbar } = props;
 
   const anchorOrigin: SnackbarOrigin = {
