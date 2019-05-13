@@ -30,6 +30,7 @@ const preloadedState = {};
 
 localforage.config({
   driver: localforage.INDEXEDDB,
+  storeName: 'cyto'
 });
 
 const persistConfig = {
