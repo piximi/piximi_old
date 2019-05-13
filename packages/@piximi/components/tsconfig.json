@@ -7,12 +7,17 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": false,
     "jsx": "preserve",
-    "module": "es6",
-    "moduleResolution": "Node",
+    "lib": [
+      "dom",
+      "es6"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noErrorTruncation": true,
     "outDir": "./dist",
     "skipLibCheck": true,
     "strict": true,
-    "target": "es6"
+    "target": "es5"
   },
   "exclude": [
     "src/setupTests.ts",
