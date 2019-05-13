@@ -73,5 +73,5 @@
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook"
   },
-  "version": "0.1.2"
+  "version": "0.1.3"
 }
