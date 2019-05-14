@@ -28,14 +28,14 @@ const middleware: Middleware<{}, any>[] = [
 
 const preloadedState = {};
 
-localforage.config({
+const storage = localforage.createInstance({
   driver: localforage.INDEXEDDB,
-  storeName: 'cyto'
+  name: 'cyto'
 });
 
 const persistConfig = {
   key: 'root',
-  storage: localforage,
+  storage: storage,
   stateReconciler: autoMergeLevel2
 };
 
