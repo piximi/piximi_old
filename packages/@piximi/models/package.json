@@ -6,16 +6,25 @@
     "@tensorflow/tfjs": "^1.1.2",
     "image-js": "^0.21.6",
     "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
     "redux-starter-kit": "^0.5.1"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.9.1",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.12",
     "@types/node": "^12.0.0",
     "@types/react": "^16.8.17",
-    "jdoc": "^0.2.0",
+    "@types/react-color": "^3.0.0",
+    "@types/react-dom": "^16.8.4",
+    "@types/storybook__react": "^4.0.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.0",
     "jest": "^24.8.0",
+    "jest-enzyme": "^7.0.2",
+    "lint-staged": "^8.1.6",
     "ts-jest": "^24.0.2",
     "typescript": "^3.4.5"
   },
@@ -24,6 +33,9 @@
   ],
   "jest": {
     "preset": "ts-jest",
+    "setupFilesAfterEnv": [
+      "./src/setupTests.ts"
+    ],
     "testEnvironment": "node"
   },
   "license": "MIT",

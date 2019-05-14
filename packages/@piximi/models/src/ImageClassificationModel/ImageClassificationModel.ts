@@ -1,4 +1,3 @@
-import * as tensorflow from '@tensorflow/tfjs';
 import { Category, Image } from '@cytoai/types';
 import * as ImageJS from 'image-js';
 import * as TensorFlow from '@tensorflow/tfjs';
@@ -21,15 +20,20 @@ async function getCanvas(image: Image) {
 class ImageClassificationModel {
   private readonly categories: Category[];
   private readonly images: Image[];
-  private graph: TensorFlow.GraphModel | undefined;
+  private graphModel?: TensorFlow.GraphModel;
+  private layersModel?: TensorFlow.LayersModel;
 
   constructor(categories: Category[], images: Image[]) {
     this.categories = categories;
     this.images = images;
   }
 
-  load = async (resource: string | tensorflow.io.IOHandler) => {
-    this.graph = await tensorflow.loadGraphModel(resource);
+  loadGraphModel = async (modelUrl: string | TensorFlow.io.IOHandler) => {
+    this.graphModel = await TensorFlow.loadGraphModel(modelUrl);
+  };
+
+  loadLayersModel = async (pathOrIOHandler: string | TensorFlow.io.IOHandler) => {
+    this.layersModel = await TensorFlow.loadLayersModel(pathOrIOHandler)
   };
 
   fit = async () => {};
@@ -41,9 +45,7 @@ class ImageClassificationModel {
     for (const image of this.images) {
       const canvas = await getCanvas(image);
 
-      const tensor = TensorFlow.browser.fromPixels(canvas);
-
-      images.push(tensor);
+      images.push(canvas);
 
       const categoryIndex = findCategoryIndex(
         this.categories,
