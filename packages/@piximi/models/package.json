@@ -2,7 +2,9 @@
   "author": "Allen Goodman",
   "dependencies": {
     "@cytoai/store": "^0.1.10",
+    "@cytoai/types": "^0.1.0",
     "@tensorflow/tfjs": "^1.1.2",
+    "image-js": "^0.21.6",
     "react": "^16.8.6",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
@@ -12,6 +14,7 @@
     "@types/jest": "^24.0.12",
     "@types/node": "^12.0.0",
     "@types/react": "^16.8.17",
+    "jdoc": "^0.2.0",
     "jest": "^24.8.0",
     "ts-jest": "^24.0.2",
     "typescript": "^3.4.5"

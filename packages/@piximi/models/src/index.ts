@@ -1,5 +1,5 @@
-import {Classification} from "./classification/classification";
+import { ImageClassificationModel } from "./ImageClassificationModel/ImageClassificationModel";
 
 export {
-  Classification
+  ImageClassificationModel
 }
