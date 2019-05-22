@@ -1,47 +1,64 @@
-export type Category = {
-  color: string;
+type Category = {
   description: string;
   identifier: string;
   index: number;
-  visible: boolean;
 };
 
-export type Classifier = {
-  categories: Category[];
-  images: Image[];
+type CategoryVisualization = {
+  color: string;
+  identifier: string;
+  visible: boolean;
+}
+
+type Classifier = {
+  categories: string[];
+  images: string[];
   name: string;
 };
 
-export type Image = {
+type Image = {
   categoryIdentifier: string;
   checksum: string;
   data: string;
   identifier: string;
   partition: Partition;
-  scores: Score[];
-  visualization: ImageVisualization;
+  scores: string[];
+  visualization: string;
 };
 
-export enum Partition {
+type ImageVisualization = {
+  brightness: number;
+  contrast: number;
+  identifier: string;
+  visible: boolean;
+  visibleChannels: number[];
+};
+
+enum Partition {
   Training,
   Validation,
   Test
 }
 
-export type Score = {
+type Score = {
   categoryIdentifier: string;
+  identifier: string;
   probability: number;
 };
 
-export type Settings = {
+type Settings = {
   spinner: {
     spinning: boolean;
   };
 };
 
-export type ImageVisualization = {
-  brightness: number;
-  contrast: number;
-  visible: boolean;
-  visibleChannels: number[];
-};
+export {
+  Category,
+  CategoryVisualization,
+  Classifier,
+  Image,
+  ImageVisualization,
+  Partition,
+  Score,
+  Settings
+}
