@@ -7,7 +7,7 @@ deploy:
   email: allen.goodman@icloud.com
   on:
     tags: true
-    repo: cytoai/components
+    repo: piximi/components
   provider: npm
   skip_cleanup: true
 language: node_js

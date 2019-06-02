@@ -1,4 +1,4 @@
-import { Category } from '@cytoai/types';
+import { Category } from '@piximi/types';
 import { CirclePicker } from 'react-color';
 import * as React from 'react';
 

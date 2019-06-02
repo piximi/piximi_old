@@ -1,4 +1,4 @@
-import { useMenu } from '@cytoai/hooks';
+import { useMenu } from '@piximi/hooks';
 import * as MaterialUI from '@material-ui/core';
 import { Label } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';

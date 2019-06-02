@@ -1,4 +1,4 @@
-import { useMenu } from '@cytoai/hooks';
+import { useMenu } from '@piximi/hooks';
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
