@@ -8,9 +8,9 @@
   ],
   "license": "MIT",
   "main": "./dist/index.js",
-  "name": "@cytoai/types",
+  "name": "@piximi/types",
   "private": false,
-  "repository": "https://github.com/cytoai/types",
+  "repository": "https://github.com/piximi/types",
   "scripts": {
     "build": "rm -rf ./dist && tsc -p ./tsconfig.json"
   },
