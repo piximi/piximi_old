@@ -8,9 +8,9 @@
   ],
   "license": "MIT",
   "main": "./dist/index.js",
-  "name": "@cytoai/translations",
+  "name": "@piximi/translations",
   "private": false,
-  "repository": "https://github.com/cytoai/translations",
+  "repository": "https://github.com/piximi/translations",
   "scripts": {
     "build": "rm -rf ./dist && tsc -p ./tsconfig.json"
   },
