@@ -139,12 +139,12 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@cytoai/store@0.1.11":
+"@piximi/store@0.1.11":
   version "0.1.11"
-  resolved "https://registry.yarnpkg.com/@cytoai/store/-/store-0.1.11.tgz#b39e435b48713009c6705091afe82880c21f824f"
+  resolved "https://registry.yarnpkg.com/@piximi/store/-/store-0.1.11.tgz#b39e435b48713009c6705091afe82880c21f824f"
   integrity sha512-GXmDQxAhqwJt/Vdu98wWKp1b7zv7GJIR4EfJTQxTsfYT7ZXciytz3aGwzWlUyDwLkeVrskcJ3VH9zYpG7mfhAQ==
   dependencies:
-    "@cytoai/types" "^0.1.0"
+    "@piximi/types" "^0.1.0"
     react "^16.8.6"
     redux "^4.0.1"
     redux-logger "^3.0.6"
@@ -152,9 +152,9 @@
     redux-starter-kit "^0.5.1"
     redux-thunk "^2.3.0"
 
-"@cytoai/types@^0.1.0":
+"@piximi/types@^0.1.0":
   version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@cytoai/types/-/types-0.1.0.tgz#c663c2abd46ba74f7085d8efa225c89e9e12f7f7"
+  resolved "https://registry.yarnpkg.com/@piximi/types/-/types-0.1.0.tgz#c663c2abd46ba74f7085d8efa225c89e9e12f7f7"
   integrity sha512-8HjAZqcjDKcOkq2RAOVKJ6iG8Q5qkocSjX4/aRPoAIkskF2FUkKJdb7eaq5QOIKZUvUHG4m+ecem3JghS91mGQ==
 
 "@jest/console@^24.7.1":

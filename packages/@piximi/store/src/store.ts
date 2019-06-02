@@ -30,7 +30,7 @@ const preloadedState = {};
 
 const storage = localforage.createInstance({
   driver: localforage.INDEXEDDB,
-  name: 'cyto'
+  name: 'piximi'
 });
 
 const persistConfig = {

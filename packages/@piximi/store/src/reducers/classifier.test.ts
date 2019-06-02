@@ -26,7 +26,7 @@ import {
   Image,
   Partition,
   Score
-} from "@cytoai/types";
+} from "@piximi/types";
 
 describe('classifierReducer', () => {
   it('createCategoryAction', () => {
