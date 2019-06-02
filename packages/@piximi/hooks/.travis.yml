@@ -4,7 +4,7 @@ deploy:
   email: allen.goodman@icloud.com
   on:
     tags: true
-    repo: cytoai/hooks
+    repo: piximi/hooks
   provider: npm 
   skip_cleanup: true
 language: node_js
