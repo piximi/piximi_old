@@ -1,8 +1,8 @@
 {
   "author": "Allen Goodman",
   "dependencies": {
-    "@cytoai/store": "^0.1.10",
-    "@cytoai/types": "^0.1.0",
+    "@piximi/store": "^0.1.10",
+    "@piximi/types": "^0.1.0",
     "@tensorflow/tfjs": "^1.1.2",
     "image-js": "^0.21.6",
     "react": "^16.8.6",
@@ -40,9 +40,9 @@
   },
   "license": "MIT",
   "main": "./dist/index.js",
-  "name": "@cytoai/models",
+  "name": "@piximi/models",
   "private": false,
-  "repository": "https://github.com/cytoai/models",
+  "repository": "https://github.com/piximi/models",
   "scripts": {
     "build": "rm -rf ./dist && tsc -p ./tsconfig.json",
     "test": "jest"
