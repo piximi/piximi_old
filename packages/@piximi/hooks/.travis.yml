@@ -12,3 +12,4 @@ node_js:
   - stable
 script:
   - yarn build
+  - yarn test
