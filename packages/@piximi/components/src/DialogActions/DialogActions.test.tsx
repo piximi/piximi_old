@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import DialogActions from './DialogActions';
+import { DialogActions } from './DialogActions';
 
 it('DialogActions', () => {
   const acceptanceTitle = '';

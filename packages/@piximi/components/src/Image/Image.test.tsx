@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import Image from './Image';
+import { Image } from './Image';
 
 it('Image', () => {
   const e = (

@@ -2,7 +2,7 @@ import { useMenu } from '@piximi/hooks';
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import ColorIconMenu from './ColorIconMenu';
+import { ColorIconMenu } from './ColorIconMenu';
 
 it('ColorIconMenu', () => {
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();

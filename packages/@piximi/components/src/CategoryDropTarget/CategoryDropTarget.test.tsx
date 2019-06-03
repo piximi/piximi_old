@@ -2,7 +2,7 @@ import { Category } from '@piximi/types';
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import CategoryDropTarget from './CategoryDropTarget';
+import { CategoryDropTarget } from './CategoryDropTarget';
 
 it('CategoryDropTarget', () => {
   const category: Category = {

@@ -1,4 +1,3 @@
-import { useMenu } from '@piximi/hooks';
 import * as MaterialUI from '@material-ui/core';
 import { Label } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
@@ -6,6 +5,7 @@ import * as React from 'react';
 
 import { ColorIconMenu } from '..';
 import styles from './ColorIconButton.css';
+import {useMenu} from "@piximi/hooks";
 
 const useStyles = makeStyles(styles);
 

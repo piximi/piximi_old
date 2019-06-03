@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import CategoryDescriptionTextField from './CategoryDescriptionTextField';
+import { CategoryDescriptionTextField } from './CategoryDescriptionTextField';
 
 it('CategoryDescriptionTextField', () => {
   const description: string = 'example';

@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import ImageDragSource from './ImageDragSource';
+import { ImageDragSource } from './ImageDragSource';
 
 it('ImageDragSource', () => {
   const item = '';

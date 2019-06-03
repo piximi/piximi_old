@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import Snackbar from './Snackbar';
+import { Snackbar } from './Snackbar';
 
 it('Snackbar', () => {
   const closeSnackbar = () => {};

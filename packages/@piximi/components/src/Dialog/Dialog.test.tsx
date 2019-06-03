@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import Dialog from './Dialog';
+import { Dialog } from './Dialog';
 
 it('Dialog', () => {
   const open = true;

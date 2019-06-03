@@ -2,7 +2,7 @@ import { Category } from '@piximi/types';
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import ColorPicker, { unusedColors, usedColors } from './ColorPicker';
+import { ColorPicker, unusedColors, usedColors } from './ColorPicker';
 
 it('unusedColors', () => {
   const categories: Category[] = [

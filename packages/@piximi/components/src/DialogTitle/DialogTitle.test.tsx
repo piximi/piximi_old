@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import DialogTitle from './DialogTitle';
+import { DialogTitle } from './DialogTitle';
 
 it('DialogTitle', () => {
   const title = '';

@@ -12,7 +12,7 @@
       "dom",
       "es7"
     ],
-    "module": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "noErrorTruncation": true,
     "outDir": "./dist",
