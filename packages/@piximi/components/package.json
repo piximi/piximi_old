@@ -3,11 +3,11 @@
     "url": "https://github.com/piximi/components/issues"
   },
   "dependencies": {
-    "@piximi/hooks": "^0.1.1",
-    "@piximi/types": "^0.1.0",
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "@material-ui/styles": "^3.0.0-alpha.10",
+    "@piximi/hooks": "^0.1.2",
+    "@piximi/types": "^0.1.1",
     "react": "^16.8.6",
     "react-color": "^2.17.3",
     "react-dnd": "^7.4.5",
@@ -74,5 +74,5 @@
   },
   "sideEffects": false,
   "types": "./dist/index.d.ts",
-  "version": "0.1.4"
+  "version": "0.1.5"
 }
