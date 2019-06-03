@@ -20,7 +20,7 @@ type Props = {
 const CategoryDescriptionTextField = (props: Props) => {
   const { description, onDescriptionChange } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const { t: translation } = useTranslation();
 

@@ -45,7 +45,7 @@ export const unusedColors = (categories: Category[]): string[] | [] => {
  */
 export const usedColors = (categories: Category[]): string[] | [] => {
   if (categories) {
-    return categories.map((category: Category) => {
+    return categories.map((category: any) => {
       return category.color.toUpperCase();
     });
   } else {

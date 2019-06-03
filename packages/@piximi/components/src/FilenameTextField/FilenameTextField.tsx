@@ -20,7 +20,7 @@ type Props = {
 const FilenameTextField = (props: Props) => {
   const { filename, onFilenameChange } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const { t: translation } = useTranslation();
 

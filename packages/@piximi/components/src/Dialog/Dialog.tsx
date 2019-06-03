@@ -20,7 +20,7 @@ type Props = {
 const Dialog = (props: Props) => {
   const { children, open, onClose } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   return (
     <MaterialUI.Dialog

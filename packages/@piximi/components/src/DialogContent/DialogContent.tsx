@@ -18,7 +18,7 @@ type Props = {
 const DialogContent = (props: Props) => {
   const { children } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   return (
     <MaterialUI.DialogContent className={classes.content}>

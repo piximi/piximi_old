@@ -24,7 +24,7 @@ const ColorIconButton = (props: Props) => {
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   return (
     <React.Fragment>

@@ -25,7 +25,7 @@ type Props = {
 const ColorIconMenu = (props: Props) => {
   const { anchorEl, closeMenu, onColorChange, openedMenu } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const onChange = (color: string) => {
     onColorChange(color);

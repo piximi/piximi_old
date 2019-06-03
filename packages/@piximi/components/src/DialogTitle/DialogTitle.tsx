@@ -19,7 +19,7 @@ type Props = {
 const DialogTitle = (props: Props) => {
   const { title } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const { t: translation } = useTranslation();
 
