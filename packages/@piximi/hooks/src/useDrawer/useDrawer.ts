@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-export function useDrawer() {
+export const useDrawer = () => {
   const [openedDrawer, setOpenedDrawer] = useState(true);
 
   const toggleDrawer = useCallback(() => {
@@ -8,4 +8,4 @@ export function useDrawer() {
   }, [openedDrawer]);
 
   return { openedDrawer, toggleDrawer };
-}
+};

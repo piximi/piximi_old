@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-export function useMenu() {
+export const useMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const openedMenu = Boolean(anchorEl);
@@ -14,4 +14,4 @@ export function useMenu() {
   }, []);
 
   return { anchorEl, openedMenu, openMenu, closeMenu };
-}
+};
