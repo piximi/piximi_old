@@ -322,7 +322,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: '#FFFFFF',
             visible: true
           }
         },
@@ -697,7 +697,7 @@ describe('classifierReducer', () => {
           index: 1,
           visualization: {
             color: '#FFFFFF',
-            visible: true
+            visible: false
           }
         }
       ],
