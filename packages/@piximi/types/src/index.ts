@@ -2,13 +2,11 @@ type Category = {
   description: string;
   identifier: string;
   index: number;
-  scores: Score[];
   visualization: CategoryVisualization;
 };
 
 type CategoryVisualization = {
   color: string;
-  identifier: string;
   visible: boolean;
 }
 
@@ -31,7 +29,6 @@ type Image = {
 type ImageVisualization = {
   brightness: number;
   contrast: number;
-  identifier: string;
   visible: boolean;
   visibleChannels: number[];
 };
@@ -44,7 +41,6 @@ enum Partition {
 
 type Score = {
   categoryIdentifier: string;
-  identifier: string;
   probability: number;
 };
 
