@@ -7,11 +7,13 @@ import ColorPicker, { unusedColors, usedColors } from './ColorPicker';
 it('unusedColors', () => {
   const categories: Category[] = [
     {
-      color: '#F44336',
       description: 'example',
       identifier: '11111111-1111-1111-1111-11111111111',
       index: 1,
-      visible: true
+      visualization: {
+        color: '#F44336',
+        visible: true
+      }
     }
   ];
 
@@ -43,11 +45,13 @@ it('unusedColors', () => {
 it('usedColors', () => {
   const categories: Category[] = [
     {
-      color: '#F44336',
       description: 'example',
       identifier: '11111111-1111-1111-1111-11111111111',
       index: 1,
-      visible: true
+      visualization: {
+        color: '#F44336',
+        visible: true
+      }
     }
   ];
 
@@ -61,11 +65,13 @@ it('usedColors', () => {
 it('ColorPicker', () => {
   const categories: Category[] = [
     {
-      color: '#F44336',
       description: 'example',
       identifier: '11111111-1111-1111-1111-11111111111',
       index: 1,
-      visible: true
+      visualization: {
+        color: '#F44336',
+        visible: true,
+      }
     }
   ];
 

@@ -1266,20 +1266,20 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@piximi/hooks@^0.1.2":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@piximi/hooks/-/hooks-0.1.3.tgz#a535e48520d535612e4967a306affd4133baa523"
-  integrity sha512-hAit6Fr9l7NQqtjcew60ez4F2zyMIPNad9gBVol0yA47tIOMiBWnDMvqapcx3qbFsL/tyz5U+1D4QsP1jeDbmA==
+"@piximi/hooks@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@piximi/hooks/-/hooks-0.1.5.tgz#4fcb6d26bdb246aa642d7df269a6704d48a10a6e"
+  integrity sha512-Guh5qwItCKhhNM2eVS2LqSfycr43phltLTaMMonGojSwkbuXNN1x9/U3G8MIIjw4zi8v5J4g8sMep9ZkGFNvQQ==
   dependencies:
     react "^16.8.6"
     redux "^4.0.1"
     redux-persist "^5.10.0"
     redux-starter-kit "^0.5.1"
 
-"@piximi/types@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@piximi/types/-/types-0.1.1.tgz#e69e1553b0c8ccf61c35c0a74818b816df41ed7d"
-  integrity sha512-X3AT4Rf3SLTpnlAouITozqM4pUBVzYdmFkYQO3IerNgvzJ8grRUUE5ftju5EqFNQvvMbkmtTSy07aDfx2IJpRg==
+"@piximi/types@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@piximi/types/-/types-0.1.7.tgz#fc81d6a4c57eb6cb7c3e018c94fe273c6a3e4781"
+  integrity sha512-0GecpH7iw5pxq2hMiDx8djlw0iKbKNZEqIZd4xCsDs2d4Wxx9DlCEDQhqxh4T9OGtq0592ykbhqC0wxjvX44qg==
 
 "@reach/router@^1.2.1":
   version "1.2.1"
