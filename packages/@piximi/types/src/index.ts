@@ -11,8 +11,8 @@ type CategoryVisualization = {
 }
 
 type Classifier = {
-  categories: string[];
-  images: string[];
+  categories: Category[];
+  images: Image[];
   name: string;
 };
 
