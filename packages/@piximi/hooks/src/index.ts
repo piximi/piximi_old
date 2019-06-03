@@ -1,15 +1,6 @@
-import { useCollapseList } from './useCollapseList/useCollapseList';
-import { useDialog } from './useDialog/useDialog';
-import { useDrawer } from './useDrawer/useDrawer';
-import { useKeyPress } from './useKeyPress/useKeyPress';
-import { useMenu } from './useMenu/useMenu';
-import { useSnackbar } from './useSnackbar/useSnackbar';
-
-export {
-  useCollapseList,
-  useDialog,
-  useDrawer,
-  useKeyPress,
-  useMenu,
-  useSnackbar
-};
+export { default as useCollapseList } from './useCollapseList/useCollapseList';
+export { default as useDialog } from './useDialog/useDialog';
+export { default as useDrawer } from './useDrawer/useDrawer';
+export { default as useKeyPress } from './useKeyPress/useKeyPress';
+export { default as useMenu } from './useMenu/useMenu';
+export { default as useSnackbar } from './useSnackbar/useSnackbar';

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-export function useSnackbar() {
+function useSnackbar() {
   const [openedSnackbar, setOpenedSnackbar] = useState(false);
 
   const closeSnackbar = useCallback(() => {
@@ -13,3 +13,5 @@ export function useSnackbar() {
 
   return { openedSnackbar, openSnackbar, closeSnackbar };
 }
+
+export default useSnackbar;
