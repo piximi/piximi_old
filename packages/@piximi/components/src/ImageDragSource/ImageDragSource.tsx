@@ -15,7 +15,7 @@ type Props = {
  * @param props
  * @constructor
  */
-const ImageDragSource = (props: Props) => {
+export const ImageDragSource = (props: Props) => {
   const { children, selectedItems, onmousedown, item } = props;
 
   const spec = {
@@ -40,5 +40,3 @@ const ImageDragSource = (props: Props) => {
     </div>
   );
 };
-
-export default ImageDragSource;

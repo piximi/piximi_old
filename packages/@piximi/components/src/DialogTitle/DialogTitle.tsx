@@ -16,7 +16,7 @@ type Props = {
  * @param props
  * @constructor
  */
-const DialogTitle = (props: Props) => {
+export const DialogTitle = (props: Props) => {
   const { title } = props;
 
   const classes = useStyles({});
@@ -31,5 +31,3 @@ const DialogTitle = (props: Props) => {
     </MaterialUI.DialogTitle>
   );
 };
-
-export default DialogTitle;

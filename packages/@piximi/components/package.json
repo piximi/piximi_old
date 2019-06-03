@@ -6,15 +6,18 @@
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "@material-ui/styles": "^3.0.0-alpha.10",
-    "@piximi/hooks": "^0.1.5",
-    "@piximi/types": "^0.1.7",
+    "@piximi/hooks": "^0.1.10",
+    "@piximi/types": "^0.1.8",
     "react": "^16.8.6",
     "react-color": "^2.17.3",
     "react-dnd": "^7.4.5",
     "react-dom": "^16.8.6",
-    "react-i18next": "^10.9.0"
+    "react-i18next": "^10.9.0",
+    "typescript": "^3.4.5",
+    "@types/react-dom": "^16.8.4",
+    "@types/react": "^16.8.17"
   },
-  "description": "Cyto’s generic React components",
+  "description": "Piximi’s generic React components",
   "devDependencies": {
     "@storybook/addon-actions": "^5.0.11",
     "@storybook/addon-links": "^5.0.11",
@@ -24,17 +27,14 @@
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.12",
     "@types/node": "^12.0.0",
-    "@types/react": "^16.8.17",
     "@types/react-color": "^3.0.0",
-    "@types/react-dom": "^16.8.4",
     "@types/storybook__react": "^4.0.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
     "jest": "^24.8.0",
     "jest-enzyme": "^7.0.2",
     "lint-staged": "^8.1.6",
-    "ts-jest": "^24.0.2",
-    "typescript": "^3.4.5"
+    "ts-jest": "^24.0.2"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -19,7 +19,7 @@ type Props = {
  * @param props
  * @constructor
  */
-const DialogActions = (props: Props) => {
+export const DialogActions = (props: Props) => {
   const {
     acceptanceTitle,
     cancellationTitle,
@@ -49,5 +49,3 @@ const DialogActions = (props: Props) => {
     </MaterialUI.DialogActions>
   );
 };
-
-export default DialogActions;

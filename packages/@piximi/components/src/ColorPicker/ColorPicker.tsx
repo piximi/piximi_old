@@ -58,12 +58,10 @@ export const usedColors = (categories: Category[]): string[] | [] => {
  * @param props
  * @constructor
  */
-const ColorPicker = (props: Props) => {
+export const ColorPicker = (props: Props) => {
   const { onChange, categories } = props;
 
   const colors: string[] = unusedColors(categories);
 
   return <CirclePicker colors={colors} onChange={onChange} />;
 };
-
-export default ColorPicker;

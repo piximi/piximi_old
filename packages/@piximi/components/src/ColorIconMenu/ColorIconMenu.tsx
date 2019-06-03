@@ -22,7 +22,7 @@ type Props = {
  * @param props
  * @constructor
  */
-const ColorIconMenu = (props: Props) => {
+export const ColorIconMenu = (props: Props) => {
   const { anchorEl, closeMenu, onColorChange, openedMenu } = props;
 
   const classes = useStyles({});
@@ -57,5 +57,3 @@ const ColorIconMenu = (props: Props) => {
     </MaterialUI.Popover>
   );
 };
-
-export default ColorIconMenu;

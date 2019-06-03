@@ -15,7 +15,7 @@ type Props = {
  * @param props
  * @constructor
  */
-const DialogContent = (props: Props) => {
+export const DialogContent = (props: Props) => {
   const { children } = props;
 
   const classes = useStyles({});
@@ -28,5 +28,3 @@ const DialogContent = (props: Props) => {
     </MaterialUI.DialogContent>
   );
 };
-
-export default DialogContent;

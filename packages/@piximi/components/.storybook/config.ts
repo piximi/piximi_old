@@ -1,18 +1,18 @@
 import { configure } from '@storybook/react';
 
 const stories = () => {
-  require('../src/CategoryDescriptionTextField/CategoryDescriptionTextField.stories');
-  require('../src/CategoryDropTarget/CategoryDropTarget.stories');
-  require('../src/ColorIconButton/ColorIconButton.stories');
-  require('../src/ColorIconMenu/ColorIconMenu.stories');
-  require('../src/Dialog/Dialog.stories');
-  require('../src/DialogActions/DialogActions.stories');
-  require('../src/DialogContent/DialogContent.stories');
-  require('../src/DialogTitle/DialogTitle.stories');
-  require('../src/FilenameTextField/FilenameTextField.stories');
-  require('../src/Image/Image.stories');
-  require('../src/ImageDragSource/ImageDragSource.stories');
-  require('../src/Snackbar/Snackbar.stories');
+  require('../src/CategoryDescriptionTextField/CategoryDescriptionTextField.stories.tsx');
+  require('../src/CategoryDropTarget/CategoryDropTarget.stories.tsx');
+  require('../src/ColorIconButton/ColorIconButton.stories.tsx');
+  require('../src/ColorIconMenu/ColorIconMenu.stories.tsx');
+  require('../src/Dialog/Dialog.stories.tsx');
+  require('../src/DialogActions/DialogActions.stories.tsx');
+  require('../src/DialogContent/DialogContent.stories.tsx');
+  require('../src/DialogTitle/DialogTitle.stories.tsx');
+  require('../src/FilenameTextField/FilenameTextField.stories.tsx');
+  require('../src/Image/Image.stories.tsx');
+  require('../src/ImageDragSource/ImageDragSource.stories.tsx');
+  require('../src/Snackbar/Snackbar.stories.tsx');
 };
 
 configure(stories, module);

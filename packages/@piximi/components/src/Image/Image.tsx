@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {createElement} from "react";
 
 type Props = {
   brightness: number;
@@ -15,7 +16,7 @@ type Props = {
  * @param props
  * @constructor
  */
-const Image = (props: Props) => {
+export const Image = (props: Props) => {
   const {
     brightness,
     contrast,
@@ -123,5 +124,3 @@ Image.defaultProps = {
   contrast: 100,
   unselectedChannels: []
 };
-
-export default Image;

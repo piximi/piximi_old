@@ -17,7 +17,7 @@ type Props = {
  * @param props
  * @constructor
  */
-const CategoryDescriptionTextField = (props: Props) => {
+export const CategoryDescriptionTextField = (props: Props) => {
   const { description, onDescriptionChange } = props;
 
   const classes = useStyles({});
@@ -42,5 +42,3 @@ const CategoryDescriptionTextField = (props: Props) => {
     />
   );
 };
-
-export default CategoryDescriptionTextField;

@@ -1,15 +1,13 @@
-export {
-  default as CategoryDescriptionTextField
-} from './CategoryDescriptionTextField';
-export { default as CategoryDropTarget } from './CategoryDropTarget';
-export { default as ColorIconButton } from './ColorIconButton';
-export { default as ColorIconMenu } from './ColorIconMenu';
-export { default as ColorPicker } from './ColorPicker';
-export { default as Dialog } from './Dialog';
-export { default as DialogActions } from './DialogActions';
-export { default as DialogContent } from './DialogContent';
-export { default as DialogTitle } from './DialogTitle';
-export { default as FilenameTextField } from './FilenameTextField';
-export { default as Image } from './Image';
-export { default as ImageDragSource } from './ImageDragSource';
-export { default as Snackbar } from './Snackbar';
+export { CategoryDescriptionTextField } from './CategoryDescriptionTextField/CategoryDescriptionTextField';
+export { CategoryDropTarget } from './CategoryDropTarget/CategoryDropTarget';
+export { ColorIconButton } from './ColorIconButton/ColorIconButton';
+export { ColorIconMenu } from './ColorIconMenu/ColorIconMenu';
+export { ColorPicker } from './ColorPicker/ColorPicker';
+export { Dialog } from './Dialog/Dialog';
+export { DialogActions } from './DialogActions/DialogActions';
+export { DialogContent } from './DialogContent/DialogContent';
+export { DialogTitle } from './DialogTitle/DialogTitle';
+export { FilenameTextField } from './FilenameTextField/FilenameTextField';
+export { Image } from './Image/Image';
+export { ImageDragSource } from './ImageDragSource/ImageDragSource';
+export { Snackbar } from './Snackbar/Snackbar';

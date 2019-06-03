@@ -17,7 +17,7 @@ type Props = {
  * @param props
  * @constructor
  */
-const FilenameTextField = (props: Props) => {
+export const FilenameTextField = (props: Props) => {
   const { filename, onFilenameChange } = props;
 
   const classes = useStyles({});
@@ -42,5 +42,3 @@ const FilenameTextField = (props: Props) => {
     />
   );
 };
-
-export default FilenameTextField;

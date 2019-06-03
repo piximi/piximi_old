@@ -15,7 +15,7 @@ type Props = {
  * @param props
  * @constructor
  */
-const CategoryDropTarget = (props: Props) => {
+export const CategoryDropTarget = (props: Props) => {
   const { category, children, updateImageCategory } = props;
 
   const drop = React.useCallback(
@@ -34,5 +34,3 @@ const CategoryDropTarget = (props: Props) => {
 
   return <div ref={dropTarget}>{children}</div>;
 };
-
-export default CategoryDropTarget;

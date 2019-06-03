@@ -13,7 +13,7 @@ type SnackbarProps = {
  * @param props
  * @constructor
  */
-const Snackbar = (props: SnackbarProps) => {
+export const Snackbar = (props: SnackbarProps) => {
   const { closeSnackbar, message, openedSnackbar } = props;
 
   const anchorOrigin: SnackbarOrigin = {
@@ -32,5 +32,3 @@ const Snackbar = (props: SnackbarProps) => {
     />
   );
 };
-
-export default Snackbar;

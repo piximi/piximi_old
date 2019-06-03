@@ -10,16 +10,16 @@
     "jsx": "react",
     "lib": [
       "dom",
-      "es6"
+      "es7"
     ],
-    "module": "commonjs",
+    "module": "es6",
     "moduleResolution": "node",
     "noErrorTruncation": true,
     "outDir": "./dist",
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es5"
+    "target": "es6"
   },
   "exclude": [
     "src/setupTests.ts",

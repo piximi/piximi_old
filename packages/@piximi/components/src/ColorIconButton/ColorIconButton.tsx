@@ -19,7 +19,7 @@ type Props = {
  * @param props
  * @constructor
  */
-const ColorIconButton = (props: Props) => {
+export const ColorIconButton = (props: Props) => {
   const { color, onColorChange } = props;
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
@@ -48,5 +48,3 @@ const ColorIconButton = (props: Props) => {
     </React.Fragment>
   );
 };
-
-export default ColorIconButton;
