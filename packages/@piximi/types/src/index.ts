@@ -22,7 +22,7 @@ type Image = {
   data: string;
   identifier: string;
   partition: Partition;
-  scores: string[];
+  scores: Score[];
   visualization: ImageVisualization;
 };
 
