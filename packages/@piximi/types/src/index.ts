@@ -2,6 +2,8 @@ type Category = {
   description: string;
   identifier: string;
   index: number;
+  scores: Score[];
+  visualization: CategoryVisualization;
 };
 
 type CategoryVisualization = {
@@ -23,7 +25,7 @@ type Image = {
   identifier: string;
   partition: Partition;
   scores: string[];
-  visualization: string;
+  visualization: ImageVisualization;
 };
 
 type ImageVisualization = {
