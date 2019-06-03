@@ -46,11 +46,13 @@ const initialState: Classifier = {
 };
 
 const unknownCategory: Category = {
-  color: '#F8F8F8',
   description: 'Unknown',
   identifier: '00000000-0000-0000-0000-000000000000',
   index: 0,
-  visible: true
+  visualization: {
+    color: '#F8F8F8',
+    visible: true
+  }
 };
 
 initialState.categories.push(unknownCategory);
@@ -115,7 +117,7 @@ export const classifierReducer = createReducer(initialState, {
 
     const category: Category = state.categories[index];
 
-    category.visible = !category.visible;
+    category.visualization.visible = !category.visualization.visible;
   },
   [updateCategoryColorAction.toString()]: (state, action) => {
     const { identifier, color } = action.payload;
@@ -124,7 +126,7 @@ export const classifierReducer = createReducer(initialState, {
 
     const category: Category = state.categories[index];
 
-    category.color = color;
+    category.visualization.color = color;
   },
   [updateCategoryDescriptionAction.toString()]: (state, action) => {
     const { identifier, description } = action.payload;
@@ -142,7 +144,7 @@ export const classifierReducer = createReducer(initialState, {
 
     const category: Category = state.categories[index];
 
-    category.visible = visible;
+    category.visualization.visible = visible;
   },
   [updateClassifierNameAction.toString()]: (state, action) => {
     const { name } = action.payload;
