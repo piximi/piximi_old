@@ -15,5 +15,5 @@
     "build": "rm -rf ./dist && tsc -p ./tsconfig.json"
   },
   "types": "./dist/index.d.ts",
-  "version": "0.1.6"
+  "version": "0.1.7"
 }
