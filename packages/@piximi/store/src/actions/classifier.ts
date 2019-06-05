@@ -10,6 +10,10 @@ export const createClassifierAction = createAction(
   'create-classifier'
 );
 
+export const openClassifierAction = createAction(
+  'open-classifier'
+);
+
 export const createImageAction = createAction(
   'create-image'
 );

@@ -5,6 +5,7 @@ import {
 import {
   createCategoryAction,
   createClassifierAction,
+  openClassifierAction,
   createImageAction,
   createImageScoreAction,
   deleteCategoryAction,
@@ -73,6 +74,15 @@ export const classifierReducer = createReducer(initialState, {
     state.images = [];
 
     state.name = name;
+  },
+  [openClassifierAction.toString()]: (state, action) => {
+    const { categories, images, name} = action.payload;
+
+    state.name = name;
+
+    state.categories = categories;
+
+    state.images = images; 
   },
   [createImageAction.toString()]: (state, action) => {
     const { image } = action.payload;

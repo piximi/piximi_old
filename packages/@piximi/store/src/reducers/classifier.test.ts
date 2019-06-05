@@ -1,6 +1,7 @@
 import {
   createCategoryAction,
   createClassifierAction,
+  openClassifierAction,
   createImageAction,
   createImageScoreAction,
   deleteCategoryAction,
@@ -130,6 +131,128 @@ describe('classifierReducer', () => {
         }
       ],
       images: [],
+      name: 'example'
+    };
+
+    expect(reducer).toEqual(expected);
+  });
+
+  it('openClassifierAction', () => {
+    const state: Classifier = {
+      categories: [
+        {
+          description: 'Unknown',
+          identifier: '00000000-0000-0000-0000-000000000000',
+          index: 0,
+          visualization: {
+            color: '#F8F8F8',
+            visible: true
+          }
+        }
+      ],
+      images: [],
+      name: 'Untitled classifier'
+    };
+
+    const payload: Classifier = {
+      categories: [
+        {
+          description: 'Unknown',
+          identifier: '00000000-0000-0000-0000-000000000000',
+          index: 0,
+          visualization: {
+            color: '#F8F8F8',
+            visible: true
+          }
+        },
+        {           
+          description: "1",
+          identifier: "18be6295-dade-445e-a13f-e9f2268ac8e6",
+          index: 0,
+          visualization: {
+            color: '#9c27b0',
+            visible: true
+          }
+        },
+        {           
+          description: "0",
+          identifier: "789f08ed-fe80-4785-bdf6-0e7108ec29a3",
+          index: 0,
+          visualization: {
+            color: "#00e676",
+            visible: true
+          }
+        }
+      ],
+      images: [
+        {
+          categoryIdentifier: '00000000-0000-0000-0000-000000000000',
+          checksum: '',
+          data: '',
+          identifier: '11111111-1111-1111-1111-11111111111',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        }
+      ],
+      name: 'example'
+    };
+
+    const action = openClassifierAction(payload);
+
+    const reducer = classifierReducer(state, action);
+
+    const expected: Classifier = {
+      categories: [
+        {
+          description: 'Unknown',
+          identifier: '00000000-0000-0000-0000-000000000000',
+          index: 0,
+          visualization: {
+            color: '#F8F8F8',
+            visible: true
+          }
+        },
+        {           
+          description: "1",
+          identifier: "18be6295-dade-445e-a13f-e9f2268ac8e6",
+          index: 0,
+          visualization: {
+            color: '#9c27b0',
+            visible: true
+          }
+        },
+        {           
+          description: "0",
+          identifier: "789f08ed-fe80-4785-bdf6-0e7108ec29a3",
+          index: 0,
+          visualization: {
+            color: "#00e676",
+            visible: true
+          }
+        }
+      ],
+      images: [
+        {
+          categoryIdentifier: '00000000-0000-0000-0000-000000000000',
+          checksum: '',
+          data: '',
+          identifier: '11111111-1111-1111-1111-11111111111',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        }
+      ],
       name: 'example'
     };
 
