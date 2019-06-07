@@ -11,6 +11,7 @@ const useStyles = makeStyles(styles);
 
 type Props = {
   color: string;
+  colors: string[];
   onColorChange: (color: string) => void;
 };
 
@@ -20,7 +21,7 @@ type Props = {
  * @constructor
  */
 export const ColorIconButton = (props: Props) => {
-  const { color, onColorChange } = props;
+  const { color, colors, onColorChange } = props;
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
@@ -41,6 +42,7 @@ export const ColorIconButton = (props: Props) => {
         anchorEl={anchorEl}
         closeMenu={closeMenu}
         color={color}
+        colors={colors}
         onColorChange={onColorChange}
         openedMenu={openedMenu}
         openMenu={openMenu}

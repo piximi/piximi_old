@@ -16,6 +16,7 @@ storiesOf('ColorIconMenu', module).add('example', () => (
     anchorEl={anchorEl}
     closeMenu={closeMenu}
     color={color}
+    colors={[]}
     onColorChange={onColorChange}
     openedMenu={openedMenu}
     openMenu={openMenu}

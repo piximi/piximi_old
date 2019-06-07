@@ -12,6 +12,7 @@ type Props = {
   anchorEl: null | HTMLElement | ((element: HTMLElement) => HTMLElement);
   closeMenu: any;
   color: string;
+  colors: string[];
   onColorChange: (color: string) => void;
   openedMenu: boolean;
   openMenu: any;
@@ -23,7 +24,7 @@ type Props = {
  * @constructor
  */
 export const ColorIconMenu = (props: Props) => {
-  const { anchorEl, closeMenu, onColorChange, openedMenu } = props;
+  const { anchorEl, closeMenu, colors, onColorChange, openedMenu } = props;
 
   const classes = useStyles({});
 
@@ -52,7 +53,7 @@ export const ColorIconMenu = (props: Props) => {
       transformOrigin={transformOrigin}
     >
       <div className={classes.colorPicker}>
-        <ColorPicker onChange={onChange} categories={[]} />
+        <ColorPicker categories={[]} colors={colors} onChange={onChange} />
       </div>
     </MaterialUI.Popover>
   );

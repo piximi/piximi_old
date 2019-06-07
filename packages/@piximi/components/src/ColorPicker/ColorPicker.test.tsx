@@ -4,6 +4,26 @@ import * as React from 'react';
 
 import { ColorPicker, unusedColors, usedColors } from './ColorPicker';
 
+const colors = [
+  '#E91E63',
+  '#9C27B0',
+  '#673AB7',
+  '#3F51B5',
+  '#2196F3',
+  '#03A9F4',
+  '#00BCD4',
+  '#4CAF50',
+  '#8BC34A',
+  '#CDDC39',
+  '#FFEB3B',
+  '#FFC107',
+  '#FF9800',
+  '#FF5722',
+  '#795548',
+  '#9E9E9E',
+  '#607D8B'
+];
+
 it('unusedColors', () => {
   const categories: Category[] = [
     {
@@ -17,29 +37,9 @@ it('unusedColors', () => {
     }
   ];
 
-  const actual = unusedColors(categories);
+  const actual = unusedColors(categories, colors);
 
-  const expected = [
-    '#E91E63',
-    '#9C27B0',
-    '#673AB7',
-    '#3F51B5',
-    '#2196F3',
-    '#03A9F4',
-    '#00BCD4',
-    '#4CAF50',
-    '#8BC34A',
-    '#CDDC39',
-    '#FFEB3B',
-    '#FFC107',
-    '#FF9800',
-    '#FF5722',
-    '#795548',
-    '#9E9E9E',
-    '#607D8B'
-  ];
-
-  expect(actual).toStrictEqual(expected);
+  expect(actual).toStrictEqual(colors);
 });
 
 it('usedColors', () => {
@@ -77,7 +77,7 @@ it('ColorPicker', () => {
 
   const onChange = () => {};
 
-  const e = <ColorPicker categories={categories} onChange={onChange} />;
+  const e = <ColorPicker categories={categories} colors={colors} onChange={onChange} />;
 
   shallow(e);
 });
