@@ -51,7 +51,7 @@ const unknownCategory: Category = {
   identifier: '00000000-0000-0000-0000-000000000000',
   index: 0,
   visualization: {
-    color: '#F8F8F8',
+    color: 'rgb(233, 165, 177)',
     visible: true
   }
 };
@@ -76,13 +76,13 @@ export const classifierReducer = createReducer(initialState, {
     state.name = name;
   },
   [openClassifierAction.toString()]: (state, action) => {
-    const { categories, images, name} = action.payload;
-
-    state.name = name;
+    const { categories, images, name } = action.payload;
 
     state.categories = categories;
 
-    state.images = images; 
+    state.images = images;
+
+    state.name = name;
   },
   [createImageAction.toString()]: (state, action) => {
     const { image } = action.payload;

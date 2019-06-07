@@ -38,7 +38,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -72,7 +72,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -101,7 +101,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -125,7 +125,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -145,7 +145,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -161,7 +161,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -214,7 +214,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -267,7 +267,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -307,7 +307,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -342,7 +342,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -396,7 +396,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -587,7 +587,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -620,7 +620,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -649,7 +649,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -683,7 +683,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -712,7 +712,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -746,7 +746,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -775,7 +775,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -809,7 +809,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -839,7 +839,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -863,7 +863,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -883,7 +883,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -923,7 +923,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -958,7 +958,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -1007,7 +1007,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         },
@@ -1051,7 +1051,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -1091,7 +1091,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -1126,7 +1126,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
@@ -1166,7 +1166,7 @@ describe('classifierReducer', () => {
           identifier: '00000000-0000-0000-0000-000000000000',
           index: 0,
           visualization: {
-            color: '#F8F8F8',
+            color: 'rgb(233, 165, 177)',
             visible: true
           }
         }
