@@ -11,10 +11,10 @@ type Props = {
 /**
  *
  * @param categories
+ * @param colors
  */
 export const unusedColors = (categories: Category[], colors: string[]): string[] | [] => {
   return colors.filter(color => {
-    // @ts-ignore
     return !usedColors(categories).includes(color.toUpperCase());
   });
 };
@@ -23,14 +23,10 @@ export const unusedColors = (categories: Category[], colors: string[]): string[]
  *
  * @param categories
  */
-export const usedColors = (categories: Category[]): string[] | [] => {
-  if (categories) {
-    return categories.map((category: Category) => {
-      return category.visualization.color.toUpperCase();
-    });
-  } else {
-    return [];
-  }
+export const usedColors = (categories: Category[]): string[] => {
+  return categories.map((category: Category) => {
+    return category.visualization.color.toUpperCase();
+  });
 };
 
 /**
