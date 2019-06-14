@@ -1,9 +1,7 @@
-import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from 'react-dnd';
+import { useDrag } from 'react-dnd';
 import React from 'react';
 
-const { useDrag } = dnd;
-
-type Props = {
+type ImageDragSourceProps = {
   children: React.ReactNode;
   selectedItems: any;
   onmousedown: any;
@@ -15,7 +13,7 @@ type Props = {
  * @param props
  * @constructor
  */
-export const ImageDragSource = (props: Props) => {
+export const ImageDragSource = (props: ImageDragSourceProps) => {
   const { children, selectedItems, onmousedown, item } = props;
 
   const spec = {

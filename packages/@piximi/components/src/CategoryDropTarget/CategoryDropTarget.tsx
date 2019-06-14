@@ -1,10 +1,8 @@
 import { Category } from '@piximi/types';
-import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from 'react-dnd';
+import { useDrop } from 'react-dnd';
 import * as React from 'react';
 
-const { useDrop } = dnd;
-
-type Props = {
+type CategoryDropTargetProps = {
   category: Category;
   children: React.ReactNode;
   updateImageCategory: (identifier: string, categoryIdentifier: string) => void;
@@ -15,7 +13,7 @@ type Props = {
  * @param props
  * @constructor
  */
-export const CategoryDropTarget = (props: Props) => {
+export const CategoryDropTarget = (props: CategoryDropTargetProps) => {
   const { category, children, updateImageCategory } = props;
 
   const drop = React.useCallback(
