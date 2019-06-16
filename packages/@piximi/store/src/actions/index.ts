@@ -1,6 +1,7 @@
 import {
   createCategoryAction,
   createImageAction,
+  createImagesAction,
   createImageScoreAction,
   createClassifierAction,
   openClassifierAction,
@@ -20,6 +21,7 @@ import {
 export {
   createCategoryAction,
   createImageAction,
+  createImagesAction,
   createImageScoreAction,
   createClassifierAction,
   openClassifierAction,

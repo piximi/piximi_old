@@ -1,6 +1,7 @@
 import {
   createCategoryAction,
   createImageAction,
+  createImagesAction,
   createImageScoreAction,
   createClassifierAction,
   deleteImageAction,
@@ -26,6 +27,7 @@ export {
   createCategoryAction,
   createClassifierAction,
   createImageAction,
+  createImagesAction,
   createImageScoreAction,
   deleteCategoryAction,
   deleteImageAction,

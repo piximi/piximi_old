@@ -18,6 +18,10 @@ export const createImageAction = createAction(
   'create-image'
 );
 
+export const createImagesAction = createAction(
+  'create-images'
+);
+
 export const createImageScoreAction = createAction(
   'create-image-score'
 );
