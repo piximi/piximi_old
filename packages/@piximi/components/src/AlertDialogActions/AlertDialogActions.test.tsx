@@ -1,9 +1,9 @@
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 import * as React from 'react';
 
-import { DialogActions } from './DialogActions';
+import {AlertDialogActions} from './AlertDialogActions';
 
-it('DialogActions', () => {
+it('AlertDialogActions', () => {
   const acceptanceTitle = '';
 
   const cancellationTitle = '';
@@ -13,7 +13,7 @@ it('DialogActions', () => {
   const onCancellation = () => {};
 
   const e = (
-    <DialogActions
+    <AlertDialogActions
       acceptanceTitle={acceptanceTitle}
       cancellationTitle={cancellationTitle}
       onAcceptance={onAcceptance}

@@ -1,5 +1,5 @@
-import { Category } from '@piximi/types';
-import { useDrop } from 'react-dnd';
+import {Category} from '@piximi/types';
+import {useDrop} from 'react-dnd';
 import * as React from 'react';
 
 type CategoryDropTargetProps = {

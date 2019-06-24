@@ -1,10 +1,9 @@
-import * as MaterialUI from '@material-ui/core';
-import { PopoverOrigin } from '@material-ui/core/Popover';
-import { makeStyles } from '@material-ui/styles';
+import {PopoverOrigin} from '@material-ui/core/Popover';
+import {makeStyles} from '@material-ui/styles';
 import * as React from 'react';
-
-import { ColorPicker } from '..';
+import {ColorPicker} from '..';
 import styles from './ColorIconMenu.css';
+import {Popover} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -24,7 +23,7 @@ type Props = {
  * @constructor
  */
 export const ColorIconMenu = (props: Props) => {
-  const { anchorEl, closeMenu, colors, onColorChange, openedMenu } = props;
+  const {anchorEl, closeMenu, colors, onColorChange, openedMenu} = props;
 
   const classes = useStyles({});
 
@@ -45,7 +44,7 @@ export const ColorIconMenu = (props: Props) => {
   };
 
   return (
-    <MaterialUI.Popover
+    <Popover
       anchorEl={anchorEl}
       anchorOrigin={anchorOrigin}
       onClose={closeMenu}
@@ -53,8 +52,8 @@ export const ColorIconMenu = (props: Props) => {
       transformOrigin={transformOrigin}
     >
       <div className={classes.colorPicker}>
-        <ColorPicker categories={[]} colors={colors} onChange={onChange} />
+        <ColorPicker categories={[]} colors={colors} onChange={onChange}/>
       </div>
-    </MaterialUI.Popover>
+    </Popover>
   );
 };

@@ -1,9 +1,8 @@
-import * as MaterialUI from '@material-ui/core';
-import { Label } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/styles';
+import {Label} from '@material-ui/icons';
+import {makeStyles} from '@material-ui/styles';
 import * as React from 'react';
 
-import { ColorIconMenu } from '..';
+import {ColorIconMenu} from '..';
 import styles from './ColorIconButton.css';
 import {useMenu} from "@piximi/hooks";
 
@@ -29,14 +28,14 @@ export const ColorIconButton = (props: Props) => {
 
   return (
     <React.Fragment>
-      <MaterialUI.IconButton
+      <IconButton
         classes={{ root: classes.iconButton }}
         onClick={openMenu}
       >
-        <MaterialUI.Avatar classes={{ root: classes.avatar }}>
+        <Avatar classes={{ root: classes.avatar }}>
           <Label style={{ color: color }} />
-        </MaterialUI.Avatar>
-      </MaterialUI.IconButton>
+        </Avatar>
+      </IconButton>
 
       <ColorIconMenu
         anchorEl={anchorEl}

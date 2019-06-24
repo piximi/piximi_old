@@ -1,8 +1,8 @@
-import { Category } from '@piximi/types';
-import { shallow } from 'enzyme';
+import {Category} from '@piximi/types';
+import {shallow} from 'enzyme';
 import * as React from 'react';
 
-import { ColorPicker, unusedColors, usedColors } from './ColorPicker';
+import {ColorPicker, unusedColors, usedColors} from './ColorPicker';
 
 const colors = [
   '#E91E63',

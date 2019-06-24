@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
+import {storiesOf} from '@storybook/react';
 
-import { CategoryDescriptionTextField } from '..';
+import {CategoryDescriptionTextField} from '..';
 
 const description: string = 'example';
 

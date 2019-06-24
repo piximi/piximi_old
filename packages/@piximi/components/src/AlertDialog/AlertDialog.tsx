@@ -1,12 +1,11 @@
-import * as MaterialUI from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import {makeStyles} from '@material-ui/styles';
 import * as React from 'react';
-
-import styles from './Dialog.css';
+import styles from './AlertDialog.css';
+import {Dialog} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
-type Props = {
+type AlertDialogProps = {
   children: React.ReactNode;
   open: boolean;
   onClose: () => void;
@@ -17,13 +16,13 @@ type Props = {
  * @param props
  * @constructor
  */
-export const Dialog = (props: Props) => {
+export const AlertDialog = (props: AlertDialogProps) => {
   const { children, open, onClose } = props;
 
   const classes = useStyles({});
 
   return (
-    <MaterialUI.Dialog
+    <Dialog
       classes={{ paper: classes.paper }}
       fullWidth
       maxWidth="xs"
@@ -31,6 +30,6 @@ export const Dialog = (props: Props) => {
       open={open}
     >
       {children}
-    </MaterialUI.Dialog>
+    </Dialog>
   );
 };

@@ -1,5 +1,4 @@
-import * as MaterialUI from '@material-ui/core';
-import { SnackbarOrigin } from '@material-ui/core/Snackbar';
+import {SnackbarOrigin} from '@material-ui/core/Snackbar';
 import * as React from 'react';
 
 type SnackbarProps = {
@@ -22,7 +21,7 @@ export const Snackbar = (props: SnackbarProps) => {
   };
 
   return (
-    <MaterialUI.Snackbar
+    <Snackbar
       action={[]}
       anchorOrigin={anchorOrigin}
       autoHideDuration={6000}

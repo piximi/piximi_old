@@ -1,5 +1,5 @@
-import { Category } from '@piximi/types';
-import { CirclePicker } from 'react-color';
+import {Category} from '@piximi/types';
+import {CirclePicker} from 'react-color';
 import * as React from 'react';
 
 type Props = {

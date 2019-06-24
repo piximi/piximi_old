@@ -5,10 +5,10 @@ const stories = () => {
   require('../src/CategoryDropTarget/CategoryDropTarget.stories.tsx');
   require('../src/ColorIconButton/ColorIconButton.stories.tsx');
   require('../src/ColorIconMenu/ColorIconMenu.stories.tsx');
-  require('../src/Dialog/Dialog.stories.tsx');
-  require('../src/DialogActions/DialogActions.stories.tsx');
-  require('../src/DialogContent/DialogContent.stories.tsx');
-  require('../src/DialogTitle/DialogTitle.stories.tsx');
+  require('../src/AlertDialog/AlertDialog.stories.js');
+  require('../src/AlertDialogActions/AlertDialogActions.stories.js');
+  require('../src/AlertDialogContent/AlertDialogContent.stories.js');
+  require('../src/AlertDialogTitle/AlertDialogTitle.stories.js');
   require('../src/FilenameTextField/FilenameTextField.stories.tsx');
   require('../src/Image/Image.stories.tsx');
   require('../src/ImageDragSource/ImageDragSource.stories.tsx');

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {createElement} from "react";
 
 type Props = {
   brightness: number;

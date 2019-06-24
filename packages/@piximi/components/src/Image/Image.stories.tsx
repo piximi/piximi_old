@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
+import {storiesOf} from '@storybook/react';
 
-import { Image } from '..';
+import {Image} from '..';
 
 const brightness = 100;
 const contrast = 100;
