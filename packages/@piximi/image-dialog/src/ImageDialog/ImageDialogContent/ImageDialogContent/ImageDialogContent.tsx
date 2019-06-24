@@ -17,7 +17,7 @@ import { NavigationDrawer } from '../NavigationDrawer/NavigationDrawer';
 
 const useStyles = makeStyles(styles);
 
-type Props = {
+type ImageDialogContentProps = {
   src: any;
   imgIdentifier: any;
   saveEditsGlobally: any;
@@ -25,7 +25,7 @@ type Props = {
   images: any;
 };
 
-export const ImageDialogContent = (props: Props) => {
+export const ImageDialogContent = (props: ImageDialogContentProps) => {
   const classes = useStyles({});
 
   const [applySettingsGlobally, setApplySettingsGlobally] = React.useState(
@@ -65,15 +65,7 @@ export const ImageDialogContent = (props: Props) => {
         spacing={3}
       >
         <Grid item xs={4}>
-          <Image
-            src={src}
-            height={500}
-            width={500}
-            brightness={brightness}
-            contrast={contrast}
-            unselectedChannels={unselectedChannels}
-            openImageViewerDialog={() => {}}
-          />
+          <img src="" />
         </Grid>
       </Grid>
 
