@@ -1,8 +1,8 @@
-import {Category} from '@piximi/types';
-import {shallow} from 'enzyme';
+import { Category } from '@piximi/types';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import {ColorPicker, unusedColors, usedColors} from './ColorPicker';
+import { ColorPicker, unusedColors, usedColors } from './ColorPicker';
 
 const colors = [
   '#E91E63',
@@ -70,14 +70,16 @@ it('ColorPicker', () => {
       index: 1,
       visualization: {
         color: '#F44336',
-        visible: true,
+        visible: true
       }
     }
   ];
 
   const onChange = () => {};
 
-  const e = <ColorPicker categories={categories} colors={colors} onChange={onChange} />;
+  const e = (
+    <ColorPicker categories={categories} colors={colors} onChange={onChange} />
+  );
 
   shallow(e);
 });

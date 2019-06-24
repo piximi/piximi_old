@@ -1,4 +1,4 @@
-import {useDrag} from 'react-dnd';
+import { useDrag } from 'react-dnd';
 import React from 'react';
 
 type ImageDragSourceProps = {

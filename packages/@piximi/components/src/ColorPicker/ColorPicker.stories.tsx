@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
-import {ColorPicker} from '..';
+import { ColorPicker } from '..';
 
 const categories = [
   {

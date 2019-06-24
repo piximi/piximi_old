@@ -1,7 +1,7 @@
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import {AlertDialogContent} from './AlertDialogContent';
+import { AlertDialogContent } from './AlertDialogContent';
 
 it('AlertDialogContent', () => {
   const e = (

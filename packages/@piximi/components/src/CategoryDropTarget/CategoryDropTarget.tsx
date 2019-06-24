@@ -1,5 +1,5 @@
-import {Category} from '@piximi/types';
-import {useDrop} from 'react-dnd';
+import { Category } from '@piximi/types';
+import { useDrop } from 'react-dnd';
 import * as React from 'react';
 
 type CategoryDropTargetProps = {
@@ -18,9 +18,9 @@ export const CategoryDropTarget = (props: CategoryDropTargetProps) => {
 
   const drop = React.useCallback(
     item => {
-      item.selectedItems.forEach( (element: string) => {
+      item.selectedItems.forEach((element: string) => {
         updateImageCategory(element, category.identifier);
-      });    
+      });
     },
     [category.identifier, updateImageCategory]
   );

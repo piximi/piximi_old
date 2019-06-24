@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
-import {Snackbar} from '..';
+import { Snackbar } from '..';
 
 const closeSnackbar = () => {};
 

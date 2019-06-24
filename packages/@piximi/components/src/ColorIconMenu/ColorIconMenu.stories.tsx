@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
-import {ColorIconMenu} from '..';
-import {useMenu} from '@piximi/hooks';
+import { ColorIconMenu } from '..';
+import { useMenu } from '@piximi/hooks';
 
 const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 

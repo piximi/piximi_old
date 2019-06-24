@@ -1,8 +1,8 @@
-import {makeStyles} from '@material-ui/styles';
-import {useTranslation} from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 import * as React from 'react';
 import styles from './AlertDialogTitle.css';
-import {DialogTitle, Typography} from "@material-ui/core";
+import { DialogTitle, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(styles);
 

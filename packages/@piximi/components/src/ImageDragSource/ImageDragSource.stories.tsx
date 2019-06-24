@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
-import {ImageDragSource} from '..';
+import { ImageDragSource } from '..';
 
 const item = '';
 

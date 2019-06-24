@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
-import {AlertDialogTitle} from '..';
+import { AlertDialogTitle } from '..';
 
 const title = '';
 

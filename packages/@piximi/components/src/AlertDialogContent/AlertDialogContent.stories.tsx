@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
-import {AlertDialogContent} from '..';
+import { AlertDialogContent } from '..';
 
 storiesOf('AlertDialogContent', module).add('example', () => (
   <AlertDialogContent>

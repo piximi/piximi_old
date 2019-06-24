@@ -1,4 +1,6 @@
-export { CategoryDescriptionTextField } from './CategoryDescriptionTextField/CategoryDescriptionTextField';
+export {
+  CategoryDescriptionTextField
+} from './CategoryDescriptionTextField/CategoryDescriptionTextField';
 export { CategoryDropTarget } from './CategoryDropTarget/CategoryDropTarget';
 export { ColorIconButton } from './ColorIconButton/ColorIconButton';
 export { ColorIconMenu } from './ColorIconMenu/ColorIconMenu';

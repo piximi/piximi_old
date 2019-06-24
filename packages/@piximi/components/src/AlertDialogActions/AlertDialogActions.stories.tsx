@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
-import {AlertDialog, AlertDialogActions} from '..';
+import { AlertDialog, AlertDialogActions } from '..';
 
 const acceptanceTitle: string = 'OK';
 

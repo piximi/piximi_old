@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
-import {ColorIconButton} from '..';
+import { ColorIconButton } from '..';
 
 const color = '';
 

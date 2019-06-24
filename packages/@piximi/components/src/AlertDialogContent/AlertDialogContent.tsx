@@ -1,8 +1,8 @@
-import {makeStyles} from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 import * as React from 'react';
 
 import styles from './AlertDialogContent.css';
-import {DialogContent, Paper} from '@material-ui/core';
+import { DialogContent, Paper } from '@material-ui/core';
 
 const useStyles = makeStyles(styles);
 

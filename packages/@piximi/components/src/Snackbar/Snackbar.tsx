@@ -1,4 +1,4 @@
-import {SnackbarOrigin} from '@material-ui/core/Snackbar';
+import { SnackbarOrigin } from '@material-ui/core/Snackbar';
 import * as React from 'react';
 
 type SnackbarProps = {

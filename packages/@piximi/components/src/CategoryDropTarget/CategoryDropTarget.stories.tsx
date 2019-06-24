@@ -1,7 +1,7 @@
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import {CategoryDropTarget} from '..';
+import { CategoryDropTarget } from '..';
 
 const category = {
   color: '#F44336',
