@@ -12,7 +12,7 @@ const stories = () => {
   require('../src/FilenameTextField/FilenameTextField.stories.tsx');
   require('../src/Image/Image.stories.tsx');
   require('../src/ImageDragSource/ImageDragSource.stories.tsx');
-  require('../src/Snackbar/Snackbar.stories.tsx');
+  require('../src/AlertSnackbar/AlertSnackbar.stories.js');
 };
 
 configure(stories, module);

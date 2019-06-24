@@ -10,7 +10,7 @@ const message = '';
 
 const openedSnackbar = true;
 
-storiesOf('Snackbar', module).add('example', () => (
+storiesOf('AlertSnackbar', module).add('example', () => (
   <Snackbar
     closeSnackbar={closeSnackbar}
     message={message}
