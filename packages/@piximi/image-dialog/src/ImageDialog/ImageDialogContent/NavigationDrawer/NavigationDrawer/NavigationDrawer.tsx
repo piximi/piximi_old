@@ -2,7 +2,12 @@ import * as React from 'react';
 import styles from './NavigationDrawer.css';
 import { Drawer } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import { BrightnessSlider, ChannelsList, ContrastSlider, Histogram } from '../index';
+import {
+  BrightnessSlider,
+  ChannelsList,
+  ContrastSlider,
+  Histogram
+} from '../index';
 
 const useStyles = makeStyles(styles);
 

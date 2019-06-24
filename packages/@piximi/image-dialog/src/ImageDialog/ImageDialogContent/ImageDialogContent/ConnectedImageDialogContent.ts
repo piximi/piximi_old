@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { ImageDialogContent } from './ImageDialogContent';
+import { ImageDialogContent } from '..';
 import {
   updateImageBrightnessAction,
   updateImageContrastAction

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styles from './ImageDialog.css';
+import { styles } from './ImageDialog.css';
 import { Dialog } from '@material-ui/core';
-import { ConnectedImageDialogContent } from '../index';
+import { ConnectedImageDialogContent } from '..';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);

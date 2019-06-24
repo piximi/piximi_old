@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './ImageDialogContent.css';
+import { styles } from './ImageDialogContent.css';
 import {
   AppBar,
   Grid,
@@ -11,9 +11,9 @@ import {
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PublicIcon from '@material-ui/icons/Public';
-import Image from '../../../../application/src/components/Image/Image';
 import { makeStyles } from '@material-ui/styles';
-import { NavigationDrawer } from '../NavigationDrawer/NavigationDrawer';
+import { NavigationDrawer } from '..';
+import { Image } from '@piximi/components';
 
 const useStyles = makeStyles(styles);
 
@@ -72,6 +72,7 @@ export const ImageDialogContent = (props: Props) => {
             brightness={brightness}
             contrast={contrast}
             unselectedChannels={unselectedChannels}
+            openImageViewerDialog={() => {}}
           />
         </Grid>
       </Grid>
