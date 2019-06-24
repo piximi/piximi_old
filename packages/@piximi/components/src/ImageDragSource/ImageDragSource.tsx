@@ -15,10 +15,9 @@ type ImageDragSourceProps = {
  */
 export const ImageDragSource = (props: ImageDragSourceProps) => {
   const { children, selectedItems, onmousedown, item } = props;
-
   const spec = {
     item: {
-      id: item.identifier,
+      selectedItems: selectedItems,
       type: 'image'
     }
   };

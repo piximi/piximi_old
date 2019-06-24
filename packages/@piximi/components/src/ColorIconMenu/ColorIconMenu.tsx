@@ -9,7 +9,7 @@ import styles from './ColorIconMenu.css';
 const useStyles = makeStyles(styles);
 
 type Props = {
-  anchorEl: null | HTMLElement | ((element: HTMLElement) => HTMLElement);
+  anchorEl: null | Element | ((element: Element) => Element);
   closeMenu: any;
   color: string;
   colors: string[];
