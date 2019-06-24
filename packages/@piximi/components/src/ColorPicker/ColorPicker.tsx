@@ -2,7 +2,7 @@ import {Category} from '@piximi/types';
 import {CirclePicker} from 'react-color';
 import * as React from 'react';
 
-type Props = {
+type ColorPickerProps = {
   categories: Category[];
   colors: string[];
   onChange: any;
@@ -34,7 +34,7 @@ export const usedColors = (categories: Category[]): string[] => {
  * @param props
  * @constructor
  */
-export const ColorPicker = (props: Props) => {
+export const ColorPicker = (props: ColorPickerProps) => {
   const { categories, colors, onChange } = props;
 
   const unused: string[] = unusedColors(categories, colors);

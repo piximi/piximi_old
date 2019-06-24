@@ -7,7 +7,7 @@ import {Popover} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
-type Props = {
+type ColorIconMenuProps = {
   anchorEl: null | Element | ((element: Element) => Element);
   closeMenu: any;
   color: string;
@@ -22,7 +22,7 @@ type Props = {
  * @param props
  * @constructor
  */
-export const ColorIconMenu = (props: Props) => {
+export const ColorIconMenu = (props: ColorIconMenuProps) => {
   const {anchorEl, closeMenu, colors, onColorChange, openedMenu} = props;
 
   const classes = useStyles({});

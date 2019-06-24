@@ -1,14 +1,14 @@
 import {Label} from '@material-ui/icons';
 import {makeStyles} from '@material-ui/styles';
 import * as React from 'react';
-
 import {ColorIconMenu} from '..';
 import styles from './ColorIconButton.css';
 import {useMenu} from "@piximi/hooks";
+import {Avatar, IconButton} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
-type Props = {
+type ColorIconButtonProps = {
   color: string;
   colors: string[];
   onColorChange: (color: string) => void;
@@ -19,7 +19,7 @@ type Props = {
  * @param props
  * @constructor
  */
-export const ColorIconButton = (props: Props) => {
+export const ColorIconButton = (props: ColorIconButtonProps) => {
   const { color, colors, onColorChange } = props;
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
