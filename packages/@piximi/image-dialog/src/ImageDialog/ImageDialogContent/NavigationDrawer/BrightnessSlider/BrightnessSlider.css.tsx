@@ -1,6 +1,6 @@
 import { createStyles } from '@material-ui/styles';
 
-const styles = () =>
+export const styles = () =>
   createStyles({
     root: {
       padding: '24px 24px 0 24px',
@@ -11,5 +11,3 @@ const styles = () =>
       color: 'white'
     }
   });
-
-export default styles;

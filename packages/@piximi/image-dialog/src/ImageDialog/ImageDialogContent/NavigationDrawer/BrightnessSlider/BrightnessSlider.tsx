@@ -1,17 +1,17 @@
 import * as React from 'react';
-import styles from './BrightnessSlider.css';
+import { styles } from './BrightnessSlider.css';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { Slider } from '@material-ui/lab';
 
 const useStyles = makeStyles(styles);
 
-type Props = {
+type BrightnessSliderProps = {
   brightness: number;
   setBrightness: (brightness: number) => void;
 };
 
-export const BrightnessSlider = (props: Props) => {
+export const BrightnessSlider = (props: BrightnessSliderProps) => {
   const classes = useStyles({});
 
   const { brightness, setBrightness } = props;

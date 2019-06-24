@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { ImageDialogContent } from '..';
 import {
   updateImageBrightnessAction,
   updateImageContrastAction
 } from '@piximi/store';
 import { Dispatch } from 'redux';
 import { Classifier, Image } from '@piximi/types';
+import { ImageDialogContent } from '.';
 
 type State = {
   classifier: Classifier;
