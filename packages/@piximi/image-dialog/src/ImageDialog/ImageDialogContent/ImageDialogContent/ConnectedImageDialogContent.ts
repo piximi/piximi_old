@@ -5,7 +5,7 @@ import {
 } from '@piximi/store';
 import { Dispatch } from 'redux';
 import { Classifier, Image } from '@piximi/types';
-import { ImageDialogContent } from '.';
+import { ImageDialogContent } from './ImageDialogContent';
 
 type State = {
   classifier: Classifier;

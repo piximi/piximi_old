@@ -12,8 +12,8 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PublicIcon from '@material-ui/icons/Public';
 import { makeStyles } from '@material-ui/styles';
-import { NavigationDrawer } from '..';
 import { Image } from '@piximi/components';
+import { NavigationDrawer } from '../NavigationDrawer/NavigationDrawer';
 
 const useStyles = makeStyles(styles);
 

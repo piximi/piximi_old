@@ -37,6 +37,7 @@ export const NavigationDrawer = (props: any) => {
       <ChannelsList />
 
       <BrightnessSlider brightness={brightness} setBrightness={setBrightness} />
+
       <ContrastSlider contrast={contrast} setContrast={setContrast} />
     </Drawer>
   );
