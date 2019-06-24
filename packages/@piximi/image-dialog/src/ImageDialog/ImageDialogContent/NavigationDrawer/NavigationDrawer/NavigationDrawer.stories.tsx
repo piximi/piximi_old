@@ -1,5 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import { NavigationDrawer } from '.';
-import React from 'react';
+import * as React from 'react';
 
-storiesOf('Histogram', module).add('example', () => <NavigationDrawer />);
+storiesOf('NavigationDrawer', module).add('example', () => (
+  <NavigationDrawer />
+));

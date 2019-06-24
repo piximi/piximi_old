@@ -6,7 +6,14 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-export const ImageDialog = (props: any) => {
+type ImageDialogProps = {
+  onClose: () => void;
+  open: boolean;
+  src: string;
+  imgIdentifier: string;
+};
+
+export const ImageDialog = (props: ImageDialogProps) => {
   const classes = useStyles({});
 
   const { onClose, open, src, imgIdentifier } = props;
