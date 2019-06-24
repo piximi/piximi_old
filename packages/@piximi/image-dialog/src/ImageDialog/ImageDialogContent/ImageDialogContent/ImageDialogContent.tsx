@@ -12,17 +12,20 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PublicIcon from '@material-ui/icons/Public';
 import { makeStyles } from '@material-ui/styles';
-import { Image } from '@piximi/components';
 import { NavigationDrawer } from '../NavigationDrawer/NavigationDrawer';
+import { Image } from '@piximi/types';
 
 const useStyles = makeStyles(styles);
 
 type ImageDialogContentProps = {
-  src: any;
-  imgIdentifier: any;
-  saveEditsGlobally: any;
-  onClose: any;
-  images: any;
+  image: Image;
+  images: Image[];
+  onClose: () => void;
+  saveEditsGlobally: (
+    images: Image[],
+    brightness: number,
+    contrast: number
+  ) => any;
 };
 
 export const ImageDialogContent = (props: ImageDialogContentProps) => {
@@ -38,7 +41,7 @@ export const ImageDialogContent = (props: ImageDialogContentProps) => {
   const [contrast, setContrast] = React.useState(100);
   const [unselectedChannels, setUnselectedChannels] = React.useState([]);
 
-  const { src, imgIdentifier, onClose, images } = props;
+  const { image, images, onClose, saveEditsGlobally } = props;
 
   const toggleExposureDrawer = () => {
     setExposureDrawerToggled(!exposureDrawerToggled);
@@ -47,9 +50,9 @@ export const ImageDialogContent = (props: ImageDialogContentProps) => {
   const saveEdits = () => {};
 
   const undoEdits = () => {
-    const initialBrightness = images[imgIdentifier].brightness;
+    const initialBrightness = image.visualization.brightness;
 
-    const initialContrast = images[imgIdentifier].contrast;
+    const initialContrast = image.visualization.contrast;
 
     setBrightness(initialBrightness);
     setContrast(initialContrast);
@@ -130,8 +133,8 @@ export const ImageDialogContent = (props: ImageDialogContentProps) => {
       <NavigationDrawer
         onClose={toggleExposureDrawer}
         open={exposureDrawerToggled}
-        src={src}
-        imgIdentifier={imgIdentifier}
+        src={image.data}
+        imgIdentifier={image.identifier}
         setBrightness={setBrightness}
         brightness={brightness}
         setContrast={setContrast}

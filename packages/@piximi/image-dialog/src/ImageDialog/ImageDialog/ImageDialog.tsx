@@ -20,11 +20,7 @@ export const ImageDialog = (props: ImageDialogProps) => {
 
   return (
     <Dialog className={classes.root} fullScreen open={open} onClose={onClose}>
-      <ConnectedImageDialogContent
-        imgIdentifier={image.identifier}
-        src={image.data}
-        onClose={onClose}
-      />
+      <ConnectedImageDialogContent image={image} onClose={onClose} />
     </Dialog>
   );
 };
