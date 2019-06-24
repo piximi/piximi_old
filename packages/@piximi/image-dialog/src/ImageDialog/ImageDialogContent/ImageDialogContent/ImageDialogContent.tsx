@@ -68,7 +68,7 @@ export const ImageDialogContent = (props: ImageDialogContentProps) => {
         spacing={3}
       >
         <Grid item xs={4}>
-          <img src="" />
+          <img src={image.data} />
         </Grid>
       </Grid>
 
