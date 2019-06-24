@@ -3,26 +3,26 @@ import { styles } from './ImageDialog.css';
 import { Dialog } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { ConnectedImageDialogContent } from '../ImageDialogContent/ImageDialogContent';
+import { Image } from '@piximi/types';
 
 const useStyles = makeStyles(styles);
 
 type ImageDialogProps = {
+  image: Image;
   onClose: () => void;
   open: boolean;
-  src: string;
-  imgIdentifier: string;
 };
 
 export const ImageDialog = (props: ImageDialogProps) => {
   const classes = useStyles({});
 
-  const { onClose, open, src, imgIdentifier } = props;
+  const { image, onClose, open } = props;
 
   return (
     <Dialog className={classes.root} fullScreen open={open} onClose={onClose}>
       <ConnectedImageDialogContent
-        imgIdentifier={imgIdentifier}
-        src={src}
+        imgIdentifier={image.identifier}
+        src={image.data}
         onClose={onClose}
       />
     </Dialog>
