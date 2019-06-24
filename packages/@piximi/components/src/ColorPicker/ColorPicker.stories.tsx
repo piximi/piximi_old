@@ -16,6 +16,4 @@ const categories = [
 
 const onChange = () => {};
 
-storiesOf('ColorPicker', module).add('example', () => (
-  <ColorPicker categories={categories} onChange={onChange} />
-));
+storiesOf('ColorPicker', module).add('example', () => <div />);

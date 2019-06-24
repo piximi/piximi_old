@@ -17,12 +17,12 @@
     "@piximi/components": "^0.1.12",
     "@piximi/hooks": "^0.1.11",
     "@piximi/store": "^0.1.23",
-    "react": "^16.8.6",
     "react-color": "^2.17.3",
-    "react-dnd": "^8.0.3",
     "react-dnd-html5-backend": "^8.0.3",
+    "react-dnd": "^8.0.3",
     "react-dom": "^16.8.6",
-    "react-i18next": "^10.11.2"
+    "react-i18next": "^10.11.2",
+    "react": "^16.8.6"
   },
   "description": "Piximi’s generic React components",
   "devDependencies": {
@@ -34,22 +34,31 @@
     "@storybook/addon-links": "^5.0.11",
     "@storybook/addons": "^5.0.11",
     "@storybook/react": "^5.0.11",
-    "@types/enzyme": "^3.9.1",
+    "@storybook/storybook-deployer": "^2.8.1",
+    "@types/classnames": "^2.2.8",
+    "@types/color": "^3.0.0",
     "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/enzyme": "^3.9.1",
+    "@types/file-saver": "^2.0.1",
     "@types/jest": "^24.0.12",
+    "@types/lodash": "^4.14.134",
     "@types/node": "^12.0.0",
-    "@types/react": "^16.8.17",
     "@types/react-color": "^3.0.0",
     "@types/react-dom": "^16.8.4",
-    "@types/storybook__react": "^4.0.1",
-    "enzyme": "^3.9.0",
+    "@types/react-redux": "^7.1.0",
+    "@types/react": "^16.8.17",
+    "@types/storybook__react": "^4.0.2",
+    "@types/styled-components": "^4.1.16",
+    "@types/uuid": "^3.4.4",
+    "babel-loader": "^8.0.6",
     "enzyme-adapter-react-16": "^1.13.0",
+    "enzyme": "^3.9.0",
     "husky": "^2.4.1",
-    "jest": "^24.8.0",
     "jest-enzyme": "^7.0.2",
-    "lint-staged": "^8.1.6",
+    "jest": "^24.8.0",
+    "lint-staged": "^8.2.1",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.4.5"
+    "typescript": "^3.5.2"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -67,8 +76,11 @@
     "setupFilesAfterEnv": [
       "./src/setupTests.ts"
     ],
-    "testEnvironment": "node"
-  },
+    "testEnvironment": "node",
+    "transformIgnorePatterns": [
+      "/node_modules/react-dnd"
+    ]
+},
   "license": "MIT",
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
@@ -86,12 +98,12 @@
     "@piximi/components": "^0.1.12",
     "@piximi/hooks": "^0.1.11",
     "@piximi/store": "^0.1.23",
-    "react": "^16.8.6",
     "react-color": "^2.17.3",
-    "react-dnd": "^7.6.0",
     "react-dnd-html5-backend": "^7.4.4",
+    "react-dnd": "^7.6.0",
     "react-dom": "^16.8.6",
-    "react-i18next": "^10.9.0"
+    "react-i18next": "^10.9.0",
+    "react": "^16.8.6"
   },
   "private": false,
   "publishConfig": {

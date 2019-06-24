@@ -9,5 +9,5 @@ const color = '';
 const onColorChange = () => {};
 
 storiesOf('ColorIconButton', module).add('example', () => (
-  <ColorIconButton color={color} onColorChange={onColorChange} />
+  <ColorIconButton color={color} colors={[]} onColorChange={onColorChange} />
 ));
