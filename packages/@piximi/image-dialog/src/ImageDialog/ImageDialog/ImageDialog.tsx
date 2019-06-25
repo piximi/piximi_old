@@ -4,6 +4,8 @@ import { Dialog } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { ConnectedImageDialogContent } from '../ImageDialogContent/ImageDialogContent';
 import { Image } from '@piximi/types';
+import { ImageDialogAppBar } from '../ImageDialogAppBar';
+import { NavigationDrawer } from '../ImageDialogContent/NavigationDrawer/NavigationDrawer';
 
 const useStyles = makeStyles(styles);
 
@@ -20,7 +22,11 @@ export const ImageDialog = (props: ImageDialogProps) => {
 
   return (
     <Dialog className={classes.root} fullScreen open={open} onClose={onClose}>
-      <ConnectedImageDialogContent image={image} onClose={onClose} />
+      <ImageDialogAppBar onClose={onClose} />
+
+      <ConnectedImageDialogContent image={image} />
+
+      <NavigationDrawer image={image} />
     </Dialog>
   );
 };

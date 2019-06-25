@@ -6,19 +6,10 @@ import { Slider } from '@material-ui/lab';
 
 const useStyles = makeStyles(styles);
 
-type BrightnessSliderProps = {
-  brightness: number;
-  setBrightness: (brightness: number) => void;
-};
-
-export const BrightnessSlider = (props: BrightnessSliderProps) => {
+export const BrightnessSlider = () => {
   const classes = useStyles({});
 
-  const { brightness, setBrightness } = props;
-
-  const onChange = (event: any, value: any) => {
-    setBrightness(value);
-  };
+  const onChange = () => {};
 
   return (
     <div className={classes.root}>
@@ -29,7 +20,7 @@ export const BrightnessSlider = (props: BrightnessSliderProps) => {
       <Slider
         style={{ color: 'white' }}
         classes={{ root: classes.slider }}
-        value={brightness}
+        value={0}
         min={0}
         max={1000}
         step={0.5}

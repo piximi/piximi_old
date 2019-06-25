@@ -12,14 +12,7 @@ import {
 const useStyles = makeStyles(styles);
 
 export const NavigationDrawer = (props: any) => {
-  const {
-    onClose,
-    open,
-    setBrightness,
-    brightness,
-    setContrast,
-    contrast
-  } = props;
+  const { image } = props;
 
   const classes = useStyles({});
 
@@ -29,16 +22,15 @@ export const NavigationDrawer = (props: any) => {
       anchor="right"
       style={{ backgroundColor: '#202124' }}
       variant={'persistent'}
-      onClose={onClose}
-      open={open}
+      open
     >
       <Histogram />
 
       <ChannelsList />
 
-      <BrightnessSlider brightness={brightness} setBrightness={setBrightness} />
+      <BrightnessSlider />
 
-      <ContrastSlider contrast={contrast} setContrast={setContrast} />
+      <ContrastSlider />
     </Drawer>
   );
 };
