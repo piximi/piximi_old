@@ -6,11 +6,12 @@ import { ConnectedImageDialogContent } from '../ImageDialogContent/ImageDialogCo
 import { Image } from '@piximi/types';
 import { ImageDialogAppBar } from '../ImageDialogAppBar';
 import { NavigationDrawer } from '../ImageDialogContent/NavigationDrawer/NavigationDrawer';
+import { Image as ImageJS } from 'image-js';
 
 const useStyles = makeStyles(styles);
 
 type ImageDialogProps = {
-  image: Image;
+  item: Image;
   onClose: () => void;
   open: boolean;
 };
@@ -18,15 +19,27 @@ type ImageDialogProps = {
 export const ImageDialog = (props: ImageDialogProps) => {
   const classes = useStyles({});
 
-  const { image, onClose, open } = props;
+  const { item, onClose, open } = props;
+
+  const [imageJS, setImageJS] = React.useState(new ImageJS());
+
+  React.useEffect(() => {
+    const open = async () => {
+      ImageJS.load(item.data).then((response: ImageJS) => {
+        setImageJS(response);
+      });
+    };
+
+    open();
+  }, [imageJS]);
 
   return (
     <Dialog className={classes.root} fullScreen open={open} onClose={onClose}>
       <ImageDialogAppBar onClose={onClose} />
 
-      <ConnectedImageDialogContent image={image} />
+      <ConnectedImageDialogContent image={item} imageJS={imageJS} />
 
-      <NavigationDrawer image={image} />
+      <NavigationDrawer image={item} />
     </Dialog>
   );
 };
