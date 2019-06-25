@@ -12,7 +12,7 @@ import {
 const useStyles = makeStyles(styles);
 
 export const NavigationDrawer = (props: any) => {
-  const { image } = props;
+  const { image, imageJS } = props;
 
   const classes = useStyles({});
 
@@ -24,7 +24,7 @@ export const NavigationDrawer = (props: any) => {
       variant={'persistent'}
       open
     >
-      <Histogram />
+      <Histogram image={imageJS} />
 
       <ChannelsList />
 

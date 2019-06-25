@@ -30,7 +30,8 @@
     "react-i18next": "^10.11.2",
     "react-redux": "^7.1.0",
     "styled-components": "^4.3.1",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "victory": "^32.3.0"
   },
   "description": "Piximi’s NavigationDrawer component",
   "devDependencies": {

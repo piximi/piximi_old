@@ -16,22 +16,30 @@ type ImageDialogProps = {
   open: boolean;
 };
 
+export const useImageJS = (data: string) => {
+  const [image, setImage] = React.useState<ImageJS>(new ImageJS());
+
+  React.useEffect(() => {
+    const open = async () => {
+      ImageJS.load(data)
+        .then((response: ImageJS) => {
+          setImage(response);
+        })
+        .catch(() => {});
+    };
+
+    open();
+  }, [image]);
+
+  return { image };
+};
+
 export const ImageDialog = (props: ImageDialogProps) => {
   const classes = useStyles({});
 
   const { item, onClose, open } = props;
 
-  const [imageJS, setImageJS] = React.useState(new ImageJS());
-
-  React.useEffect(() => {
-    const open = async () => {
-      ImageJS.load(item.data).then((response: ImageJS) => {
-        setImageJS(response);
-      });
-    };
-
-    open();
-  }, [imageJS]);
+  const { image: imageJS } = useImageJS(item.data);
 
   return (
     <Dialog className={classes.root} fullScreen open={open} onClose={onClose}>
@@ -39,7 +47,7 @@ export const ImageDialog = (props: ImageDialogProps) => {
 
       <ConnectedImageDialogContent image={item} imageJS={imageJS} />
 
-      <NavigationDrawer image={item} />
+      <NavigationDrawer image={item} imageJS={imageJS} />
     </Dialog>
   );
 };
