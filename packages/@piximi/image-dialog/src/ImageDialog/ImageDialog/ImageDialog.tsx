@@ -45,7 +45,7 @@ export const ImageDialog = (props: ImageDialogProps) => {
     <Dialog className={classes.root} fullScreen open={open} onClose={onClose}>
       <ImageDialogAppBar onClose={onClose} />
 
-      <ConnectedImageDialogContent image={item} imageJS={imageJS} />
+      <ConnectedImageDialogContent data={item.data} />
 
       <NavigationDrawer image={item} imageJS={imageJS} />
     </Dialog>
