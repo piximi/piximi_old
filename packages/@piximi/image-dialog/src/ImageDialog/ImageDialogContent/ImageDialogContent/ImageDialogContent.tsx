@@ -10,6 +10,40 @@ enum Status {
   Loading
 }
 
+const zoom = (
+  canvas: HTMLCanvasElement,
+  ctx: CanvasRenderingContext2D,
+  image: HTMLImageElement,
+  event: React.SyntheticEvent,
+  zooming: boolean
+) => {
+  canvas.width = image.width;
+  canvas.height = image.height;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const scale = 2;
+
+  if (!zooming) {
+    var pos = getMousePos(canvas, event);
+    ctx.scale(scale, scale);
+    ctx.drawImage(image, -pos.x * scale * scale, -pos.y * scale * scale);
+    canvas.style.cursor = 'zoom-out';
+  } else {
+    ctx.drawImage(image, 0, 0);
+    canvas.style.cursor = 'zoom-in';
+  }
+
+  zooming = !zooming;
+};
+
+// function getMousePos(canvas, evt) {
+//   var rect = canvas.getBoundingClientRect();
+//   return {
+//     x: evt.clientX - rect.left,
+//     y: evt.clientY - rect.top
+//   };
+// }
+
 const useImage = (
   src: string,
   crossOrigin?: string
@@ -65,7 +99,7 @@ export const ImageDialogContent = (props: ImageDialogContentProps) => {
 
   const { data } = props;
 
-  const [image, status] = useImage(data);
+  const [image] = useImage(data);
 
   const ref = React.useRef<HTMLCanvasElement>(document.createElement('canvas'));
 
@@ -75,17 +109,9 @@ export const ImageDialogContent = (props: ImageDialogContentProps) => {
     context!.drawImage(image, image.naturalWidth, image.naturalHeight);
   });
 
-  if (status === Status.Loaded) {
-    return (
-      <div className={classes.root}>
-        <canvas ref={ref} />
-      </div>
-    );
-  } else {
-    return (
-      <div className={classes.root}>
-        <div />
-      </div>
-    );
-  }
+  return (
+    <div className={classes.root}>
+      <canvas ref={ref} />
+    </div>
+  );
 };
