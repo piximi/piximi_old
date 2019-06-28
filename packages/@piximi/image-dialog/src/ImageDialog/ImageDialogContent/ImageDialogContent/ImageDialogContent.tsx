@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { styles } from './ImageDialogContent.css';
 import { makeStyles } from '@material-ui/styles';
+import { ImageContainer } from '../ImageContainer';
 
 const useStyles = makeStyles(styles);
 
@@ -77,7 +78,7 @@ export const ImageDialogContent = (props: ImageDialogContentProps) => {
 
   return (
     <div className={classes.root}>
-      <canvas ref={ref} />
+      <ImageContainer data={data} />
     </div>
   );
 };

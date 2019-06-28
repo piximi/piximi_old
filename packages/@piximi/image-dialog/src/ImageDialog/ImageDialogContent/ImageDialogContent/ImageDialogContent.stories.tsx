@@ -26,11 +26,4 @@ const saveEditsGlobally = (
   contrast: number
 ) => {};
 
-storiesOf('ImageDialogContent', module).add('example', () => (
-  <ImageDialogContent
-    image={image}
-    images={[image]}
-    onClose={onClose}
-    saveEditsGlobally={saveEditsGlobally}
-  />
-));
+storiesOf('ImageDialogContent', module).add('example', () => <div />);
