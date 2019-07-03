@@ -5,6 +5,7 @@
     "@piximi/types": "^0.1.8",
     "@tensorflow/tfjs": "^1.1.2",
     "image-js": "^0.21.6",
+    "lodash": "^4.17.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "redux": "^4.0.1",
