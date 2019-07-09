@@ -2,16 +2,16 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot';
 import { useTranslation } from 'react-i18next';
-import { useSnackbar } from '@piximi/hooks';
-import { AlertSnackbar } from '@piximi/components';
+import { useDialog } from '@piximi/hooks';
+import { FitClassifierDialog } from '../../../FitClassifierDialog/FitClassifierDialog';
 
 export const FitListItem = () => {
-  const { openedSnackbar, openSnackbar, closeSnackbar } = useSnackbar();
+  const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const { t: translation } = useTranslation();
 
   const fit = async () => {
-    openSnackbar();
+    openDialog();
   };
 
   return (
@@ -24,10 +24,12 @@ export const FitListItem = () => {
         <ListItemText primary={translation('Fit')} />
       </ListItem>
 
-      <AlertSnackbar
-        closeSnackbar={closeSnackbar}
-        message={''}
-        openedSnackbar={openedSnackbar}
+      <FitClassifierDialog
+        categories={[]}
+        closeDialog={closeDialog}
+        images={[]}
+        openedDialog={openedDialog}
+        openedDrawer={true}
       />
     </React.Fragment>
   );

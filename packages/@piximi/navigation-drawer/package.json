@@ -16,7 +16,9 @@
     "@material-ui/styles": "4.1.2",
     "@piximi/components": "^0.1.15",
     "@piximi/hooks": "^0.1.11",
+    "@piximi/models": "^0.1.4",
     "@piximi/store": "^0.1.23",
+    "@tensorflow/tfjs": "^1.2.2",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "color": "^3.1.2",
@@ -29,7 +31,8 @@
     "react-i18next": "^10.11.2",
     "react-redux": "^7.1.0",
     "styled-components": "^4.3.1",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "victory": "^32.3.3"
   },
   "description": "Piximi’s NavigationDrawer component",
   "devDependencies": {
@@ -37,8 +40,9 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@piximi/types": "^0.1.8",
-    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-links": "^5.0.11",
+    "@storybook/addon-viewport": "^5.1.9",
     "@storybook/addons": "^5.0.11",
     "@storybook/react": "^5.0.11",
     "@storybook/storybook-deployer": "^2.8.1",
@@ -57,6 +61,7 @@
     "@types/storybook__react": "^4.0.2",
     "@types/styled-components": "^4.1.16",
     "@types/uuid": "^3.4.4",
+    "@types/victory": "^31.0.20",
     "babel-loader": "^8.0.6",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
