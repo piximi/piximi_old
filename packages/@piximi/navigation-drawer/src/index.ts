@@ -1,5 +1,6 @@
 export { CreateCategoryDialog } from './CreateCategoryDialog';
 export { DeleteCategoryDialog } from './DeleteCategoryDialog';
+export { HideOtherCategoriesMenuItem } from './HideOtherCategoriesMenuItem';
 export { NavigationDrawer } from './NavigationDrawer';
 export { EditCategoryDialog } from './EditCategoryDialog';
 export { HelpDialog } from './HelpDialog';
