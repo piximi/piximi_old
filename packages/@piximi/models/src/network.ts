@@ -1,6 +1,9 @@
+import { Category, Image } from '@piximi/types';
+import * as ImageJS from 'image-js';
 import * as tensorflow from '@tensorflow/tfjs';
+import * as _ from 'lodash';
 
-export const createModel = async (
+const createModel = async (
   classes: number,
   units: number,
   loss: string,
@@ -19,28 +22,33 @@ export const createModel = async (
     outputs: layer.output
   });
 
-  for (const layer of backbone.layers) layer.trainable = false;
-
-  const a = tensorflow.layers.flatten({
+  const a = tensorflow.layers.globalAveragePooling2d({
     inputShape: backbone.outputs[0].shape.slice(1)
   });
 
-  const b = tensorflow.layers.dense({
-    units: units,
-    activation: 'relu',
-    kernelInitializer: 'varianceScaling',
-    useBias: true
+  const b = tensorflow.layers.reshape({
+    targetShape: [1,1,backbone.outputs[0].shape[3]]
   });
 
-  const c = tensorflow.layers.dense({
-    units: classes,
-    kernelInitializer: 'varianceScaling',
-    useBias: false,
+  const c = tensorflow.layers.dropout({
+    rate: 0.001
+  });
+
+  const d = tensorflow.layers.conv2d({
+    filters: classes,
+    kernelSize: [1,1]
+  });
+
+  const e = tensorflow.layers.reshape({
+    targetShape: [classes]
+  });
+
+  const f = tensorflow.layers.activation({
     activation: 'softmax'
   });
 
   const config = {
-    layers: [...backbone.layers, a, b, c]
+    layers: [...backbone.layers, a, b, c, d, e, f]
   };
 
   const model = tensorflow.sequential(config);
@@ -56,7 +64,7 @@ export const createModel = async (
   return model;
 };
 
-export const getArgs = (batchSize: number, epochs: number) => {
+const getArgs = (batchSize: number, epochs: number) => {
   const arg = {
     batchSize: batchSize,
     callbacks: {
@@ -92,3 +100,5 @@ export const getArgs = (batchSize: number, epochs: number) => {
   };
   return getArgs;
 };
+
+export { createModel, getArgs };
