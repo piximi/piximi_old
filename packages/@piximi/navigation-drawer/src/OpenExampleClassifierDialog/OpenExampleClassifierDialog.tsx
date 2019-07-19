@@ -42,11 +42,7 @@ export const OpenExampleClassifierDialog = (
   const openExampleClassifier = (name: string) => {
     closeMenu();
     return axios
-      .get(
-        'https://raw.githubusercontent.com/piximi/application/master/src/demos/' +
-          name +
-          '.piximi'
-      )
+      .get('https://storage.piximi.app/examples/' + name + '.piximi')
       .then(result => {
         openClassifier(result.data.categories, result.data.images, name);
       })
@@ -79,12 +75,12 @@ export const OpenExampleClassifierDialog = (
       <DialogContent classes={{ root: classes.dialogContent }}>
         <List>
           <OpenExampleClassifierListItem
-            src="worms.png"
-            primary="worms"
-            secondary="worms"
+            src="https://storage.piximi.app/examples/MNIST.png"
+            primary="MNIST"
+            secondary=""
             onClick={() => {
               onClose();
-              openExampleClassifier('worms');
+              openExampleClassifier('mnist');
             }}
           />
         </List>

@@ -1,22 +1,29 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { OpenExampleClassifierDialog } from './OpenExampleClassifierDialog';
-import { Category, Image } from '@piximi/types';
+import { ConnectedOpenExampleClassifierDialog } from './ConnectedOpenExampleClassifierDialog';
+import { store } from '@piximi/store';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core';
 
 const closeMenu = () => {};
 
 const onClose = () => {};
 
-const openClassifier = (
-  categories: Category[],
-  images: Image[],
-  name: string
-) =>
-  void storiesOf('OpenExampleClassifierDialog', module).add('example', () => (
-    <OpenExampleClassifierDialog
-      closeMenu={closeMenu}
-      onClose={onClose}
-      open
-      openClassifier={openClassifier}
-    />
-  ));
+const theme = createMuiTheme({
+  palette: {
+    type: 'light'
+  }
+});
+
+storiesOf('OpenExampleClassifierDialog', module).add('example', () => (
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <ConnectedOpenExampleClassifierDialog
+        closeMenu={closeMenu}
+        onClose={onClose}
+        open
+      />
+    </ThemeProvider>
+  </Provider>
+));
