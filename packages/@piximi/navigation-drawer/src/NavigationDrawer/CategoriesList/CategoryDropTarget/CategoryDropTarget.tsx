@@ -18,7 +18,7 @@ export const CategoryDropTarget = (props: CategoryDropTargetProps) => {
 
   const drop = React.useCallback(
     item => {
-      updateImageCategory(item.id, category.identifier);
+      updateImageCategory(item.identifier, category.identifier);
     },
     [category.identifier, updateImageCategory]
   );
