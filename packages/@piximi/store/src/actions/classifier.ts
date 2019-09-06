@@ -62,10 +62,17 @@ export const updateImageCategoryAction = createAction(
   'update-image-category'
 );
 
+export const updateImagesCategoryAction = createAction(
+  'update-images-category'
+);
+
 export const updateImageContrastAction = createAction(
   'update-image-contrast'
 );
 
 export const updateImageVisibilityAction = createAction(
   'update-image-visibility'
+);
+export const updateImagesPartitionAction = createAction(
+  'update-images-partition'
 );
