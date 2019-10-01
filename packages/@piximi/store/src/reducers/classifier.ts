@@ -8,7 +8,7 @@ import {
   openClassifierAction,
   createImageAction,
   createImagesAction,
-  createImageScoreAction,
+  createImagesScoreAction,
   deleteCategoryAction,
   deleteImageAction,
   toggleCategoryVisibilityAction,
@@ -97,14 +97,13 @@ export const classifierReducer = createReducer(initialState, {
 
     images.forEach( (image: Image) => state.images.push(image));
   },
-  [createImageScoreAction.toString()]: (state, action) => {
-    const { identifier, score } = action.payload;
-
-    const index: number = findImageIndex(state.images, identifier);
-
-    const image: Image = state.images[index];
-
-    image.scores.push(score);
+  [createImagesScoreAction.toString()]: (state, action) => {
+    const { identifiers, scores } = action.payload;
+    for (let i = 0; i < identifiers.length; i++) {
+      const index: number = findImageIndex(state.images, identifiers[i]);
+      const image: Image = state.images[index];
+      image.scores = scores[i];
+    }
   },
   [deleteCategoryAction.toString()]: (state, action) => {
     const { identifier } = action.payload;
@@ -206,13 +205,15 @@ export const classifierReducer = createReducer(initialState, {
     image.visualization.contrast = contrast;
   },
   [updateImageVisibilityAction.toString()]: (state, action) => {
-    const { identifier, visible } = action.payload;
+    const { identifiers, visible } = action.payload;
 
-    const index: number = findImageIndex(state.images, identifier);
+    for (let i = 0; i < identifiers.length; i++) {
+      const index: number = findImageIndex(state.images, identifiers[i]);
 
-    const image: Image = state.images[index];
+      const image: Image = state.images[index];
 
-    image.visualization.visible = visible;
+      image.visualization.visible = visible;
+    }
   },
   [updateImagesPartitionAction.toString()]: (state, action) => {
     const { partitions } = action.payload;

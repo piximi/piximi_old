@@ -22,8 +22,8 @@ export const createImagesAction = createAction(
   'create-images'
 );
 
-export const createImageScoreAction = createAction(
-  'create-image-score'
+export const createImagesScoreAction = createAction(
+  'create-images-score'
 );
 
 export const deleteCategoryAction = createAction(

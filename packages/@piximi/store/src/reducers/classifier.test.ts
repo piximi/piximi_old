@@ -4,7 +4,7 @@ import {
   openClassifierAction,
   createImageAction,
   createImagesAction,
-  createImageScoreAction,
+  createImagesScoreAction,
   deleteCategoryAction,
   deleteImageAction,
   toggleCategoryVisibilityAction,
@@ -498,7 +498,35 @@ describe('classifierReducer', () => {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
           data: '',
+          identifier: '22222222-2222-2222-1111-22222222222',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        },
+        {
+          categoryIdentifier: '00000000-0000-0000-0000-000000000000',
+          checksum: '',
+          data: '',
           identifier: '22222222-2222-2222-2222-22222222222',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        },
+        {
+          categoryIdentifier: '00000000-0000-0000-0000-000000000000',
+          checksum: '',
+          data: '',
+          identifier: '22222222-2222-2222-3333-22222222222',
           partition: Partition.Training,
           scores: [],
           visualization: {
@@ -512,17 +540,23 @@ describe('classifierReducer', () => {
       name: 'Untitled classifier'
     };
 
-    const score: Score = {
+    const scores: Score[][] = [
+      [{
       categoryIdentifier: '11111111-1111-1111-1111-11111111111',
-      probability: 1.0
-    };
+      probability: 0.8
+      }],
+      [{
+        categoryIdentifier: '11111111-1111-1111-1111-11111111111',
+        probability: 0.3
+      }]
+    ];
 
     const payload = {
-      identifier: '22222222-2222-2222-2222-22222222222',
-      score: score
+      identifiers: ['22222222-2222-2222-2222-22222222222','22222222-2222-2222-3333-22222222222'],
+      scores: scores
     };
 
-    const action = createImageScoreAction(payload);
+    const action = createImagesScoreAction(payload);
 
     const reducer = classifierReducer(state, action);
 
@@ -552,14 +586,43 @@ describe('classifierReducer', () => {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
           data: '',
+          identifier: '22222222-2222-2222-1111-22222222222',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        },
+        {
+          categoryIdentifier: '00000000-0000-0000-0000-000000000000',
+          checksum: '',
+          data: '',
           identifier: '22222222-2222-2222-2222-22222222222',
           partition: Partition.Training,
-          scores: [
-            {
-              categoryIdentifier: '11111111-1111-1111-1111-11111111111',
-              probability: 1.0
-            }
-          ],
+          scores: [ {
+            categoryIdentifier: '11111111-1111-1111-1111-11111111111',
+            probability: 0.8
+            }],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        },
+        {
+          categoryIdentifier: '00000000-0000-0000-0000-000000000000',
+          checksum: '',
+          data: '',
+          identifier: '22222222-2222-2222-3333-22222222222',
+          partition: Partition.Training,
+          scores: [{
+            categoryIdentifier: '11111111-1111-1111-1111-11111111111',
+            probability: 0.3
+          }],
           visualization: {
             brightness: 0,
             contrast: 0,
@@ -1437,7 +1500,7 @@ describe('classifierReducer', () => {
     };
 
     const payload = {
-      identifier: '11111111-1111-1111-1111-11111111111',
+      identifiers: ['11111111-1111-1111-1111-11111111111'],
       visible: false
     };
 
