@@ -5,24 +5,20 @@ import * as React from 'react';
 type CategoryDropTargetProps = {
   category: Category;
   children: React.ReactNode;
-  updateImageCategory: (identifier: string, categoryIdentifier: string) => void;
+  updateImagesCategory: (
+    identifiers: string[],
+    categoryIdentifier: string
+  ) => void;
 };
 
-/**
- *
- * @param props
- * @constructor
- */
 export const CategoryDropTarget = (props: CategoryDropTargetProps) => {
-  const { category, children, updateImageCategory } = props;
+  const { category, children, updateImagesCategory } = props;
 
   const drop = React.useCallback(
     droppedItem => {
-      Array.prototype.forEach.call(droppedItem.selectedItems, (item: string) => {
-        updateImageCategory(item, category.identifier);
-      });
+      updateImagesCategory(droppedItem.selectedItems, category.identifier);
     },
-    [category.identifier, updateImageCategory]
+    [category.identifier, updateImagesCategory]
   );
 
   const spec = {

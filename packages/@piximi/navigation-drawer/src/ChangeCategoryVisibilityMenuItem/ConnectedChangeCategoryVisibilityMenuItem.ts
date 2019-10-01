@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { updateCategoryVisibilityAction } from '@piximi/store';
-import { HideOtherCategoriesMenuItem } from './HideOtherCategoriesMenuItem';
+import { ChangeCategoryVisibilityMenuItem } from './ChangeCategoryVisibilityMenuItem';
 import { Classifier } from '@piximi/types';
 import { Dispatch } from 'redux';
 
@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-export const ConnectedHideOtherCategoriesMenuItem = connect(
+export const ConnectedChangeCategoryVisibilityMenuItem = connect(
   mapStateToProps,
   mapDispatchToProps
-)(HideOtherCategoriesMenuItem);
+)(ChangeCategoryVisibilityMenuItem);

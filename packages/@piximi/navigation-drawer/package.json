@@ -12,18 +12,21 @@
   "dependencies": {
     "@material-ui/core": "4.1.2",
     "@material-ui/icons": "4.2.1",
-    "@material-ui/lab": "4.0.0-alpha.17",
+    "@material-ui/lab": "^4.0.0-alpha.17",
     "@material-ui/styles": "4.1.2",
     "@piximi/components": "^0.1.15",
     "@piximi/hooks": "^0.1.11",
     "@piximi/models": "^0.1.4",
     "@piximi/store": "^0.1.23",
     "@tensorflow/tfjs": "^1.2.2",
+    "@tensorflow/tfjs-vis": "^1.1.0",
+    "@types/mathjs": "^6.0.2",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "color": "^3.1.2",
     "file-saver": "^2.0.2",
     "lodash": "^4.17.11",
+    "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-color": "^2.17.3",
     "react-dnd": "^8.0.3",
@@ -103,13 +106,12 @@
   "main": "./dist/index.js",
   "name": "@piximi/navigation-drawer",
   "peerDependencies": {
-    "@material-ui/core": "4.1.2",
+    "@material-ui/core": "4.4.2",
     "@material-ui/icons": "4.2.1",
-    "@material-ui/lab": "4.0.0-alpha.17",
     "@material-ui/styles": "4.1.2",
     "@piximi/components": "^0.1.12",
     "@piximi/hooks": "^0.1.11",
-    "@piximi/store": "^0.1.23",
+    "@piximi/store": "^0.1.27",
     "@piximi/types": "^0.1.8",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
@@ -141,9 +143,10 @@
     "test": "jest",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook -c .storybook -o .out",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "postinstall": "rimraf node_modules/preact/*/preact.d.ts"
   },
   "sideEffects": false,
   "types": "./dist/index.d.ts",
-  "version": "1.0.6"
+  "version": "1.0.7"
 }

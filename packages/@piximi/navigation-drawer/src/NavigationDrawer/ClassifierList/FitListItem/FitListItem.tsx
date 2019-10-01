@@ -3,9 +3,24 @@ import * as React from 'react';
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot';
 import { useTranslation } from 'react-i18next';
 import { useDialog } from '@piximi/hooks';
-import { FitClassifierDialog } from '../../../FitClassifierDialog/FitClassifierDialog';
+import { Category, Image } from '@piximi/types';
+import { ConnectedFitClassifierDialog } from '../../../FitClassifierDialog/FitClassifierDialog/ConnectedFitClassifierDialog';
 
-export const FitListItem = () => {
+type FitListItemProps = {
+  categories: Category[];
+  images: Image[];
+  datasetInitialized: boolean;
+  setDatasetInitialized: (datasetInitialized: boolean) => void;
+};
+
+export const FitListItem = (props: FitListItemProps) => {
+  const {
+    categories,
+    images,
+    datasetInitialized,
+    setDatasetInitialized
+  } = props;
+
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const { t: translation } = useTranslation();
@@ -24,12 +39,12 @@ export const FitListItem = () => {
         <ListItemText primary={translation('Fit')} />
       </ListItem>
 
-      <FitClassifierDialog
-        categories={[]}
+      <ConnectedFitClassifierDialog
         closeDialog={closeDialog}
-        images={[]}
         openedDialog={openedDialog}
         openedDrawer={true}
+        datasetInitialized={datasetInitialized}
+        setDatasetInitialized={setDatasetInitialized}
       />
     </React.Fragment>
   );

@@ -4,11 +4,14 @@ import {
   MenuItem,
   MenuList,
   Paper,
-  Popover
+  Popover,
+  Divider
 } from '@material-ui/core';
 import { useDialog } from '@piximi/hooks';
 import { ConnectedEditCategoryDialog } from '../../../../EditCategoryDialog/ConnectedEditCategoryDialog';
 import { ConnectedDeleteCategoryDialog } from '../../../../DeleteCategoryDialog/ConnectedDeleteCategoryDialog';
+import { ConnectedHideOtherCategoriesMenuItem } from '../../../../HideOtherCategoriesMenuItem/ConnectedHideOtherCategoriesMenuItem';
+import { ConnectedChangeCategoryVisibilityMenuItem } from '../../../../ChangeCategoryVisibilityMenuItem/ConnectedChangeCategoryVisibilityMenuItem';
 import { Category } from '@piximi/types';
 
 type CategoryListItemMenuListProps = {
@@ -41,10 +44,6 @@ export const CategoryListItemMenuList = (
     left: openedMenu ? anchorEl.getBoundingClientRect().left : 0
   };
 
-  const onHideOtherCategoriesClick = () => {
-    closeMenu();
-  };
-
   const onEditCategoryClick = () => {
     openEditCategoryDialog();
 
@@ -71,12 +70,20 @@ export const CategoryListItemMenuList = (
       >
         <Paper>
           <MenuList dense>
-            <MenuItem onClick={onHideOtherCategoriesClick}>
-              <ListItemText primary="Hide other categories" />
-            </MenuItem>
+            <ConnectedHideOtherCategoriesMenuItem
+              categoryProp={category}
+              closeMenu={closeMenu}
+            />
+
+            <ConnectedChangeCategoryVisibilityMenuItem
+              categoryProp={category}
+              closeMenu={closeMenu}
+            />
 
             {known && (
               <div>
+                <Divider />
+
                 <MenuItem onClick={onEditCategoryClick}>
                   <ListItemText primary="Edit category" />
                 </MenuItem>

@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {
-  ArrowBack,
-  Stop,
-  PlayCircleOutline,
-  ReplayRounded
-} from '@material-ui/icons';
+import { ArrowBack, PlayCircleOutline } from '@material-ui/icons';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { AppBar, IconButton, Toolbar, Tooltip } from '@material-ui/core';
-
-const drawerWidth = 280;
+import {
+  AppBar,
+  IconButton,
+  Toolbar,
+  Tooltip,
+  Switch,
+  FormControlLabel
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,8 +31,22 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const DialogAppBar = (props: any) => {
-  const { onStopTrainingChange, closeDialog, fit, openedDrawer } = props;
+type DialogAppBarProps = {
+  useCrossValidation: boolean;
+  onUseCrossValidationChange: (event: React.FormEvent<EventTarget>) => void;
+  closeDialog: () => void;
+  evaluate: () => void;
+  openedDrawer: boolean;
+};
+
+export const DialogAppBar = (props: DialogAppBarProps) => {
+  const {
+    closeDialog,
+    evaluate,
+    openedDrawer,
+    useCrossValidation,
+    onUseCrossValidationChange
+  } = props;
 
   const classes = useStyles();
 
@@ -56,32 +70,18 @@ export const DialogAppBar = (props: any) => {
           </IconButton>
         </Tooltip>
 
-        <div className={classes.grow} />
+        <Tooltip title="use cross validation" placement="bottom">
+          <Switch
+            checked={useCrossValidation}
+            onChange={onUseCrossValidationChange}
+          />
+        </Tooltip>
 
-        <Tooltip title="Fit the model" placement="bottom">
-          <IconButton className={classes.button} onClick={fit} href={''}>
+        <Tooltip title="Evaluate the model" placement="bottom">
+          <IconButton className={classes.button} onClick={evaluate} href={''}>
             <PlayCircleOutline />
           </IconButton>
         </Tooltip>
-
-        <Tooltip title="Stop fitting the model" placement="bottom">
-          <IconButton
-            className={classes.button}
-            onClick={onStopTrainingChange}
-            href={''}
-          >
-            <Stop />
-          </IconButton>
-        </Tooltip>
-
-        <IconButton
-          disabled
-          className={classes.button}
-          onClick={closeDialog}
-          href={''}
-        >
-          <ReplayRounded />
-        </IconButton>
       </Toolbar>
     </AppBar>
   );

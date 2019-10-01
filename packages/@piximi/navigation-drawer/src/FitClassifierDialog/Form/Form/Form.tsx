@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { OptimizationGrid } from '../OptimizationGrid';
-import { Grid, MenuItem, TextField } from '@material-ui/core';
+import {
+  Grid,
+  MenuItem,
+  TextField,
+  Switch,
+  FormControlLabel
+} from '@material-ui/core';
 import * as _ from 'lodash';
 import * as tensorflow from '@tensorflow/tfjs';
 
@@ -13,7 +19,8 @@ const lossFunctions = {
   logLoss: 'Log',
   meanSquaredError: 'Mean squared error (MSE)',
   sigmoidCrossEntropy: 'Sigmoid cross entropy',
-  softmaxCrossEntropy: 'Softmax cross entropy'
+  softmaxCrossEntropy: 'Softmax cross entropy',
+  categoricalCrossentropy: 'Categorical cross entropy'
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -86,9 +93,9 @@ type FormProps = {
   onInputShapeChange: (event: React.FormEvent<EventTarget>) => void;
   onLearningRateChange: (event: React.FormEvent<EventTarget>) => void;
   onLossFunctionChange: (event: React.FormEvent<EventTarget>) => void;
-  onOptimizationAlgorithmChange: any;
+  onOptimizationAlgorithmChange: (event: React.FormEvent<EventTarget>) => void;
   openedDialog: boolean;
-  optimizationAlgorithm: tensorflow.Optimizer;
+  optimizationAlgorithm: string;
 };
 
 export const Form = (props: FormProps) => {
@@ -111,12 +118,12 @@ export const Form = (props: FormProps) => {
 
   interface State {
     lossFunction: string;
-    optimizationAlgorithm: tensorflow.Optimizer;
+    optimizationAlgorithm: string;
   }
 
   const [values, setValues] = React.useState<State>({
     lossFunction: 'softmaxCrossEntropy',
-    optimizationAlgorithm: tensorflow.train.adam()
+    optimizationAlgorithm: 'adam'
   });
 
   const onChange = (name: keyof State) => (
