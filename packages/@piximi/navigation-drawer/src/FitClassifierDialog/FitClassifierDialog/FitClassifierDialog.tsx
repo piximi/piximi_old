@@ -25,7 +25,6 @@ import { Category, Image } from '@piximi/types';
 import * as tensorflow from '@tensorflow/tfjs';
 import { useState } from 'react';
 import { styles } from './FitClassifierDialog.css';
-import { createMobilenet } from '@piximi/models';
 import { useCollapseList } from '@piximi/hooks';
 import { createTrainingSet, assignToSet, setTestsetRatio } from './dataset';
 
