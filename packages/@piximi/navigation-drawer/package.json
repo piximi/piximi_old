@@ -26,6 +26,7 @@
     "color": "^3.1.2",
     "file-saver": "^2.0.2",
     "lodash": "^4.17.11",
+    "mathjs": "^6.2.3",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-color": "^2.17.3",
@@ -149,5 +150,5 @@
   },
   "sideEffects": false,
   "types": "./dist/index.d.ts",
-  "version": "1.0.7"
+  "version": "1.0.8"
 }
