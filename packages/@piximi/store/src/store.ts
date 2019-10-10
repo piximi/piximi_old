@@ -6,6 +6,7 @@ import {
 import thunk from 'redux-thunk'
 import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 import localforage from "localforage"
+import {Classifier} from "@piximi/types";
 
 import {
   AnyAction,
@@ -18,6 +19,7 @@ import {
 import {
   reducer
 } from "./reducers";
+import {Reducer} from "react";
 
 const enhancers: StoreEnhancer[] = [];
 
