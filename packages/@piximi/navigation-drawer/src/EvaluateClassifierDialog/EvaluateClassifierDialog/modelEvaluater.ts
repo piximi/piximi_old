@@ -17,9 +17,7 @@ export const evaluateTensorflowModelCV = async (
   numberOfClasses: number
 ) => {
   const dataSize = evaluationData.length;
-  console.log(dataSize);
   const k = math.min(10, math.ceil(math.nthRoot(dataSize) as number));
-  console.log(k);
 
   const dataFolds = Array.from(
     Array(math.ceil(evaluationData.length / k)),
@@ -37,7 +35,9 @@ export const evaluateTensorflowModelCV = async (
 
   var accuracy = 0;
   var crossEntropy = 0;
-  var confusionMatrixArray: any = Array(numberOfClasses);
+  var confusionMatrixArray: tensorflow.backend_util.TypedArray = new Int32Array(
+    numberOfClasses * numberOfClasses
+  );
   for (let i = 0; i < k; i++) {
     var validationData: tensorflow.Tensor<tensorflow.Rank>[] = dataFolds[i];
     var trainData: tensorflow.Tensor<tensorflow.Rank>[] = [];
@@ -48,12 +48,14 @@ export const evaluateTensorflowModelCV = async (
     for (var j = 0; j < k; j++) {
       if (j !== i) {
         trainData = trainData.concat(dataFolds[j]);
+        trainLabels = trainLabels.concat(labelFolds[j]);
       }
     }
 
     let concatenatedTensorData = tensorflow.tidy(() =>
       tensorflow.concat(trainData)
     );
+
     let concatenatedLabelData = tensorflow.tidy(() =>
       tensorflow.oneHot(trainLabels, numberOfClasses)
     );
@@ -67,12 +69,17 @@ export const evaluateTensorflowModelCV = async (
     );
     crossEntropy += evaluationResult.crossEntropy;
     accuracy += evaluationResult.accuracy;
-    confusionMatrixArray += evaluationResult.confusionMatrixArray;
+    for (let c = 0; c < confusionMatrixArray.length; c++) {
+      confusionMatrixArray[c] += evaluationResult.confusionMatrixArray[c];
+    }
+  }
+  for (let c = 0; c < confusionMatrixArray.length; c++) {
+    confusionMatrixArray[c] = confusionMatrixArray[c] / k;
   }
   return {
     accuracy: accuracy / k,
     crossEntropy: crossEntropy / k,
-    confusionMatrixArray: confusionMatrixArray / k
+    confusionMatrixArray: confusionMatrixArray
   };
 };
 
@@ -98,8 +105,11 @@ const returnResult = (
       .binaryCrossentropy(tensorflow.tensor(labels), predictions)
       .dataSync()[0];
   } else {
+    let concatenatedLabelData = tensorflow.tidy(() =>
+      tensorflow.oneHot(labels, numberOfClasses)
+    );
     accuracy = tensorflow.metrics
-      .categoricalAccuracy(tensorflow.tensor(labels), predictions)
+      .categoricalAccuracy(concatenatedLabelData, predictions)
       .dataSync()[0];
     crossEntropy = tensorflow.metrics
       .categoricalCrossentropy(tensorflow.tensor(labels), predictions)
@@ -108,6 +118,7 @@ const returnResult = (
   var confusionMatrixArray = tensorflow.math
     .confusionMatrix(tensorflow.tensor(labels), predictions, numberOfClasses)
     .dataSync();
+
   return {
     accuracy: accuracy,
     crossEntropy: crossEntropy,

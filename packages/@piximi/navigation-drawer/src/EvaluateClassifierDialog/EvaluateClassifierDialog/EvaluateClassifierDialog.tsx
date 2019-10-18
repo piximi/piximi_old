@@ -13,7 +13,6 @@ import { styles } from './EvaluateClassifierDialog.css';
 
 import {
   createTestSet,
-  createTestSetCV,
   assignToSet
 } from '../../FitClassifierDialog/FitClassifierDialog/dataset';
 import * as tfvis from '@tensorflow/tfjs-vis';
@@ -34,6 +33,11 @@ type EvaluateClassifierDialogProps = {
   setDatasetInitialized: (datasetInitialized: boolean) => void;
   setImagesPartition: (partitions: number[]) => void;
 };
+
+function roundToFour(num: number) {
+  // @ts-ignore
+  return +(Math.round(num + 'e+4') + 'e-4');
+}
 
 const getMatrixFromArray = (array: any, size: number): number[][] => {
   var matrix: number[][] = [];
@@ -70,7 +74,7 @@ export const EvaluateClassifierDialog = (
 
   const styles = useStyles({});
   const [useCrossValidation, setUseCrossValidation] = useState<boolean>(false);
-  const [accuracy, setAccuracy] = useState<number>(0);
+  const [accuracy, setAccuracy] = useState<string>('not evaluated yet');
   const [crossEntropy, setCrossEntropy] = useState<number>(0);
 
   const onUseCrossValidationChange = (event: React.FormEvent<EventTarget>) => {
@@ -92,7 +96,7 @@ export const EvaluateClassifierDialog = (
 
     var modelEvaluationResults;
     if (useCrossValidation) {
-      var evaluationSet = await createTestSetCV(categories, images);
+      var evaluationSet = await createTestSet(categories, images);
       modelEvaluationResults = await evaluateTensorflowModelCV(
         model,
         evaluationSet.data,
@@ -110,7 +114,7 @@ export const EvaluateClassifierDialog = (
     }
 
     var accuracy = modelEvaluationResults.accuracy;
-    setAccuracy(accuracy);
+    setAccuracy(roundToFour(accuracy).toString());
     var crossEntropy = modelEvaluationResults.crossEntropy;
     setCrossEntropy(crossEntropy);
     var confusionMatrixArray = modelEvaluationResults.confusionMatrixArray;
@@ -128,17 +132,20 @@ export const EvaluateClassifierDialog = (
       return category.identifier !== '00000000-0000-0000-0000-000000000000';
     });
     const lables = lableCategories.map((category: Category) => {
-      return category.identifier;
+      return category.description;
     });
     const data = { values: values, tickLabels: lables };
 
+    //var element = ReactDOM.findDOMNode('evaluationID') as HTMLElement;
+
     const surface = tfvis.visor().surface({
       name: 'Confusion Matrix',
+
       styles: {
         width: '650px'
       }
     });
-    tfvis.render.confusionMatrix(surface, data);
+    tfvis.render.confusionMatrix(EvaluateClassifierDialog, data);
   };
 
   const onEvaluate = async () => {
@@ -168,7 +175,7 @@ export const EvaluateClassifierDialog = (
 
       <div>
         <Grid container spacing={3}>
-          <Grid>
+          <Grid id="evaluationID">
             <Paper
               style={{
                 margin: '24px',

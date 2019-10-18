@@ -19,7 +19,6 @@ const lossFunctions = {
   logLoss: 'Log',
   meanSquaredError: 'Mean squared error (MSE)',
   sigmoidCrossEntropy: 'Sigmoid cross entropy',
-  softmaxCrossEntropy: 'Softmax cross entropy',
   categoricalCrossentropy: 'Categorical cross entropy'
 };
 
@@ -122,7 +121,7 @@ export const Form = (props: FormProps) => {
   }
 
   const [values, setValues] = React.useState<State>({
-    lossFunction: 'softmaxCrossEntropy',
+    lossFunction: 'meanSquaredError',
     optimizationAlgorithm: 'adam'
   });
 
@@ -171,7 +170,7 @@ export const Form = (props: FormProps) => {
       </Grid>
 
       <Grid container spacing={2}>
-        <Grid item xs={4}>
+        {/* <Grid item xs={4}>
           <TextField
             id="input-shape"
             label="Input shape"
@@ -181,7 +180,7 @@ export const Form = (props: FormProps) => {
             onChange={onInputShapeChange}
             margin="normal"
           />
-        </Grid>
+        </Grid> */}
 
         <Grid item xs={2}>
           <TextField

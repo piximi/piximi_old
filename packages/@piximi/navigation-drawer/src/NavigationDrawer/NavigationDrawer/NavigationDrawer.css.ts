@@ -6,7 +6,8 @@ const drawerWidth = 280;
 export const styles = (theme: Theme) =>
   createStyles({
     toolbar: {
-      alignItems: 'center'
+      alignItems: 'center',
+      toolbar: theme.mixins.toolbar
     },
     drawerPaper: {
       position: 'fixed',

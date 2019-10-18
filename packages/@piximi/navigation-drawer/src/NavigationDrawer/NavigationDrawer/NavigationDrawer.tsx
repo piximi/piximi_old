@@ -30,6 +30,7 @@ export const NavigationDrawer = (props: DrawerProps) => {
       variant="persistent"
     >
       <Box
+        style={{ paddingTop: 60 }}
         className={classes.toolbar}
         display="flex"
         justifyContent="flex-end"

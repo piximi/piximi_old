@@ -26,7 +26,14 @@ import * as tensorflow from '@tensorflow/tfjs';
 import { useState } from 'react';
 import { styles } from './FitClassifierDialog.css';
 import { useCollapseList } from '@piximi/hooks';
-import { createTrainingSet, assignToSet, setTestsetRatio } from './dataset';
+import {
+  createTrainingSet,
+  assignToSet,
+  setTestsetRatio,
+  createAutotunerDataSet
+} from './dataset';
+import { createModel, createMobileNet } from './networks';
+import * as autotuner from '@piximi/autotuner';
 
 const optimizationAlgorithms: { [identifier: string]: any } = {
   adadelta: tensorflow.train.adadelta,
@@ -36,50 +43,35 @@ const optimizationAlgorithms: { [identifier: string]: any } = {
   sgd: tensorflow.train.sgd
 };
 
-const createModel = async (numberOfClasses: number) => {
-  const resource =
-    'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json';
+const lossFunctions: { [identifier: string]: any } = {
+  absoluteDifference: tensorflow.losses.absoluteDifference,
+  cosineDistance: tensorflow.losses.cosineDistance,
+  hingeLoss: tensorflow.losses.hingeLoss,
+  huberLoss: tensorflow.losses.huberLoss,
+  logLoss: tensorflow.losses.logLoss,
+  meanSquaredError: tensorflow.losses.meanSquaredError,
+  sigmoidCrossEntropy: tensorflow.losses.sigmoidCrossEntropy,
+  categoricalCrossentropy: tensorflow.losses.softmaxCrossEntropy
+};
 
-  const mobilenet = await tensorflow.loadLayersModel(resource);
+// Fisher-Yates Shuffle,
+const shuffleImages = (array: Image[]) => {
+  let counter = array.length;
 
-  const layer = mobilenet.getLayer('conv_pw_13_relu');
+  // While there are elements in the array
+  while (counter > 0) {
+    // Pick a random index
+    let index = Math.floor(Math.random() * counter);
 
-  const backbone = tensorflow.model({
-    inputs: mobilenet.inputs,
-    outputs: layer.output
-  });
+    // Decrease counter by 1
+    counter--;
 
-  const a = tensorflow.layers.globalAveragePooling2d({
-    inputShape: backbone.outputs[0].shape.slice(1)
-  });
-
-  const b = tensorflow.layers.reshape({
-    targetShape: [1, 1, backbone.outputs[0].shape[3]]
-  });
-
-  const c = tensorflow.layers.dropout({
-    rate: 0.001
-  });
-
-  const d = tensorflow.layers.conv2d({
-    filters: numberOfClasses,
-    kernelSize: [1, 1]
-  });
-
-  const e = tensorflow.layers.reshape({
-    targetShape: [numberOfClasses]
-  });
-
-  const f = tensorflow.layers.activation({
-    activation: 'softmax'
-  });
-
-  const config = {
-    layers: [...backbone.layers, a, b, c, d, e, f]
-  };
-
-  const model = tensorflow.sequential(config);
-  return model;
+    // And swap the last element with it
+    let temp = array[counter];
+    array[counter] = array[index];
+    array[index] = temp;
+  }
+  return array;
 };
 
 const useStyles = makeStyles(styles);
@@ -157,17 +149,46 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     'adam'
   );
   const [learningRate, setLearningRate] = useState<number>(0.01);
-  const [lossFunction, setLossFunction] = useState<string>(
-    'categoricalCrossentropy'
-  );
+  const [lossFunction, setLossFunction] = useState<string>('meanSquaredError');
   const [inputShape, setInputShape] = useState<string>('224, 224, 3');
-  const [trainingLossHistory, setTrainingLossHistory] = useState<LossHistory>([
-    { x: 0, y: 0 }
-  ]);
+
+  const [trainingLossHistory, setTrainingLossHistory] = useState<LossHistory>(
+    []
+  );
+  const updateLossHistory = (x: number, y: number) => {
+    var history = trainingLossHistory;
+    history.push({ x, y });
+    setTrainingLossHistory(history);
+  };
 
   const [trainingAccuracyHistory, setTrainingAccuracyHistory] = useState<
-    number[]
+    LossHistory
   >([]);
+  const updateAccuracHistory = (x: number, y: number) => {
+    var history = trainingAccuracyHistory;
+    history.push({ x, y });
+    setTrainingAccuracyHistory(history);
+  };
+
+  const [
+    trainingValidationAccuracyHistory,
+    setTrainingValidationAccuracyHistory
+  ] = useState<LossHistory>([]);
+  const updateValidationAccuracHistory = (x: number, y: number) => {
+    var history = trainingValidationAccuracyHistory;
+    history.push({ x, y });
+    setTrainingValidationAccuracyHistory(history);
+  };
+
+  const [
+    trainingValidationLossHistory,
+    setTrainingValidationLossHistory
+  ] = useState<LossHistory>([]);
+  const updateValidationLossHistory = (x: number, y: number) => {
+    var history = trainingValidationLossHistory;
+    history.push({ x, y });
+    setTrainingValidationLossHistory(history);
+  };
 
   const onBatchSizeChange = (event: React.FormEvent<EventTarget>) => {
     const target = event.target as HTMLInputElement;
@@ -227,7 +248,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     paper: styles.paper
   };
 
-  const fit = async () => {
+  const fit = async (labledData: Image[]) => {
     const numberOfClasses: number = categories.length - 1;
     if (numberOfClasses === 1) {
       alert('The classifier must have at least two classes!');
@@ -236,48 +257,132 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
     const model = await createModel(numberOfClasses);
 
-    const trainingSet = await createTrainingSet(categories, images, 2);
-
-    const x = trainingSet.data;
-    const y = trainingSet.lables;
-
     model.compile({
-      loss: lossFunction,
+      loss: lossFunctions[lossFunction],
       metrics: ['accuracy'],
       optimizer: optimizationAlgorithms[optimizationAlgorithm](learningRate)
     });
 
+    var counter = 0;
+
     const args = {
-      batchSize: batchSize,
       epochs: epochs,
-      validationSplit: 1 - datasetSplits[1],
+      shuffle: true,
+      validationSplit: 1 - datasetSplits[1] / 100,
       callbacks: {
         onEpochEnd: async (
           epoch: number,
           logs?: tensorflow.Logs | undefined
         ) => {
           if (logs) {
-            console.log(
-              `onEpochEnd ${epoch}, loss: ${logs.loss}, accuracy: ${logs.accuracy}`
-            );
+            updateLossHistory(counter, logs.loss);
+            updateAccuracHistory(counter, logs.acc);
+            updateValidationAccuracHistory(counter, logs.val_acc);
+            updateValidationLossHistory(counter, logs.val_loss);
+            counter++;
           }
           if (stopTraining) {
-            console.log('test train stop');
             model.stopTraining = true;
           }
         }
       }
     };
 
-    const history = await model.fit(x, y, args);
+    // train network in batches, reduce memory usage
+    var training = true;
+    var i = 0;
+    while (training) {
+      var startBatchIndex = i * batchSize;
+      var endBatchIndex = (i + 1) * batchSize - 1;
+      if (endBatchIndex > labledData.length) {
+        var batchData = labledData.slice(startBatchIndex);
+        training = false;
+      } else {
+        var batchData = labledData.slice(startBatchIndex, endBatchIndex);
+      }
+      const trainingSet = await createTrainingSet(categories, batchData, 2);
+      const trainData = trainingSet.data;
+      const trainLables = trainingSet.lables;
+      const history = await model.fit(trainData, trainLables, args);
+      trainData.dispose();
+      trainLables.dispose();
+      i++;
+    }
+
+    console.log('finished, saving the model');
 
     await model.save('indexeddb://mobilenet');
   };
 
   const onFit = async () => {
+    const labledData = images.filter((image: Image) => {
+      return (
+        image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000'
+      );
+    });
     initializeDatasets();
-    await resetStopTraining();
-    await fit().then(() => {});
+    resetStopTraining();
+    fit(shuffleImages(labledData)).then(() => {});
+  };
+
+  enum LossFunction {
+    'absoluteDifference',
+    'cosineDistance',
+    'hingeLoss',
+    'huberLoss',
+    'logLoss',
+    'meanSquaredError',
+    'sigmoidCrossEntropy',
+    'softmaxCrossEntropy',
+    'categoricalCrossentropy'
+  }
+  const onParameterTuning = async () => {
+    const numberOfClasses: number = categories.length - 1;
+    const labledData = images.filter((image: Image) => {
+      return (
+        image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000'
+      );
+    });
+    const trainingSet = await createAutotunerDataSet(
+      categories,
+      labledData,
+      numberOfClasses
+    );
+
+    var tensorflowlModelAutotuner = new autotuner.TensorflowlModelAutotuner(
+      ['accuracy'],
+      trainingSet,
+      numberOfClasses
+    );
+
+    const model = await createModel(numberOfClasses);
+
+    var optimizers = [
+      tensorflow.train.adadelta(learningRate),
+      tensorflow.train.adam(learningRate),
+      tensorflow.train.adamax(learningRate),
+      tensorflow.train.rmsprop(learningRate),
+      tensorflow.train.sgd(learningRate)
+    ];
+    var losses = [
+      LossFunction.absoluteDifference,
+      LossFunction.categoricalCrossentropy,
+      LossFunction.cosineDistance,
+      LossFunction.meanSquaredError,
+      LossFunction.sigmoidCrossEntropy,
+      LossFunction.softmaxCrossEntropy
+    ];
+
+    const parameters = {
+      lossfunction: losses,
+      optimizerAlgorithm: optimizers,
+      batchSize: [15],
+      epochs: [5, 10, 12, 15, 20]
+    };
+    tensorflowlModelAutotuner.addModel('testModel', model, parameters);
+
+    // tune the hyperparameters
+    await tensorflowlModelAutotuner.bayesianOptimization('accuracy');
   };
 
   return (
@@ -325,6 +430,16 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
             timeout="auto"
             unmountOnExit
           >
+            <Tooltip title="Tune parameters" placement="bottom">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={onParameterTuning}
+              >
+                Tune parameters
+              </Button>
+            </Tooltip>
+
             <Form
               batchSize={batchSize}
               closeDialog={closeDialog}
@@ -393,7 +508,12 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
         </List>
         <DialogContentText>Training history:</DialogContentText>
 
-        <History data={trainingLossHistory} />
+        <History
+          lossData={trainingLossHistory}
+          validationAccuracyData={trainingValidationLossHistory}
+          accuracyData={trainingAccuracyHistory}
+          validationLossData={trainingValidationAccuracyHistory}
+        />
       </DialogContent>
     </Dialog>
   );
