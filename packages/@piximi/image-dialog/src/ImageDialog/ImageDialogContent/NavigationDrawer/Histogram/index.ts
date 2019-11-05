@@ -1,1 +1,0 @@
-export { Histogram } from './Histogram';
