@@ -6,12 +6,12 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-type Props = {
+type BrightnessSliderProps = {
   brightness: number;
   setBrightness: (brightness: number) => void;
 };
 
-const BrightnessSlider = (props: Props) => {
+export const BrightnessSlider = (props: BrightnessSliderProps) => {
   const classes = useStyles({});
 
   const { brightness, setBrightness } = props;
@@ -39,5 +39,3 @@ const BrightnessSlider = (props: Props) => {
     </div>
   );
 };
-
-export default BrightnessSlider;

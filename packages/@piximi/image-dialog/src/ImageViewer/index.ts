@@ -1,1 +1,1 @@
-export { ImageViewer } from './ImageViewer';
+export { ConnectedImageViewer } from './ConnectedImageViewer';

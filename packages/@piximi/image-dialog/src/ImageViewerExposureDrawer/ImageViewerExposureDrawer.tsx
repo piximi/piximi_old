@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-const ImageViewerExposureDrawer = (props: any) => {
+export const ImageViewerExposureDrawer = (props: any) => {
   const {
     onClose,
     open,
@@ -47,5 +47,3 @@ const ImageViewerExposureDrawer = (props: any) => {
     </Drawer>
   );
 };
-
-export default ImageViewerExposureDrawer;
