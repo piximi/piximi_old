@@ -10,17 +10,16 @@
     "url": "https://github.com/piximi/components/issues"
   },
   "dependencies": {
-    "@material-ui/core": "4.1.2",
-    "@material-ui/icons": "4.2.1",
-    "@material-ui/lab": "4.0.0-alpha.17",
-    "@material-ui/styles": "4.1.2",
-    "@piximi/components": "^0.1.12",
+    "@material-ui/core": "4.5.1",
+    "@material-ui/icons": "4.5.1",
+    "@material-ui/styles": "4.5.0",
     "@piximi/hooks": "^0.1.11",
     "@piximi/store": "^0.1.23",
+    "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-color": "^2.17.3",
-    "react-dnd": "^8.0.3",
-    "react-dnd-html5-backend": "^8.0.3",
+    "react-dnd": "9.4.0",
+    "react-dnd-html5-backend": "9.4.0",
     "react-dom": "^16.8.6",
     "react-i18next": "^10.11.2"
   },
@@ -90,21 +89,6 @@
   },
   "main": "./dist/index.js",
   "name": "@piximi/components",
-  "peerDependencies": {
-    "@material-ui/core": "4.1.2",
-    "@material-ui/icons": "4.2.1",
-    "@material-ui/lab": "4.0.0-alpha.17",
-    "@material-ui/styles": "4.1.2",
-    "@piximi/components": "^0.1.12",
-    "@piximi/hooks": "^0.1.11",
-    "@piximi/store": "^0.1.23",
-    "react": "^16.8.6",
-    "react-color": "^2.17.3",
-    "react-dnd": "^7.6.0",
-    "react-dnd-html5-backend": "^7.4.4",
-    "react-dom": "^16.8.6",
-    "react-i18next": "^10.9.0"
-  },
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -121,5 +105,5 @@
   },
   "sideEffects": false,
   "types": "./dist/index.d.ts",
-  "version": "0.1.15"
+  "version": "0.1.16"
 }
