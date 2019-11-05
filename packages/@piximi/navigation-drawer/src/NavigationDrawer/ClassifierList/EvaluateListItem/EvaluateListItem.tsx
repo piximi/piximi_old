@@ -3,23 +3,15 @@ import * as React from 'react';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import { useTranslation } from 'react-i18next';
 import { useDialog } from '@piximi/hooks';
-import { Category, Image } from '@piximi/types';
 import { ConnectedEvaluateClassifierDialog } from '../../../EvaluateClassifierDialog/EvaluateClassifierDialog';
 
 type EvaluateListItemProbs = {
-  categories: Category[];
-  images: Image[];
   datasetInitialized: boolean;
   setDatasetInitialized: (datasetInitialized: boolean) => void;
 };
 
 export const EvaluateListItem = (probs: EvaluateListItemProbs) => {
-  const {
-    categories,
-    images,
-    datasetInitialized,
-    setDatasetInitialized
-  } = probs;
+  const { datasetInitialized, setDatasetInitialized } = probs;
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
 

@@ -26,23 +26,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       const action = toggleCategoryVisibilityAction(payload);
 
       dispatch(action);
-    },
-    updateImageCategory: (identifier: string, categoryIdentifier: string) => {
-      const payload = {
-        categoryIdentifier: categoryIdentifier,
-        identifier: identifier
-      };
-
-      const action = updateImageCategoryAction(payload);
-
-      dispatch(action);
-    },
-    updateVisibility: (identifier: string, visible: boolean) => {
-      const payload = { identifier: identifier, visible: visible };
-
-      const action = updateCategoryVisibilityAction(payload);
-
-      dispatch(action);
     }
   };
 };

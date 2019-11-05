@@ -37,18 +37,17 @@ const VisibleIcon = (props: VisibleIconProps) => {
 type CategoryListItemProps = {
   categories: Category[];
   category: Category;
-  isOver?: boolean;
+  key: string;
+  index: number;
   toggleVisibility: (identifier: string) => void;
 };
 
-export const CategoryListItem = (props: any) => {
+export const CategoryListItem = (props: CategoryListItemProps) => {
   const { categories, category, toggleVisibility } = props;
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
   const [animateOnDrop, setAnimateOnDrop] = React.useState<Partial<boolean>>();
-
-  const classes = useStyles({});
 
   const onToggleVisibilityClick = () => {
     toggleVisibility(category.identifier);
@@ -66,7 +65,7 @@ export const CategoryListItem = (props: any) => {
   };
 
   const listItemClasses = {
-    root: props.isOver ? classes.isOver : ''
+    root: ''
   };
 
   return (

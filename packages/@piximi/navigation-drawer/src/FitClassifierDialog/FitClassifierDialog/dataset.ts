@@ -1,4 +1,4 @@
-import { Category, Image, Partition } from '@piximi/types';
+import { Category, Image } from '@piximi/types';
 import * as ImageJS from 'image-js';
 import * as tensorflow from '@tensorflow/tfjs';
 
@@ -35,8 +35,7 @@ export const createTrainingSet = async (
 
 export const createAutotunerDataSet = async (
   categories: Category[],
-  labledData: Image[],
-  numberOfClasses: number
+  labledData: Image[]
 ) => {
   const trainingData: Image[] = [];
   for (let i = 0; i < labledData.length; i++) {

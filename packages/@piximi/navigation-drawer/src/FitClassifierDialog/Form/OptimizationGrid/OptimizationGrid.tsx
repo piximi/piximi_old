@@ -2,7 +2,6 @@ import * as React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Grid, MenuItem, TextField } from '@material-ui/core';
 import * as _ from 'lodash';
-import * as tensorflow from '@tensorflow/tfjs';
 
 const optimizationAlgorithms = {
   adadelta: 'Adadelta',
@@ -50,12 +49,6 @@ export const OptimizationGrid = (props: OptimizationGridProps) => {
     lossFunction: 'softmaxCrossEntropy',
     optimizationAlgorithm: 'adam'
   });
-
-  const onChange = (name: keyof State) => (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setValues({ ...values, [name]: event.target.value });
-  };
 
   const classes = useStyles();
 

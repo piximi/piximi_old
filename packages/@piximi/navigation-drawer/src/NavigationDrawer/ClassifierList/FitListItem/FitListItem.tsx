@@ -3,23 +3,15 @@ import * as React from 'react';
 import ScatterPlotIcon from '@material-ui/icons/ScatterPlot';
 import { useTranslation } from 'react-i18next';
 import { useDialog } from '@piximi/hooks';
-import { Category, Image } from '@piximi/types';
 import { ConnectedFitClassifierDialog } from '../../../FitClassifierDialog/FitClassifierDialog/ConnectedFitClassifierDialog';
 
 type FitListItemProps = {
-  categories: Category[];
-  images: Image[];
   datasetInitialized: boolean;
   setDatasetInitialized: (datasetInitialized: boolean) => void;
 };
 
 export const FitListItem = (props: FitListItemProps) => {
-  const {
-    categories,
-    images,
-    datasetInitialized,
-    setDatasetInitialized
-  } = props;
+  const { datasetInitialized, setDatasetInitialized } = props;
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
 

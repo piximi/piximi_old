@@ -39,11 +39,6 @@ function roundToFour(num: number) {
   return +(Math.round(num + 'e+4') + 'e-4');
 }
 
-const getMatrixFromArray = (array: any, size: number): number[][] => {
-  var matrix: number[][] = [];
-  return matrix;
-};
-
 export const EvaluateClassifierDialog = (
   props: EvaluateClassifierDialogProps
 ) => {
@@ -75,7 +70,6 @@ export const EvaluateClassifierDialog = (
   const styles = useStyles({});
   const [useCrossValidation, setUseCrossValidation] = useState<boolean>(false);
   const [accuracy, setAccuracy] = useState<string>('not evaluated yet');
-  const [crossEntropy, setCrossEntropy] = useState<number>(0);
 
   const onUseCrossValidationChange = (event: React.FormEvent<EventTarget>) => {
     setUseCrossValidation(!useCrossValidation);
@@ -115,8 +109,6 @@ export const EvaluateClassifierDialog = (
 
     var accuracy = modelEvaluationResults.accuracy;
     setAccuracy(roundToFour(accuracy).toString());
-    var crossEntropy = modelEvaluationResults.crossEntropy;
-    setCrossEntropy(crossEntropy);
     var confusionMatrixArray = modelEvaluationResults.confusionMatrixArray;
 
     var values = [];
@@ -136,15 +128,6 @@ export const EvaluateClassifierDialog = (
     });
     const data = { values: values, tickLabels: lables };
 
-    //var element = ReactDOM.findDOMNode('evaluationID') as HTMLElement;
-
-    const surface = tfvis.visor().surface({
-      name: 'Confusion Matrix',
-
-      styles: {
-        width: '650px'
-      }
-    });
     tfvis.render.confusionMatrix(EvaluateClassifierDialog, data);
   };
 

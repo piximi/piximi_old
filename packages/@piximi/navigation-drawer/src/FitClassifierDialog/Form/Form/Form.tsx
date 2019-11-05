@@ -1,15 +1,8 @@
 import * as React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { OptimizationGrid } from '../OptimizationGrid';
-import {
-  Grid,
-  MenuItem,
-  TextField,
-  Switch,
-  FormControlLabel
-} from '@material-ui/core';
+import { Grid, MenuItem, TextField } from '@material-ui/core';
 import * as _ from 'lodash';
-import * as tensorflow from '@tensorflow/tfjs';
 
 const lossFunctions = {
   absoluteDifference: 'Absolute difference',

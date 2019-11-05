@@ -303,7 +303,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
       const trainingSet = await createTrainingSet(categories, batchData, 2);
       const trainData = trainingSet.data;
       const trainLables = trainingSet.lables;
-      const history = await model.fit(trainData, trainLables, args);
+      await model.fit(trainData, trainLables, args);
       trainData.dispose();
       trainLables.dispose();
       i++;
@@ -333,7 +333,6 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     'logLoss',
     'meanSquaredError',
     'sigmoidCrossEntropy',
-    'softmaxCrossEntropy',
     'categoricalCrossentropy'
   }
   const onParameterTuning = async () => {
@@ -343,11 +342,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
         image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000'
       );
     });
-    const trainingSet = await createAutotunerDataSet(
-      categories,
-      labledData,
-      numberOfClasses
-    );
+    const trainingSet = await createAutotunerDataSet(categories, labledData);
 
     var tensorflowlModelAutotuner = new autotuner.TensorflowlModelAutotuner(
       ['accuracy'],
@@ -364,13 +359,14 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
       tensorflow.train.rmsprop(learningRate),
       tensorflow.train.sgd(learningRate)
     ];
+
     var losses = [
       LossFunction.absoluteDifference,
       LossFunction.categoricalCrossentropy,
       LossFunction.cosineDistance,
       LossFunction.meanSquaredError,
       LossFunction.sigmoidCrossEntropy,
-      LossFunction.softmaxCrossEntropy
+      LossFunction.categoricalCrossentropy
     ];
 
     const parameters = {
@@ -382,7 +378,17 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     tensorflowlModelAutotuner.addModel('testModel', model, parameters);
 
     // tune the hyperparameters
-    await tensorflowlModelAutotuner.bayesianOptimization('accuracy');
+    const params = await tensorflowlModelAutotuner.bayesianOptimization(
+      'accuracy'
+    );
+
+    setBatchSize(params['batchSize']);
+    setEpochs(params['epochs']);
+    setLossFunction(LossFunction[params['lossFunction']] as string);
+    const optimizer = Object.keys(optimizationAlgorithms)[
+      params['optimizerFunction']
+    ];
+    setOptimizationAlgorithm(optimizer);
   };
 
   return (

@@ -45,7 +45,7 @@ export const CategoriesList = (props: CategoriesListProps) => {
       </ListItem>
 
       <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
-        {sortedCategories.map((category, index) => (
+        {sortedCategories.map((category: Category, index: number) => (
           <ConnectedCategoryListItem
             category={category}
             key={category.identifier}

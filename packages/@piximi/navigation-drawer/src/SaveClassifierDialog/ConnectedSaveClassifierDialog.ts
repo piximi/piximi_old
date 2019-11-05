@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import { Classifier } from '@piximi/types';
 import { SaveClassifierDialog } from './SaveClassifierDialog';
 
@@ -13,11 +12,6 @@ const mapStateToProps = (state: State) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
-  return {};
-};
-
-export const ConnectedSaveClassifierDialog = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SaveClassifierDialog);
+export const ConnectedSaveClassifierDialog = connect(mapStateToProps)(
+  SaveClassifierDialog
+);

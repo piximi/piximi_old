@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { VictoryAxis, VictoryChart, VictoryLine, VictoryTheme } from 'victory';
 import { Grid, Typography } from '@material-ui/core';
 import { styles } from './History.css';
-import * as tfvis from '@tensorflow/tfjs-vis';
 
 type Data = { x: Number; y: Number }[];
 

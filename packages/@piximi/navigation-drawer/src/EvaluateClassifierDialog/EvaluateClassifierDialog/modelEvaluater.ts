@@ -1,5 +1,4 @@
 import * as tensorflow from '@tensorflow/tfjs';
-import * as math from 'mathjs';
 
 export const evaluateTensorflowModel = (
   model: tensorflow.LayersModel,
@@ -17,13 +16,13 @@ export const evaluateTensorflowModelCV = async (
   numberOfClasses: number
 ) => {
   const dataSize = evaluationData.length;
-  const k = math.min(10, math.ceil(math.nthRoot(dataSize) as number));
+  const k = Math.min(10, Math.ceil(Math.sqrt(dataSize) as number));
 
   const dataFolds = Array.from(
-    Array(math.ceil(evaluationData.length / k)),
+    Array(Math.ceil(evaluationData.length / k)),
     (_, i) => evaluationData.slice(i * k, i * k + k)
   );
-  const labelFolds = Array.from(Array(math.ceil(labels.length / k)), (_, i) =>
+  const labelFolds = Array.from(Array(Math.ceil(labels.length / k)), (_, i) =>
     labels.slice(i * k, i * k + k)
   );
 

@@ -14,6 +14,9 @@ import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'react-i18next';
 // @ts-ignore
+
+var test;
+
 import { OpenExampleClassifierListItem } from '../NavigationDrawer';
 import { Category, Image } from '@piximi/types';
 
@@ -43,10 +46,10 @@ export const OpenExampleClassifierDialog = (
     closeMenu();
     return axios
       .get('https://storage.piximi.app/examples/' + name + '.piximi')
-      .then(result => {
+      .then((result: any) => {
         openClassifier(result.data.categories, result.data.images, name);
       })
-      .catch(function(error) {
+      .catch(function(error: Error) {
         alert(error);
       });
   };

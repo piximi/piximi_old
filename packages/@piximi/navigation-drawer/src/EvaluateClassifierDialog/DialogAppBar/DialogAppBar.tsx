@@ -7,8 +7,7 @@ import {
   IconButton,
   Toolbar,
   Tooltip,
-  Switch,
-  FormControlLabel
+  Switch
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>

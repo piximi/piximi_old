@@ -9,8 +9,6 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { AppBar, IconButton, Toolbar, Tooltip } from '@material-ui/core';
 
-const drawerWidth = 280;
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     leftIcon: {
