@@ -23,6 +23,7 @@
     "file-saver": "^2.0.2",
     "image-js": "^0.21.6",
     "lodash": "^4.17.13",
+    "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-color": "^2.17.3",
     "react-dnd": "^8.0.3",
