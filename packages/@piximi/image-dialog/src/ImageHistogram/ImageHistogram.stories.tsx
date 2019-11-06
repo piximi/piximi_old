@@ -1,6 +1,5 @@
-import { shallow } from 'enzyme';
-import * as React from 'react';
+import React from 'react';
 
-it('Example', () => {
-  shallow(<div />);
-});
+import { storiesOf } from '@storybook/react';
+
+storiesOf('example', module).add('example', () => <div />);
