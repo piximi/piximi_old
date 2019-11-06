@@ -7,7 +7,7 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/piximi/components/issues"
+    "url": "https://github.com/piximi/image-dialog/issues"
   },
   "dependencies": {
     "@material-ui/core": "4.5.1",
@@ -23,7 +23,7 @@
     "react-dom": "^16.8.6",
     "react-i18next": "^10.11.2"
   },
-  "description": "Piximi’s generic React components",
+  "description": "Piximi’s ImageDialog component",
   "devDependencies": {
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
@@ -88,7 +88,7 @@
     ]
   },
   "main": "./dist/index.js",
-  "name": "@piximi/components",
+  "name": "@piximi/image-dialog",
   "private": false,
   "publishConfig": {
     "access": "public"
