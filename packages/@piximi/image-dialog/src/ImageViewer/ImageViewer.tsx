@@ -18,9 +18,6 @@ type ImageViewerProps = {
 export const ImageViewer = (props: ImageViewerProps) => {
   const classes = useStyles({});
 
-  const [applySettingsGlobally, setApplySettingsGlobally] = React.useState(
-    false
-  );
   const [exposureDrawerToggled, setExposureDrawerToggled] = React.useState(
     true
   );
@@ -35,15 +32,6 @@ export const ImageViewer = (props: ImageViewerProps) => {
   };
 
   const saveEdits = () => {};
-
-  const undoEdits = () => {
-    const initialBrightness = images[imgIdentifier].brightness;
-
-    const initialContrast = images[imgIdentifier].contrast;
-
-    setBrightness(initialBrightness);
-    setContrast(initialContrast);
-  };
 
   return (
     <div className={classes.root}>

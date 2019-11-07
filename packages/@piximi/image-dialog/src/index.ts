@@ -8,3 +8,5 @@ export { ImageViewerDialog } from './ImageViewerDialog';
 export { ImageViewerExposureDrawer } from './ImageViewerExposureDrawer';
 export { ImageCanvas } from './ImageCanvas';
 export { ImageViewerAppBar } from './ImageViewerAppBar';
+export { UndoButton } from './UndoButton';
+export { SaveButton } from './SaveButton';

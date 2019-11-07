@@ -3,10 +3,11 @@ import styles from './ImageViewerAppBar.css';
 import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import PublicIcon from '@material-ui/icons/Public';
 import { makeStyles } from '@material-ui/styles';
+import { UndoButton } from '../UndoButton';
+import { SaveButton } from '../SaveButton';
 
 const useStyles = makeStyles(styles);
 
@@ -33,17 +34,6 @@ export const ImageViewerAppBar = (props: ImageViewerAppBarProps) => {
     setApplySettingsGlobally(!applySettingsGlobally);
   };
 
-  const onSaveClick = () => {};
-
-  const onUndoClick = () => {
-    const initialBrightness = images[imgIdentifier].brightness;
-
-    const initialContrast = images[imgIdentifier].contrast;
-
-    setBrightness(initialBrightness);
-    setContrast(initialContrast);
-  };
-
   return (
     <AppBar color="inherit" position="sticky">
       <Toolbar>
@@ -57,9 +47,14 @@ export const ImageViewerAppBar = (props: ImageViewerAppBarProps) => {
 
         <div className={classes.grow} />
 
-        <Button onClick={onUndoClick}>Undo</Button>
+        <UndoButton
+          identifier={imgIdentifier}
+          images={images}
+          setBrightness={setBrightness}
+          setContrast={setContrast}
+        />
 
-        <Button onClick={onSaveClick}>Save</Button>
+        <SaveButton />
       </Toolbar>
     </AppBar>
   );
