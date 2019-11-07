@@ -38,7 +38,7 @@ export const ImageViewerAppBar = (props: ImageViewerAppBarProps) => {
     <AppBar color="inherit" position="sticky">
       <Toolbar>
         <IconButton onClick={onClose}>
-          <ArrowBackIcon />
+          <ArrowBackIcon styles={{ height: '256px', width: '256px' }} />
         </IconButton>
 
         <IconButton onClick={onPublicClick}>

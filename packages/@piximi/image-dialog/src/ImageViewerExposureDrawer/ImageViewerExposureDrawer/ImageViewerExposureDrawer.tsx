@@ -1,12 +1,10 @@
 import * as React from 'react';
 import styles from './ImageViewerExposureDrawer.css';
 import Drawer from '@material-ui/core/Drawer';
-import {
-  BrightnessSlider,
-  ChannelSelection,
-  ContrastSlider,
-  ImageHistogram
-} from '../../index';
+import { BrightnessSlider } from '../BrightnessSlider';
+import { ChannelSelection } from '../ChannelSelection';
+import { ContrastSlider } from '../ContrastSlider';
+import { ImageHistogram } from '../ImageHistogram';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);

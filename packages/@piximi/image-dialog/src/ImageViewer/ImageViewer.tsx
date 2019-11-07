@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styles from './ImageViewer.css';
-import Grid from '@material-ui/core/Grid';
 import { ImageViewerAppBar, ImageViewerExposureDrawer } from '..';
 import { ImageCanvas } from '..';
 import { makeStyles } from '@material-ui/styles';
@@ -35,14 +34,7 @@ export const ImageViewer = (props: ImageViewerProps) => {
 
   return (
     <div className={classes.root}>
-      <ImageCanvas
-        src={src}
-        height={500}
-        width={500}
-        brightness={brightness}
-        contrast={contrast}
-        unselectedChannels={unselectedChannels}
-      />
+      <ImageCanvas src={src} />
 
       <ImageViewerAppBar
         imgIdentifier={imgIdentifier}

@@ -5,8 +5,7 @@ import {
   IconButton,
   ListItem,
   ListItemIcon,
-  ListItemSecondaryAction,
-  ListItemText
+  ListItemSecondaryAction
 } from '@material-ui/core';
 import CommentIcon from '@material-ui/core/SvgIcon/SvgIcon';
 import { green } from '@material-ui/core/colors';
