@@ -26,9 +26,9 @@ export const ContrastSlider = (props: ContrastSliderProps) => {
 
       <Slider
         classes={{ root: classes.slider }}
-        min={50}
-        max={300}
-        step={0.1}
+        min={0.0}
+        max={1.0}
+        step={0.01}
         value={contrast}
         aria-labelledby="label"
         onChange={onChange}

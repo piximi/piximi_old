@@ -27,9 +27,9 @@ export const BrightnessSlider = (props: BrightnessSliderProps) => {
       <Slider
         classes={{ root: classes.slider }}
         value={brightness}
-        min={0}
-        max={1000}
-        step={0.5}
+        min={0.0}
+        max={1.0}
+        step={0.01}
         aria-labelledby="label"
         onChange={onChange}
       />
