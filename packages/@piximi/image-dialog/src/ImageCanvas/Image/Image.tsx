@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as THREE from 'three';
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef, useState } from 'react';
+import { useThree } from 'react-three-fiber';
 
 type ImageProps = {
   src: string;
@@ -13,11 +14,13 @@ export const Image = (props: ImageProps) => {
 
   const texture = useMemo(() => {
     return new THREE.TextureLoader().load(src);
-  }, [src]);
+  }, []);
+
+  const { viewport } = useThree();
 
   return (
-    <mesh ref={ref}>
-      <planeBufferGeometry attach="geometry" args={[5, 5, 5]} />
+    <mesh ref={ref} scale={[1.0, 1.0, 1.0]}>
+      <planeBufferGeometry attach="geometry" args={[5.0, 5.0]} />
       <meshBasicMaterial attach="material" map={texture} />
     </mesh>
   );

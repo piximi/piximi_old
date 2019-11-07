@@ -35,24 +35,14 @@ export const ImageViewer = (props: ImageViewerProps) => {
 
   return (
     <div className={classes.root}>
-      <Grid
-        className={classes.container}
-        container
-        alignItems="center"
-        justify="center"
-        spacing={3}
-      >
-        <Grid item xs={4}>
-          <ImageCanvas
-            src={src}
-            height={500}
-            width={500}
-            brightness={brightness}
-            contrast={contrast}
-            unselectedChannels={unselectedChannels}
-          />
-        </Grid>
-      </Grid>
+      <ImageCanvas
+        src={src}
+        height={500}
+        width={500}
+        brightness={brightness}
+        contrast={contrast}
+        unselectedChannels={unselectedChannels}
+      />
 
       <ImageViewerAppBar
         imgIdentifier={imgIdentifier}
