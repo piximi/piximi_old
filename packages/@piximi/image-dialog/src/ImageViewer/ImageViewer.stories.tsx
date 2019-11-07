@@ -5,7 +5,7 @@ import { ConnectedImageViewer } from './ConnectedImageViewer';
 import { Provider } from 'react-redux';
 import { store } from '@piximi/store';
 import { ImageViewer } from './ImageViewer';
-import * as example from '../Image/example.jpg';
+import * as example from '../ImageCanvas/Image/example.jpg';
 
 const onClose = () => {};
 

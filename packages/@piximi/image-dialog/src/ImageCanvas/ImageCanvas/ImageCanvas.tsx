@@ -1,6 +1,6 @@
 import { default as React } from 'react';
 import { Canvas } from 'react-three-fiber';
-import { Image } from '..';
+import { Image } from '../../index';
 
 type ImageCanvasProps = {
   brightness?: number;

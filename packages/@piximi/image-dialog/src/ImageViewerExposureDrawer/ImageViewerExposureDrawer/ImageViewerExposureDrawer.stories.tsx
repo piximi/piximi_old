@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { ImageViewerExposureDrawer } from './ImageViewerExposureDrawer';
-import * as example from '../Image/example.jpg';
+import * as example from '../../ImageCanvas/Image/example.jpg';
 
 const setBrightness = () => {};
 

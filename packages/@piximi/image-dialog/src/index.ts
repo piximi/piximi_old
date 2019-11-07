@@ -1,12 +1,14 @@
-export { BrightnessSlider } from './BrightnessSlider';
-export { ChannelSelection } from './ChannelSelection';
+export { BrightnessSlider } from './ImageViewerExposureDrawer/BrightnessSlider';
+export { ChannelSelection } from './ImageViewerExposureDrawer/ChannelSelection';
 export { ConnectedImageViewer } from './ImageViewer';
-export { ContrastSlider } from './ContrastSlider';
-export { Image } from './Image';
-export { ImageHistogram } from './ImageHistogram';
+export { ContrastSlider } from './ImageViewerExposureDrawer/ContrastSlider';
+export { Image } from './ImageCanvas/Image';
+export { ImageHistogram } from './ImageViewerExposureDrawer/ImageHistogram';
 export { ImageViewerDialog } from './ImageViewerDialog';
-export { ImageViewerExposureDrawer } from './ImageViewerExposureDrawer';
-export { ImageCanvas } from './ImageCanvas';
-export { ImageViewerAppBar } from './ImageViewerAppBar';
-export { UndoButton } from './UndoButton';
-export { SaveButton } from './SaveButton';
+export {
+  ImageViewerExposureDrawer
+} from './ImageViewerExposureDrawer/ImageViewerExposureDrawer';
+export { ImageCanvas } from './ImageCanvas/ImageCanvas';
+export { ImageViewerAppBar } from './ImageViewerAppBar/ImageViewerAppBar';
+export { UndoButton } from './ImageViewerAppBar/UndoButton';
+export { SaveButton } from './ImageViewerAppBar/SaveButton';
