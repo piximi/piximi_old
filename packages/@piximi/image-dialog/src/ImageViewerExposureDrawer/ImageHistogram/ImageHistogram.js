@@ -25,7 +25,7 @@ export const ImageHistogram = props => {
         d3.selectAll('g.y-axis').remove();
       }
 
-      const graphComponent = (imgData, color) => {
+      const graphComponent = (imgData, color, className) => {
         const data = Object.keys(imgData).map(function(key) {
           return { freq: imgData[key], idx: +key };
         });
@@ -67,11 +67,11 @@ export const ImageHistogram = props => {
             );
         }
 
-        g.selectAll('.bar-' + color)
+        g.selectAll('.bar-' + className)
           .data(data)
           .enter()
           .append('rect')
-          .attr('class', 'bar-' + color)
+          .attr('class', 'bar-' + className)
           .attr('fill', color)
           .attr('x', function(d) {
             return x(d.idx);
@@ -80,7 +80,7 @@ export const ImageHistogram = props => {
             return y(d.freq);
           })
           .attr('width', 2)
-          .attr('opacity', 0.8)
+          .attr('opacity', 1.0)
           .attr('height', function(d) {
             return height - y(d.freq);
           });
@@ -89,19 +89,19 @@ export const ImageHistogram = props => {
       if (channels.includes(0)) {
         d3.selectAll('.bar-red').remove();
       } else {
-        graphComponent(imgData.rD, 'red');
+        graphComponent(imgData.rD, '#e53935', 'red');
       }
 
       if (channels.includes(1)) {
         d3.selectAll('.bar-green').remove();
       } else {
-        graphComponent(imgData.gD, 'green');
+        graphComponent(imgData.gD, '#66bb6a', 'green');
       }
 
       if (channels.includes(2)) {
         d3.selectAll('.bar-blue').remove();
       } else {
-        graphComponent(imgData.bD, 'blue');
+        graphComponent(imgData.bD, '#42a5f5', 'blue');
       }
     };
 
