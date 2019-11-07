@@ -1,21 +1,13 @@
 import * as React from 'react';
 import styles from './ImageViewer.css';
-import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import EqualizerIcon from '@material-ui/icons/Equalizer';
-import PublicIcon from '@material-ui/icons/Public';
-import { ImageViewerExposureDrawer } from '..';
-import { Image } from '..';
+import { ImageViewerAppBar, ImageViewerExposureDrawer } from '..';
+import { ImageCanvas } from '..';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-type Props = {
+type ImageViewerProps = {
   src: any;
   imgIdentifier: any;
   saveEditsGlobally: any;
@@ -23,7 +15,7 @@ type Props = {
   images: any;
 };
 
-export const ImageViewer = (props: Props) => {
+export const ImageViewer = (props: ImageViewerProps) => {
   const classes = useStyles({});
 
   const [applySettingsGlobally, setApplySettingsGlobally] = React.useState(
@@ -63,7 +55,7 @@ export const ImageViewer = (props: Props) => {
         spacing={3}
       >
         <Grid item xs={4}>
-          <Image
+          <ImageCanvas
             src={src}
             height={500}
             width={500}
@@ -74,63 +66,12 @@ export const ImageViewer = (props: Props) => {
         </Grid>
       </Grid>
 
-      <AppBar position="static" color="inherit" className={classes.appbar}>
-        <Toolbar>
-          <IconButton
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="Menu"
-            onClick={onClose}
-          >
-            <ArrowBackIcon />
-          </IconButton>
-
-          <Tooltip title="Apply settings globally">
-            <IconButton
-              onClick={() => setApplySettingsGlobally(!applySettingsGlobally)}
-              className={
-                applySettingsGlobally
-                  ? classes.globalButton
-                  : classes.menuButton
-              }
-              color="inherit"
-              aria-label="Menu"
-            >
-              <PublicIcon />
-            </IconButton>
-          </Tooltip>
-
-          {exposureDrawerToggled ? (
-            <Button
-              variant="contained"
-              className={classes.undoButton}
-              onClick={undoEdits}
-            >
-              Undo
-            </Button>
-          ) : null}
-
-          {exposureDrawerToggled ? (
-            <Button
-              variant="contained"
-              className={classes.saveButton}
-              onClick={saveEdits}
-            >
-              Save
-            </Button>
-          ) : null}
-
-          <div className={classes.grow} />
-
-          <IconButton
-            className={classes.menuButton}
-            color="inherit"
-            onClick={toggleExposureDrawer}
-          >
-            <EqualizerIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+      <ImageViewerAppBar
+        imgIdentifier={imgIdentifier}
+        saveEditsGlobally={saveEdits}
+        onClose={onClose}
+        images={images}
+      />
 
       <ImageViewerExposureDrawer
         onClose={toggleExposureDrawer}

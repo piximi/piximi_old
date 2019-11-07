@@ -6,3 +6,5 @@ export { Image } from './Image';
 export { ImageHistogram } from './ImageHistogram';
 export { ImageViewerDialog } from './ImageViewerDialog';
 export { ImageViewerExposureDrawer } from './ImageViewerExposureDrawer';
+export { ImageCanvas } from './ImageCanvas';
+export { ImageViewerAppBar } from './ImageViewerAppBar';
