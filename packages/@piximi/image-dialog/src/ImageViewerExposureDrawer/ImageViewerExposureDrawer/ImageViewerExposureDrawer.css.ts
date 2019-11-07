@@ -5,8 +5,7 @@ const drawerWidth = 280;
 const styles = () =>
   createStyles({
     drawerPaper: {
-      width: drawerWidth,
-      backgroundColor: '#202124'
+      width: drawerWidth
     },
     content: {
       width: '400px'

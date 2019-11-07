@@ -3,6 +3,7 @@ import styles from './BrightnessSlider.css';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import { makeStyles } from '@material-ui/styles';
+import { InputLabel } from '@material-ui/core';
 
 const useStyles = makeStyles(styles);
 
@@ -22,7 +23,7 @@ export const BrightnessSlider = (props: BrightnessSliderProps) => {
 
   return (
     <div className={classes.root}>
-      <Typography>Brightness</Typography>
+      <InputLabel htmlFor="my-input">Brightness</InputLabel>
 
       <Slider
         classes={{ root: classes.slider }}

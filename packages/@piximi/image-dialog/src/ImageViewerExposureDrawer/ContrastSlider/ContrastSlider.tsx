@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import styles from './ContrastSlider.css';
 import { makeStyles } from '@material-ui/styles';
+import { InputLabel } from '@material-ui/core';
 
 const useStyles = makeStyles(styles);
 
@@ -22,8 +23,7 @@ export const ContrastSlider = (props: ContrastSliderProps) => {
 
   return (
     <div className={classes.root}>
-      <Typography>Contrast</Typography>
-
+      <InputLabel htmlFor="my-input">Contrast</InputLabel>
       <Slider
         classes={{ root: classes.slider }}
         min={0.0}
