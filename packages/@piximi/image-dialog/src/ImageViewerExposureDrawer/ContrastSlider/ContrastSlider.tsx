@@ -22,9 +22,7 @@ export const ContrastSlider = (props: ContrastSliderProps) => {
 
   return (
     <div className={classes.root}>
-      <Typography style={{ color: 'white' }} id="label">
-        Contrast
-      </Typography>
+      <Typography>Contrast</Typography>
 
       <Slider
         classes={{ root: classes.slider }}

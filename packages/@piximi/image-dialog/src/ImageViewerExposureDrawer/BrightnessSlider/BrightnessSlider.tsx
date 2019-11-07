@@ -22,12 +22,9 @@ export const BrightnessSlider = (props: BrightnessSliderProps) => {
 
   return (
     <div className={classes.root}>
-      <Typography style={{ color: 'white' }} id="label">
-        Brightness
-      </Typography>
+      <Typography>Brightness</Typography>
 
       <Slider
-        style={{ color: 'white' }}
         classes={{ root: classes.slider }}
         value={brightness}
         min={0}
