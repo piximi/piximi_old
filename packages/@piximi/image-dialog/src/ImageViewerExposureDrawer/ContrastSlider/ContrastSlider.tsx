@@ -1,19 +1,14 @@
 import * as React from 'react';
-import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import styles from './ContrastSlider.css';
 import { makeStyles } from '@material-ui/styles';
 import { InputLabel } from '@material-ui/core';
+import { useState } from 'react';
 
 const useStyles = makeStyles(styles);
 
-type ContrastSliderProps = {
-  contrast: number;
-  setContrast: (contrast: number) => void;
-};
-
-export const ContrastSlider = (props: ContrastSliderProps) => {
-  const { contrast, setContrast } = props;
+export const ContrastSlider = () => {
+  const [contrast, setContrast] = useState(0.5);
 
   const classes = useStyles({});
 

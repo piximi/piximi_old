@@ -1,21 +1,16 @@
 import * as React from 'react';
 import styles from './BrightnessSlider.css';
-import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import { makeStyles } from '@material-ui/styles';
 import { InputLabel } from '@material-ui/core';
+import { useState } from 'react';
 
 const useStyles = makeStyles(styles);
 
-type BrightnessSliderProps = {
-  brightness: number;
-  setBrightness: (brightness: number) => void;
-};
-
-export const BrightnessSlider = (props: BrightnessSliderProps) => {
+export const BrightnessSlider = () => {
   const classes = useStyles({});
 
-  const { brightness, setBrightness } = props;
+  const [brightness, setBrightness] = useState(0.5);
 
   const onChange = (event: any, value: any) => {
     setBrightness(value);
@@ -23,7 +18,7 @@ export const BrightnessSlider = (props: BrightnessSliderProps) => {
 
   return (
     <div className={classes.root}>
-      <InputLabel htmlFor="my-input">Brightness</InputLabel>
+      <InputLabel htmlFor="brightness">Brightness</InputLabel>
 
       <Slider
         classes={{ root: classes.slider }}

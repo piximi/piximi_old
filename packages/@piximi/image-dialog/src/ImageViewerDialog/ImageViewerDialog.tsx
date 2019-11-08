@@ -16,15 +16,11 @@ type ImageViewerDialogProps = {
 export const ImageViewerDialog = (props: ImageViewerDialogProps) => {
   const classes = useStyles({});
 
-  const { onClose, open, src, imgIdentifier } = props;
+  const { onClose, open, src } = props;
 
   return (
     <Dialog className={classes.root} fullScreen open={open} onClose={onClose}>
-      <ConnectedImageViewer
-        imgIdentifier={imgIdentifier}
-        src={src}
-        onClose={onClose}
-      />
+      <ConnectedImageViewer src={src} onClose={onClose} />
     </Dialog>
   );
 };

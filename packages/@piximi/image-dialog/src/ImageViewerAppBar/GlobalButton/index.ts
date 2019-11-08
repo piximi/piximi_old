@@ -1,0 +1,1 @@
+export { GlobalButton } from './GlobalButton';
