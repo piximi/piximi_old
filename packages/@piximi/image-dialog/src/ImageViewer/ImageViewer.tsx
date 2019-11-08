@@ -13,9 +13,7 @@ export const ImageViewer = (props: ImageViewerProps) => {
   return (
     <>
       <ImageCanvas src={src} />
-
       <ImageViewerExposureDrawer src={src} />
-
       <ImageViewerAppBar onClose={onClose} />
     </>
   );
