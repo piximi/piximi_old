@@ -3,11 +3,11 @@ import styles from './ImageViewerAppBar.css';
 import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import PublicIcon from '@material-ui/icons/Public';
 import { makeStyles } from '@material-ui/styles';
 import { UndoButton } from '../UndoButton';
 import { SaveButton } from '../SaveButton';
+import { BackButton } from '../BackButton';
 
 const useStyles = makeStyles(styles);
 
@@ -37,9 +37,7 @@ export const ImageViewerAppBar = (props: ImageViewerAppBarProps) => {
   return (
     <AppBar color="inherit" position="sticky">
       <Toolbar>
-        <IconButton onClick={onClose}>
-          <ArrowBackIcon styles={{ height: '256px', width: '256px' }} />
-        </IconButton>
+        <BackButton onClose={onClose} />
 
         <IconButton onClick={onPublicClick}>
           <PublicIcon />

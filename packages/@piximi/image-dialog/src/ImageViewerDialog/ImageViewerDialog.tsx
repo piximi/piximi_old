@@ -6,7 +6,14 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-export const ImageViewerDialog = (props: any) => {
+type ImageViewerDialogProps = {
+  onClose: () => void;
+  open: boolean;
+  src: string;
+  imgIdentifier: string;
+};
+
+export const ImageViewerDialog = (props: ImageViewerDialogProps) => {
   const classes = useStyles({});
 
   const { onClose, open, src, imgIdentifier } = props;

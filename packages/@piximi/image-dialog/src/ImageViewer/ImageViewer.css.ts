@@ -3,8 +3,7 @@ import { createStyles } from '@material-ui/styles';
 const styles = () =>
   createStyles({
     root: {
-      flexGrow: 1,
-      backgroundColor: '#000'
+      flexGrow: 1
     },
     container: {
       bottom: '16px',
@@ -23,11 +22,6 @@ const styles = () =>
       marginLeft: -12,
       marginRight: 20,
       color: '#2196f3'
-    },
-    appbar: {
-      backgroundColor: '#000',
-      boxShadow: 'none',
-      width: '100%'
     },
     grow: {
       flexGrow: 1
