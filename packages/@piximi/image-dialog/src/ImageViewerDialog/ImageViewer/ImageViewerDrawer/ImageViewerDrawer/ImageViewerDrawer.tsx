@@ -5,13 +5,11 @@ import { ChannelSelection } from '../ChannelSelection';
 import { ContrastSlider } from '../ContrastSlider';
 import { ImageHistogram } from '../ImageHistogram';
 
-type ImageViewerExposureDrawerProps = {
+type ImageViewerDrawerProps = {
   src: string;
 };
 
-export const ImageViewerExposureDrawer = (
-  props: ImageViewerExposureDrawerProps
-) => {
+export const ImageViewerDrawer = (props: ImageViewerDrawerProps) => {
   const { src } = props;
 
   return (

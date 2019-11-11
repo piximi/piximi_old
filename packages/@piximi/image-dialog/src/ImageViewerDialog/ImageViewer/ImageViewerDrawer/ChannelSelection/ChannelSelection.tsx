@@ -67,9 +67,10 @@ export const ChannelSelection = () => {
         <ListItemIcon>
           <FormControlLabel
             control={
-              <RedCheckbox
+              <Checkbox
                 checked={redCheckboxChecked}
                 onChange={onRedCheckboxChange}
+                classes={{}}
                 value="checkedG"
               />
             }
@@ -87,7 +88,7 @@ export const ChannelSelection = () => {
         <ListItemIcon>
           <FormControlLabel
             control={
-              <GreenCheckbox
+              <Checkbox
                 checked={greenCheckboxChecked}
                 onChange={onGreenCheckboxChange}
                 value="checkedG"
@@ -107,7 +108,7 @@ export const ChannelSelection = () => {
         <ListItemIcon>
           <FormControlLabel
             control={
-              <BlueCheckbox
+              <Checkbox
                 checked={blueCheckboxChecked}
                 onChange={onBlueCheckboxChange}
                 value="checkedG"
