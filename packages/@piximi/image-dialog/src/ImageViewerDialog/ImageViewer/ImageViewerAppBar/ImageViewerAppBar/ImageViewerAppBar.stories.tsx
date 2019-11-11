@@ -5,6 +5,6 @@ import { ImageViewerAppBar } from './ImageViewerAppBar';
 
 const onClose = () => {};
 
-storiesOf('ImageViewerAppBar', module).add('ImageViewerAppBar', () => {
+storiesOf('ImageViewer/ImageViewerAppBar', module).add('example', () => {
   return <ImageViewerAppBar onClose={onClose} />;
 });

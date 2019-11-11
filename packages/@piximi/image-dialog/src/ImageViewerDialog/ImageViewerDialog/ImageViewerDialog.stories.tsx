@@ -9,7 +9,7 @@ const onClose = () => {};
 
 const src: string = 'https://picsum.photos/256/256';
 
-storiesOf('ImageViewerDialog', module).add('ImageViewerDialog', () => {
+storiesOf('ImageViewerDialog', module).add('example', () => {
   return (
     <Provider store={store}>
       <ImageViewerDialog

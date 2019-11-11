@@ -3,7 +3,7 @@ import { Canvas } from 'react-three-fiber';
 import { Image } from '../Image';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/styles';
-import styles from '../../ImageViewer/ImageViewer.css';
+import { styles } from './ImageCanvas.css';
 
 type ImageCanvasProps = {
   src: string;
@@ -17,16 +17,12 @@ export const ImageCanvas = (props: ImageCanvasProps) => {
   const { src } = props;
 
   return (
-    <Grid
-      className={classes.container}
-      container
-      alignItems="center"
-      justify="center"
-      spacing={3}
-    >
-      <Canvas>
-        <Image src={src} />
-      </Canvas>
+    <Grid className={classes.container} container>
+      <Grid item xs={10} className={classes.canvas}>
+        <Canvas>
+          <Image src={src} />
+        </Canvas>
+      </Grid>
     </Grid>
   );
 };

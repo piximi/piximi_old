@@ -5,6 +5,9 @@ import { BackButton } from './BackButton';
 
 const onClose = () => {};
 
-storiesOf('BackButton', module).add('BackButton', () => {
-  return <BackButton onClose={onClose} />;
-});
+storiesOf('ImageViewer/ImageViewerAppBar/BackButton', module).add(
+  'BackButton',
+  () => {
+    return <BackButton onClose={onClose} />;
+  }
+);
