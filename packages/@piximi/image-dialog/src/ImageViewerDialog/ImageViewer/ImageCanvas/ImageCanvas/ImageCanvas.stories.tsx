@@ -2,8 +2,9 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { ImageCanvas } from './ImageCanvas';
-import * as example from '../Image/example.jpg';
+
+const src: string = 'https://picsum.photos/256/256';
 
 storiesOf('ImageCanvas', module).add('ImageCanvas', () => {
-  return <ImageCanvas src={example} />;
+  return <ImageCanvas src={src} />;
 });

@@ -2,10 +2,11 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { ImageViewerDrawer } from './ImageViewerDrawer';
-import * as example from '../../ImageCanvas/Image/example.jpg';
+
+const src: string = 'https://picsum.photos/256/256';
 
 storiesOf('ImageViewerDrawer', module).add('ImageViewerDrawer', () => {
   return React.createElement(() => {
-    return <ImageViewerDrawer src={example} />;
+    return <ImageViewerDrawer src={src} />;
   });
 });
