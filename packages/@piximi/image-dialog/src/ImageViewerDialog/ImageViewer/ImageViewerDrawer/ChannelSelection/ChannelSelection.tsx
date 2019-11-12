@@ -45,33 +45,33 @@ const BlueCheckbox = withStyles({
 })(props => <Checkbox color="default" {...props} />);
 
 type ChannelSelectionProps = {
-  channels: number[];
-  setChannels: (channels: number[]) => void;
+  channels: { r: boolean; g: boolean; b: boolean };
+  setChannels: (channels: { r: boolean; g: boolean; b: boolean }) => void;
 };
 
 export const ChannelSelection = (props: ChannelSelectionProps) => {
   const { channels, setChannels } = props;
 
-  const [greenCheckboxChecked, setGreenCheckboxChecked] = useState(true);
+  const [rCheckboxChecked, setRCheckboxChecked] = useState(true);
+  const [gCheckboxChecked, setGCheckboxChecked] = useState(true);
+  const [bCheckboxChecked, setBCheckboxChecked] = useState(true);
 
-  const onGreenCheckboxChange = () => {
-    setGreenCheckboxChecked(!greenCheckboxChecked);
+  const onRCheckboxChange = () => {
+    setRCheckboxChecked(!rCheckboxChecked);
 
-    if (greenCheckboxChecked) {
-      setChannels(channels.filter(channel => channel !== 1));
-    }
+    setChannels({ ...channels, r: !rCheckboxChecked });
   };
 
-  const [redCheckboxChecked, setRedCheckboxChecked] = useState(true);
+  const onGCheckboxChange = () => {
+    setGCheckboxChecked(!gCheckboxChecked);
 
-  const onRedCheckboxChange = () => {
-    setRedCheckboxChecked(!redCheckboxChecked);
+    setChannels({ ...channels, g: !gCheckboxChecked });
   };
 
-  const [blueCheckboxChecked, setBlueCheckboxChecked] = useState(true);
+  const onBCheckboxChange = () => {
+    setBCheckboxChecked(!bCheckboxChecked);
 
-  const onBlueCheckboxChange = () => {
-    setBlueCheckboxChecked(!blueCheckboxChecked);
+    setChannels({ ...channels, b: !bCheckboxChecked });
   };
 
   return (
@@ -81,8 +81,8 @@ export const ChannelSelection = (props: ChannelSelectionProps) => {
           <FormControlLabel
             control={
               <RedCheckbox
-                checked={redCheckboxChecked}
-                onChange={onRedCheckboxChange}
+                checked={rCheckboxChecked}
+                onChange={onRCheckboxChange}
                 classes={{}}
                 value="checkedG"
               />
@@ -102,8 +102,8 @@ export const ChannelSelection = (props: ChannelSelectionProps) => {
           <FormControlLabel
             control={
               <GreenCheckbox
-                checked={greenCheckboxChecked}
-                onChange={onGreenCheckboxChange}
+                checked={gCheckboxChecked}
+                onChange={onGCheckboxChange}
                 value="checkedG"
               />
             }
@@ -122,8 +122,8 @@ export const ChannelSelection = (props: ChannelSelectionProps) => {
           <FormControlLabel
             control={
               <BlueCheckbox
-                checked={blueCheckboxChecked}
-                onChange={onBlueCheckboxChange}
+                checked={bCheckboxChecked}
+                onChange={onBCheckboxChange}
                 value="checkedG"
               />
             }

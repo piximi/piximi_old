@@ -14,7 +14,7 @@ type ImageViewerDrawerProps = {
 export const ImageViewerDrawer = (props: ImageViewerDrawerProps) => {
   const { src } = props;
 
-  const [channels, setChannels] = useState([0, 1, 2]);
+  const [channels, setChannels] = useState({ r: true, g: true, b: true });
 
   const [image, setImage] = useState<Image>(new Image());
 
@@ -30,7 +30,7 @@ export const ImageViewerDrawer = (props: ImageViewerDrawerProps) => {
 
   return (
     <Drawer anchor="right" open variant="persistent">
-      <ImageHistogram bins={32} channels={channels} image={image} src={src} />
+      <ImageHistogram bins={32} channels={channels} image={image} />
 
       <ChannelSelection channels={channels} setChannels={setChannels} />
 
