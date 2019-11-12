@@ -6,5 +6,5 @@ import { ImageHistogram } from './ImageHistogram';
 const src: string = 'https://picsum.photos/256/256';
 
 storiesOf('ImageViewer/ImageHistogram', module).add('ImageHistogram', () => {
-  return <ImageHistogram src={src} />;
+  return <ImageHistogram bins={32} src={src} />;
 });

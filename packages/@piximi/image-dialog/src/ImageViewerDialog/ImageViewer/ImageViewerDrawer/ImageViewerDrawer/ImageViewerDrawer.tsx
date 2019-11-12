@@ -14,7 +14,7 @@ export const ImageViewerDrawer = (props: ImageViewerDrawerProps) => {
 
   return (
     <Drawer anchor="right" open variant="persistent">
-      <ImageHistogram src={src} />
+      <ImageHistogram bins={32} src={src} />
 
       <ChannelSelection />
 
