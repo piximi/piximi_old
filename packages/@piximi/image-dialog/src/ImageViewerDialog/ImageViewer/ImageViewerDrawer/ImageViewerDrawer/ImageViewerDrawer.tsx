@@ -26,7 +26,7 @@ export const ImageViewerDrawer = (props: ImageViewerDrawerProps) => {
 
   useEffect(() => {
     openImage();
-  });
+  }, [src]);
 
   return (
     <Drawer anchor="right" open variant="persistent">

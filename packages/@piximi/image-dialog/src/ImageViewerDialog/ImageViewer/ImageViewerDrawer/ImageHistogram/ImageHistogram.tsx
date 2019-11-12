@@ -7,11 +7,10 @@ type ImageHistogramProps = {
   bins: number;
   channels: number[];
   image: Image;
-  src: string;
 };
 
 export const ImageHistogram = (props: ImageHistogramProps) => {
-  const { bins, channels, image, src } = props;
+  const { bins, channels, image } = props;
 
   const [r, setR] = useState([]);
   const [g, setG] = useState([]);
@@ -23,33 +22,27 @@ export const ImageHistogram = (props: ImageHistogramProps) => {
     });
   };
 
-  const effect = () => {
+  useEffect(() => {
+    const histograms = image.getHistograms({ maxSlots: bins });
+
     if (channels.includes(0)) {
-      const r: { x: number; y: number }[] = transform(
-        image.getHistograms({ maxSlots: bins })[0]
-      );
+      const r = transform(histograms[0]);
 
       setR(r);
     }
 
     if (channels.includes(1)) {
-      const g: { x: number; y: number }[] = transform(
-        image.getHistograms({ maxSlots: bins })[1]
-      );
+      const g = transform(histograms[1]);
 
       setG(g);
     }
 
     if (channels.includes(2)) {
-      const b: { x: number; y: number }[] = transform(
-        image.getHistograms({ maxSlots: bins })[2]
-      );
+      const b = transform(histograms[2]);
 
       setB(b);
     }
-  };
-
-  useEffect(effect, [image]);
+  }, [image]);
 
   return (
     <XYPlot height={300} width={300}>
