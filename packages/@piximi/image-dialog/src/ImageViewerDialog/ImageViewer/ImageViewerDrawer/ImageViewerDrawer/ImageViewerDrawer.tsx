@@ -4,6 +4,8 @@ import { BrightnessSlider } from '../BrightnessSlider';
 import { ChannelSelection } from '../ChannelSelection';
 import { ContrastSlider } from '../ContrastSlider';
 import { ImageHistogram } from '../ImageHistogram';
+import { useEffect, useState } from 'react';
+import { Image } from 'image-js';
 
 type ImageViewerDrawerProps = {
   src: string;
@@ -12,11 +14,25 @@ type ImageViewerDrawerProps = {
 export const ImageViewerDrawer = (props: ImageViewerDrawerProps) => {
   const { src } = props;
 
+  const [channels, setChannels] = useState([0, 1, 2]);
+
+  const [image, setImage] = useState<Image>(new Image());
+
+  const openImage = async () => {
+    const image = await Image.load(src);
+
+    setImage(image);
+  };
+
+  useEffect(() => {
+    openImage();
+  });
+
   return (
     <Drawer anchor="right" open variant="persistent">
-      <ImageHistogram bins={32} src={src} />
+      <ImageHistogram bins={32} channels={channels} image={image} src={src} />
 
-      <ChannelSelection />
+      <ChannelSelection channels={channels} setChannels={setChannels} />
 
       <BrightnessSlider />
 

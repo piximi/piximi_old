@@ -5,11 +5,13 @@ import { Image } from 'image-js';
 
 type ImageHistogramProps = {
   bins: number;
+  channels: number[];
+  image: Image;
   src: string;
 };
 
 export const ImageHistogram = (props: ImageHistogramProps) => {
-  const { bins, src } = props;
+  const { bins, channels, image, src } = props;
 
   const [r, setR] = useState([]);
   const [g, setG] = useState([]);
@@ -22,28 +24,32 @@ export const ImageHistogram = (props: ImageHistogramProps) => {
   };
 
   const effect = () => {
-    const openImage = async () => {
-      const image = await Image.load(src);
-
+    if (channels.includes(0)) {
       const r: { x: number; y: number }[] = transform(
         image.getHistograms({ maxSlots: bins })[0]
       );
+
+      setR(r);
+    }
+
+    if (channels.includes(1)) {
       const g: { x: number; y: number }[] = transform(
         image.getHistograms({ maxSlots: bins })[1]
       );
+
+      setG(g);
+    }
+
+    if (channels.includes(2)) {
       const b: { x: number; y: number }[] = transform(
         image.getHistograms({ maxSlots: bins })[2]
       );
 
-      setR(r);
-      setG(g);
       setB(b);
-    };
-
-    openImage();
+    }
   };
 
-  useEffect(effect, []);
+  useEffect(effect, [image]);
 
   return (
     <XYPlot height={300} width={300}>

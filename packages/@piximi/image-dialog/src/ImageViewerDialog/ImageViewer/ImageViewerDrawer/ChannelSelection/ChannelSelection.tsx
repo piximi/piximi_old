@@ -44,17 +44,30 @@ const BlueCheckbox = withStyles({
   checked: {}
 })(props => <Checkbox color="default" {...props} />);
 
-export const ChannelSelection = () => {
+type ChannelSelectionProps = {
+  channels: number[];
+  setChannels: (channels: number[]) => void;
+};
+
+export const ChannelSelection = (props: ChannelSelectionProps) => {
+  const { channels, setChannels } = props;
+
   const [greenCheckboxChecked, setGreenCheckboxChecked] = useState(true);
 
   const onGreenCheckboxChange = () => {
     setGreenCheckboxChecked(!greenCheckboxChecked);
+
+    if (greenCheckboxChecked) {
+      setChannels(channels.filter(channel => channel !== 1));
+    }
   };
+
   const [redCheckboxChecked, setRedCheckboxChecked] = useState(true);
 
   const onRedCheckboxChange = () => {
     setRedCheckboxChecked(!redCheckboxChecked);
   };
+
   const [blueCheckboxChecked, setBlueCheckboxChecked] = useState(true);
 
   const onBlueCheckboxChange = () => {
