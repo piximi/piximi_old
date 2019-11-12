@@ -1,19 +1,21 @@
 import * as React from 'react';
 import * as THREE from 'three';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import * as imagejs from 'image-js';
 
 type ImageProps = {
-  src: string;
+  channels: { r: boolean; g: boolean; b: boolean };
+  image: imagejs.Image;
 };
 
 export const Image = (props: ImageProps) => {
-  const { src } = props;
+  const { channels, image } = props;
 
   const ref = useRef();
 
   const texture = useMemo(() => {
-    return new THREE.TextureLoader().load(src);
-  }, []);
+    return new THREE.TextureLoader().load(image.toDataURL());
+  }, [image]);
 
   return (
     <mesh ref={ref} scale={[1.0, 1.0, 1.0]}>
