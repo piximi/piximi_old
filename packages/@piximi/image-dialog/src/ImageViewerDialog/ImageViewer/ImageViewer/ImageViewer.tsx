@@ -1,10 +1,9 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { ImageViewerDrawer } from '../ImageViewerDrawer';
 import { ImageCanvas } from '../ImageCanvas';
 import { ImageViewerAppBar } from '../ImageViewerAppBar';
-import { useState } from 'react';
 import { Image } from 'image-js';
-import { useEffect } from 'react';
 
 type ImageViewerProps = {
   src: string;

@@ -6,6 +6,6 @@ import { ChannelSelection } from './ChannelSelection';
 storiesOf('ImageViewer/ChannelSelection', module).add(
   'ChannelSelection',
   () => {
-    return <ChannelSelection />;
+    return <div />;
   }
 );

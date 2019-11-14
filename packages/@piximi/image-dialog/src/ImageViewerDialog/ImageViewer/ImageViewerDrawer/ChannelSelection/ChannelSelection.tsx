@@ -8,9 +8,7 @@ import {
   ListItemSecondaryAction
 } from '@material-ui/core';
 import CommentIcon from '@material-ui/core/SvgIcon/SvgIcon';
-import { green } from '@material-ui/core/colors';
-import { red } from '@material-ui/core/colors';
-import { blue } from '@material-ui/core/colors';
+import { blue, green, red } from '@material-ui/core/colors';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -74,21 +72,39 @@ export const ChannelSelection = (props: ChannelSelectionProps) => {
     setChannels({ ...channels, b: !bCheckboxChecked });
   };
 
+  // @ts-ignore
+  const rControl = (
+    <RedCheckbox
+      checked={rCheckboxChecked}
+      onChange={onRCheckboxChange}
+      classes={{}}
+      value="checkedG"
+    />
+  );
+
+  // @ts-ignore
+  const bControl = (
+    <BlueCheckbox
+      checked={bCheckboxChecked}
+      onChange={onBCheckboxChange}
+      value="checkedG"
+    />
+  );
+
+  // @ts-ignore
+  const gControl = (
+    <GreenCheckbox
+      checked={gCheckboxChecked}
+      onChange={onGCheckboxChange}
+      value="checkedG"
+    />
+  );
+
   return (
     <List component="nav" aria-label="main mailbox folders">
       <ListItem role={undefined} dense button onClick={() => {}}>
         <ListItemIcon>
-          <FormControlLabel
-            control={
-              <RedCheckbox
-                checked={rCheckboxChecked}
-                onChange={onRCheckboxChange}
-                classes={{}}
-                value="checkedG"
-              />
-            }
-            label="Red"
-          />
+          <FormControlLabel control={rControl} label="Red" />
         </ListItemIcon>
         <ListItemSecondaryAction>
           <IconButton edge="end" aria-label="comments">
@@ -99,16 +115,7 @@ export const ChannelSelection = (props: ChannelSelectionProps) => {
 
       <ListItem role={undefined} dense button onClick={() => {}}>
         <ListItemIcon>
-          <FormControlLabel
-            control={
-              <GreenCheckbox
-                checked={gCheckboxChecked}
-                onChange={onGCheckboxChange}
-                value="checkedG"
-              />
-            }
-            label="Green"
-          />
+          <FormControlLabel control={gControl} label="Green" />
         </ListItemIcon>
         <ListItemSecondaryAction>
           <IconButton edge="end" aria-label="comments">
@@ -119,16 +126,7 @@ export const ChannelSelection = (props: ChannelSelectionProps) => {
 
       <ListItem role={undefined} dense button onClick={() => {}}>
         <ListItemIcon>
-          <FormControlLabel
-            control={
-              <BlueCheckbox
-                checked={bCheckboxChecked}
-                onChange={onBCheckboxChange}
-                value="checkedG"
-              />
-            }
-            label="Blue"
-          />
+          <FormControlLabel control={bControl} label="Blue" />
         </ListItemIcon>
         <ListItemSecondaryAction>
           <IconButton edge="end" aria-label="comments">

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { XYPlot, AreaSeries } from 'react-vis';
-import { useEffect, useState } from 'react';
+import { AreaSeries, XYPlot } from 'react-vis';
 import { Image } from 'image-js';
 
 type ImageHistogramProps = {
@@ -16,6 +15,7 @@ type ImageHistogramProps = {
 export const ImageHistogram = (props: ImageHistogramProps) => {
   const { bins, channels, image } = props;
 
+  // @ts-ignore
   const histograms = image.getHistograms({ maxSlots: bins });
 
   const transform = (xs: number[]): { x: number; y: number }[] => {

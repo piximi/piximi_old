@@ -9,7 +9,7 @@ storiesOf('ImageViewer/ImageViewerDrawer', module).add(
   'ImageViewerDrawer',
   () => {
     return React.createElement(() => {
-      return <ImageViewerDrawer src={src} />;
+      return <div />;
     });
   }
 );

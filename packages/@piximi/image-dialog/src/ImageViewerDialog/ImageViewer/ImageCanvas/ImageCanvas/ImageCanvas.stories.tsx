@@ -8,6 +8,6 @@ const src: string = 'https://picsum.photos/256/256';
 storiesOf('ImageViewer/ImageCanvas/ImageCanvas', module).add(
   'ImageCanvas',
   () => {
-    return <ImageCanvas src={src} />;
+    return <div />;
   }
 );
