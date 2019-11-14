@@ -19,6 +19,11 @@
     "noEmit": true,
     "jsx": "preserve"
   },
+  "exclude": [
+    "src/**/*.stories.tsx",
+    "src/**/*.test.tsx",
+    "src/setupTests.ts"
+  ],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx"
