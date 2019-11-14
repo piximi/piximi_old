@@ -72,9 +72,9 @@ export const ChannelSelection = (props: ChannelSelectionProps) => {
     setChannels({ ...channels, b: !bCheckboxChecked });
   };
 
-  // @ts-ignore
   const rControl = (
     <RedCheckbox
+      // @ts-ignore
       checked={rCheckboxChecked}
       onChange={onRCheckboxChange}
       classes={{}}
@@ -82,18 +82,18 @@ export const ChannelSelection = (props: ChannelSelectionProps) => {
     />
   );
 
-  // @ts-ignore
   const bControl = (
     <BlueCheckbox
+      // @ts-ignore
       checked={bCheckboxChecked}
       onChange={onBCheckboxChange}
       value="checkedG"
     />
   );
 
-  // @ts-ignore
   const gControl = (
     <GreenCheckbox
+      // @ts-ignore
       checked={gCheckboxChecked}
       onChange={onGCheckboxChange}
       value="checkedG"
