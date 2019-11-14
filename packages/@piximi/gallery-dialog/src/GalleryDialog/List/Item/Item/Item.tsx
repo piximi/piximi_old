@@ -1,12 +1,11 @@
 import React from 'react';
-import Image from '../../../components/Image/Image';
+import { Image } from '../../../Image';
 import { useDialog } from '@piximi/hooks';
-import { ConnectedItemLabel } from '../../../containers';
+import { ConnectedLabel } from '../Label';
 import { ImageDragSource } from '@piximi/components';
 import { ImageViewerDialog } from '@piximi/image-dialog';
 
-export const GalleryItem = (props: any) => {
-  // item = image
+export const Item = (props: any) => {
   const { selectedItems, onmousedown, containerStyle, item } = props;
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
@@ -19,7 +18,7 @@ export const GalleryItem = (props: any) => {
       onmousedown={onmousedown}
       item={item}
     >
-      <ConnectedItemLabel image={item} />
+      <ConnectedLabel image={item} />
 
       <Image
         key={'img' + item.identifier}

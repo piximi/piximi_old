@@ -1,16 +1,92 @@
 import * as React from 'react';
 import './Gallery.css';
 import { GalleryCustomDragLayer, GalleryItems, GallerySelectionBox } from '..';
-import { collisionDetection } from '../helper';
 
-export const Gallery = props => {
+const collisionWithRectangle = (
+  rectangle1: { x: any; y: any; width: any; height: any },
+  rectangle2: any
+) => {
+  // Check if two rectangles overlap
+  return !!(
+    rectangle1.x < rectangle2.x + rectangle2.width &&
+    rectangle1.x + rectangle1.width > rectangle2.x &&
+    rectangle1.y < rectangle2.y + rectangle2.height &&
+    rectangle1.y + rectangle1.height > rectangle2.y
+  );
+};
+
+const reCalcWithoutPixelString = (mousePosition: {
+  x1: any;
+  x2: any;
+  y1: any;
+  y2: any;
+}) => {
+  let x3 = Math.min(mousePosition.x1, mousePosition.x2); //Smaller X
+  let x4 = Math.max(mousePosition.x1, mousePosition.x2); //Larger X
+  let y3 = Math.min(mousePosition.y1, mousePosition.y2); //Smaller Y
+  let y4 = Math.max(mousePosition.y1, mousePosition.y2); //Larger Y
+  let left = x3;
+  let top = y3;
+  let width = x4 - x3;
+  let height = y4 - y3;
+  return { x: left, y: top, width: width, height: height };
+};
+
+const collisionDetection = (mousePosition: {
+  x1: number;
+  x2: number;
+  y1: number;
+  y2: number;
+}) => {
+  // Check if any selectable item is overlapping with mouse selection box
+  const rectangle1 = reCalcWithoutPixelString(mousePosition);
+  const elements = document.getElementsByTagName('canvas'); // Check collisions with selectable elements
+  let collisions = [];
+  for (let i = 0; i < elements.length; i++) {
+    const element = elements[i];
+    const rectangle2 = element.getBoundingClientRect();
+    const imageId = element.getAttribute('imgid');
+    const collisionDetected = collisionWithRectangle(rectangle1, rectangle2);
+    if (collisionDetected) {
+      collisions.push(imageId);
+    }
+  }
+  return collisions;
+};
+
+const reCalc = (mousePosition: {
+  x1: number;
+  x2: number;
+  y1: number;
+  y2: number;
+}) => {
+  // Calculate rectangle position
+  let x3 = Math.min(mousePosition.x1, mousePosition.x2); //Smaller X
+  let x4 = Math.max(mousePosition.x1, mousePosition.x2); //Larger X
+  let y3 = Math.min(mousePosition.y1, mousePosition.y2); //Smaller Y
+  let y4 = Math.max(mousePosition.y1, mousePosition.y2); //Larger Y
+  let left = x3 + 'px';
+  let top = y3 + 'px';
+  let width = x4 - x3 + 'px';
+  let height = y4 - y3 + 'px';
+  return { left: left, top: top, width: width, height: height };
+};
+
+type GalleryProps = {
+  images: any[];
+  categories: any[];
+  imagesPerRow: any;
+  decreaseWidth: any;
+};
+
+export const GalleryDialog = (props: GalleryProps) => {
   const { images, categories, imagesPerRow, decreaseWidth } = props;
 
   const visibleCategories = categories
     .filter(category => category.visualization.visible)
     .map(category => category.identifier);
 
-  const imageIsVisible = image => {
+  const imageIsVisible = (image: any) => {
     return (
       visibleCategories.includes(image.categoryIdentifier) &&
       image.visualization.visible
@@ -43,7 +119,11 @@ export const Gallery = props => {
     window.addEventListener('resize', windowResizeEvent);
   }, []);
 
-  const onmousedown = e => {
+  const onmousedown = (e: {
+    clientX: number;
+    clientY: number;
+    target: { getAttribute: (arg0: string) => string };
+  }) => {
     let currentSelectionBoxCoordinates = {
       ...selectionBoxCoordinates
     };
@@ -61,7 +141,7 @@ export const Gallery = props => {
     }
   };
 
-  const onmousemove = e => {
+  const onmousemove = (e: { clientX: number; clientY: number }) => {
     // Always update coordinates based on mouse position
     let currentSelectionBoxCoordinates = {
       ...selectionBoxCoordinates
@@ -80,7 +160,9 @@ export const Gallery = props => {
     }
   };
 
-  const onmouseup = e => {
+  const onmouseup = (e: {
+    target: { getAttribute: (arg0: string) => string };
+  }) => {
     // Check if no collisions occured and mouseup event is outside of a selectable item
     if (
       e.target.getAttribute('type') !== 'selectableElement' &&
@@ -96,7 +178,7 @@ export const Gallery = props => {
     setCollisions([]);
   };
 
-  const selectItem = imgId => {
+  const selectItem = (imgId: any) => {
     let selectedItems = [...selected];
     const noSelectedItems = selectedItems.length;
     // Check if clicked on an already selected item
@@ -129,12 +211,17 @@ export const Gallery = props => {
     setSelected(selectedItems);
   };
 
-  const keyEvent = e => {
+  const keyEvent = (e: {
+    shiftKey: React.SetStateAction<boolean>;
+    altKey: React.SetStateAction<boolean>;
+  }) => {
     setShiftKeyPressed(e.shiftKey);
     setAltKeyPressed(e.altKey);
   };
 
-  const windowResizeEvent = e => {
+  const windowResizeEvent = (e: {
+    target: { innerWidth: React.SetStateAction<number> };
+  }) => {
     setWindowWidth(e.target.innerWidth);
   };
 
@@ -169,7 +256,7 @@ export const Gallery = props => {
   );
 };
 
-Gallery.defaultProps = {
+GalleryDialog.defaultProps = {
   decreaseWidth: 0,
   imagesPerRow: 10
 };

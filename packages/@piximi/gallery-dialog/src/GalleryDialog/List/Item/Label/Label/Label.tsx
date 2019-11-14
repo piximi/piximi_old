@@ -1,9 +1,9 @@
 import * as React from 'react';
 import LabelIcon from '@material-ui/icons/Label';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
-import styles from './GalleryItemLabel.css';
+import styles from './Label.css';
 import IconButton from '@material-ui/core/IconButton';
-import { ConnectedItemCategoryMenu } from '../../../containers';
+import { ConnectedCategoryMenu } from '../CategoryMenu';
 import { makeStyles } from '@material-ui/styles';
 import { useMenu } from '@piximi/hooks';
 import { Image, Category, Score } from '@piximi/types';
@@ -27,7 +27,7 @@ type GalleryItemLabelProps = {
   image: Image;
 };
 
-export const GalleryItemLabel = (props: GalleryItemLabelProps) => {
+export const Label = (props: GalleryItemLabelProps) => {
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
   const { categories, image } = props;
@@ -72,7 +72,7 @@ export const GalleryItemLabel = (props: GalleryItemLabelProps) => {
         )}
       </IconButton>
 
-      <ConnectedItemCategoryMenu
+      <ConnectedCategoryMenu
         anchorEl={anchorEl}
         image={image}
         onClose={closeMenu}

@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
 import Popover from '@material-ui/core/Popover';
 
-export const GalleryItemCategoryMenu = (props: any) => {
+export const CategoryMenu = (props: any) => {
   const {
     anchorEl,
     categories,

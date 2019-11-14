@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { GalleryItem } from '../pages/images';
+import { Item } from './Item';
 import { updateImageCategoryAction } from '@piximi/store';
 import { Dispatch } from 'redux';
 import { Classifier } from '@piximi/types';
@@ -29,9 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const ConnectedItem = connect(
+export const ConnectedItem = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GalleryItem);
-
-export default ConnectedItem;
+)(Item);

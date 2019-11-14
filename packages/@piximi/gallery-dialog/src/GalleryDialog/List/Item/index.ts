@@ -1,0 +1,1 @@
+export { ConnectedItem } from './Item';
