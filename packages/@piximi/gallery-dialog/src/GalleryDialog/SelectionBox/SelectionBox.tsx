@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '../GalleryDialog/Gallery.css';
-import { reCalc } from '../helper';
+// import { reCalc } from '../helper';
 
 type GallerySelectionBoxProps = {
   selectionBoxCoordinates: {
@@ -12,7 +12,7 @@ type GallerySelectionBoxProps = {
   visibility: any;
 };
 
-export const GallerySelectionBox = (props: GallerySelectionBoxProps) => {
+export const SelectionBox = (props: GallerySelectionBoxProps) => {
   const { selectionBoxCoordinates, visibility } = props;
 
   const [style, setStyle] = React.useState({
