@@ -7,13 +7,19 @@ import { InputLabel } from '@material-ui/core';
 
 const useStyles = makeStyles(styles);
 
-export const ContrastSlider = () => {
+type ContrastSliderProps = {
+  setIntensityRange: (value: Array<number>) => void;
+};
+
+export const ContrastSlider = ({ setIntensityRange }: ContrastSliderProps) => {
   const [contrast, setContrast] = useState(0.5);
 
   const classes = useStyles({});
 
   const onChange = (event: any, value: any) => {
     setContrast(value);
+
+    setIntensityRange([0.0, value]);
   };
 
   return (

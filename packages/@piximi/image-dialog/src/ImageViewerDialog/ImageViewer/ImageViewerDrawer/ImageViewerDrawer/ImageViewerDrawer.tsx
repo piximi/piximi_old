@@ -10,10 +10,11 @@ type ImageViewerDrawerProps = {
   channels: { r: boolean; g: boolean; b: boolean };
   image: Image;
   setChannels: (channels: { r: boolean; g: boolean; b: boolean }) => void;
+  setIntensityRange: (value: Array<number>) => void;
 };
 
 export const ImageViewerDrawer = (props: ImageViewerDrawerProps) => {
-  const { channels, image, setChannels } = props;
+  const { channels, image, setChannels, setIntensityRange } = props;
 
   return (
     <Drawer anchor="right" open variant="persistent">
@@ -23,7 +24,7 @@ export const ImageViewerDrawer = (props: ImageViewerDrawerProps) => {
 
       <BrightnessSlider />
 
-      <ContrastSlider />
+      <ContrastSlider setIntensityRange={setIntensityRange} />
     </Drawer>
   );
 };

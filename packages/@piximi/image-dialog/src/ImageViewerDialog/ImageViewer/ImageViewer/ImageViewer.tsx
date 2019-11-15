@@ -14,18 +14,25 @@ export const ImageViewer = (props: ImageViewerProps) => {
   const { src, onClose } = props;
 
   const [channels, setChannels] = useState({ r: true, g: true, b: true });
+  const [intensityRange, setIntensityRange] = useState([0.0, 1.0]);
 
   const [image, setImage] = useState<Image>(new Image());
 
   const openImage = async () => {
     const image = await Image.load(src);
 
-    setImage(image);
+    const [minimum, maximum] = intensityRange;
+
+    const rescaled = image.multiply(maximum - minimum);
+
+    setImage(rescaled);
+
+    setImage(rescaled);
   };
 
   useEffect(() => {
     openImage();
-  }, [src]);
+  }, [src, intensityRange]);
 
   return (
     <>
@@ -34,6 +41,7 @@ export const ImageViewer = (props: ImageViewerProps) => {
         channels={channels}
         image={image}
         setChannels={setChannels}
+        setIntensityRange={setIntensityRange}
       />
       <ImageViewerAppBar onClose={onClose} />
     </>
