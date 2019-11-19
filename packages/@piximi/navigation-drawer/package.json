@@ -36,7 +36,8 @@
     "rimraf": "^3.0.0",
     "styled-components": "^4.3.1",
     "uuid": "^3.3.2",
-    "victory": "^32.3.3"
+    "victory": "^32.3.3",
+    "warning": "^4.0.3"
   },
   "description": "Piximi’s NavigationDrawer component",
   "devDependencies": {
