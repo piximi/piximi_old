@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Category, Image } from '@piximi/types';
 import { Gallery } from '../Gallery';
 import { Column } from '../Column';
-import { Card } from '@material-ui/core';
-import { useStyles } from './GalleryDialog.css';
+import { Item } from '../Item';
+import LazyLoad from 'react-lazyload';
 
 type GalleryProps = {
   categories: Array<Category>;
@@ -11,28 +11,9 @@ type GalleryProps = {
   images: Array<Image>;
 };
 
-type ItemProps = {
-  image: Image;
-};
-
-export const Item = ({ image }: ItemProps) => {
-  const classes = useStyles();
-
-  return (
-    <Card>
-      <img
-        alt=""
-        className={classes.image}
-        key={image.identifier}
-        src={image.data}
-      />
-    </Card>
-  );
-};
-
 export const GalleryDialog = ({
   categories,
-  numberOfColumns = 5,
+  numberOfColumns = 4,
   images
 }: GalleryProps) => {
   const itemsPerCol = images.length / numberOfColumns;
@@ -66,7 +47,11 @@ export const GalleryDialog = ({
         return (
           <Column key={index} numberOfColumns={numberOfColumns}>
             {column.map((image: Image) => {
-              return <Item image={image} />;
+              return (
+                <LazyLoad height="100%">
+                  <Item image={image} />
+                </LazyLoad>
+              );
             })}
           </Column>
         );
