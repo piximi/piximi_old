@@ -7,6 +7,14 @@ export const useStyles = makeStyles((theme: Theme) =>
     image: {
       marginTop: 0,
       width: '100%'
+    },
+    button: {
+      padding: 0,
+      margin: 0
+    },
+    icon: {
+      padding: 0,
+      margin: 0
     }
   })
 );

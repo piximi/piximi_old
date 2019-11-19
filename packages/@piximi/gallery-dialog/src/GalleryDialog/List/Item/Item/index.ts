@@ -1,1 +1,0 @@
-export { ConnectedItem } from './ConnectedItem';

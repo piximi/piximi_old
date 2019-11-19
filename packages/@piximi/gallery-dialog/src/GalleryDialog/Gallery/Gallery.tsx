@@ -6,4 +6,5 @@ export const Gallery = styled.div<{}>`
   flex-wrap: wrap;
   justify-content: center;
   padding: 0 0.5em;
+  margin-top: 0;
 `;

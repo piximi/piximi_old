@@ -15,6 +15,7 @@
     "@material-ui/icons": "4.5.1",
     "@material-ui/styles": "4.5.0",
     "@piximi/components": "^0.1.18",
+    "@piximi/hooks": "^0.1.11",
     "@piximi/image-dialog": "^1.0.3",
     "@piximi/store": "^0.1.23",
     "image-js": "^0.21.8",

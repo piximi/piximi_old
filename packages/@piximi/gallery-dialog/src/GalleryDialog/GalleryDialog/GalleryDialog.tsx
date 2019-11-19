@@ -4,6 +4,9 @@ import { Gallery } from '../Gallery';
 import { Column } from '../Column';
 import { Item } from '../Item';
 import LazyLoad from 'react-lazyload';
+import { useDialog } from '@piximi/hooks';
+import { ImageViewerDialog } from '@piximi/image-dialog';
+import { useState } from 'react';
 
 type GalleryProps = {
   categories: Array<Category>;
@@ -16,6 +19,10 @@ export const GalleryDialog = ({
   numberOfColumns = 4,
   images
 }: GalleryProps) => {
+  const { openedDialog, openDialog, closeDialog } = useDialog();
+
+  const [selectedImage, setSelectedImage] = useState(images[0]);
+
   const itemsPerCol = images.length / numberOfColumns;
 
   const itemsToCols = (images: Array<Image>, imagesPerRow = 4): Array<any> => {
@@ -42,20 +49,33 @@ export const GalleryDialog = ({
   const columns: Array<any> = itemsToCols(images, itemsPerCol);
 
   return (
-    <Gallery>
-      {columns.map((column: Array<Image>, index: number) => {
-        return (
-          <Column key={index} numberOfColumns={numberOfColumns}>
-            {column.map((image: Image) => {
-              return (
-                <LazyLoad height="100%">
-                  <Item image={image} />
-                </LazyLoad>
-              );
-            })}
-          </Column>
-        );
-      })}
-    </Gallery>
+    <>
+      <Gallery>
+        {columns.map((column: Array<Image>, index: number) => {
+          return (
+            <Column key={index} numberOfColumns={numberOfColumns}>
+              {column.map((image: Image) => {
+                return (
+                  <LazyLoad height="100%">
+                    <Item
+                      image={image}
+                      openDialog={openDialog}
+                      setSelectedImage={setSelectedImage}
+                    />
+                  </LazyLoad>
+                );
+              })}
+            </Column>
+          );
+        })}
+      </Gallery>
+
+      <ImageViewerDialog
+        onClose={closeDialog}
+        open={openedDialog}
+        src={selectedImage.data}
+        imgIdentifier={selectedImage.identifier}
+      />
+    </>
   );
 };

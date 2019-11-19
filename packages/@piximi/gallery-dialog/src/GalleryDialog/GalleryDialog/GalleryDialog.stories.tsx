@@ -2,6 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { GalleryDialog } from './GalleryDialog';
 import { Image, Partition } from '@piximi/types';
+import { store } from '@piximi/store';
+import { Provider } from 'react-redux';
 
 const resources: Array<string> = [
   'https://images.unsplash.com/photo-1528344227352-9a704db46536?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjk0ODE0fQ',
@@ -429,5 +431,9 @@ const images: Array<Image> = resources.map((resource, index) => {
 });
 
 storiesOf('Gallery', module).add('Unsplashed', () => {
-  return <GalleryDialog categories={[]} images={images} />;
+  return (
+    <Provider store={store}>
+      <GalleryDialog categories={[]} images={images} />
+    </Provider>
+  );
 });
