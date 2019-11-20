@@ -7,6 +7,7 @@ import { styles } from './History.css';
 type Data = { x: Number; y: Number }[];
 
 type HistoryProps = {
+  status: string;
   lossData: Data;
   validationLossData: Data;
   accuracyData: Data;
@@ -17,6 +18,7 @@ const useStyles = makeStyles(styles);
 
 export const History = (props: HistoryProps) => {
   const {
+    status,
     lossData,
     validationLossData,
     accuracyData,
@@ -28,6 +30,7 @@ export const History = (props: HistoryProps) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={4}>
+        <Typography classes={{ root: classes.typography }}>status</Typography>
         <Typography classes={{ root: classes.typography }}>Loss</Typography>
 
         <VictoryChart

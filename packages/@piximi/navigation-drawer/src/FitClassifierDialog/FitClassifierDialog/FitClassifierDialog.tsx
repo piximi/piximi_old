@@ -26,7 +26,7 @@ import { RescalingForm } from '../RescalingForm/RescalingForm';
 import { History } from '../History';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
-import { Category, Image } from '@piximi/types';
+import { Category } from '@piximi/types';
 import * as tensorflow from '@tensorflow/tfjs';
 import { useState, useEffect } from 'react';
 import { styles } from './FitClassifierDialog.css';
@@ -39,9 +39,307 @@ import {
 } from './dataset';
 import { rescaleData, resizeData, augmentData } from './preprocessing';
 import { createModel, createMobileNet } from './networks';
-import * as autotuner from '@piximi/autotuner';
-import TextField from '@material-ui/core/TextField';
-import * as ImageJS from 'image-js';
+
+// additional stuff to test
+import * as tf from '@tensorflow/tfjs';
+import * as seedrandom from 'seedrandom';
+import { assertTypesMatch } from '@tensorflow/tfjs-core/dist/tensor_util';
+import * as tm from '@teachablemachine/image';
+
+const SEED_WORD = 'testSuite';
+const seed: seedrandom.prng = seedrandom(SEED_WORD);
+
+// @ts-ignore
+var Table = require('cli-table');
+
+const BEAN_DATASET_URL =
+  'https://storage.googleapis.com/teachable-machine-models/test_data/image/beans/';
+
+const FLOWER_DATASET_URL =
+  'https://storage.googleapis.com/teachable-machine-models/test_data/image/flowers_all/';
+
+function loadPngImage(
+  c: string,
+  i: number,
+  dataset_url: string
+): Promise<HTMLImageElement> {
+  // tslint:disable-next-line:max-line-length
+  const src = dataset_url + `${c}/${i}.png`;
+
+  // console.log(src)
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.crossOrigin = 'anonymous';
+    img.src = src;
+  });
+}
+
+/**
+ * Load a flower image from our storage bucket
+ */
+function loadJpgImage(
+  c: string,
+  i: number,
+  dataset_url: string
+): Promise<HTMLImageElement> {
+  // tslint:disable-next-line:max-line-length
+  const src = dataset_url + `${c}/${i}.jpg`;
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.crossOrigin = 'anonymous';
+    img.src = src;
+  });
+}
+
+/**
+ * Create train/validation dataset and test dataset with unique images
+ */
+async function createDatasets(
+  dataset_url: string,
+  classes: string[],
+  trainSize: number,
+  testSize: number,
+  loadFunction: Function
+) {
+  // fill in an array with unique numbers
+  let listNumbers = [];
+  for (let i = 0; i < trainSize + testSize; ++i) listNumbers[i] = i;
+  listNumbers = fisherYates(listNumbers, seed); // shuffle
+
+  const trainAndValidationIndeces = listNumbers.slice(0, trainSize);
+  const testIndices = listNumbers.slice(trainSize, trainSize + testSize);
+
+  const trainAndValidationImages: HTMLImageElement[][] = [];
+  const testImages: HTMLImageElement[][] = [];
+
+  for (const c of classes) {
+    let load: Array<Promise<HTMLImageElement>> = [];
+    for (const i of trainAndValidationIndeces) {
+      load.push(loadFunction(c, i, dataset_url));
+    }
+    trainAndValidationImages.push(await Promise.all(load));
+
+    load = [];
+    for (const i of testIndices) {
+      load.push(loadFunction(c, i, dataset_url));
+    }
+    testImages.push(await Promise.all(load));
+  }
+
+  return {
+    trainAndValidationImages,
+    testImages
+  };
+}
+
+/**
+ * Shuffle an array of Float32Array or Samples using Fisher-Yates algorithm
+ * Takes an optional seed value to make shuffling predictable
+ */
+function fisherYates(array: number[], seed?: seedrandom.prng) {
+  const length = array.length;
+  const shuffled = array.slice(0);
+  for (let i = length - 1; i > 0; i -= 1) {
+    let randomIndex;
+    if (seed) {
+      randomIndex = Math.floor(seed() * (i + 1));
+    } else {
+      randomIndex = Math.floor(Math.random() * (i + 1));
+    }
+    [shuffled[i], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[i]];
+  }
+  return shuffled;
+}
+
+/**
+ * Output loss and accuracy results at the end of training
+ * Also evaluate the test dataset
+ */
+function showMetrics(
+  alpha: number,
+  time: number,
+  logs: tf.Logs[],
+  testAccuracy?: number
+) {
+  const lastEpoch = logs[logs.length - 1];
+
+  const header = 'α=' + alpha + ', t=' + (time / 1000).toFixed(1) + 's';
+
+  const table = new Table({
+    head: [header, 'Accuracy', 'Loss'],
+    colWidths: [18, 10, 10]
+  });
+
+  table.push(
+    ['Train', lastEpoch.acc.toFixed(3), lastEpoch.loss.toFixed(5)],
+    ['Validation', lastEpoch.val_acc.toFixed(3), lastEpoch.val_loss.toFixed(5)]
+  );
+  console.log('\n' + table.toString());
+}
+
+async function testModel(
+  model: any,
+  alpha: number,
+  classes: string[],
+  trainAndValidationImages: HTMLImageElement[][],
+  testImages: HTMLImageElement[][],
+  testSizePerClass: number,
+  epochs: number,
+  learningRate: number,
+  showEpochResults: boolean = false,
+  earlyStopEpoch: number = epochs
+) {
+  model.setLabels(classes);
+  model.setSeed(SEED_WORD); // set a seed to shuffle predictably
+
+  const logs: tf.Logs[] = [];
+  let time: number = 0;
+
+  await tf.nextFrame().then(async () => {
+    let index = 0;
+    for (const imgSet of trainAndValidationImages) {
+      for (const img of imgSet) {
+        await model.addExample(index, img);
+      }
+      index++;
+    }
+    const start = window.performance.now();
+    await model.train(
+      {
+        denseUnits: 100,
+        epochs,
+        learningRate,
+        batchSize: 16
+      },
+      {
+        onEpochBegin: async (epoch: number, logs: tf.Logs) => {
+          if (showEpochResults) {
+            console.log('Epoch: ', epoch);
+          }
+        },
+        onEpochEnd: async (epoch: number, log: tf.Logs) => {
+          if (showEpochResults) {
+            console.log(log);
+          }
+          if (earlyStopEpoch !== epochs && earlyStopEpoch === epoch) {
+            model.stopTraining().then(() => {
+              console.log('Stopped training early');
+            });
+          }
+          logs.push(log);
+        }
+      }
+    );
+    const end = window.performance.now();
+    time = end - start;
+  });
+
+  // // Analyze the test set (model has not seen for training)
+  // let accuracy = 0;
+  // for (let i = 0; i < classes.length; i++) {
+  // 	const classImages = testImages[i];
+
+  // 	for (const image of classImages) {
+  // 		const scores = await model.predict(image, false);
+  // 		// compare the label
+  // 		if (scores[0].className === classes[i]) {
+  // 			accuracy++;
+  // 		}
+  // 	}
+  // }
+  // const testAccuracy = accuracy / (testSizePerClass * classes.length);
+
+  showMetrics(alpha, time, logs);
+  return logs[logs.length - 1];
+}
+
+async function testMobilenet(
+  dataset_url: string,
+  version: number,
+  loadFunction: Function,
+  maxImages: number = 200,
+  earlyStop: boolean = false
+) {
+  // classes, samplesPerClass, url
+  const metadata = await (await fetch(dataset_url + 'metadata.json')).json();
+  // 1. Setup dataset parameters
+  const classLabels = metadata.classes as string[];
+
+  let NUM_IMAGE_PER_CLASS = Math.ceil(maxImages / classLabels.length);
+
+  if (NUM_IMAGE_PER_CLASS > Math.min(...metadata.samplesPerClass)) {
+    NUM_IMAGE_PER_CLASS = Math.min(...metadata.samplesPerClass);
+  }
+  const TRAIN_VALIDATION_SIZE_PER_CLASS = NUM_IMAGE_PER_CLASS;
+
+  const table = new Table();
+  table.push({
+    'train/validation size':
+      TRAIN_VALIDATION_SIZE_PER_CLASS * classLabels.length
+  });
+  console.log('\n' + table.toString());
+
+  // 2. Create our datasets once
+  const datasets = await createDatasets(
+    dataset_url,
+    classLabels,
+    TRAIN_VALIDATION_SIZE_PER_CLASS,
+    0,
+    loadFunction
+  );
+  const trainAndValidationImages = datasets.trainAndValidationImages;
+  const testImages = datasets.testImages;
+
+  // NOTE: If testing time, test first model twice because it takes longer
+  // to train the very first time tf.js is training
+
+  const MOBILENET_VERSION = version;
+  let VALID_ALPHAS = [0.35];
+  // const VALID_ALPHAS = [0.25, 0.5, 0.75, 1];
+  // const VALID_ALPHAS = [0.4];
+  let EPOCHS = 50;
+  let LEARNING_RATE = 0.001;
+  if (version === 1) {
+    LEARNING_RATE = 0.0001;
+    VALID_ALPHAS = [0.25];
+    EPOCHS = 20;
+  }
+
+  const earlyStopEpochs = earlyStop ? 5 : EPOCHS;
+
+  for (let a of VALID_ALPHAS) {
+    const lineStart = '\n//====================================';
+    const lineEnd = '====================================//\n\n';
+    console.log(lineStart);
+    // 3. Test data on the model
+    const teachableMobileNetV2 = await tm.createTeachable(
+      { tfjsVersion: tf.version.tfjs },
+      { version: MOBILENET_VERSION, alpha: a }
+    );
+
+    const lastEpoch = await testModel(
+      teachableMobileNetV2,
+      a,
+      classLabels,
+      trainAndValidationImages,
+      testImages,
+      0,
+      EPOCHS,
+      LEARNING_RATE,
+      false,
+      earlyStopEpochs
+    );
+
+    // assert.isTrue(accuracyV2 > 0.7);
+    console.log(lineEnd);
+
+    return { model: teachableMobileNetV2, lastEpoch };
+  }
+}
 
 const optimizationAlgorithms: { [identifier: string]: any } = {
   adadelta: tensorflow.train.adadelta,
@@ -60,26 +358,6 @@ const lossFunctions: { [identifier: string]: any } = {
   meanSquaredError: tensorflow.losses.meanSquaredError,
   sigmoidCrossEntropy: tensorflow.losses.sigmoidCrossEntropy,
   categoricalCrossentropy: tensorflow.losses.softmaxCrossEntropy
-};
-
-// Fisher-Yates Shuffle,
-const shuffleImages = (array: Image[]) => {
-  let counter = array.length;
-
-  // While there are elements in the array
-  while (counter > 0) {
-    // Pick a random index
-    let index = Math.floor(Math.random() * counter);
-
-    // Decrease counter by 1
-    counter--;
-
-    // And swap the last element with it
-    let temp = array[counter];
-    array[counter] = array[index];
-    array[index] = temp;
-  }
-  return array;
 };
 
 const useStyles = makeStyles(styles);
@@ -237,12 +515,15 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
   const [stopTraining, setStopTraining] = useState<boolean>(false);
   const [batchSize, setBatchSize] = useState<number>(32);
+
   const [epochs, setEpochs] = useState<number>(10);
+
   const [optimizationAlgorithm, setOptimizationAlgorithm] = useState<string>(
     'adam'
   );
   const [learningRate, setLearningRate] = useState<number>(0.01);
   const [lossFunction, setLossFunction] = useState<string>('meanSquaredError');
+  const [trainStatus, setTrainStatus] = useState<string>('meanSquaredError');
   const [inputShape, setInputShape] = useState<string>('224, 224, 3');
 
   const [trainingLossHistory, setTrainingLossHistory] = useState<LossHistory>(
@@ -412,73 +693,89 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
     const model = await createModel(numberOfClasses);
 
+    const validationSplit = 1 - datasetSplits[1] / 100;
+
     model.compile({
       loss: lossFunctions[lossFunction],
       metrics: ['accuracy'],
       optimizer: optimizationAlgorithms[optimizationAlgorithm](learningRate)
     });
 
-    var counter = 0;
+    // We'll keep a buffer of loss and accuracy values over time.
+    let trainBatchCount = 0;
 
-    const args = {
+    // const trainData = data.getTrainData();
+    // const testData = data.getTestData();
+    const trainData = await createTrainingSet(
+      categories,
+      labledData,
+      numberOfClasses
+    );
+
+    const totalNumBatches =
+      Math.ceil((trainData.data.shape[0] * (1 - validationSplit)) / batchSize) *
+      epochs;
+
+    // During the long-running fit() call for model training, we include
+    // callbacks, so that we can plot the loss and accuracy values in the page
+    // as the training progresses.
+    let valAcc;
+    await model.fit(trainData.data, trainData.labels, {
+      batchSize,
+      validationSplit,
       epochs: epochs,
-      shuffle: true,
-      validationSplit: 1 - datasetSplits[1] / 100,
       callbacks: {
-        onEpochEnd: async (
-          epoch: number,
-          logs?: tensorflow.Logs | undefined
-        ) => {
-          if (logs) {
-            updateLossHistory(counter, logs.loss);
-            updateAccuracHistory(counter, logs.acc);
-            updateValidationAccuracHistory(counter, logs.val_acc);
-            updateValidationLossHistory(counter, logs.val_loss);
-            counter++;
-          }
+        onBatchEnd: async (batch, logs) => {
+          trainBatchCount++;
+          setTrainStatus(
+            `Training... (` +
+              `${((trainBatchCount / totalNumBatches) * 100).toFixed(1)}%` +
+              ` complete). To stop training, refresh or close page.`
+          );
           if (stopTraining) {
             model.stopTraining = true;
           }
+          console.log(trainBatchCount);
+          // ui.plotLoss(trainBatchCount, logs!.loss, 'train');
+          // ui.plotAccuracy(trainBatchCount, logs!.acc, 'train');
+          // if (onIteration && batch % 10 === 0) {
+          //   onIteration('onBatchEnd', batch, logs);
+          // }
+          updateLossHistory(trainBatchCount, logs!.loss);
+          updateAccuracHistory(trainBatchCount, logs!.acc);
+          // updateValidationAccuracHistory(trainBatchCount, logs.val_acc);
+          // updateValidationLossHistory(trainBatchCount, logs.val_loss);
+          await tensorflow.nextFrame();
+        },
+        onEpochEnd: async (epoch, logs) => {
+          valAcc = logs!.val_acc;
+          // ui.plotLoss(trainBatchCount, logs!.val_loss, 'validation');
+          // ui.plotAccuracy(trainBatchCount, logs!.val_acc, 'validation');
+          // if (onIteration) {
+          //   onIteration('onEpochEnd', epoch, logs);
+          // }
+          await tensorflow.nextFrame();
         }
       }
-    };
+    });
 
-    // get histogram of entire data set
-    // the perform intensity rescaling
-    var training = true;
-    var i = 0;
-    while (training) {
-      var startBatchIndex = i * batchSize;
-      var endBatchIndex = (i + 1) * batchSize - 1;
-      if (endBatchIndex > labledData.length) {
-        var batchData = labledData.slice(startBatchIndex);
-        training = false;
-      } else {
-        var batchData = labledData.slice(startBatchIndex, endBatchIndex);
-      }
-      const trainingSet = await createTrainingSet(categories, batchData, 2);
-      const trainData = trainingSet.data;
-      const trainLables = trainingSet.lables;
-      await model.fit(trainData, trainLables, args);
-      trainData.dispose();
-      trainLables.dispose();
-      i++;
-    }
+    trainData.data.dispose();
+    trainData.labels.dispose();
+
+    // const testResult = model.evaluate(testData.xs, testData.labels);
+    // const testAccPercent = testResult[1].dataSync()[0] * 100;
+    // const finalValAccPercent = valAcc * 100;
+    // ui.logStatus(
+    //     `Final validation accuracy: ${finalValAccPercent.toFixed(1)}%; ` +
+    //     `Final test accuracy: ${testAccPercent.toFixed(1)}%`);
 
     console.log('finished, saving the model');
-
     await model.save('indexeddb://mobilenet');
   };
 
   const onFit = async () => {
-    const labledData = images.filter((image: Image) => {
-      return (
-        image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000'
-      );
-    });
-    initializeDatasets();
-    resetStopTraining();
-    fit(shuffleImages(labledData)).then(() => {});
+    // testMobilenet(BEAN_DATASET_URL, 2, loadPngImage);
+    testMobilenet(FLOWER_DATASET_URL, 1, loadJpgImage);
   };
 
   enum LossFunction {
@@ -492,60 +789,52 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     'categoricalCrossentropy'
   }
   const onParameterTuning = async () => {
-    const numberOfClasses: number = categories.length - 1;
-    const labledData = images.filter((image: Image) => {
-      return (
-        image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000'
-      );
-    });
-
-    const trainingSet = await createAutotunerDataSet(categories, labledData);
-
-    var tensorflowlModelAutotuner = new autotuner.TensorflowlModelAutotuner(
-      ['accuracy'],
-      trainingSet,
-      numberOfClasses
-    );
-
-    const model = await createModel(numberOfClasses);
-
-    var optimizers = [
-      tensorflow.train.adadelta(learningRate),
-      tensorflow.train.adam(learningRate),
-      tensorflow.train.adamax(learningRate),
-      tensorflow.train.rmsprop(learningRate),
-      tensorflow.train.sgd(learningRate)
-    ];
-
-    var losses = [
-      LossFunction.absoluteDifference,
-      LossFunction.categoricalCrossentropy,
-      LossFunction.cosineDistance,
-      LossFunction.meanSquaredError,
-      LossFunction.sigmoidCrossEntropy,
-      LossFunction.categoricalCrossentropy
-    ];
-
-    const parameters = {
-      lossfunction: losses,
-      optimizerAlgorithm: optimizers,
-      batchSize: [15],
-      epochs: [5, 10, 12, 15, 20]
-    };
-    tensorflowlModelAutotuner.addModel('testModel', model, parameters);
-
-    // tune the hyperparameters
-    const params = await tensorflowlModelAutotuner.bayesianOptimization(
-      'accuracy'
-    );
-
-    setBatchSize(params['batchSize']);
-    setEpochs(params['epochs']);
-    setLossFunction(LossFunction[params['lossFunction']] as string);
-    const optimizer = Object.keys(optimizationAlgorithms)[
-      params['optimizerFunction']
-    ];
-    setOptimizationAlgorithm(optimizer);
+    // const numberOfClasses: number = categories.length - 1;
+    // const labledData = images.filter((image: Image) => {
+    //   return (
+    //     image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000'
+    //   );
+    // });
+    // const trainingSet = await createAutotunerDataSet(categories, labledData);
+    // var tensorflowlModelAutotuner = new autotuner.TensorflowlModelAutotuner(
+    //   ['accuracy'],
+    //   trainingSet,
+    //   numberOfClasses
+    // );
+    // const model = await createModel(numberOfClasses);
+    // var optimizers = [
+    //   tensorflow.train.adadelta(learningRate),
+    //   tensorflow.train.adam(learningRate),
+    //   tensorflow.train.adamax(learningRate),
+    //   tensorflow.train.rmsprop(learningRate),
+    //   tensorflow.train.sgd(learningRate)
+    // ];
+    // var losses = [
+    //   LossFunction.absoluteDifference,
+    //   LossFunction.categoricalCrossentropy,
+    //   LossFunction.cosineDistance,
+    //   LossFunction.meanSquaredError,
+    //   LossFunction.sigmoidCrossEntropy,
+    //   LossFunction.categoricalCrossentropy
+    // ];
+    // const parameters = {
+    //   lossfunction: losses,
+    //   optimizerAlgorithm: optimizers,
+    //   batchSize: [15],
+    //   epochs: [5, 10, 12, 15, 20]
+    // };
+    // tensorflowlModelAutotuner.addModel('testModel', model, parameters);
+    // // tune the hyperparameters
+    // const params = await tensorflowlModelAutotuner.bayesianOptimization(
+    //   'accuracy'
+    // );
+    // setBatchSize(params['batchSize']);
+    // setEpochs(params['epochs']);
+    // setLossFunction(LossFunction[params['lossFunction']] as string);
+    // const optimizer = Object.keys(optimizationAlgorithms)[
+    //   params['optimizerFunction']
+    // ];
+    // setOptimizationAlgorithm(optimizer);
   };
 
   // specifies interface
@@ -738,6 +1027,15 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
             </div>
           </Collapse>
         </List>
+        <DialogContentText>Training history:</DialogContentText>
+
+        <History
+          status={status}
+          lossData={trainingLossHistory}
+          validationAccuracyData={trainingValidationLossHistory}
+          accuracyData={trainingAccuracyHistory}
+          validationLossData={trainingValidationAccuracyHistory}
+        />
       </DialogContent>
     </Dialog>
   );

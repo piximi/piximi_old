@@ -22,25 +22,25 @@ export const createTrainingSet = async (
   let concatenatedTensorData = tensorflow.tidy(() =>
     tensorflow.concat(trainDataSet.data)
   );
-  let concatenatedLableData = tensorflow.tidy(() =>
-    tensorflow.oneHot(trainDataSet.lables, numberOfClasses)
+  let concatenatedLabelData = tensorflow.tidy(() =>
+    tensorflow.oneHot(trainDataSet.labels, numberOfClasses)
   );
 
   trainDataSet.data.forEach((tensor: tensorflow.Tensor<tensorflow.Rank>) =>
     tensor.dispose()
   );
 
-  return { data: concatenatedTensorData, lables: concatenatedLableData };
+  return { data: concatenatedTensorData, labels: concatenatedLabelData };
 };
 
 export const createAutotunerDataSet = async (
   categories: Category[],
-  labledData: Image[]
+  labelData: Image[]
 ) => {
   const trainingData: Image[] = [];
-  for (let i = 0; i < labledData.length; i++) {
-    if (labledData[i].partition === 0) {
-      trainingData.push(labledData[i]);
+  for (let i = 0; i < labelData.length; i++) {
+    if (labelData[i].partition === 0) {
+      trainingData.push(labelData[i]);
     }
   }
 
@@ -51,12 +51,12 @@ export const createAutotunerDataSet = async (
 
   var datapoints: {
     data: tensorflow.Tensor<tensorflow.Rank>;
-    lables: number;
+    labels: number;
   }[] = [];
-  for (let i = 0; i < trainDataSet.lables.length; i++) {
+  for (let i = 0; i < trainDataSet.labels.length; i++) {
     datapoints.push({
       data: trainDataSet.data[i],
-      lables: trainDataSet.lables[i]
+      labels: trainDataSet.labels[i]
     });
   }
 
@@ -67,20 +67,20 @@ export const createTestSet = async (
   categories: Category[],
   images: Image[]
 ) => {
-  const labledData = images.filter((image: Image) => {
+  const labeledData = images.filter((image: Image) => {
     return image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000';
   });
 
   const testData: Image[] = [];
-  for (let i = 0; i < labledData.length; i++) {
-    if (labledData[i].partition === 2) {
-      testData.push(labledData[i]);
+  for (let i = 0; i < labeledData.length; i++) {
+    if (labeledData[i].partition === 2) {
+      testData.push(labeledData[i]);
     }
   }
 
   const testDataSet = await createLabledTensorflowDataSet(testData, categories);
 
-  return { data: testDataSet.data, lables: testDataSet.lables };
+  return { data: testDataSet.data, labels: testDataSet.labels };
 };
 
 export const createPredictionSet = async (images: Image[]) => {
@@ -119,14 +119,14 @@ const createLabledTensorflowDataSet = async (
   categories: Category[]
 ) => {
   let tensorData: tensorflow.Tensor<tensorflow.Rank>[] = [];
-  let tensorLables: number[] = [];
+  let tensorLabels: number[] = [];
 
   for (const image of labledData) {
     tensorData.push(await tensorImageData(image));
-    tensorLables.push(findCategoryIndex(categories, image.categoryIdentifier));
+    tensorLabels.push(findCategoryIndex(categories, image.categoryIdentifier));
   }
 
-  return { data: tensorData, lables: tensorLables };
+  return { data: tensorData, labels: tensorLabels };
 };
 
 const imageToSquare = (
@@ -158,11 +158,11 @@ const findCategoryIndex = (
   categories: Category[],
   identifier: string
 ): number => {
-  const lables = categories.filter(
+  const labels = categories.filter(
     (category: Category) =>
       category.identifier !== '00000000-0000-0000-0000-000000000000'
   );
-  return lables.findIndex(
+  return labels.findIndex(
     (category: Category) => category.identifier === identifier
   );
 };
