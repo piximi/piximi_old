@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Category, Image } from '@piximi/types';
 import { Gallery } from '../Gallery';
 import { Column } from '../Column';
-import { Item } from '../Item';
+import { Item } from '../Item/Item';
 import LazyLoad from 'react-lazyload';
 import { useDialog } from '@piximi/hooks';
 import { ImageViewerDialog } from '@piximi/image-dialog';
