@@ -14,6 +14,8 @@ import {
   FormControlLabel,
   FormGroup
 } from '@material-ui/core';
+
+import * as ImageJS from 'image-js';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
@@ -26,7 +28,7 @@ import { RescalingForm } from '../RescalingForm/RescalingForm';
 import { History } from '../History';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
-import { Category } from '@piximi/types';
+import * as types from '@piximi/types';
 import * as tensorflow from '@tensorflow/tfjs';
 import { useState, useEffect } from 'react';
 import { styles } from './FitClassifierDialog.css';
@@ -238,21 +240,6 @@ async function testModel(
     time = end - start;
   });
 
-  // // Analyze the test set (model has not seen for training)
-  // let accuracy = 0;
-  // for (let i = 0; i < classes.length; i++) {
-  // 	const classImages = testImages[i];
-
-  // 	for (const image of classImages) {
-  // 		const scores = await model.predict(image, false);
-  // 		// compare the label
-  // 		if (scores[0].className === classes[i]) {
-  // 			accuracy++;
-  // 		}
-  // 	}
-  // }
-  // const testAccuracy = accuracy / (testSizePerClass * classes.length);
-
   showMetrics(alpha, time, logs);
   return logs[logs.length - 1];
 }
@@ -296,7 +283,6 @@ async function testMobilenet(
 
   // NOTE: If testing time, test first model twice because it takes longer
   // to train the very first time tf.js is training
-
   const MOBILENET_VERSION = version;
   let VALID_ALPHAS = [0.35];
   // const VALID_ALPHAS = [0.25, 0.5, 0.75, 1];
@@ -365,10 +351,10 @@ const useStyles = makeStyles(styles);
 type LossHistory = { x: number; y: number }[];
 
 type FitClassifierDialogProps = {
-  categories: Category[];
+  categories: types.Category[];
   setImagesPartition: (partitions: number[]) => void;
   closeDialog: () => void;
-  images: Image[];
+  images: types.Image[];
   openedDialog: boolean;
   openedDrawer: boolean;
   datasetInitialized: boolean;
@@ -388,30 +374,20 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
   } = props;
 
   const styles = useStyles({});
-
   const [src, setSrc] = useState(images[0].data);
-
   const [example, setExample] = useState<ImageJS.Image>(new ImageJS.Image());
 
   const openImage = async () => {
     console.log(src);
-
     const image = await ImageJS.Image.load(src);
-
     setExample(image);
   };
 
-  useEffect(() => {
-    console.log('foo');
-
-    openImage();
-
-    console.log(example.getHistograms());
-  });
-
-  // const example = ImageJS.Image.load(images[0]);
-
-  // example.data
+  // useEffect(() => {
+  //   // console.log('foo');
+  //   // openImage();
+  //   // console.log(example.getHistograms());
+  // });
 
   // assign each image to train- test- or validation- set
   const initializeDatasets = () => {
@@ -419,7 +395,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
       return;
     }
     var partitions: number[] = [];
-    images.forEach((image: Image) => {
+    images.forEach((image: types.Image) => {
       const setItentifier = assignToSet();
       partitions.push(setItentifier);
     });
@@ -428,7 +404,6 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
   };
 
   // Preprocessing clicks
-
   const [paddingOption1, setPaddingOption1] = React.useState<boolean>(false);
   const onPaddingOption1Click = () => {
     setPaddingOption1(!paddingOption1);
@@ -468,20 +443,24 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     setCollapsedPreprocessingList(!collapsedPreprocessingList);
   };
 
-  const onPreprocessingClick = async () => {
+  const onPreprocessingClick = async (
+    lowerPercentile: number,
+    upperPercentile: number,
+    labeledData: types.Image[]
+  ) => {
     //does actual preprocessing upon clicking button
     // Skeleton
     const rescaledSet = await rescaleData(
       lowerPercentile,
       upperPercentile,
-      labledData
+      labeledData
     );
     const resizedSet = await resizeData(
       paddingOption1,
       paddingOption2,
-      rescaledSet
+      labeledData
     );
-    const augmentedSet = await augmentData(dataAugmentation, resizedSet);
+    const augmentedSet = await augmentData(dataAugmentation, labeledData);
   };
 
   const [datasetSplits, setDatasetSplits] = React.useState([60, 80]);
@@ -623,68 +602,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     paper: styles.paper
   };
 
-  // TEMPORARY: load images locally for debugging
-
-  // let src: string = 'https://picsum.photos/256/256';
-  // const [channels, setChannels] = useState({ r: true, g: true, b: true });
-  // const [intensityRange, setIntensityRange] = useState([0.0, 1.0]);
-
-  // const [image, setImage] = useState<Image>(new Image());
-
-  // const openImage = async () => {
-  // const image = await JsImage.Image.load(src);
-
-  // const [minimum, maximum] = intensityRange;
-
-  // const rescaled = image.multiply(maximum - minimum);
-
-  // setImage(rescaled);
-
-  // setImage(rescaled);
-  // };
-
-  // // calculate and add up histograms of every image in data set
-
-  // const computeHistogram = async (labledData: Image[]) => {
-
-  //   var computing = true;
-  //   var i = 0;
-  //   var batchSize = 1;
-  //   let histogramInputImage: HTMLImageElement | HTMLCanvasElement ;
-  //   let histogramChannel1 : number[] = [];
-  //   let histogramChannel2 : number[] = [];
-  //   let histogramChannel3 : number[] = [];
-  //   while (computing) {
-  //     var startBatchIndex = i * batchSize;
-  //     var endBatchIndex = (i + 1) * batchSize - 1;
-  //     if (endBatchIndex > labledData.length) {
-  //       var batchData = labledData.slice(startBatchIndex);
-  //       computing = false;
-  //     } else {
-  //       var batchData = labledData.slice(startBatchIndex, endBatchIndex);
-  //     }
-  //     console.log(batchData);
-  //     const tmp = await ImageJS.Image.load(batchData[0].data);
-  //     histogramInputImage = tmp.getCanvas();
-
-  //     histogramChannel1 += histogramInputImage.getHistogram({
-  //       channel: 1
-  //     });
-  //     histogramChannel2 += histogramInputImage.getHistogram({
-  //       channel: 2
-  //     });
-  //     histogramChannel3 += histogramInputImage.getHistogram({
-  //       channel: 3
-  //     });
-  //     // const HistogramData = batchData.data;
-  //     i++;
-  //   }
-
-  //   console.log('finished');
-
-  // };
-
-  const fit = async (labledData: Image[]) => {
+  const fit = async (labledData: types.Image[]) => {
     const numberOfClasses: number = categories.length - 1;
     if (numberOfClasses === 1) {
       alert('The classifier must have at least two classes!');
@@ -749,11 +667,6 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
         },
         onEpochEnd: async (epoch, logs) => {
           valAcc = logs!.val_acc;
-          // ui.plotLoss(trainBatchCount, logs!.val_loss, 'validation');
-          // ui.plotAccuracy(trainBatchCount, logs!.val_acc, 'validation');
-          // if (onIteration) {
-          //   onIteration('onEpochEnd', epoch, logs);
-          // }
           await tensorflow.nextFrame();
         }
       }
@@ -761,13 +674,6 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
     trainData.data.dispose();
     trainData.labels.dispose();
-
-    // const testResult = model.evaluate(testData.xs, testData.labels);
-    // const testAccPercent = testResult[1].dataSync()[0] * 100;
-    // const finalValAccPercent = valAcc * 100;
-    // ui.logStatus(
-    //     `Final validation accuracy: ${finalValAccPercent.toFixed(1)}%; ` +
-    //     `Final test accuracy: ${testAccPercent.toFixed(1)}%`);
 
     console.log('finished, saving the model');
     await model.save('indexeddb://mobilenet');
@@ -788,54 +694,6 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     'sigmoidCrossEntropy',
     'categoricalCrossentropy'
   }
-  const onParameterTuning = async () => {
-    // const numberOfClasses: number = categories.length - 1;
-    // const labledData = images.filter((image: Image) => {
-    //   return (
-    //     image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000'
-    //   );
-    // });
-    // const trainingSet = await createAutotunerDataSet(categories, labledData);
-    // var tensorflowlModelAutotuner = new autotuner.TensorflowlModelAutotuner(
-    //   ['accuracy'],
-    //   trainingSet,
-    //   numberOfClasses
-    // );
-    // const model = await createModel(numberOfClasses);
-    // var optimizers = [
-    //   tensorflow.train.adadelta(learningRate),
-    //   tensorflow.train.adam(learningRate),
-    //   tensorflow.train.adamax(learningRate),
-    //   tensorflow.train.rmsprop(learningRate),
-    //   tensorflow.train.sgd(learningRate)
-    // ];
-    // var losses = [
-    //   LossFunction.absoluteDifference,
-    //   LossFunction.categoricalCrossentropy,
-    //   LossFunction.cosineDistance,
-    //   LossFunction.meanSquaredError,
-    //   LossFunction.sigmoidCrossEntropy,
-    //   LossFunction.categoricalCrossentropy
-    // ];
-    // const parameters = {
-    //   lossfunction: losses,
-    //   optimizerAlgorithm: optimizers,
-    //   batchSize: [15],
-    //   epochs: [5, 10, 12, 15, 20]
-    // };
-    // tensorflowlModelAutotuner.addModel('testModel', model, parameters);
-    // // tune the hyperparameters
-    // const params = await tensorflowlModelAutotuner.bayesianOptimization(
-    //   'accuracy'
-    // );
-    // setBatchSize(params['batchSize']);
-    // setEpochs(params['epochs']);
-    // setLossFunction(LossFunction[params['lossFunction']] as string);
-    // const optimizer = Object.keys(optimizationAlgorithms)[
-    //   params['optimizerFunction']
-    // ];
-    // setOptimizationAlgorithm(optimizer);
-  };
 
   // specifies interface
   return (
@@ -950,16 +808,6 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
             timeout="auto"
             unmountOnExit
           >
-            <Tooltip title="Tune parameters" placement="bottom">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={onParameterTuning}
-              >
-                Tune parameters NEW 1
-              </Button>
-            </Tooltip>
-
             <Form
               batchSize={batchSize}
               closeDialog={closeDialog}
