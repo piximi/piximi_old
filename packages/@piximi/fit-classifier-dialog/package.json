@@ -15,11 +15,14 @@
     "@material-ui/icons": "4.5.1",
     "@material-ui/styles": "4.5.0",
     "@material-ui/system": "^4.5.2",
+    "@piximi/autotuner": "^1.1.0",
     "@piximi/components": "^0.1.18",
     "@piximi/hooks": "^0.1.11",
     "@piximi/image-dialog": "^1.0.3",
     "@piximi/store": "^0.1.23",
+    "@tensorflow/tfjs": "^1.3.2",
     "image-js": "^0.21.8",
+    "mathjs": "^6.2.5",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -28,7 +31,8 @@
     "react-three-fiber": "^3.0.11",
     "react-virtualized": "^9.21.2",
     "react-vis": "^1.11.7",
-    "three": "^0.110.0"
+    "three": "^0.110.0",
+    "victory": "^33.1.3"
   },
   "description": "Piximi’s FitClassifierDialog component",
   "devDependencies": {

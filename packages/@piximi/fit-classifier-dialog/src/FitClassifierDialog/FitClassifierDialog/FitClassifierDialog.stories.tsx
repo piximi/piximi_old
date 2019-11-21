@@ -1,9 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { FitClassifierDialog } from './FitClassifierDialog';
+import { ConnectedFitClassifierDialog } from './ConnectedFitClassifierDialog';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';
 import { Category, Image, Partition } from '@piximi/types';
+import { Provider } from 'react-redux';
+import { store } from '@piximi/store';
 
 const closeDialog = () => {};
 
@@ -103,13 +105,15 @@ const images: Image[] = [
 ];
 
 storiesOf('FitClassifierDialog', module).add('example', () => (
-  <ThemeProvider theme={theme}>
-    <FitClassifierDialog
-      categories={categories}
-      closeDialog={closeDialog}
-      images={images}
-      openedDialog
-      openedDrawer={false}
-    />
-  </ThemeProvider>
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <ConnectedFitClassifierDialog
+        closeDialog={closeDialog}
+        openedDialog
+        openedDrawer={false}
+        datasetInitialized={true}
+        setDatasetInitialized={(datasetInitialized: boolean) => {}}
+      />
+    </ThemeProvider>
+  </Provider>
 ));
