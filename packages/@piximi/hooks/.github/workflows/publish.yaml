@@ -7,7 +7,7 @@ on:
       - v*
 jobs:
   build:
-    name: test
+    name: publish
     runs-on: ubuntu-latest
     steps:
       - name: Version
@@ -23,7 +23,8 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         with:
           auth-token: ${{ secrets.NPM_TOKEN }}
-          cmd: publish --new-version ${{ steps.version.outputs.VERSION }}
+          cmd: publish --access=public --new-version ${{ steps.version.outputs.VERSION }}
+          registry-url: registry.npmjs.org
       - name: push
         uses: github-actions-x/commit@v2.1
         with:
