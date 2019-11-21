@@ -48,8 +48,14 @@ import * as seedrandom from 'seedrandom';
 import { assertTypesMatch } from '@tensorflow/tfjs-core/dist/tensor_util';
 import * as tm from '@teachablemachine/image';
 
+import * as tfvis from '@tensorflow/tfjs-vis';
+
 const SEED_WORD = 'testSuite';
 const seed: seedrandom.prng = seedrandom(SEED_WORD);
+
+const vis = tfvis.visor();
+vis.close();
+const surface = { name: 'show.fitCallbacks', tab: 'Training' };
 
 // @ts-ignore
 var Table = require('cli-table');
@@ -217,24 +223,7 @@ async function testModel(
         learningRate,
         batchSize: 16
       },
-      {
-        onEpochBegin: async (epoch: number, logs: tf.Logs) => {
-          if (showEpochResults) {
-            console.log('Epoch: ', epoch);
-          }
-        },
-        onEpochEnd: async (epoch: number, log: tf.Logs) => {
-          if (showEpochResults) {
-            console.log(log);
-          }
-          if (earlyStopEpoch !== epochs && earlyStopEpoch === epoch) {
-            model.stopTraining().then(() => {
-              console.log('Stopped training early');
-            });
-          }
-          logs.push(log);
-        }
-      }
+      tfvis.show.fitCallbacks(surface, ['loss', 'acc'])
     );
     const end = window.performance.now();
     time = end - start;
@@ -680,6 +669,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
   };
 
   const onFit = async () => {
+    vis.open();
     // testMobilenet(BEAN_DATASET_URL, 2, loadPngImage);
     testMobilenet(FLOWER_DATASET_URL, 1, loadJpgImage);
   };
@@ -706,7 +696,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
       onClose={closeDialog}
       open={openedDialog}
       TransitionComponent={DialogTransition}
-      style={{ zIndex: 1203 }}
+      style={{ zIndex: 900 }}
     >
       <DialogAppBar
         onStopTrainingChange={onStopTrainingChange}
@@ -875,15 +865,6 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
             </div>
           </Collapse>
         </List>
-        <DialogContentText>Training history:</DialogContentText>
-
-        <History
-          status={status}
-          lossData={trainingLossHistory}
-          validationAccuracyData={trainingValidationLossHistory}
-          accuracyData={trainingAccuracyHistory}
-          validationLossData={trainingValidationAccuracyHistory}
-        />
       </DialogContent>
     </Dialog>
   );

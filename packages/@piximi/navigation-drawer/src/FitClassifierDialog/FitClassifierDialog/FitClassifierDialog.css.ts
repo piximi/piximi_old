@@ -6,7 +6,7 @@ const drawerWidth = 280;
 export const styles = (theme: Theme) =>
   createStyles({
     content: {
-      flexGrow: 1,
+      flexGrow: 0,
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen
@@ -25,6 +25,6 @@ export const styles = (theme: Theme) =>
       marginLeft: drawerWidth
     },
     paper: {
-      zIndex: 1203
+      zIndex: 900
     }
   });
