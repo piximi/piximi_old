@@ -10,6 +10,9 @@ jobs:
     name: publish
     runs-on: ubuntu-latest
     steps:
+      - name: setup
+        id: setup
+        run: apt install git
       - name: Version
         id: version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/v}
