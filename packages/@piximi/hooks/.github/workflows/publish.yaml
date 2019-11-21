@@ -23,7 +23,7 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         with:
           auth-token: ${{ secrets.NPM_TOKEN }}
-          cmd: publish --access=public --new-version ${{ steps.version.outputs.VERSION }}
+          cmd: publish --access=public --new-version ${{ steps.version.outputs.VERSION }} --no-commit-hooks
           registry-url: registry.npmjs.org
       - name: push
         uses: github-actions-x/commit@v2.1
