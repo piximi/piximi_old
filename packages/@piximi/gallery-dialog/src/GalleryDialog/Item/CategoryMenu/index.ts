@@ -1,1 +1,0 @@
-export { CategoryMeny } from './CategoryMenu';

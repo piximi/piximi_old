@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { GalleryDialog } from './GalleryDialog';
+import { Gallery } from './Gallery';
 import { Classifier } from '@piximi/types';
 
 type State = {
@@ -13,4 +13,4 @@ const mapStateToProps = (state: State) => {
   };
 };
 
-export const ConnectedGalleryDialog = connect(mapStateToProps)(GalleryDialog);
+export const ConnectedGallery = connect(mapStateToProps)(Gallery);

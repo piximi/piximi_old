@@ -1,1 +1,1 @@
-export { Gallery } from './Gallery';
+export { ConnectedGallery } from './ConnectedGallery';
