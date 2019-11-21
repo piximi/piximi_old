@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: setup
         id: setup
-        run: apt install git
+        run: sudo apt-get install git
       - name: Version
         id: version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/v}
