@@ -12,12 +12,12 @@ const useStyles = makeStyles(styles);
 
 type GalleryDialogProps = {
   callOnDragEnd: () => void;
-  images: [Image];
-  categories: [Category];
+  images: Array<Image>;
+  categories: Array<Category>;
   imagesPerRow: number;
   decreaseWidth: number;
-  setSelectedImages: any;
-  selectedImages: any;
+  setSelectedImages: (identifiers: Array<string>) => void;
+  selectedImages: Array<string>;
 };
 
 export const GalleryDialog = ({
@@ -33,19 +33,16 @@ export const GalleryDialog = ({
 
   const visibleCategories = categories
     .filter((category: Category) => category.visualization.visible)
-    .map((category: { identifier: any }) => category.identifier);
+    .map((category: Category) => category.identifier);
 
-  const imageIsVisible = (image: {
-    categoryIdentifier: any;
-    visualization: any;
-  }) => {
+  const imageIsVisible = (image: Image) => {
     return (
       visibleCategories.includes(image.categoryIdentifier) &&
       image.visualization.visible
     );
   };
 
-  let visibleImages: Image[];
+  let visibleImages: Array<Image>;
 
   if (images.length > 0) {
     visibleImages = images.filter((image: Image) => imageIsVisible(image));
@@ -53,9 +50,9 @@ export const GalleryDialog = ({
     visibleImages = images;
   }
 
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState<Array<any>>([]);
 
-  const [collisions, setCollisions] = useState([]);
+  const [collisions, setCollisions] = useState<Array<string>>([]);
 
   const [selectionBoxCoordinates, setSelectionBoxCoordinates] = React.useState({
     x1: 0,
@@ -117,7 +114,9 @@ export const GalleryDialog = ({
     }
     // Only check for collisions if selection box is active
     if (selectionBoxVisibility === 'visible') {
-      const collisions = collisionDetection(currentSelectionBoxCoordinates);
+      const collisions: Array<string> = collisionDetection(
+        currentSelectionBoxCoordinates
+      );
       // @ts-ignore
       setSelected(collisions);
       // @ts-ignore

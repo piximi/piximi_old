@@ -6,7 +6,7 @@ import { Image } from '@piximi/types';
 type GalleryItemsProps = {
   decreaseWidth: any;
   selectItem: any;
-  images: [Image];
+  images: Array<Image>;
   selectedItems: any;
   ondrag: any;
   imagesPerRow: any;

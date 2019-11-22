@@ -1,22 +1,35 @@
-const collisionWithRectangle = (
-  rectangle1: { x: any; y: any; width: any; height: any },
-  rectangle2: any
-) => {
+type MousePosition = {
+  x1: number;
+  x2: number;
+  y1: number;
+  y2: number;
+};
+
+type Rectangle = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+type Position = {
+  height: string;
+  left: string;
+  top: string;
+  width: string;
+};
+
+const collisionWithRectangle = (a: Rectangle, b: Rectangle) => {
   // Check if two rectangles overlap
   return !!(
-    rectangle1.x < rectangle2.x + rectangle2.width &&
-    rectangle1.x + rectangle1.width > rectangle2.x &&
-    rectangle1.y < rectangle2.y + rectangle2.height &&
-    rectangle1.y + rectangle1.height > rectangle2.y
+    a.x < b.x + b.width &&
+    a.x + a.width > b.x &&
+    a.y < b.y + b.height &&
+    a.y + a.height > b.y
   );
 };
 
-const reCalcWithoutPixelString = (mousePosition: {
-  x1: any;
-  x2: any;
-  y1: any;
-  y2: any;
-}) => {
+const reCalcWithoutPixelString = (mousePosition: MousePosition): Rectangle => {
   let x3 = Math.min(mousePosition.x1, mousePosition.x2); //Smaller X
   let x4 = Math.max(mousePosition.x1, mousePosition.x2); //Larger X
   let y3 = Math.min(mousePosition.y1, mousePosition.y2); //Smaller Y
@@ -28,34 +41,24 @@ const reCalcWithoutPixelString = (mousePosition: {
   return { x: left, y: top, width: width, height: height };
 };
 
-const collisionDetection = (mousePosition: {
-  x1: number;
-  x2: number;
-  y1: number;
-  y2: number;
-}) => {
+const collisionDetection = (mousePosition: MousePosition): Array<string> => {
   // Check if any selectable item is overlapping with mouse selection box
   const rectangle1 = reCalcWithoutPixelString(mousePosition);
   const elements = document.getElementsByTagName('canvas'); // Check collisions with selectable elements
-  let collisions = [];
+  let collisions: Array<string> = [];
   for (let i = 0; i < elements.length; i++) {
     const element = elements[i];
     const rectangle2 = element.getBoundingClientRect();
     const imageId = element.getAttribute('imgid');
     const collisionDetected = collisionWithRectangle(rectangle1, rectangle2);
-    if (collisionDetected) {
+    if (imageId && collisionDetected) {
       collisions.push(imageId);
     }
   }
   return collisions;
 };
 
-const reCalc = (mousePosition: {
-  x1: number;
-  x2: number;
-  y1: number;
-  y2: number;
-}) => {
+const reCalc = (mousePosition: MousePosition): Position => {
   // Calculate rectangle position
   let x3 = Math.min(mousePosition.x1, mousePosition.x2); //Smaller X
   let x4 = Math.max(mousePosition.x1, mousePosition.x2); //Larger X
