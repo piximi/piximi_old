@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { FormEvent, MouseEventHandler, SyntheticEvent, useState } from 'react';
 import './GalleryDialog.css';
-import { GalleryCustomDragLayer } from '../..';
-import { GalleryItems } from '../..';
-import { GallerySelectionBox } from '../..';
+import { GalleryCustomDragLayer } from '../GalleryCustomDragLayer/GalleryCustomDragLayer';
+import { GalleryItems } from '../GalleryItems/GalleryItems';
+import { GallerySelectionBox } from '../GallerySelectionBox/GallerySelectionBox';
 import { collisionDetection } from '../utilities';
 
 export const GalleryDialog = (props: {
