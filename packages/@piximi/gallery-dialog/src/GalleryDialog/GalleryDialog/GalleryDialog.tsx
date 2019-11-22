@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { SyntheticEvent, useState } from 'react';
-import { GalleryCustomDragLayer } from '../GalleryCustomDragLayer/GalleryCustomDragLayer';
-import { GalleryItems } from '../GalleryItems/GalleryItems';
-import { GallerySelectionBox } from '../GallerySelectionBox/GallerySelectionBox';
+import { GalleryCustomDragLayer } from '../../../dist';
+import { GalleryItems } from '../../../dist';
+import { GallerySelectionBox } from '../../../dist';
 import { collisionDetection } from '../utilities';
 import { makeStyles } from '@material-ui/styles';
 import { styles } from './GalleryDialog.css';

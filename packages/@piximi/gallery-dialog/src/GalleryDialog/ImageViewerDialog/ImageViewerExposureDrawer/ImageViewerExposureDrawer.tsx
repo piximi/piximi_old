@@ -13,13 +13,10 @@ export const ImageViewerExposureDrawer = (props: any) => {
   const {
     onClose,
     open,
-    src,
     setBrightness,
     brightness,
     setContrast,
-    contrast,
-    setUnselectedChannels,
-    unselectedChannels
+    contrast
   } = props;
 
   const classes = useStyles({});

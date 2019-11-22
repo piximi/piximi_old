@@ -23,15 +23,15 @@ export const GallerySelectionBox = (props: GallerySelectionBoxProps) => {
     borderColor: '#AAAAAA'
   });
 
-  const styleFromBoxCoordinates = reCalc(selectionBoxCoordinates);
-
-  const newStyle = {
-    ...style,
-    ...styleFromBoxCoordinates,
-    visibility: visibility
-  };
-
   React.useEffect(() => {
+    const styleFromBoxCoordinates = reCalc(selectionBoxCoordinates);
+
+    const newStyle = {
+      ...style,
+      ...styleFromBoxCoordinates,
+      visibility: visibility
+    };
+
     setStyle(newStyle);
   }, [selectionBoxCoordinates, visibility]);
 
