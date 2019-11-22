@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FormEvent, MouseEventHandler, SyntheticEvent, useState } from 'react';
-import './GalleryDialog.css';
+// import './GalleryDialog.css';
 import { GalleryCustomDragLayer } from '../GalleryCustomDragLayer/GalleryCustomDragLayer';
 import { GalleryItems } from '../GalleryItems/GalleryItems';
 import { GallerySelectionBox } from '../GallerySelectionBox/GallerySelectionBox';

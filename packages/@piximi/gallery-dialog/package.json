@@ -99,7 +99,7 @@
     ]
   },
   "main": "./dist/index.js",
-  "name": "@piximi/image-dialog",
+  "name": "@piximi/gallery-dialog",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -116,5 +116,5 @@
   },
   "sideEffects": false,
   "types": "./dist/index.d.ts",
-  "version": "1.0.3"
+  "version": "0.1.0"
 }
