@@ -146,13 +146,11 @@ export const GalleryDialog = ({
     let selectedItems = [...selected];
     const noSelectedItems = selectedItems.length;
     // Check if clicked on an already selected item
-    // @ts-ignore
     if (selectedItems.includes(imgId)) {
       return;
     }
     // Check if shiftkey is pressed
     if (shiftKeyPressed) {
-      // @ts-ignore
       selectedItems.push(imgId);
     }
     // Check if alt keys is pressed
@@ -162,19 +160,16 @@ export const GalleryDialog = ({
       const lastSelected = selectedItems[selectedItems.length - 1];
       for (let image of images) {
         if (image.identifier === imgId || image.identifier === lastSelected) {
-          // @ts-ignore
-          selectedItems.push(image.id);
+          selectedItems.push(image.identifier);
           selectOthers = !selectOthers;
         }
         if (selectOthers && noSelectedItems !== 0) {
-          // @ts-ignore
-          selectedItems.push(image.id);
+          selectedItems.push(image.identifier);
         }
       }
     }
     // No special key pressed
     else {
-      // @ts-ignore
       selectedItems = [imgId];
     }
     // Set selected state
