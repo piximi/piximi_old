@@ -12,6 +12,4 @@ const mapStateToProps = (state: State) => {
   };
 };
 
-export const ConnectedGalleryItemLabel = connect(mapStateToProps)(
-  GalleryItemLabel
-);
+export const ConnectedItemLabel = connect(mapStateToProps)(GalleryItemLabel);

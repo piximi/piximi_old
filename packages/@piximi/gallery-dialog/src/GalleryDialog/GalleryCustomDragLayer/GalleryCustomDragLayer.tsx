@@ -12,6 +12,7 @@ const layerStyles = {
 };
 
 const getItemStyles = (props: {
+  draggedItem?: any;
   item?: any;
   itemType?: any;
   isDragging?: any;
@@ -47,6 +48,7 @@ let swapArrayElements = (
 };
 
 export const GalleryCustomDragLayer = (props: {
+  draggedItem?: any;
   item?: any;
   itemType?: any;
   isDragging?: any;
@@ -82,6 +84,7 @@ export const GalleryCustomDragLayer = (props: {
 
       const imgElement = list[i].childNodes[2];
 
+      // @ts-ignore
       let img = <img key={'draglayerImg' + i} src={imgElement.src} alt="foo" />;
 
       imgSources.push(img);
@@ -105,6 +108,7 @@ export const GalleryCustomDragLayer = (props: {
   }
 
   return (
+    // @ts-ignore
     <div style={layerStyles}>
       <div style={getItemStyles(props)}>{renderItem(itemType, item)}</div>
     </div>

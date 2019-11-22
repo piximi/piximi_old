@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-export const ConnectedGalleryItem = connect(
+export const ConnectedItem = connect(
   mapStateToProps,
   mapDispatchToProps
 )(GalleryItem);

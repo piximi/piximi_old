@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { Grid, AutoSizer } from 'react-virtualized';
-import { ConnectedGalleryItem } from '../GalleryItem';
+import { ConnectedItem } from '../GalleryItem/ConnectedItem';
+import { Image } from '@piximi/types';
 
 type GalleryItemsProps = {
   decreaseWidth: any;
   selectItem: any;
-  images: any;
+  images: [Image];
   selectedItems: any;
   ondrag: any;
-  asyncImgLoadingFunc: any;
-  callOnDragEnd: any;
   imagesPerRow: any;
   windowWidth: any;
 };
@@ -21,8 +20,6 @@ export const GalleryItems = (props: GalleryItemsProps) => {
     images,
     selectedItems,
     ondrag,
-    asyncImgLoadingFunc,
-    callOnDragEnd,
     imagesPerRow,
     windowWidth
   } = props;
@@ -53,15 +50,13 @@ export const GalleryItems = (props: GalleryItemsProps) => {
 
     return (
       <div key={key} style={newStyle}>
-        <ConnectedGalleryItem
+        <ConnectedItem
           key={key}
           item={images[index]}
           containerStyle={style}
           selectedItems={selectedItems}
           onmousedown={onmousedown}
           ondrag={ondrag}
-          asyncImgLoadingFunc={asyncImgLoadingFunc}
-          callOnDragEnd={callOnDragEnd}
         />
       </div>
     );

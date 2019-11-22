@@ -1,6 +1,15 @@
 import * as React from 'react';
+import { SyntheticEvent } from 'react';
 
-export const Image = (props: any) => {
+const Image = (props: {
+  src?: any;
+  openImageViewerDialog?: any;
+  id?: any;
+  height?: any;
+  width?: any;
+  brightness?: any;
+  contrast?: any;
+}) => {
   const { src, openImageViewerDialog, id } = props;
 
   const [imageStatus, setImageStatus] = React.useState('loading');
@@ -10,14 +19,18 @@ export const Image = (props: any) => {
 
   let canvasRef = React.useRef();
 
-  const onLoad = e => {
+  const onLoad = (e: SyntheticEvent) => {
     const image = e.target;
+    // @ts-ignore
     const width = image.width;
+    // @ts-ignore
     const height = image.height;
     setImageStatus('loaded');
+    // @ts-ignore
     setImage(image);
     setImageHeight(height);
     setImageWidth(width);
+    // @ts-ignore
     image.style.height = '0px';
   };
 
@@ -25,14 +38,23 @@ export const Image = (props: any) => {
   const draw = () => {
     if (imageStatus === 'loaded') {
       const canvas = canvasRef.current;
+      // @ts-ignore
       const context = canvas.getContext('2d');
+      // @ts-ignore
       canvas.height = props.height * 0.9;
+      // @ts-ignore
       canvas.width = props.width * 0.9;
+
       const ratio = Math.min(
+        // @ts-ignore
         canvas.width / imageWidth,
+        // @ts-ignore
         canvas.height / imageHeight
       );
+
+      // @ts-ignore
       canvas.height = imageHeight * ratio;
+      // @ts-ignore
       canvas.width = imageWidth * ratio;
 
       // Apply filters to context
@@ -43,10 +65,13 @@ export const Image = (props: any) => {
         props.contrast +
         '%)';
 
+      // @ts-ignore
       context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
+      // @ts-ignore
       image.crossOrigin = 'Anonymous';
 
+      // @ts-ignore
       image.setAttribute('crossOrigin', '');
 
       // FIXME: Sat Jun 15 (Allen)
@@ -73,10 +98,13 @@ export const Image = (props: any) => {
   return (
     <div>
       <canvas
+        // @ts-ignore
         type={'selectableElement'}
         onDoubleClick={openImageViewerDialog}
+        // @ts-ignore
         imgid={id}
         style={{ verticalAlign: 'middle', padding: '2px' }}
+        // @ts-ignore
         ref={canvasRef}
         height={props.height}
         width={props.width}
@@ -96,3 +124,5 @@ Image.defaultProps = {
   contrast: 100,
   unselectedChannels: []
 };
+
+export default Image;

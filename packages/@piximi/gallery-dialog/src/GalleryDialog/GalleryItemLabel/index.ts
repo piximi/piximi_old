@@ -1,1 +1,0 @@
-export { ConnectedGalleryItemLabel } from './ConnectedGalleryItemLabel';

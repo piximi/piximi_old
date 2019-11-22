@@ -1,8 +1,8 @@
 import React from 'react';
 import { ImageViewerDialog } from '../ImageViewerDialog';
-import { Image } from '../Image';
+import Image from '../Image/Image';
 import { useDialog } from '@piximi/hooks';
-import { ConnectedGalleryItemLabel } from '../GalleryItemLabel';
+import { ConnectedItemLabel } from '../GalleryItemLabel/ConnectedItemLabel';
 import { ImageDragSource } from '@piximi/components';
 
 export const GalleryItem = (props: any) => {
@@ -19,7 +19,7 @@ export const GalleryItem = (props: any) => {
       onmousedown={onmousedown}
       item={item}
     >
-      <ConnectedGalleryItemLabel image={item} />
+      <ConnectedItemLabel image={item} />
 
       <Image
         key={'img' + item.identifier}

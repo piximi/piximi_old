@@ -1,1 +1,0 @@
-export { ConnectedItemCategoryMenu } from './ConnectedItemCategoryMenu';
