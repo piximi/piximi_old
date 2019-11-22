@@ -10,6 +10,7 @@ type GalleryItemProps = {
   onmousedown: any;
   containerStyle: any;
   item: any;
+  ondrag: any;
 };
 
 export const GalleryItem = ({
@@ -20,7 +21,7 @@ export const GalleryItem = ({
 }: GalleryItemProps) => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
-  const unselectedChannels: Array<any> = item.visualization.visibleChannels;
+  const unselectedChannels: any = item.visualization.visibleChannels;
 
   return (
     <ImageDragSource
