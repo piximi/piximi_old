@@ -1,37 +1,43 @@
 import * as React from 'react';
 import { SyntheticEvent, useState } from 'react';
-import { GalleryCustomDragLayer } from '../../../dist';
-import { GalleryItems } from '../../../dist';
-import { GallerySelectionBox } from '../../../dist';
+import { GalleryCustomDragLayer } from '../GalleryCustomDragLayer/GalleryCustomDragLayer';
+import { GalleryItems } from '../GalleryItems/GalleryItems';
+import { GallerySelectionBox } from '../GallerySelectionBox/GallerySelectionBox';
 import { collisionDetection } from '../utilities';
 import { makeStyles } from '@material-ui/styles';
 import { styles } from './GalleryDialog.css';
+import { Category, Image } from '@piximi/types';
 
 const useStyles = makeStyles(styles);
 
-export const GalleryDialog = (props: {
-  callOnDragEnd: any;
-  images: any;
-  categories?: any;
-  imagesPerRow?: any;
-  decreaseWidth?: any;
+type GalleryDialogProps = {
+  callOnDragEnd: () => void;
+  images: [Image];
+  categories: [Category];
+  imagesPerRow: number;
+  decreaseWidth: number;
+  setSelectedImages: any;
   selectedImages: any;
-  setSelectedImages?: any;
-}) => {
-  const { images, categories, imagesPerRow, decreaseWidth } = props;
+};
 
+export const GalleryDialog = ({
+  callOnDragEnd,
+  images,
+  categories,
+  imagesPerRow = 10,
+  decreaseWidth = 0,
+  setSelectedImages,
+  selectedImages
+}: GalleryDialogProps) => {
   const classes = useStyles();
 
   const visibleCategories = categories
-    .filter(
-      (category: { visualization: { visible: any } }) =>
-        category.visualization.visible
-    )
+    .filter((category: Category) => category.visualization.visible)
     .map((category: { identifier: any }) => category.identifier);
 
   const imageIsVisible = (image: {
     categoryIdentifier: any;
-    visualization: { visible: any };
+    visualization: any;
   }) => {
     return (
       visibleCategories.includes(image.categoryIdentifier) &&
@@ -39,15 +45,13 @@ export const GalleryDialog = (props: {
     );
   };
 
-  const visibleImages =
-    images.length > 0
-      ? images.filter(
-          (image: {
-            categoryIdentifier: any;
-            visualization: { visible: any };
-          }) => imageIsVisible(image)
-        )
-      : images;
+  let visibleImages: Image[];
+
+  if (images.length > 0) {
+    visibleImages = images.filter((image: Image) => imageIsVisible(image));
+  } else {
+    visibleImages = images;
+  }
 
   const [selected, setSelected] = useState([]);
 
@@ -59,6 +63,7 @@ export const GalleryDialog = (props: {
     y1: 0,
     y2: 0
   });
+
   const [selectionBoxVisibility, setSelectionBoxVisibility] = React.useState(
     'hidden'
   );
@@ -117,7 +122,7 @@ export const GalleryDialog = (props: {
       setSelected(collisions);
       // @ts-ignore
       setCollisions(collisions);
-      props.setSelectedImages(collisions);
+      setSelectedImages(collisions);
     }
   };
 
@@ -130,7 +135,7 @@ export const GalleryDialog = (props: {
     ) {
       // if so unselect all items
       setSelected([]);
-      props.setSelectedImages([]);
+      setSelectedImages([]);
     }
     // Hide selection box und reset collisions
     setMouseDown(false);
@@ -156,8 +161,8 @@ export const GalleryDialog = (props: {
       // Select a range of images
       let selectOthers = false;
       const lastSelected = selectedItems[selectedItems.length - 1];
-      for (let image of props.images) {
-        if (image.id === imgId || image.id === lastSelected) {
+      for (let image of images) {
+        if (image.identifier === imgId || image.identifier === lastSelected) {
           // @ts-ignore
           selectedItems.push(image.id);
           selectOthers = !selectOthers;
@@ -174,7 +179,7 @@ export const GalleryDialog = (props: {
       selectedItems = [imgId];
     }
     // Set selected state
-    props.setSelectedImages(selectedItems);
+    setSelectedImages(selectedItems);
     setSelected(selectedItems);
   };
 
@@ -221,9 +226,4 @@ export const GalleryDialog = (props: {
       />
     </div>
   );
-};
-
-GalleryDialog.defaultProps = {
-  decreaseWidth: 0,
-  imagesPerRow: 10
 };
