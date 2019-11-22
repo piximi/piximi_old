@@ -41,6 +41,7 @@ import {
 } from './dataset';
 import { rescaleData, resizeData, augmentData } from './preprocessing';
 import { createModel, createMobileNet } from './networks';
+import * as tfvis from '@tensorflow/tfjs-vis';
 
 // additional stuff to test
 import * as tf from '@tensorflow/tfjs';
@@ -84,6 +85,33 @@ function loadPngImage(
   });
 }
 
+function loadPiximiImage(image: types.Image): HTMLImageElement {
+  if (image.data.endsWith('.png')) {
+    Promise.resolve(loadPiximiPngImage(image.data));
+  }
+  return getPiximiImage(image);
+}
+
+function getPiximiImage(image: types.Image) {
+  const img = new Image(224, 224);
+  img.crossOrigin = 'anonymous';
+  img.src = image.data;
+  return img;
+}
+
+function loadPiximiPngImage(dataset_url: string): Promise<HTMLImageElement> {
+  // tslint:disable-next-line:max-line-length
+  const src = dataset_url;
+
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.crossOrigin = 'anonymous';
+    img.src = src;
+  });
+}
+
 /**
  * Load a flower image from our storage bucket
  */
@@ -101,6 +129,54 @@ function loadJpgImage(
     img.crossOrigin = 'anonymous';
     img.src = src;
   });
+}
+
+/**
+ * Create train/validation dataset and test dataset with unique images
+ */
+async function createDatasetsFromPiximiImages(
+  images: types.Image[],
+  classes: types.Category[]
+) {
+  // fill in an array with unique numbers
+  let listNumbers = [];
+  let numberOfImages = images.length;
+  for (let i = 0; i < numberOfImages; ++i) listNumbers[i] = i;
+  listNumbers = fisherYates(listNumbers, seed); // shuffle
+
+  const trainAndValidationIndeces = listNumbers.slice(0, numberOfImages * 0.8);
+  const testIndices = listNumbers.slice(
+    numberOfImages * 0.8 + 1,
+    numberOfImages - 1
+  );
+
+  const trainAndValidationImages: HTMLImageElement[][] = [];
+  const testImages: HTMLImageElement[][] = [];
+
+  for (let j = 0; j < classes.length; ++j) {
+    let load: Array<HTMLImageElement> = [];
+    for (let i = 0; i < trainAndValidationIndeces.length; ++i) {
+      let imageIndex = trainAndValidationIndeces[i];
+      if (images[imageIndex].categoryIdentifier === classes[j].identifier) {
+        load.push(await loadPiximiImage(images[imageIndex]));
+      }
+    }
+    trainAndValidationImages.push(load);
+
+    load = [];
+    for (let i = 0; i < testIndices.length; ++i) {
+      let imageIndex = testIndices[i];
+      if (images[imageIndex].categoryIdentifier === classes[j].identifier) {
+        load.push(await loadPiximiImage(images[imageIndex]));
+      }
+    }
+    testImages.push(load);
+  }
+
+  return {
+    trainAndValidationImages,
+    testImages
+  };
 }
 
 /**
@@ -363,14 +439,18 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
   } = props;
 
   const styles = useStyles({});
-  const [src, setSrc] = useState(images[0].data);
+
+  // if (images.length != 0) {
+  //   const [src, setSrc] = useState(images[0].data);
+  // }
+
   const [example, setExample] = useState<ImageJS.Image>(new ImageJS.Image());
 
-  const openImage = async () => {
-    console.log(src);
-    const image = await ImageJS.Image.load(src);
-    setExample(image);
-  };
+  // const openImage = async () => {
+  //   console.log(src);
+  //   const image = await ImageJS.Image.load(src);
+  //   setExample(image);
+  // };
 
   // useEffect(() => {
   //   // console.log('foo');
@@ -591,87 +671,218 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     paper: styles.paper
   };
 
-  const fit = async (labledData: types.Image[]) => {
-    const numberOfClasses: number = categories.length - 1;
-    if (numberOfClasses === 1) {
-      alert('The classifier must have at least two classes!');
-      return;
+  const lossLabelElement = document.getElementById('loss-label');
+  const accuracyLabelElement = document.getElementById('accuracy-label');
+  const lossValues = [[], []];
+  function plotLoss(batch: any, loss: any, set: any) {
+    const series = set === 'train' ? 0 : 1;
+    // @ts-ignore
+    lossValues[series].push({ x: batch, y: loss });
+    const lossContainer = document.getElementById('loss-canvas');
+    tfvis.render.linechart(
+      lossContainer,
+      { values: lossValues, series: ['train', 'validation'] },
+      {
+        xLabel: 'Batch #',
+        yLabel: 'Loss',
+        width: 400,
+        height: 300
+      }
+    );
+    lossLabelElement!.innerText = `last loss: ${loss.toFixed(3)}`;
+  }
+
+  async function testMobilenet(
+    dataset_url: string,
+    version: number,
+    loadFunction: Function,
+    maxImages: number = 200,
+    earlyStop: boolean = false
+  ) {
+    // classes, samplesPerClass, url
+    const metadata = await (await fetch(dataset_url + 'metadata.json')).json();
+    // 1. Setup dataset parameters
+    //const classLabels = metadata.classes as string[];
+    const classLabels: string[] = [];
+    for (let i = 0; i < categories.length; i++) {
+      if (categories[i].identifier !== '00000000-0000-0000-0000-000000000000') {
+        classLabels.push(categories[i].identifier);
+      }
+    }
+    console.log(classLabels);
+
+    let NUM_IMAGE_PER_CLASS = Math.ceil(maxImages / classLabels.length);
+
+    if (NUM_IMAGE_PER_CLASS > Math.min(...metadata.samplesPerClass)) {
+      NUM_IMAGE_PER_CLASS = Math.min(...metadata.samplesPerClass);
+    }
+    const TRAIN_VALIDATION_SIZE_PER_CLASS = NUM_IMAGE_PER_CLASS;
+
+    const table = new Table();
+    table.push({
+      'train/validation size':
+        TRAIN_VALIDATION_SIZE_PER_CLASS * classLabels.length
+    });
+    console.log('\n' + table.toString());
+
+    // 2. Create our datasets once
+    // const datasets = await createDatasets(
+    //   dataset_url,
+    //   classLabels,
+    //   TRAIN_VALIDATION_SIZE_PER_CLASS,
+    //   0,
+    //   loadFunction
+    // );
+    const classes = categories.filter((category: types.Category) => {
+      return category.identifier !== '00000000-0000-0000-0000-000000000000';
+    });
+    const datasets = await createDatasetsFromPiximiImages(images, classes);
+    const trainAndValidationImages = datasets.trainAndValidationImages;
+    const testImages = datasets.testImages;
+
+    // NOTE: If testing time, test first model twice because it takes longer
+    // to train the very first time tf.js is training
+    const MOBILENET_VERSION = version;
+    let VALID_ALPHAS = [0.35];
+    // const VALID_ALPHAS = [0.25, 0.5, 0.75, 1];
+    // const VALID_ALPHAS = [0.4];
+    let EPOCHS = 50;
+    let LEARNING_RATE = 0.001;
+    if (version === 1) {
+      LEARNING_RATE = 0.0001;
+      VALID_ALPHAS = [0.25];
+      EPOCHS = 20;
     }
 
-    const model = await createModel(numberOfClasses);
+    const earlyStopEpochs = earlyStop ? 5 : EPOCHS;
 
-    const validationSplit = 1 - datasetSplits[1] / 100;
+    for (let a of VALID_ALPHAS) {
+      const lineStart = '\n//====================================';
+      const lineEnd = '====================================//\n\n';
+      console.log(lineStart);
+      // 3. Test data on the model
+      const teachableMobileNetV2 = await tm.createTeachable(
+        { tfjsVersion: tf.version.tfjs },
+        { version: MOBILENET_VERSION, alpha: a }
+      );
 
-    model.compile({
-      loss: lossFunctions[lossFunction],
-      metrics: ['accuracy'],
-      optimizer: optimizationAlgorithms[optimizationAlgorithm](learningRate)
-    });
+      const lastEpoch = await testModel(
+        teachableMobileNetV2,
+        a,
+        classLabels,
+        trainAndValidationImages,
+        testImages,
+        0,
+        EPOCHS,
+        LEARNING_RATE,
+        false,
+        earlyStopEpochs
+      );
 
-    // We'll keep a buffer of loss and accuracy values over time.
-    let trainBatchCount = 0;
+      // assert.isTrue(accuracyV2 > 0.7);
+      console.log(lineEnd);
 
-    // const trainData = data.getTrainData();
-    // const testData = data.getTestData();
-    const trainData = await createTrainingSet(
-      categories,
-      labledData,
-      numberOfClasses
-    );
+      return { model: teachableMobileNetV2, lastEpoch };
+    }
+  }
 
-    const totalNumBatches =
-      Math.ceil((trainData.data.shape[0] * (1 - validationSplit)) / batchSize) *
-      epochs;
+  async function testModel(
+    model: any,
+    alpha: number,
+    classes: string[],
+    trainAndValidationImages: HTMLImageElement[][],
+    testImages: HTMLImageElement[][],
+    testSizePerClass: number,
+    epochs: number,
+    learningRate: number,
+    showEpochResults: boolean = false,
+    earlyStopEpoch: number = epochs
+  ) {
+    model.setLabels(classes);
+    model.setSeed(SEED_WORD); // set a seed to shuffle predictably
 
-    // During the long-running fit() call for model training, we include
-    // callbacks, so that we can plot the loss and accuracy values in the page
-    // as the training progresses.
-    let valAcc;
-    await model.fit(trainData.data, trainData.labels, {
-      batchSize,
-      validationSplit,
-      epochs: epochs,
-      callbacks: {
-        onBatchEnd: async (batch, logs) => {
-          trainBatchCount++;
-          setTrainStatus(
-            `Training... (` +
-              `${((trainBatchCount / totalNumBatches) * 100).toFixed(1)}%` +
-              ` complete). To stop training, refresh or close page.`
-          );
-          if (stopTraining) {
-            model.stopTraining = true;
-          }
-          console.log(trainBatchCount);
-          // ui.plotLoss(trainBatchCount, logs!.loss, 'train');
-          // ui.plotAccuracy(trainBatchCount, logs!.acc, 'train');
-          // if (onIteration && batch % 10 === 0) {
-          //   onIteration('onBatchEnd', batch, logs);
-          // }
-          updateLossHistory(trainBatchCount, logs!.loss);
-          updateAccuracHistory(trainBatchCount, logs!.acc);
-          // updateValidationAccuracHistory(trainBatchCount, logs.val_acc);
-          // updateValidationLossHistory(trainBatchCount, logs.val_loss);
-          await tensorflow.nextFrame();
-        },
-        onEpochEnd: async (epoch, logs) => {
-          valAcc = logs!.val_acc;
-          await tensorflow.nextFrame();
+    const logs: tf.Logs[] = [];
+    let time: number = 0;
+    const epochLogs: any = [];
+
+    await tf.nextFrame().then(async () => {
+      let index = 0;
+      for (const imgSet of trainAndValidationImages) {
+        for (const img of imgSet) {
+          await model.addExample(index, img);
         }
+        index++;
       }
+      const start = window.performance.now();
+      await model.train(
+        {
+          denseUnits: 100,
+          epochs,
+          learningRate,
+          batchSize: 16
+        },
+
+        {
+          onEpochEnd: function(epoch: any, log: any) {
+            const accSurface = {
+              name: 'Accuracy History',
+              tab: 'Training'
+            };
+            const lossSurface = {
+              name: 'Loss History',
+              tab: 'Training'
+            };
+            const options = {
+              xLabel: 'Epoch',
+              yLabel: 'Value',
+              yAxisDomain: [0, 1],
+              seriesColors: ['teal', 'tomato']
+            }; // Prep the data
+
+            epochLogs.push(log);
+            const acc = epochLogs.map((log: any, i: any) => ({
+              x: i,
+              y: log.acc
+            }));
+            const valAcc = epochLogs.map((log: any, i: any) => ({
+              x: i,
+              y: log.val_acc
+            }));
+            const loss = epochLogs.map((log: any, i: any) => ({
+              x: i,
+              y: log.loss
+            }));
+            const valLoss = epochLogs.map((log: any, i: any) => ({
+              x: i,
+              y: log.val_loss
+            }));
+            const accData = {
+              values: [acc, valAcc],
+              // Custom names for the series
+              series: ['Accuracy', 'Validation Accuracy'] // render the chart
+            };
+            const lossData = {
+              values: [loss, valLoss],
+              // Custom names for the series
+              series: ['Loss', 'Validation Loss'] // render the chart
+            };
+            tfvis.render.linechart(accSurface, accData, options);
+            tfvis.render.linechart(lossSurface, lossData, options);
+          }
+        }
+      );
+      const end = window.performance.now();
+      time = end - start;
     });
 
-    trainData.data.dispose();
-    trainData.labels.dispose();
-
-    console.log('finished, saving the model');
-    await model.save('indexeddb://mobilenet');
-  };
+    //showMetrics(alpha, time, logs);
+    return logs[logs.length - 1];
+  }
 
   const onFit = async () => {
     vis.open();
     // testMobilenet(BEAN_DATASET_URL, 2, loadPngImage);
-    testMobilenet(FLOWER_DATASET_URL, 1, loadJpgImage);
+    testMobilenet(FLOWER_DATASET_URL, 1, loadPngImage);
   };
 
   enum LossFunction {
