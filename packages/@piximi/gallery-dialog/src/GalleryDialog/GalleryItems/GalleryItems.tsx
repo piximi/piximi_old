@@ -4,12 +4,12 @@ import { ConnectedItem } from '../GalleryItem/ConnectedItem';
 import { Image } from '@piximi/types';
 
 type GalleryItemsProps = {
-  decreaseWidth: any;
+  decreaseWidth: number;
   selectItem: any;
   images: Array<Image>;
-  selectedItems: any;
+  selectedItems: Array<string>;
   ondrag: any;
-  imagesPerRow: any;
+  imagesPerRow: number;
   windowWidth: any;
 };
 

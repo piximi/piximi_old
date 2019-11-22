@@ -23,7 +23,7 @@ const getLableIndex = (scores: Score[]) => {
 };
 
 type GalleryItemLabelProps = {
-  categories: Category[];
+  categories: Array<Category>;
   image: Image;
 };
 

@@ -5,13 +5,22 @@ import { useDialog } from '@piximi/hooks';
 import { ConnectedItemLabel } from '../GalleryItemLabel/ConnectedItemLabel';
 import { ImageDragSource } from '@piximi/components';
 
-export const GalleryItem = (props: any) => {
-  // item = image
-  const { selectedItems, onmousedown, containerStyle, item } = props;
+type GalleryItemProps = {
+  selectedItems: any;
+  onmousedown: any;
+  containerStyle: any;
+  item: any;
+};
 
+export const GalleryItem = ({
+  selectedItems,
+  onmousedown,
+  containerStyle,
+  item
+}: GalleryItemProps) => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
-  const unselectedChannels = item.visualization.visibleChannels;
+  const unselectedChannels: Array<any> = item.visualization.visibleChannels;
 
   return (
     <ImageDragSource
