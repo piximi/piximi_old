@@ -116,5 +116,5 @@
   },
   "sideEffects": false,
   "types": "./dist/index.d.ts",
-  "version": "0.1.3"
+  "version": "0.1.4"
 }
