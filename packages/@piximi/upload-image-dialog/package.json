@@ -1,0 +1,84 @@
+{
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react",
+      "@babel/preset-typescript"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/piximi/upload-image-dialog/issues"
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "description": "Piximi’s UploadImageDialog component",
+  "devDependencies": {
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@storybook/react": "^5.0.11",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.23",
+    "@types/react": "^16.8.17",
+    "@types/react-dom": "^16.8.4",
+    "@types/storybook__react": "^4.0.2",
+    "babel-loader": "^8.0.6",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.0",
+    "husky": "^2.4.1",
+    "jest": "^24.8.0",
+    "jest-enzyme": "^7.0.2",
+    "lint-staged": "^8.2.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.7.2"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "files": [
+    "dist"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "setupFilesAfterEnv": [
+      "./src/setupTests.ts"
+    ],
+    "testEnvironment": "node",
+    "transformIgnorePatterns": [
+      "/node_modules/react-dnd"
+    ]
+  },
+  "license": "MIT",
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
+  "main": "./dist/index.js",
+  "name": "@piximi/upload-image-dialog",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piximi/upload-image-dialog.git"
+  },
+  "scripts": {
+    "build": "rm -rf ./dist && tsc -p ./tsconfig.json",
+    "precommit": "lint-staged",
+    "test": "jest",
+    "storybook": "start-storybook -p 9009"
+  },
+  "sideEffects": false,
+  "types": "./dist/index.d.ts",
+  "version": "1.0.3"
+}
