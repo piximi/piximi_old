@@ -2,8 +2,8 @@ import '@uppy/core/dist/style.css';
 import '@uppy/dashboard/dist/style.css';
 import * as React from 'react';
 import Uppy from '@uppy/core';
-import { IndexedDB } from './IndexedDB';
 import { DashboardModal } from '@uppy/react';
+import { IndexedDB } from './IndexedDB';
 
 const uppy = new Uppy.Uppy();
 
