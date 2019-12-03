@@ -9,7 +9,7 @@ import Dexie from 'dexie';
 
 interface ImageEntry {
   id?: number;
-  data: Blob;
+  data: Blob | File;
 }
 
 class ImageDatabase extends Dexie {
@@ -48,14 +48,10 @@ class IndexedDB extends Uppy.Plugin {
   }
 
   upload(identifiers: Array<string>) {
-    const image = this.uppy.getFile(identifiers[0]);
-
-    debugger;
-
     const imageDatabase = new ImageDatabase();
 
     const promises = identifiers.map(identifier => {
-      const data: Blob = this.uppy.getFile(identifier).data;
+      const data: Blob | File = this.uppy.getFile(identifier).data;
 
       return imageDatabase.images.add({
         data: data
