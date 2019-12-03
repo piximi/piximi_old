@@ -1,10 +1,19 @@
 import * as React from 'react';
-
+import { useDialog } from '@piximi/hooks';
 import { storiesOf } from '@storybook/react';
 import { UploadImageDialog } from './UploadImageDialog';
 
-const closeDialog = () => {};
-
 storiesOf('UploadImageDialog', module).add('example', () => {
-  return <UploadImageDialog closeDialog={closeDialog} openedDialog />;
+  const { openedDialog, openDialog, closeDialog } = useDialog();
+
+  return (
+    <>
+      <button onClick={openDialog}>Upload image</button>
+
+      <UploadImageDialog
+        closeDialog={closeDialog}
+        openedDialog={openedDialog}
+      />
+    </>
+  );
 });

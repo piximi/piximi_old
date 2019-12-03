@@ -10,6 +10,7 @@
     "url": "https://github.com/piximi/upload-image-dialog/issues"
   },
   "dependencies": {
+    "@piximi/hooks": "^0.1.19",
     "@uppy/core": "^1.6.0",
     "@uppy/react": "^1.4.0",
     "dexie": "^2.0.4",
@@ -21,12 +22,11 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
-    "@storybook/react": "^5.0.11",
+    "@storybook/react": "^5.2.8",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.23",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
-    "@types/storybook__react": "^4.0.2",
     "babel-loader": "^8.0.6",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
