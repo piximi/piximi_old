@@ -1,11 +1,9 @@
 import '@uppy/core/dist/style.css';
 import '@uppy/dashboard/dist/style.css';
 import * as React from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Uppy from '@uppy/core';
-import { Dashboard } from '@uppy/react';
 import { IndexedDB } from './IndexedDB';
+import { DashboardModal } from '@uppy/react';
 
 const uppy = new Uppy.Uppy();
 
@@ -27,10 +25,11 @@ export const UploadImageDialog = ({
   openedDialog
 }: UploadImageDialogProps) => {
   return (
-    <Dialog onClose={closeDialog} open={openedDialog}>
-      <DialogTitle>Upload image</DialogTitle>
-
-      <Dashboard plugins={plugins} uppy={uppy} />
-    </Dialog>
+    <DashboardModal
+      onRequestClose={closeDialog}
+      open={openedDialog}
+      plugins={plugins}
+      uppy={uppy}
+    />
   );
 };

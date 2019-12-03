@@ -10,7 +10,6 @@
     "url": "https://github.com/piximi/upload-image-dialog/issues"
   },
   "dependencies": {
-    "@material-ui/core": "^4.7.1",
     "@uppy/core": "^1.6.0",
     "@uppy/react": "^1.4.0",
     "dexie": "^2.0.4",

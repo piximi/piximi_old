@@ -1,13 +1,13 @@
 import Dexie from 'dexie';
-import Uppy from '@uppy/core';
+import { Plugin, Uppy, UppyFile } from '@uppy/core';
 
-interface Table {
+interface Entry {
   id?: number;
   data: Blob | File;
 }
 
 class Database extends Dexie {
-  files: Dexie.Table<Table, number>;
+  files: Dexie.Table<Entry, number>;
 
   constructor(databaseName: string, tableName: string, versionNumber: number) {
     super(databaseName);
@@ -29,7 +29,7 @@ type IndexedDBOptions = {
   versionNumber?: number;
 };
 
-export class IndexedDB extends Uppy.Plugin {
+export class IndexedDB extends Plugin {
   database: Database;
   databaseName: string;
   id: string;
@@ -37,7 +37,7 @@ export class IndexedDB extends Uppy.Plugin {
   type: string;
   versionNumber: number;
 
-  constructor(uppy: Uppy.Uppy, options: IndexedDBOptions) {
+  constructor(uppy: Uppy, options: IndexedDBOptions) {
     super(uppy, options);
 
     this.databaseName = options.databaseName || 'uppy';
@@ -52,58 +52,52 @@ export class IndexedDB extends Uppy.Plugin {
       this.versionNumber
     );
 
-    this.preprocess = this.preprocess.bind(this);
-
-    this.upload = this.upload.bind(this);
-
-    this.postprocess = this.postprocess.bind(this);
-  }
-
-  preprocess(identifiers: Array<string>) {
-    return Promise.resolve();
-  }
-
-  upload(identifiers: Array<string>) {
-    return Promise.all(
-      identifiers.map(identifier => {
-        const file: Uppy.UppyFile = this.uppy.getFile(identifier);
-
-        this.database.files
-          .add({
-            data: file.data
-          })
-          .then(() => {
-            this.uppy.emit('preprocess-progress', file, {
-              mode: 'determinate',
-              message: 'preparingUpload',
-              value: 1
-            });
-          });
-      })
-    );
-
-    // return Promise.all(promises).then((responses) => {
-    //   identifiers.forEach((identifier) => {
-    //     const file: Uppy.UppyFile = this.uppy.getFile(identifier);
-    //
-    //     this.uppy.emit('preprocess-complete', file)
-    //   })
-    // });
-  }
-
-  postprocess(identifiers: Array<string>) {
-    return Promise.resolve();
+    this.uploader = this.uploader.bind(this);
   }
 
   install() {
-    this.uppy.addPreProcessor(this.preprocess);
-    this.uppy.addUploader(this.upload);
-    this.uppy.addPostProcessor(this.upload);
+    this.uppy.addUploader(this.uploader);
   }
 
   uninstall() {
-    this.uppy.removePreProcessor(this.preprocess);
-    this.uppy.removeUploader(this.upload);
-    this.uppy.removePostProcessor(this.postprocess);
+    this.uppy.removeUploader(this.uploader);
+  }
+
+  private uploader(identifiers: Array<string>) {
+    identifiers.forEach(identifier => {
+      const file = this.uppy.getFile(identifier);
+
+      this.uppy.emit('preprocess-progress', file, {
+        mode: 'determinate',
+        message: 'preparingUpload',
+        value: 0
+      });
+    });
+
+    const promises = identifiers.map(identifier => {
+      const file: UppyFile = this.uppy.getFile(identifier);
+
+      const item: Entry = {
+        data: file.data
+      };
+
+      const emit = () => {
+        this.uppy.emit('preprocess-progress', file, {
+          mode: 'determinate',
+          message: 'preparingUpload',
+          value: 1
+        });
+      };
+
+      return this.database.files.add(item).then(emit);
+    });
+
+    return Promise.all(promises).then(() => {
+      identifiers.forEach(identifier => {
+        const file = this.uppy.getFile(identifier);
+
+        this.uppy.emit('preprocess-complete', file);
+      });
+    });
   }
 }
