@@ -5,25 +5,27 @@ import Uppy from '@uppy/core';
 import { DashboardModal } from '@uppy/react';
 import { IndexedDB } from './IndexedDB';
 
-const uppy = new Uppy.Uppy();
-
-uppy.use(IndexedDB, {
-  databaseName: 'piximi-images',
-  tableName: 'images',
-  versionNumber: 1
-});
-
-const plugins: Array<string> = ['IndexedDB'];
-
 type UploadImageDialogProps = {
   closeDialog: () => void;
+  createImage: (checksum: string, data: string, identifier: string) => void;
   openedDialog: boolean;
 };
 
 export const UploadImageDialog = ({
   closeDialog,
+  createImage,
   openedDialog
 }: UploadImageDialogProps) => {
+  const uppy = new Uppy.Uppy();
+
+  uppy.use(IndexedDB, {
+    databaseName: 'piximi-images',
+    tableName: 'images',
+    versionNumber: 1
+  });
+
+  const plugins: Array<string> = ['IndexedDB'];
+
   return (
     <DashboardModal
       onRequestClose={closeDialog}
