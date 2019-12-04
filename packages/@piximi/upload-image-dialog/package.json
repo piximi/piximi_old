@@ -15,6 +15,7 @@
     "@piximi/types": "^0.1.8",
     "@uppy/core": "^1.6.0",
     "@uppy/react": "^1.4.0",
+    "axios": "^0.19.0",
     "dexie": "^2.0.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
