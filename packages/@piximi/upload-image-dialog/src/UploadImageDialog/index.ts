@@ -1,1 +1,1 @@
-export { UploadImageDialog } from './UploadImageDialog';
+export { ConnectedUploadImageDialog } from './UploadImageDialog';
