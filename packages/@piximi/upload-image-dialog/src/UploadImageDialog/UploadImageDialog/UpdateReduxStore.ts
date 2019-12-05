@@ -32,7 +32,7 @@ export class UpdateReduxStore extends Plugin {
 
   private uploader(identifiers: Array<string>) {
     identifiers.forEach(identifier => {
-      const file = this.uppy.getFile(identifier);
+      const file: UppyFile = this.uppy.getFile(identifier);
 
       this.uppy.emit('preprocess-progress', file, {
         mode: 'determinate',
@@ -69,7 +69,7 @@ export class UpdateReduxStore extends Plugin {
 
     return Promise.all(promises).then(() => {
       identifiers.forEach(identifier => {
-        const file = this.uppy.getFile(identifier);
+        const file: UppyFile = this.uppy.getFile(identifier);
 
         this.uppy.emit('preprocess-complete', file);
       });
