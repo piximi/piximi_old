@@ -1,44 +1,95 @@
 {
   "author": "Allen Goodman",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react",
+      "@babel/preset-typescript"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/piximi/store/issues"
+  },
   "dependencies": {
-    "@piximi/types": "^0.1.7",
+    "@piximi/types": "^0.1.8",
+    "@reduxjs/toolkit": "^1.1.0",
     "localforage": "^1.7.3",
-    "react": "^16.10.2",
+    "react": "^16.12.0",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
-    "redux-starter-kit": "^0.7.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "typesafe-actions": "^5.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
     "@babel/plugin-transform-modules-commonjs": "^7.6.0",
-    "@types/jest": "^24.0.18",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.23",
     "@types/node": "^12.7.12",
     "@types/react": "^16.9.5",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-redux": "^7.1.5",
     "@types/redux-logger": "^3.0.7",
+    "@types/redux-persist": "^4.3.1",
+    "axios": "^0.19.0",
     "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.0",
+    "husky": "^2.4.1",
     "jest": "^24.9.0",
+    "jest-enzyme": "^7.0.2",
+    "lint-staged": "^8.2.1",
+    "prettier": "^1.19.1",
+    "react-dom": "^16.12.0",
     "ts-jest": "^24.1.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.7.2"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "files": [
     "dist"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "jest": {
     "preset": "ts-jest",
+    "setupFilesAfterEnv": [
+      "./src/setupTests.ts"
+    ],
     "testEnvironment": "node"
   },
   "license": "MIT",
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
   "main": "./dist/index.js",
   "name": "@piximi/store",
   "private": false,
-  "repository": "https://github.com/piximi/store",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piximi/store.git"
+  },
   "scripts": {
     "build": "rm -rf ./dist && tsc -p ./tsconfig.json",
-    "test": "jest",
-    "compile": "tsc -p ./tsconfig.json"
+    "precommit": "lint-staged",
+    "test": "jest"
   },
+  "sideEffects": false,
   "types": "./dist/index.d.ts",
-  "version": "0.1.30"
+  "version": "0.2.0"
 }

@@ -1,43 +1,22 @@
-import {
-  createCategoryAction,
-  createImageAction,
-  createImagesAction,
-  createImagesScoreAction,
-  createClassifierAction,
-  openClassifierAction,
-  deleteImageAction,
-  deleteCategoryAction,
-  toggleCategoryVisibilityAction,
-  updateImageContrastAction,
-  updateImageBrightnessAction,
-  updateCategoryColorAction,
-  updateCategoryDescriptionAction,
-  updateCategoryVisibilityAction,
-  updateClassifierNameAction,
-  updateImageCategoryAction,
-  updateImagesCategoryAction,
-  updateImageVisibilityAction,
-  updateImagesPartitionAction
-} from "./classifier";
-
 export {
   createCategoryAction,
+  createClassifierAction,
   createImageAction,
   createImagesAction,
   createImagesScoreAction,
-  createClassifierAction,
-  openClassifierAction,
-  deleteImageAction,
   deleteCategoryAction,
+  deleteImageAction,
+  openClassifierAction,
   toggleCategoryVisibilityAction,
-  updateImageContrastAction,
-  updateImageBrightnessAction,
   updateCategoryColorAction,
   updateCategoryDescriptionAction,
   updateCategoryVisibilityAction,
   updateClassifierNameAction,
+  updateImageBrightnessAction,
   updateImageCategoryAction,
+  updateImageContrastAction,
   updateImagesCategoryAction,
-  updateImageVisibilityAction,
-  updateImagesPartitionAction
-}
+  updateImagesPartitionAction,
+  updateImagesVisibilityAction,
+  updateImageVisibilityAction
+} from './classifier';

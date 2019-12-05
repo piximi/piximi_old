@@ -1,0 +1,1 @@
+export { combinedReducers } from './reducer';
