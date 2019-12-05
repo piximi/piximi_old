@@ -13,5 +13,10 @@ export const useMenu = () => {
     setAnchorEl(null);
   }, []);
 
-  return { anchorEl, openedMenu, openMenu, closeMenu };
+  return {
+    anchorEl,
+    closeMenu,
+    openedMenu,
+    openMenu
+  };
 };

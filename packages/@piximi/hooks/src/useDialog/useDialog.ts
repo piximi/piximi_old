@@ -11,5 +11,9 @@ export const useDialog = () => {
     setOpenedDialog(true);
   }, []);
 
-  return { openedDialog, openDialog, closeDialog };
+  return {
+    closeDialog,
+    openDialog,
+    openedDialog
+  };
 };

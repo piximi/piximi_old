@@ -11,5 +11,9 @@ export const useSnackbar = () => {
     setOpenedSnackbar(true);
   }, []);
 
-  return { openedSnackbar, openSnackbar, closeSnackbar };
+  return {
+    closeSnackbar,
+    openedSnackbar,
+    openSnackbar
+  };
 };

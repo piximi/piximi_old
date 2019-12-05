@@ -7,5 +7,8 @@ export const useCollapseList = () => {
     setCollapsedList(!collapsedList);
   };
 
-  return { collapsedList, collapseList };
+  return {
+    collapsedList,
+    collapseList
+  };
 };

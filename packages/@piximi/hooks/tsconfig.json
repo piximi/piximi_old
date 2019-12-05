@@ -22,10 +22,12 @@
     "target": "es6"
   },
   "exclude": [
-    "src/**/*.test.ts",
+    "src/**/*.stories.tsx",
+    "src/**/*.test.tsx",
     "src/setupTests.ts"
   ],
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ]
 }
