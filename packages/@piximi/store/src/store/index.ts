@@ -1,1 +1,8 @@
-export { persistor, store, useDispatch, useSelector, useStore } from './store';
+export {
+  ClassifierContext,
+  persistor,
+  store,
+  useDispatch,
+  useSelector,
+  useStore
+} from './store';

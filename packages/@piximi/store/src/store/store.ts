@@ -48,7 +48,7 @@ export const store: EnhancedStore = configureStore(options);
 
 export const persistor = persistStore(store);
 
-const ClassifierContext: Context<any> = createContext(undefined);
+export const ClassifierContext: Context<any> = createContext(undefined);
 
 export const useDispatch = createDispatchHook(ClassifierContext);
 

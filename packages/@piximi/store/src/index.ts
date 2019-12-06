@@ -20,4 +20,11 @@ export {
   updateImagesPartitionAction
 } from './actions';
 export { combinedReducers } from './reducer';
-export { persistor, store } from './store';
+export {
+  ClassifierContext,
+  persistor,
+  store,
+  useDispatch,
+  useSelector,
+  useStore
+} from './store';
