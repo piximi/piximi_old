@@ -1,1 +1,1 @@
-export { persistor, store } from './store';
+export { persistor, store, useDispatch, useSelector, useStore } from './store';

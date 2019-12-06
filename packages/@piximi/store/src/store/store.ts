@@ -10,6 +10,12 @@ import {
   StoreEnhancer
 } from '@reduxjs/toolkit';
 import { combinedReducers } from '..';
+import {
+  createDispatchHook,
+  createSelectorHook,
+  createStoreHook
+} from 'react-redux';
+import { createContext, Context } from 'react';
 
 const enhancers: Array<StoreEnhancer> = [];
 
@@ -41,3 +47,11 @@ const options = {
 export const store: EnhancedStore = configureStore(options);
 
 export const persistor = persistStore(store);
+
+const ClassifierContext: Context<any> = createContext(undefined);
+
+export const useDispatch = createDispatchHook(ClassifierContext);
+
+export const useSelector = createSelectorHook(ClassifierContext);
+
+export const useStore = createStoreHook(ClassifierContext);
