@@ -15,5 +15,11 @@
     "build": "rm -rf ./dist && tsc -p ./tsconfig.json"
   },
   "types": "./dist/index.d.ts",
-  "version": "0.1.8"
+  "version": "0.1.8",
+  "dependencies": {
+    "@tensorflow/tfjs": "^1.4.0",
+    "@types/uuid": "^3.4.6",
+    "uuid": "^3.3.3",
+    "uuidv4": "^6.0.0"
+  }
 }
