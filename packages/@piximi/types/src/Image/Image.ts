@@ -3,6 +3,7 @@ export type Image = {
   checksum: string;
   data: string;
   identifier: string;
+  metadata: Metadata;
   partition: Partition;
   scores: Array<Score>;
   visualizationOptions: ImageVisualizationOptions;
@@ -14,6 +15,8 @@ export type ImageVisualizationOptions = {
   visible: boolean;
   visibleChannels: Array<number>;
 };
+
+export type Metadata = Object;
 
 export enum Partition {
   Training,

@@ -14,6 +14,7 @@ export type CompileOptions = {
 };
 
 export type FitOptions = {
+  batchSize: number;
   epochs: number;
   initialEpoch: number;
 };
