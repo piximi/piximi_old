@@ -2230,40 +2230,27 @@
 "@piximi/components@file:packages/@piximi/components":
   version "0.0.0"
   dependencies:
-    "@piximi/fit-classifier-dialog" "^0.0.0"
-    "@piximi/gallery-dialog" "^0.0.0"
     "@piximi/hooks" "^0.0.0"
-    "@piximi/image-dialog" "^0.0.0"
-    "@piximi/models" "^0.0.0"
-    "@piximi/navigation-drawer" "^0.0.0"
-    "@piximi/store" "^0.0.0"
     "@piximi/translations" "^0.0.0"
     "@piximi/types" "^0.0.0"
-    "@piximi/upload-image-dialog" "^0.0.0"
 
 "@piximi/fit-classifier-dialog@file:packages/@piximi/fit-classifier-dialog":
   version "0.0.0"
   dependencies:
     "@piximi/components" "^0.0.0"
-    "@piximi/gallery-dialog" "^0.0.0"
     "@piximi/hooks" "^0.0.0"
-    "@piximi/image-dialog" "^0.0.0"
     "@piximi/models" "^0.0.0"
-    "@piximi/navigation-drawer" "^0.0.0"
     "@piximi/store" "^0.0.0"
     "@piximi/translations" "^0.0.0"
     "@piximi/types" "^0.0.0"
-    "@piximi/upload-image-dialog" "^0.0.0"
 
 "@piximi/gallery-dialog@file:packages/@piximi/gallery-dialog":
   version "0.0.0"
   dependencies:
     "@piximi/components" "^0.0.0"
-    "@piximi/fit-classifier-dialog" "^0.0.0"
     "@piximi/hooks" "^0.0.0"
     "@piximi/image-dialog" "^0.0.0"
     "@piximi/models" "^0.0.0"
-    "@piximi/navigation-drawer" "^0.0.0"
     "@piximi/store" "^0.0.0"
     "@piximi/translations" "^0.0.0"
     "@piximi/types" "^0.0.0"
@@ -2271,45 +2258,21 @@
 
 "@piximi/hooks@file:packages/@piximi/hooks":
   version "0.0.0"
-  dependencies:
-    "@piximi/components" "^0.0.0"
-    "@piximi/fit-classifier-dialog" "^0.0.0"
-    "@piximi/gallery-dialog" "^0.0.0"
-    "@piximi/image-dialog" "^0.0.0"
-    "@piximi/models" "^0.0.0"
-    "@piximi/navigation-drawer" "^0.0.0"
-    "@piximi/store" "^0.0.0"
-    "@piximi/translations" "^0.0.0"
-    "@piximi/types" "^0.0.0"
-    "@piximi/upload-image-dialog" "^0.0.0"
 
 "@piximi/image-dialog@file:packages/@piximi/image-dialog":
   version "0.0.0"
   dependencies:
     "@piximi/components" "^0.0.0"
-    "@piximi/fit-classifier-dialog" "^0.0.0"
-    "@piximi/gallery-dialog" "^0.0.0"
     "@piximi/hooks" "^0.0.0"
-    "@piximi/models" "^0.0.0"
-    "@piximi/navigation-drawer" "^0.0.0"
     "@piximi/store" "^0.0.0"
     "@piximi/translations" "^0.0.0"
     "@piximi/types" "^0.0.0"
-    "@piximi/upload-image-dialog" "^0.0.0"
 
 "@piximi/models@file:packages/@piximi/models":
   version "0.0.0"
   dependencies:
-    "@piximi/components" "^0.0.0"
-    "@piximi/fit-classifier-dialog" "^0.0.0"
-    "@piximi/gallery-dialog" "^0.0.0"
-    "@piximi/hooks" "^0.0.0"
-    "@piximi/image-dialog" "^0.0.0"
-    "@piximi/navigation-drawer" "^0.0.0"
     "@piximi/store" "^0.0.0"
-    "@piximi/translations" "^0.0.0"
     "@piximi/types" "^0.0.0"
-    "@piximi/upload-image-dialog" "^0.0.0"
 
 "@piximi/navigation-drawer@file:packages/@piximi/navigation-drawer":
   version "0.0.0"
@@ -2328,30 +2291,10 @@
 "@piximi/store@file:packages/@piximi/store":
   version "0.0.0"
   dependencies:
-    "@piximi/components" "^0.0.0"
-    "@piximi/fit-classifier-dialog" "^0.0.0"
-    "@piximi/gallery-dialog" "^0.0.0"
-    "@piximi/hooks" "^0.0.0"
-    "@piximi/image-dialog" "^0.0.0"
-    "@piximi/models" "^0.0.0"
-    "@piximi/navigation-drawer" "^0.0.0"
-    "@piximi/translations" "^0.0.0"
     "@piximi/types" "^0.0.0"
-    "@piximi/upload-image-dialog" "^0.0.0"
 
 "@piximi/translations@file:packages/@piximi/translations":
   version "0.0.0"
-  dependencies:
-    "@piximi/components" "^0.0.0"
-    "@piximi/fit-classifier-dialog" "^0.0.0"
-    "@piximi/gallery-dialog" "^0.0.0"
-    "@piximi/hooks" "^0.0.0"
-    "@piximi/image-dialog" "^0.0.0"
-    "@piximi/models" "^0.0.0"
-    "@piximi/navigation-drawer" "^0.0.0"
-    "@piximi/store" "^0.0.0"
-    "@piximi/types" "^0.0.0"
-    "@piximi/upload-image-dialog" "^0.0.0"
 
 "@piximi/types@^0.1.8":
   version "0.1.8"
@@ -2360,28 +2303,12 @@
 
 "@piximi/types@file:packages/@piximi/types":
   version "0.0.0"
-  dependencies:
-    "@piximi/components" "^0.0.0"
-    "@piximi/fit-classifier-dialog" "^0.0.0"
-    "@piximi/gallery-dialog" "^0.0.0"
-    "@piximi/hooks" "^0.0.0"
-    "@piximi/image-dialog" "^0.0.0"
-    "@piximi/models" "^0.0.0"
-    "@piximi/navigation-drawer" "^0.0.0"
-    "@piximi/store" "^0.0.0"
-    "@piximi/translations" "^0.0.0"
-    "@piximi/upload-image-dialog" "^0.0.0"
 
 "@piximi/upload-image-dialog@file:packages/@piximi/upload-image-dialog":
   version "0.0.0"
   dependencies:
     "@piximi/components" "^0.0.0"
-    "@piximi/fit-classifier-dialog" "^0.0.0"
-    "@piximi/gallery-dialog" "^0.0.0"
     "@piximi/hooks" "^0.0.0"
-    "@piximi/image-dialog" "^0.0.0"
-    "@piximi/models" "^0.0.0"
-    "@piximi/navigation-drawer" "^0.0.0"
     "@piximi/store" "^0.0.0"
     "@piximi/translations" "^0.0.0"
     "@piximi/types" "^0.0.0"
@@ -3093,7 +3020,7 @@
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.3.tgz#856c99cdc1551d22c22b18b5402719affec9839a"
   integrity sha512-cS5owqtwzLN5kY+l+KgKdRJ/Cee8tlmQoGQuIE9tWnSmS3JMKzmxo2HIAk2wODMifGwO20d62xZQLYz+RLfXmw==
 
-"@types/hoist-non-react-statics@^3.3.0", "@types/hoist-non-react-statics@^3.3.1":
+"@types/hoist-non-react-statics@*", "@types/hoist-non-react-statics@^3.3.0", "@types/hoist-non-react-statics@^3.3.1":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
   integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
@@ -3309,10 +3236,11 @@
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
 
 "@types/styled-components@^4.4.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-4.4.0.tgz#15a3d59533fd3a5bd013db4a7c4422ec542c59d2"
-  integrity sha512-QFl+w3hQJNHE64Or3PXMFpC3HAQDiuQLi5o9m1XPEwYWfgCZtAribO5ksjxnO8U0LG8Parh0ESCgVxo4VfxlHg==
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-4.4.1.tgz#bc40cf5ce0708032f4b148b04ab3c470d3e74026"
+  integrity sha512-cQXT4pkAkM0unk/s26UBrJx9RmJ2rNUn2aDTgzp1rtu+tTkScebE78jbxNWhlqkA43XF3d41CcDlyl9Ldotm2g==
   dependencies:
+    "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
     "@types/react-native" "*"
     csstype "^2.2.0"
@@ -12474,6 +12402,11 @@ npm-lifecycle@^3.1.2:
     umask "^1.1.0"
     which "^1.3.1"
 
+npm-normalize-package-bin@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/npm-normalize-package-bin/-/npm-normalize-package-bin-1.0.0.tgz#c05ea346d29087efb34181adae00c667950aa163"
+  integrity sha512-q5spmGV/CMb/glA+ziZT3ZNbZKnua8SRQLWxQK5cpQik+l4YxgElAw72z6ZrwMrnJtzoEs259Vl3neEfxKQmDw==
+
 "npm-package-arg@^4.0.0 || ^5.0.0 || ^6.0.0", npm-package-arg@^6.0.0, npm-package-arg@^6.1.0:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/npm-package-arg/-/npm-package-arg-6.1.1.tgz#02168cb0a49a2b75bf988a28698de7b529df5cb7"
@@ -14976,14 +14909,14 @@ read-cmd-shim@^1.0.1:
     graceful-fs "^4.1.2"
 
 "read-package-json@1 || 2", read-package-json@^2.0.0, read-package-json@^2.0.13:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/read-package-json/-/read-package-json-2.1.0.tgz#e3d42e6c35ea5ae820d9a03ab0c7291217fc51d5"
-  integrity sha512-KLhu8M1ZZNkMcrq1+0UJbR8Dii8KZUqB0Sha4mOx/bknfKI/fyrQVrG/YIt2UOtG667sD8+ee4EXMM91W9dC+A==
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/read-package-json/-/read-package-json-2.1.1.tgz#16aa66c59e7d4dad6288f179dd9295fd59bb98f1"
+  integrity sha512-dAiqGtVc/q5doFz6096CcnXhpYk0ZN8dEKVkGLU0CsASt8SrgF6SF7OTKAYubfvFhWaqofl+Y8HK19GR8jwW+A==
   dependencies:
     glob "^7.1.1"
     json-parse-better-errors "^1.0.1"
     normalize-package-data "^2.0.0"
-    slash "^1.0.0"
+    npm-normalize-package-bin "^1.0.0"
   optionalDependencies:
     graceful-fs "^4.1.2"
 
