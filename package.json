@@ -13,7 +13,8 @@
     "@piximi/store": "file:packages/@piximi/store",
     "@piximi/translations": "file:packages/@piximi/translations",
     "@piximi/types": "file:packages/@piximi/types",
-    "@piximi/upload-image-dialog": "file:packages/@piximi/upload-image-dialog"
+    "@piximi/upload-image-dialog": "file:packages/@piximi/upload-image-dialog",
+    "piximi": "file:packages/piximi"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
