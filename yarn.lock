@@ -2121,6 +2121,39 @@
   dependencies:
     "@types/node" ">= 8"
 
+"@piximi/components@file:packages/@piximi/components":
+  version "0.2.0"
+
+"@piximi/fit-classifier-dialog@file:packages/@piximi/fit-classifier-dialog":
+  version "0.2.0"
+
+"@piximi/gallery-dialog@file:packages/@piximi/gallery-dialog":
+  version "0.2.0"
+
+"@piximi/hooks@file:packages/@piximi/hooks":
+  version "0.2.0"
+
+"@piximi/image-dialog@file:packages/@piximi/image-dialog":
+  version "0.2.0"
+
+"@piximi/models@file:packages/@piximi/models":
+  version "0.2.0"
+
+"@piximi/navigation-drawer@file:packages/@piximi/navigation-drawer":
+  version "0.2.0"
+
+"@piximi/store@file:packages/@piximi/store":
+  version "0.2.0"
+
+"@piximi/translations@file:packages/@piximi/translations":
+  version "0.2.0"
+
+"@piximi/types@file:packages/@piximi/types":
+  version "0.2.0"
+
+"@piximi/upload-image-dialog@file:packages/@piximi/upload-image-dialog":
+  version "0.2.0"
+
 "@reach/router@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@reach/router/-/router-1.2.1.tgz#34ae3541a5ac44fa7796e5506a5d7274a162be4e"
