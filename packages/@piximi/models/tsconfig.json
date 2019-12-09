@@ -3,15 +3,7 @@
   "exclude": ["src/setupTests.ts", "src/**/*.stories.tsx", "src/**/*.test.tsx"],
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "references": [
-    { "path": "../components" },
-    { "path": "../fit-classifier-dialog" },
-    { "path": "../gallery-dialog" },
-    { "path": "../hooks" },
-    { "path": "../image-dialog" },
-    { "path": "../navigation-drawer" },
     { "path": "../store" },
-    { "path": "../translations" },
-    { "path": "../types" },
-    { "path": "../upload-image-dialog" }
+    { "path": "../types" }
   ]
 }

@@ -4,14 +4,10 @@
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "references": [
     { "path": "../components" },
-    { "path": "../gallery-dialog" },
     { "path": "../hooks" },
-    { "path": "../image-dialog" },
     { "path": "../models" },
-    { "path": "../navigation-drawer" },
     { "path": "../store" },
     { "path": "../translations" },
-    { "path": "../types" },
-    { "path": "../upload-image-dialog" }
+    { "path": "../types" }
   ]
 }

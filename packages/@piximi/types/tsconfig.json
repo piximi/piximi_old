@@ -3,15 +3,5 @@
   "exclude": ["src/setupTests.ts", "src/**/*.stories.tsx", "src/**/*.test.tsx"],
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "references": [
-    { "path": "../components" },
-    { "path": "../fit-classifier-dialog" },
-    { "path": "../gallery-dialog" },
-    { "path": "../hooks" },
-    { "path": "../image-dialog" },
-    { "path": "../models" },
-    { "path": "../navigation-drawer" },
-    { "path": "../store" },
-    { "path": "../translations" },
-    { "path": "../upload-image-dialog" }
   ]
 }

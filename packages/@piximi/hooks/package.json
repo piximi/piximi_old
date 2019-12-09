@@ -84,15 +84,6 @@
     "warning": "^4.0.3"
   },
   "dependencies": {
-    "@piximi/components": "^0.0.0",
-    "@piximi/fit-classifier-dialog": "^0.0.0",
-    "@piximi/gallery-dialog": "^0.0.0",
-    "@piximi/image-dialog": "^0.0.0",
-    "@piximi/models": "^0.0.0",
-    "@piximi/navigation-drawer": "^0.0.0",
-    "@piximi/store": "^0.0.0",
-    "@piximi/translations": "^0.0.0",
-    "@piximi/types": "^0.0.0",
-    "@piximi/upload-image-dialog": "^0.0.0"
+
   }
 }
