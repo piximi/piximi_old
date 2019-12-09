@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./packages",
+    "baseUrl": ".",
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -17,7 +17,7 @@
     "noErrorTruncation": true,
     "outDir": "./dist",
     "paths": {
-      "@piximi/*": ["*/src"],
+      "@piximi/*": ["packages/*/src"],
       "piximi": ["piximi/src"]
     },
     "skipLibCheck": true,
