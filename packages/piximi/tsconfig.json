@@ -8,5 +8,11 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx"
-  ]
+  ],
+  "compilerOptions": {
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  }
 }
