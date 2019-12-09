@@ -1,27 +1,5 @@
 {
-  "compilerOptions": {
-    "importHelpers": true,
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
-    "declaration": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": false,
-    "jsx": "react",
-    "lib": [
-      "dom",
-      "es7"
-    ],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "noErrorTruncation": true,
-    "outDir": "./dist",
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "target": "es6"
-  },
+  "extends": "../../../tsconfig.json",
   "exclude": [
     "src/setupTests.ts",
     "src/**/*.stories.tsx",
