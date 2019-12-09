@@ -134,6 +134,7 @@
     "test": "lerna run test"
   },
   "workspaces": [
-    "packages/@piximi/*"
+    "packages/@piximi/*",
+    "packages/piximi"
   ]
 }

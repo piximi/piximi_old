@@ -1,7 +1,8 @@
 {
   "npmClient": "yarn",
   "packages": [
-    "packages/@piximi/*"
+    "packages/@piximi/*",
+    "packages/piximi"
   ],
   "useWorkspaces": true,
   "version": "2.0.0"
