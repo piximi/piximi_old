@@ -8,7 +8,7 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/piximi/hooks/issues"
+    "url": "https://github.com/piximi/piximi/issues"
   },
   "dependencies": {
     "react": "^16.12.0",
