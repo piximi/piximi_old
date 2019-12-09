@@ -1,2 +1,11 @@
+*.log*
+.DS_Store
+.env.*
 .idea
-lerna-debug.log
+.out
+.pnp.js
+/.pnp
+/build
+/coverage
+/node_modules
+dist
