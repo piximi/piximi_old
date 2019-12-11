@@ -6,8 +6,10 @@
 			"@babel/preset-typescript"
 		]
 	},
-	"bugs": {
-		"url": "https://github.com/piximi/piximi/issues"
+	"dependencies": {
+		"@piximi/components": "file:../components",
+		"@piximi/store": "file:../store",
+		"@piximi/types": "file:../types"
 	},
 	"description": "Piximi’s NavigationDrawer component",
 	"eslintConfig": {
@@ -16,11 +18,6 @@
 	"files": [
 		"dist"
 	],
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
 	"jest": {
 		"preset": "ts-jest",
 		"setupFilesAfterEnv": [
@@ -31,23 +28,10 @@
 			"/node_modules/react-dnd"
 		]
 	},
-	"license": "BSD-3-Clause",
-	"lint-staged": {
-		"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-			"prettier --single-quote --write",
-			"git add"
-		]
-	},
+	"license": "MIT",
 	"main": "./dist/index.js",
 	"name": "@piximi/navigation-drawer",
 	"private": false,
-	"publishConfig": {
-		"access": "public"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/piximi/piximi.git"
-	},
 	"types": "./dist/index.d.ts",
 	"version": "0.0.0",
 	"peerDependencies": {
@@ -98,10 +82,5 @@
 		"uuid": "^3.3.3",
 		"victory": "^33.1.7",
 		"warning": "^4.0.3"
-	},
-	"dependencies": {
-		"@piximi/components": "^0.0.0",
-		"@piximi/store": "^0.0.0",
-		"@piximi/types": "^0.0.0"
 	}
 }

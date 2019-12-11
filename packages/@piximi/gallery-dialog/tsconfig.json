@@ -1,15 +1,43 @@
 {
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "exclude": [
+    "src/setupTests.ts",
+    "src/**/*.stories.tsx",
+    "src/**/*.test.tsx"
+  ],
   "extends": "../../../tsconfig.json",
-  "exclude": ["src/setupTests.ts", "src/**/*.stories.tsx", "src/**/*.test.tsx"],
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
   "references": [
-    { "path": "../components" },
-    { "path": "../hooks" },
-    { "path": "../image-dialog" },
-    { "path": "../models" },
-    { "path": "../store" },
-    { "path": "../translations" },
-    { "path": "../types" },
-    { "path": "../upload-image-dialog" }
+    {
+      "path": "../components"
+    },
+    {
+      "path": "../hooks"
+    },
+    {
+      "path": "../image-dialog"
+    },
+    {
+      "path": "../models"
+    },
+    {
+      "path": "../store"
+    },
+    {
+      "path": "../translations"
+    },
+    {
+      "path": "../types"
+    },
+    {
+      "path": "../upload-image-dialog"
+    }
   ]
 }
