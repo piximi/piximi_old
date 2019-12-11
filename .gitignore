@@ -8,5 +8,7 @@
 /build
 /coverage
 /node_modules
+build
 dist
 node_modules
+tsconfig.tsbuildinfo
