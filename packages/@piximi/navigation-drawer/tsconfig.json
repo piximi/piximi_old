@@ -4,14 +4,7 @@
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "references": [
     { "path": "../components" },
-    { "path": "../fit-classifier-dialog" },
-    { "path": "../gallery-dialog" },
-    { "path": "../hooks" },
-    { "path": "../image-dialog" },
-    { "path": "../models" },
     { "path": "../store" },
-    { "path": "../translations" },
-    { "path": "../types" },
-    { "path": "../upload-image-dialog" }
+    { "path": "../types" }
   ]
 }

@@ -1,5 +1,17 @@
 {
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "exclude": [
+    "./src/setupTests.ts",
+    "./src/**/*.stories.tsx",
+    "./src/**/*.test.tsx"
+  ],
   "extends": "../../../tsconfig.json",
-  "exclude": ["src/setupTests.ts", "src/**/*.stories.tsx", "src/**/*.test.tsx"],
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ]
 }

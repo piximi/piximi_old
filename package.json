@@ -2,20 +2,6 @@
   "bugs": {
     "url": "https://github.com/piximi/piximi/issues"
   },
-  "dependencies": {
-    "@piximi/components": "file:packages/@piximi/components",
-    "@piximi/fit-classifier-dialog": "file:packages/@piximi/fit-classifier-dialog",
-    "@piximi/gallery-dialog": "file:packages/@piximi/gallery-dialog",
-    "@piximi/hooks": "file:packages/@piximi/hooks",
-    "@piximi/image-dialog": "file:packages/@piximi/image-dialog",
-    "@piximi/models": "file:packages/@piximi/models",
-    "@piximi/navigation-drawer": "file:packages/@piximi/navigation-drawer",
-    "@piximi/store": "file:packages/@piximi/store",
-    "@piximi/translations": "file:packages/@piximi/translations",
-    "@piximi/types": "file:packages/@piximi/types",
-    "@piximi/upload-image-dialog": "file:packages/@piximi/upload-image-dialog",
-    "piximi": "file:packages/piximi"
-  },
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@babel/plugin-transform-modules-commonjs": "^7.7.5",
@@ -130,6 +116,7 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "build": "tsc --build packages/@piximi/*",
     "clean": "lerna clean --yes",
     "compile": "tsc -b packages/@piximi/hooks",
     "precommit": "lint-staged",

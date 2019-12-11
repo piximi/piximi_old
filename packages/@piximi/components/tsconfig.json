@@ -1,16 +1,25 @@
 {
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "exclude": [
+    "./src/setupTests.ts",
+    "./src/**/*.stories.tsx",
+    "./src/**/*.test.tsx"
+  ],
   "extends": "../../../tsconfig.json",
-  "exclude": ["src/setupTests.ts", "src/**/*.stories.tsx", "src/**/*.test.tsx"],
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ],
   "references": [
-    { "path": "../fit-classifier-dialog" },
-    { "path": "../hooks" },
-    { "path": "../image-dialog" },
-    { "path": "../models" },
-    { "path": "../navigation-drawer" },
-    { "path": "../store" },
-    { "path": "../translations" },
-    { "path": "../types" },
-    { "path": "../upload-image-dialog" }
+    {
+      "path": "../hooks"
+    },
+    {
+      "path": "../types"
+    }
   ]
 }
