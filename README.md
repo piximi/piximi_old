@@ -9,22 +9,22 @@ Piximi's target users are computational or non-computational scientists interest
 This repository includes both the Piximi web app (packages/piximi) and the handful of discrete @piximi sub-packages (packages/@piximi/*) written concurrently or alongside the web app. The packages included in the packages directory are versioned together and simultaneously published to the NPM package repository.
 
 * `@piximi/components`: generic React components
-* `@piximi/evaluate-classifier-dialog`: Piximi’s EvaluateClassifierDialog component
-* `@piximi/fit-classifier-dialog`: Piximi’s FitClassifierDialog component
-* `@piximi/gallery-dialog`: Piximi’s GalleryDialog component
-* `@piximi/help-dialog`: Piximi’s HelpDialog component
+* `@piximi/evaluate-classifier-dialog`: Piximi’s `EvaluateClassifierDialog` component
+* `@piximi/fit-classifier-dialog`: Piximi’s `FitClassifierDialog` component
+* `@piximi/gallery-dialog`: Piximi’s `GalleryDialog` component
+* `@piximi/help-dialog`: Piximi’s `HelpDialog` component
 * `@piximi/hooks`: generic React hooks
-* `@piximi/image-viewer-dialog`: Piximi’s ImageViewerDialog component
+* `@piximi/image-viewer-dialog`: Piximi’s `ImageViewerDialog` component
 * `@piximi/models`: Piximi’s TensorFlow.js models
-* `@piximi/navigation-drawer`: Piximi’s NavigationDrawer component
-* `@piximi/open-example-classifier-dialog`: Piximi’s OpenExampleClassifierDialog component
-* `@piximi/send-feedback-dialog`: Piximi’s SendFeedbackDialog component
-* `@piximi/settings-dialog`: Piximi’s SettingsDialog component
+* `@piximi/navigation-drawer`: Piximi’s `NavigationDrawer` component
+* `@piximi/open-example-classifier-dialog`: Piximi’s `OpenExampleClassifierDialog` component
+* `@piximi/send-feedback-dialog`: Piximi’s `SendFeedbackDialog` component
+* `@piximi/settings-dialog`: Piximi’s `SettingsDialog` component
 * `@piximi/store`: Piximi’s Redux actions, reducers, selectors, and stores
 * `@piximi/theme`: Piximi’s Material UI theme
 * `@piximi/translations`: Piximi’s translations
 * `@piximi/types`: Piximi’s generic TypeScript definitions 
-* `@piximi/upload-image-dialog`: Piximi’s UploadImageDialog component
+* `@piximi/upload-image-dialog`: Piximi’s `UploadImageDialog` component
 * `piximi`: Piximi web app
 
 ## Scripts
