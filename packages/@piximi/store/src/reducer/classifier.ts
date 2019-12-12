@@ -1,6 +1,6 @@
 import {
   createReducer
-} from 'redux-starter-kit';
+} from '@reduxjs/toolkit';
 
 import {
   createCategoryAction,
