@@ -115,8 +115,8 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "tsc --build packages/@piximi/*",
-    "clean": "lerna clean --yes",
+    "build": "tsc --build ./packages/tsconfig.json",
+    "clean": "lerna clean --yes && lerna run clean",
     "compile": "tsc -b packages/@piximi/hooks",
     "precommit": "lint-staged",
     "test": "lerna run test"

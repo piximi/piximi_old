@@ -2227,19 +2227,10 @@
     babel-jest "^24.8.0"
     canvas "^2.5.0"
 
-"@piximi/hooks@file:packages/@piximi/hooks":
-  version "0.0.0"
-
-"@piximi/translations@file:packages/@piximi/translations":
-  version "0.0.0"
-
 "@piximi/types@^0.1.8":
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/@piximi/types/-/types-0.1.8.tgz#ca1eeb5d171e8aa1cae6e4751f3982318f730cbf"
   integrity sha512-s+1Okak3Q1eY45onrn5FiQxBSDCNbbVRnJF7nUYIWL3mWgufyyGpkJwbErwVd1d9lcu0NIYCGvReGgXkymMaew==
-
-"@piximi/types@file:packages/@piximi/types":
-  version "0.0.0"
 
 "@reach/router@^1.2.1":
   version "1.2.1"

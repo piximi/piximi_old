@@ -1,0 +1,38 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./@piximi/components/tsconfig.json"
+    },
+    {
+      "path": "./@piximi/fit-classifier-dialog/tsconfig.json"
+    },
+    {
+      "path": "./@piximi/gallery-dialog/tsconfig.json"
+    },
+    {
+      "path": "./@piximi/hooks/tsconfig.json"
+    },
+    {
+      "path": "./@piximi/image-dialog/tsconfig.json"
+    },
+    {
+      "path": "./@piximi/models/tsconfig.json"
+    },
+    {
+      "path": "./@piximi/navigation-drawer/tsconfig.json"
+    },
+    {
+      "path": "./@piximi/store/tsconfig.json"
+    },
+    {
+      "path": "./@piximi/translations/tsconfig.json"
+    },
+    {
+      "path": "./@piximi/types/tsconfig.json"
+    },
+    {
+      "path": "./@piximi/upload-image-dialog/tsconfig.json"
+    }
+  ]
+}
