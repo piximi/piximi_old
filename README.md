@@ -31,7 +31,7 @@ This repository includes both the Piximi web app (packages/piximi) and the handf
 
 ### bootstrap
 
-Use the “bootstrap” command to bootstrap the packages found in the ./packages directory:
+Use the `bootstrap` command to bootstrap the packages found in the ./packages directory:
 
 ```shell script
 yarn bootstrap
@@ -39,7 +39,7 @@ yarn bootstrap
 
 ### build
 
-Use the “build” command to build the packages found in the ./packages directory:
+Use the `build` command to build the packages found in the ./packages directory:
 
 ```shell script
 yarn build
@@ -47,7 +47,7 @@ yarn build
 
 ### clean
 
-Use the “clean” command to clean the build artifacts created by “build.”
+Use the `clean` command to clean the build artifacts created by “build.”
 
 ```shell script
 yarn clean
@@ -55,7 +55,7 @@ yarn clean
 
 ### test
 
-Use the “test” command to run the unit tests found in the packages in the ./packages directory:
+Use the `test` command to run the unit tests found in the packages in the ./packages directory:
 
 ```shell script
 yarn test
