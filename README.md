@@ -6,7 +6,7 @@ Piximi's target users are computational or non-computational scientists interest
 
 ## Organization
 
-This repository includes both the Piximi web app (packages/piximi) and the handful of discrete @piximi sub-packages (packages/@piximi/*) written concurrently or alongside the web app. The packages included in the packages directory are versioned together and simultaneously published to the NPM package repository.
+This repository includes both the Piximi web app (`packages/piximi`) and the handful of discrete @piximi sub-packages (`packages/@piximi/*`) written concurrently or alongside the web app. The packages included in the packages directory are versioned together and simultaneously published to the NPM package repository.
 
 * `@piximi/components`: generic React components
 * `@piximi/evaluate-classifier-dialog`: Piximi’s `EvaluateClassifierDialog` component
