@@ -6,7 +6,7 @@ Piximi's target users are computational or non-computational scientists interest
 
 ## Contributing 
 
-Both technical and non-technical contributions are welcome and encouraged! In addition to general-purpose programming tasks, there’re numerous tasks for anyone with expertise or an interest in computer graphics, computer vision, image processing, or machine learning. There’re also a number of areas that’d benefit from non-technical contributors too, including writing or improving documentation and translations, packaging example classifiers, and even providing user feedback (especially around problems in fields where current contributors lack familiarity). The Contributing article on our wiki has more information about contributing to Piximi. 
+Both technical and non-technical contributions are welcome and encouraged! In addition to general-purpose programming tasks, there’re numerous tasks for anyone with expertise or an interest in computer graphics, computer vision, image processing, or machine learning. There’re also a number of areas that’d benefit from non-technical contributors too, including writing or improving documentation and translations, packaging example classifiers, and even providing user feedback (especially around problems in fields where current contributors lack familiarity). The [Contributing](https://github.com/piximi/piximi/wiki/Contributing) article on our wiki has more information about contributing to Piximi. 
 
 ## Organization
 
