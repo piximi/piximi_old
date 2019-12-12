@@ -27,7 +27,7 @@ export const ChangeCategoryVisibilityMenuItem = (
 
   return (
     <MaterialUI.MenuItem onClick={onClick}>
-      <MaterialUI.ListItemText primary={listItemText} />
+      <MaterialUI.ListItemText primary={listItemText}/>
     </MaterialUI.MenuItem>
   );
 };
