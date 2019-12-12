@@ -19,6 +19,8 @@
     "@types/react": "^16.9.16",
     "@types/react-color": "^3.0.1",
     "@types/redux-logger": "^3.0.7",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "react-vis-types": "^0.0.3"
   },
   "files": [

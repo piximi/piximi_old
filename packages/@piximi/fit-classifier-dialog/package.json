@@ -20,7 +20,9 @@
 		"@types/react": "^16.9.16",
 		"@types/react-color": "^3.0.1",
 		"@types/redux-logger": "^3.0.7",
-		"@types/victory": "^33.0.2"
+		"@types/victory": "^33.0.2",
+		"enzyme": "^3.10.0",
+		"enzyme-adapter-react-16": "^1.15.1"
 	},
 	"files": [
 		"lib",
