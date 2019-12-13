@@ -4,10 +4,6 @@
     "jsx": "react",
     "skipLibCheck": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "files": [
-    "index.d.ts"
-  ]
+  "exclude": ["node_modules"],
+  "files": ["index.d.ts"]
 }

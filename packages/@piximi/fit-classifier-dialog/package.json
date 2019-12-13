@@ -1,17 +1,17 @@
 {
-	"files": [
-		"lib",
-		"src"
-	],
-	"main": "./dist/index.js",
-	"name": "@piximi/fit-classifier-dialog",
-	"publishConfig": {
-		"access": "public"
-	},
-	"scripts": {
-		"build": "tsc --build ./tsconfig.json",
-		"clean": "rm -rf ./dist ./tsconfig.tsbuildinfo"
-	},
-	"types": "./dist/index.d.ts",
-	"version": "0.0.0"
+  "files": [
+    "lib",
+    "src"
+  ],
+  "main": "./dist/index.js",
+  "name": "@piximi/fit-classifier-dialog",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc --build ./tsconfig.json",
+    "clean": "rm -rf ./dist ./tsconfig.tsbuildinfo"
+  },
+  "types": "./dist/index.d.ts",
+  "version": "0.0.0"
 }

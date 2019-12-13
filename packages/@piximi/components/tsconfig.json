@@ -10,10 +10,7 @@
     "./src/**/*.test.tsx"
   ],
   "extends": "../../../tsconfig.json",
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx"
-  ],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "references": [
     {
       "path": "../hooks"

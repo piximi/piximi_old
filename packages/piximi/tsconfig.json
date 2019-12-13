@@ -9,16 +9,16 @@
     "noEmit": true
   },
   "references": [
-    { "path": "../components" },
-    { "path": "../fit-classifier-dialog" },
-    { "path": "../gallery-dialog" },
-    { "path": "../hooks" },
-    { "path": "../image-dialog" },
-    { "path": "../models" },
-    { "path": "../navigation-drawer" },
-    { "path": "../store" },
-    { "path": "../translations" },
-    { "path": "../types" },
-    { "path": "../upload-image-dialog" }
+    {"path": "../components"},
+    {"path": "../fit-classifier-dialog"},
+    {"path": "../gallery-dialog"},
+    {"path": "../hooks"},
+    {"path": "../image-dialog"},
+    {"path": "../models"},
+    {"path": "../navigation-drawer"},
+    {"path": "../store"},
+    {"path": "../translations"},
+    {"path": "../types"},
+    {"path": "../upload-image-dialog"}
   ]
 }

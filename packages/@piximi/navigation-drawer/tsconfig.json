@@ -3,8 +3,8 @@
   "exclude": ["src/setupTests.ts", "src/**/*.stories.tsx", "src/**/*.test.tsx"],
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "references": [
-    { "path": "../components" },
-    { "path": "../store" },
-    { "path": "../types" }
+    {"path": "../components"},
+    {"path": "../store"},
+    {"path": "../types"}
   ]
 }
