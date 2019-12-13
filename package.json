@@ -1,27 +1,11 @@
 {
-  "bugs": {
-    "url": "https://github.com/piximi/piximi/issues"
+  "bugs": "https://github.com/piximi/piximi/issues",
+  "devDependencies": {
+    "lerna": "^3.19.0"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "./packages/**/*/src/**/*.{ts,tsx}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
-  },
-  "name": "root",
+  "name": "@piximi/piximi",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/piximi/piximi.git"
-  },
+  "repository": "https://github.com/piximi/piximi.git",
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "tsc --build ./packages/tsconfig.json",
