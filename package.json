@@ -13,8 +13,6 @@
     "bootstrap": "lerna bootstrap",
     "build": "tsc --build ./packages/tsconfig.json",
     "clean": "lerna clean --yes && lerna run clean",
-    "compile": "tsc -b packages/@piximi/hooks",
-    "lint-staged": "lint-staged",
     "prettier": "prettier .prettierrc --write '**/*.+(css|js|jsx|ts|tsx)'",
     "test": "lerna run test"
   },
