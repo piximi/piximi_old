@@ -4,6 +4,10 @@ Piximi is a free, open source web app for performing image understanding tasks. 
 
 Piximi's target users are computational or non-computational scientists interested in image analysis from fields like astronomy, biology, and medicine. 
 
+## Contributing 
+
+Both technical and non-technical contributions are welcome and encouraged! In addition to general-purpose programming tasks, there’re numerous tasks for anyone with expertise or an interest in computer graphics, computer vision, image processing, or machine learning. There’re also a number of areas that’d benefit from non-technical contributors too, including writing or improving documentation and translations, packaging example classifiers, and even providing user feedback (especially around problems in fields where current contributors lack familiarity). The [Contributing](https://github.com/piximi/piximi/wiki/Contributing) article on our wiki has more information about contributing to Piximi. 
+
 ## Organization
 
 This repository includes both the Piximi web app (`packages/piximi`) and the handful of discrete @piximi sub-packages (`packages/@piximi/*`) written concurrently or alongside the web app. The packages included in the packages directory are versioned together and simultaneously published to the NPM package repository.
