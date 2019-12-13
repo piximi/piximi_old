@@ -32,7 +32,7 @@
     "react-i18next": "^11.2.6"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build tsconfig.json",
     "clean": "rm -rf dist tsconfig.tsbuildinfo"
   },
   "types": "./dist/index.d.ts",

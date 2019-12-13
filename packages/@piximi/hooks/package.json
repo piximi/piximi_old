@@ -15,7 +15,7 @@
     "react-dom": "^16.12.0"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build tsconfig.json",
     "clean": "rm -rf dist tsconfig.tsbuildinfo"
   },
   "types": "./dist/index.d.ts",
