@@ -14,15 +14,5 @@
     "src/**/*.ts",
     "src/**/*.tsx"
   ],
-  "references": [
-    {
-      "path": "../hooks"
-    },
-    {
-      "path": "../store"
-    },
-    {
-      "path": "../types"
-    }
-  ]
+  "references": []
 }
