@@ -14,30 +14,5 @@
     "src/**/*.ts",
     "src/**/*.tsx"
   ],
-  "references": [
-    {
-      "path": "../components"
-    },
-    {
-      "path": "../hooks"
-    },
-    {
-      "path": "../image-dialog"
-    },
-    {
-      "path": "../models"
-    },
-    {
-      "path": "../store"
-    },
-    {
-      "path": "../translations"
-    },
-    {
-      "path": "../types"
-    },
-    {
-      "path": "../upload-image-dialog"
-    }
-  ]
+  "references": []
 }
