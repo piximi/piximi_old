@@ -13,7 +13,7 @@
     "bootstrap": "lerna bootstrap",
     "build": "tsc --build ./packages/tsconfig.json",
     "clean": "lerna clean --yes && lerna run clean",
-    "prettier": "prettier .prettierrc --write '**/*.+(css|js|jsx|ts|tsx)'",
+    "prettier": "prettier --write '**/*.+(css|js|json|jsx|ts|tsx)'",
     "test": "lerna run test"
   },
   "workspaces": [
