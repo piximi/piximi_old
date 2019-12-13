@@ -24,7 +24,7 @@
     "react-vis-types": "^0.0.3"
   },
   "files": [
-    "lib",
+    "dist",
     "src"
   ],
   "main": "./dist/index.js",

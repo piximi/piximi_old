@@ -29,7 +29,7 @@
     "enzyme-adapter-react-16": "^1.15.1"
   },
   "files": [
-    "lib",
+    "dist",
     "src"
   ],
   "main": "./dist/index.js",

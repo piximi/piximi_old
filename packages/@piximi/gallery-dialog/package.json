@@ -1,6 +1,6 @@
 {
   "files": [
-    "lib",
+    "dist",
     "src"
   ],
   "main": "./dist/index.js",

@@ -23,7 +23,7 @@
     "typescript": "^3.7.3"
   },
   "files": [
-    "lib",
+    "dist",
     "src"
   ],
   "main": "./dist/index.js",
