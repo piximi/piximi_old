@@ -60,12 +60,14 @@ export const OpenExampleClassifierDialog = (
   };
 
   return (
+    // @ts-ignore
     <Dialog fullWidth maxWidth="sm" open={open}>
+      // @ts-ignore
       <DialogTitle disableTypography className={classes.dialogTitle}>
+        // @ts-ignore
         <Typography variant="h6">
           {translation("Open example classifier")}
         </Typography>
-
         <IconButton
           aria-label="Close"
           className={classes.closeButton}
@@ -74,7 +76,7 @@ export const OpenExampleClassifierDialog = (
           <CloseIcon />
         </IconButton>
       </DialogTitle>
-
+      // @ts-ignore
       <DialogContent classes={{root: classes.dialogContent}}>
         <List>
           <OpenExampleClassifierListItem
@@ -88,6 +90,7 @@ export const OpenExampleClassifierDialog = (
           />
         </List>
       </DialogContent>
+      // @ts-ignore
       <DialogActions />
     </Dialog>
   );

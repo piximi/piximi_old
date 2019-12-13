@@ -20,6 +20,7 @@ export const OpenClassifierMenuItem = (props: any) => {
   };
 
   return (
+    // @ts-ignore
     <React.Fragment>
       <input
         accept=".piximi"
@@ -32,6 +33,7 @@ export const OpenClassifierMenuItem = (props: any) => {
 
       <label htmlFor="open-classifier">
         <MenuItem>
+          // @ts-ignore
           <ListItemText primary="Open classifier" />
         </MenuItem>
       </label>

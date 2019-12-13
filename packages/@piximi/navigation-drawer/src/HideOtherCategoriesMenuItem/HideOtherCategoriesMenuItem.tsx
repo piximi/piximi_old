@@ -41,6 +41,7 @@ export const HideOtherCategoriesMenuItem = (
 
   return (
     <MaterialUI.MenuItem onClick={onClick}>
+      // @ts-ignore
       <MaterialUI.ListItemText primary={listItemText} />
     </MaterialUI.MenuItem>
   );

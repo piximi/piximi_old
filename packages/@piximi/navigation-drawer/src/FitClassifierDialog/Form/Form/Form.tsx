@@ -124,7 +124,7 @@ export const Form = (props: FormProps) => {
     setValues({...values, [name]: event.target.value});
   };
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   return (
     <form className={classes.container} noValidate autoComplete="off">
@@ -137,6 +137,7 @@ export const Form = (props: FormProps) => {
 
       <Grid container spacing={2}>
         <Grid item xs={4}>
+          // @ts-ignore
           <TextField
             id="loss-function"
             select
@@ -176,6 +177,7 @@ export const Form = (props: FormProps) => {
         </Grid> */}
 
         <Grid item xs={2}>
+          // @ts-ignore
           <TextField
             id="batch-size"
             label="Batch size"
@@ -188,6 +190,7 @@ export const Form = (props: FormProps) => {
         </Grid>
 
         <Grid item xs={2}>
+          // @ts-ignore
           <TextField
             id="epochs"
             label="Epochs"

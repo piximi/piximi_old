@@ -15,12 +15,13 @@ export const OpenExampleClassifierListItem = (props: any) => {
 
   return (
     <ListItem button onClick={onClick}>
+      // @ts-ignore
       <ListItemAvatar>
         <Avatar src={src}>
           <AddIcon />
         </Avatar>
       </ListItemAvatar>
-
+      // @ts-ignore
       <ListItemText
         primary={translation(primary)}
         secondary={translation(secondary)}

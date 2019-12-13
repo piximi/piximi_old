@@ -23,12 +23,14 @@ export const NavigationDrawer = (props: DrawerProps) => {
   const {toggled, toggle} = props;
 
   return (
+    // @ts-ignore
     <Drawer
       anchor="left"
       classes={{paper: classes.drawerPaper}}
       open={toggled}
       variant="persistent"
     >
+      // @ts-ignore
       <Box
         style={{paddingTop: 60}}
         className={classes.toolbar}
@@ -36,21 +38,13 @@ export const NavigationDrawer = (props: DrawerProps) => {
         justifyContent="flex-end"
         px={8}
       />
-
       <NavigationDrawerAppBar toggle={toggle} toggled={toggled} />
-
       <ApplicationList />
-
       <Divider component={"hr"} />
-
       <ConnectedCategoriesList />
-
       <Divider component={"hr"} />
-
       <ClassifierList />
-
       <Divider component={"hr"} />
-
       <MiscellaneousList />
     </Drawer>
   );

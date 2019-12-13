@@ -11,6 +11,7 @@ export const OpenWeightsMenuItem = (props: any) => {
   };
 
   return (
+    // @ts-ignore
     <React.Fragment>
       <input
         accept="*"
@@ -23,6 +24,7 @@ export const OpenWeightsMenuItem = (props: any) => {
 
       <label htmlFor="open-weights">
         <MenuItem onClick={onClick}>
+          // @ts-ignore
           <ListItemText primary="Open weights" />
         </MenuItem>
       </label>

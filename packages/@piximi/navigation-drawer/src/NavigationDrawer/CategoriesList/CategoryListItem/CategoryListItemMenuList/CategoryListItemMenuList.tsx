@@ -60,7 +60,9 @@ export const CategoryListItemMenuList = (
     category.identifier !== "00000000-0000-0000-0000-000000000000";
 
   return (
+    // @ts-ignore
     <React.Fragment>
+      // @ts-ignore
       <Popover
         anchorPosition={anchorPosition}
         anchorReference="anchorPosition"
@@ -68,7 +70,9 @@ export const CategoryListItemMenuList = (
         onClose={closeMenu}
         open={openedMenu}
       >
+        // @ts-ignore
         <Paper>
+          // @ts-ignore
           <MenuList dense>
             <ConnectedHideOtherCategoriesMenuItem
               categoryProp={category}
@@ -85,10 +89,12 @@ export const CategoryListItemMenuList = (
                 <Divider />
 
                 <MenuItem onClick={onEditCategoryClick}>
+                  // @ts-ignore
                   <ListItemText primary="Edit category" />
                 </MenuItem>
 
                 <MenuItem onClick={onDeleteCategoryClick}>
+                  // @ts-ignore
                   <ListItemText primary="Delete category" />
                 </MenuItem>
               </div>
@@ -96,13 +102,11 @@ export const CategoryListItemMenuList = (
           </MenuList>
         </Paper>
       </Popover>
-
       <ConnectedEditCategoryDialog
         category={category}
         onClose={closeEditCategoryDialog}
         open={openedEditCategoryDialog}
       />
-
       <ConnectedDeleteCategoryDialog
         category={category}
         onClose={closeDeleteCategoryDialog}

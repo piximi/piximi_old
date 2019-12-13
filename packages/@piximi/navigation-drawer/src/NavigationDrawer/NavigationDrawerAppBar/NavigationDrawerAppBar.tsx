@@ -1,6 +1,5 @@
 import * as React from "react";
 import {styles} from "./NavigationDrawerAppBar.css";
-
 import classNames from "classnames";
 import MenuIcon from "@material-ui/icons/Menu";
 import {makeStyles} from "@material-ui/styles";
@@ -26,7 +25,9 @@ export const NavigationDrawerAppBar = (props: AppBarProps) => {
 
   return (
     <AppBar className={classNames(classes.appBar)} color="default">
+      // @ts-ignore
       <Toolbar disableGutters={true}>
+        // @ts-ignore
         <Tooltip title={(toggled ? "Hide " : "Show ") + "sidebar"}>
           <IconButton
             aria-label="open sidebar"
@@ -37,7 +38,7 @@ export const NavigationDrawerAppBar = (props: AppBarProps) => {
             <MenuIcon />
           </IconButton>
         </Tooltip>
-
+        // @ts-ignore
         <Typography variant="h6" color="inherit">
           Piximi
         </Typography>

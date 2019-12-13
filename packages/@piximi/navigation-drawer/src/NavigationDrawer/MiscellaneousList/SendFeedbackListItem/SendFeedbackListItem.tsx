@@ -4,10 +4,11 @@ import FeedbackIcon from "@material-ui/icons/Feedback";
 
 export const SendFeedbackListItem = () => (
   <ListItem button disabled>
+    // @ts-ignore
     <ListItemIcon>
       <FeedbackIcon />
     </ListItemIcon>
-
+    // @ts-ignore
     <ListItemText primary="Send feedback" />
   </ListItem>
 );

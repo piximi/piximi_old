@@ -56,42 +56,46 @@ export const SaveMenuList = (props: Props) => {
   };
 
   return (
+    // @ts-ignore
     <React.Fragment>
+      // @ts-ignore
       <MaterialUI.Popover
         anchorPosition={anchorPosition}
         anchorReference="anchorPosition"
         onClose={onClose}
         open={open}
       >
+        // @ts-ignore
         <MaterialUI.Paper>
+          // @ts-ignore
           <MaterialUI.MenuList dense>
             <MaterialUI.MenuItem onClick={onSaveClassifierClick}>
+              // @ts-ignore
               <MaterialUI.ListItemText primary="Save classifier" />
             </MaterialUI.MenuItem>
 
             <MaterialUI.Divider />
 
             <MaterialUI.MenuItem onClick={onSaveAnnotationsAndPredictionsClick}>
+              // @ts-ignore
               <MaterialUI.ListItemText primary="Save annotations and predictions" />
             </MaterialUI.MenuItem>
 
             <MaterialUI.MenuItem onClick={onSaveWeightsClick}>
+              // @ts-ignore
               <MaterialUI.ListItemText primary="Save weights" />
             </MaterialUI.MenuItem>
           </MaterialUI.MenuList>
         </MaterialUI.Paper>
       </MaterialUI.Popover>
-
       <ConnectedSaveClassifierDialog
         open={openedSaveClassifierDialog}
         onClose={closeSaveClassifierDialog}
       />
-
       <SaveAnnotationsAndPredictionsDialog
         open={openedSaveAnnotationsAndPredictionsDialog}
         onClose={closeSaveAnnotationsAndPredictionsDialog}
       />
-
       <SaveWeightsDialog
         open={openedSaveWeightsDialog}
         onClose={closeSaveWeightsDialog}

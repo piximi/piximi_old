@@ -37,13 +37,14 @@ export const CategoriesList = (props: CategoriesListProps) => {
   return (
     <List dense>
       <ListItem button onClick={collapseList}>
+        // @ts-ignore
         <ListItemIcon>
           {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItemIcon>
-
+        // @ts-ignore
         <ListItemText primary={translation("Categories")} />
       </ListItem>
-
+      // @ts-ignore
       <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
         {sortedCategories.map((category: Category, index: number) => (
           <ConnectedCategoryListItem

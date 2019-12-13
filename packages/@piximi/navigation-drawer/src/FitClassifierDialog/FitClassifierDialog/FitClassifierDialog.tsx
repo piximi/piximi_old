@@ -41,11 +41,10 @@ import {
 } from "./dataset";
 import {rescaleData, resizeData, augmentData} from "./preprocessing";
 import {createModel, createMobileNet} from "./networks";
-import * as tfvis from "@tensorflow/tfjs-vis";
 
 // additional stuff to test
 import * as tf from "@tensorflow/tfjs";
-import * as seedrandom from "seedrandom";
+import seedrandom from "seedrandom";
 import {assertTypesMatch} from "@tensorflow/tfjs-core/dist/tensor_util";
 import * as tm from "@teachablemachine/image";
 
@@ -866,7 +865,9 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
               // Custom names for the series
               series: ["Loss", "Validation Loss"] // render the chart
             };
+            // @ts-ignore
             tfvis.render.linechart(accSurface, accData, options);
+            // @ts-ignore
             tfvis.render.linechart(lossSurface, lossData, options);
           }
         }
@@ -898,6 +899,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
   // specifies interface
   return (
+    // @ts-ignore
     <Dialog
       className={className}
       classes={classes}
@@ -915,7 +917,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
         fit={onFit}
         openedDrawer={openedDrawer}
       />
-
+      // @ts-ignore
       <DialogContent>
         <List dense>
           <ListItem
@@ -923,6 +925,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
             onClick={onPreprocessingListClick}
             style={{padding: "12px 0px"}}
           >
+            // @ts-ignore
             <ListItemIcon>
               {collapsedPreprocessingList ? (
                 <ExpandLessIcon />
@@ -930,16 +933,18 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
                 <ExpandMoreIcon />
               )}
             </ListItemIcon>
-
+            // @ts-ignore
             <ListItemText primary="Preprocessing" style={{fontSize: "1em"}} />
           </ListItem>
-
+          // @ts-ignore
           <Collapse
             in={collapsedPreprocessingList}
             timeout="auto"
             unmountOnExit
           >
+            // @ts-ignore
             <Tooltip title="Apply Preprocessing Settings" placement="bottom">
+              // @ts-ignore
               <Button
                 variant="contained"
                 color="primary"
@@ -948,6 +953,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
                 Apply Preprocessing
               </Button>
             </Tooltip>
+            // @ts-ignore
             <Typography id="rescaling" gutterBottom>
               Pixel Intensity Rescaling
             </Typography>
@@ -959,37 +965,50 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
               closeDialog={closeDialog}
               openedDialog={openedDialog}
             />
+            // @ts-ignore
             <Typography id="augmentation" gutterBottom>
               Data Augmentation
             </Typography>
+            // @ts-ignore
             <FormGroup row>
+              // @ts-ignore
               <FormControlLabel
-                control={<Checkbox value="randomDataAugmentation" />}
+                control={
+                  // @ts-ignore
+                  <Checkbox value="randomDataAugmentation" />
+                }
                 label="Random Data Augmentation"
               ></FormControlLabel>
             </FormGroup>
+            // @ts-ignore
             <Typography id="resizing" gutterBottom>
               Resizing
             </Typography>
+            // @ts-ignore
             <FormGroup row>
+              // @ts-ignore
               <FormControlLabel
+                // @ts-ignore
                 control={<Checkbox value="paddingOption1" />}
                 label="Padding Option 1"
               ></FormControlLabel>
             </FormGroup>
+            // @ts-ignore
             <FormGroup row>
+              // @ts-ignore
               <FormControlLabel
+                // @ts-ignore
                 control={<Checkbox value="paddingOption2" />}
                 label="Padding Option 2"
               ></FormControlLabel>
             </FormGroup>
           </Collapse>
-
           <ListItem
             button
             onClick={onClasssifierSettingsListClick}
             style={{padding: "12px 0px"}}
           >
+            // @ts-ignore
             <ListItemIcon>
               {collapsedClasssifierSettingsList ? (
                 <ExpandLessIcon />
@@ -997,13 +1016,13 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
                 <ExpandMoreIcon />
               )}
             </ListItemIcon>
-
+            // @ts-ignore
             <ListItemText
               primary="Classifier Settings"
               style={{fontSize: "20px"}}
             />
           </ListItem>
-
+          // @ts-ignore
           <Collapse
             in={collapsedClasssifierSettingsList}
             timeout="auto"
@@ -1027,12 +1046,12 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
               optimizationAlgorithm={optimizationAlgorithm}
             />
           </Collapse>
-
           <ListItem
             button
             onClick={onDatasetSettingsListClick}
             style={{padding: "12px 0px"}}
           >
+            // @ts-ignore
             <ListItemIcon>
               {collapsedDatasetSettingsList ? (
                 <ExpandLessIcon />
@@ -1040,18 +1059,19 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
                 <ExpandMoreIcon />
               )}
             </ListItemIcon>
-
+            // @ts-ignore
             <ListItemText
               primary="Dataset Settings"
               style={{fontSize: "1em"}}
             />
           </ListItem>
-
+          // @ts-ignore
           <Collapse
             in={collapsedDatasetSettingsList}
             timeout="auto"
             unmountOnExit
           >
+            // @ts-ignore
             <Tooltip title="Initialize dataset" placement="bottom">
               <Button
                 variant="contained"
@@ -1061,11 +1081,12 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
                 Initialize Dataset
               </Button>
             </Tooltip>
-
             <div style={{padding: "12px 0px", width: "300"}}>
+              // @ts-ignore
               <Typography id="range-slider" gutterBottom>
                 Dataset Splits
               </Typography>
+              // @ts-ignore
               <Slider
                 value={datasetSplits}
                 onChange={handleChange}

@@ -50,11 +50,12 @@ export const OptimizationGrid = (props: OptimizationGridProps) => {
     optimizationAlgorithm: "adam"
   });
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={4}>
+        // @ts-ignore
         <TextField
           id="optimization-algorithm"
           select
@@ -80,6 +81,7 @@ export const OptimizationGrid = (props: OptimizationGridProps) => {
       </Grid>
 
       <Grid item xs={4}>
+        // @ts-ignore
         <TextField
           id="learning-rate"
           label="Learning rate"

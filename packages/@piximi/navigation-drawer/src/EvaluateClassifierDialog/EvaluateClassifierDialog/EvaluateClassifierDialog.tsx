@@ -137,6 +137,7 @@ export const EvaluateClassifierDialog = (
   };
 
   return (
+    // @ts-ignore
     <Dialog
       className={className}
       classes={classes}
@@ -155,10 +156,10 @@ export const EvaluateClassifierDialog = (
         useCrossValidation={useCrossValidation}
         onUseCrossValidationChange={onUseCrossValidationChange}
       />
-
       <div>
         <Grid container spacing={3}>
           <Grid id="evaluationID">
+            // @ts-ignore
             <Paper
               style={{
                 margin: "24px",
@@ -171,7 +172,7 @@ export const EvaluateClassifierDialog = (
           </Grid>
         </Grid>
       </div>
-
+      // @ts-ignore
       <DialogContent style={{padding: "0px", margin: "12px"}}>
         <div
           id="tfjs-visor-container"

@@ -8,12 +8,14 @@ export const NewClassifierListItem = () => {
   const {openedDialog, openDialog, closeDialog} = useDialog();
 
   return (
+    // @ts-ignore
     <React.Fragment>
       <ListItem button dense onClick={openDialog}>
+        // @ts-ignore
         <ListItemIcon>
           <AddIcon />
         </ListItemIcon>
-
+        // @ts-ignore
         <ListItemText primary="New classifier…" />
       </ListItem>
 

@@ -9,12 +9,14 @@ export const SaveListItem = () => {
   const {anchorEl, openedMenu, openMenu, closeMenu} = useMenu();
 
   return (
+    // @ts-ignore
     <React.Fragment>
       <ListItem button onClick={openMenu}>
+        // @ts-ignore
         <ListItemIcon>
           <SaveIcon />
         </ListItemIcon>
-
+        // @ts-ignore
         <ListItemText primary="Save" />
       </ListItem>
 

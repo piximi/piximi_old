@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export const DialogAppBar = (props: any) => {
   const {onStopTrainingChange, closeDialog, fit, openedDrawer} = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   return (
     <AppBar
@@ -41,7 +41,9 @@ export const DialogAppBar = (props: any) => {
         [classes.appBarShiftLeft]: openedDrawer
       })}
     >
+      // @ts-ignore
       <Toolbar>
+        // @ts-ignore
         <Tooltip title="Close Dialog" placement="bottom">
           <IconButton
             edge="start"
@@ -53,15 +55,14 @@ export const DialogAppBar = (props: any) => {
             <ArrowBack />
           </IconButton>
         </Tooltip>
-
         <div className={classes.grow} />
-
+        // @ts-ignore
         <Tooltip title="Fit the model" placement="bottom">
           <IconButton className={classes.button} onClick={fit} href={""}>
             <PlayCircleOutline />
           </IconButton>
         </Tooltip>
-
+        // @ts-ignore
         <Tooltip title="Stop fitting the model" placement="bottom">
           <IconButton
             className={classes.button}
@@ -71,7 +72,6 @@ export const DialogAppBar = (props: any) => {
             <Stop />
           </IconButton>
         </Tooltip>
-
         <IconButton
           disabled
           className={classes.button}

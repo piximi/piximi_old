@@ -55,12 +55,14 @@ export const PredictListItem = (probs: PredictListItemProbs) => {
   };
 
   return (
+    // @ts-ignore
     <React.Fragment>
       <ListItem button dense onClick={predict}>
+        // @ts-ignore
         <ListItemIcon>
           <LabelImportantIcon />
         </ListItemIcon>
-
+        // @ts-ignore
         <ListItemText primary={translation("Predict")} />
       </ListItem>
     </React.Fragment>

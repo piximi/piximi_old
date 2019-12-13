@@ -22,13 +22,16 @@ export const OpenMenuList = (props: Props) => {
   };
 
   return (
+    // @ts-ignore
     <Popover
       anchorPosition={anchorPosition}
       anchorReference="anchorPosition"
       onClose={closeMenu}
       open={openedMenu}
     >
+      // @ts-ignore
       <Paper>
+        // @ts-ignore
         <MenuList dense>
           <ConnectedOpenClassifierMenuItem closeMenu={closeMenu} />
 
