@@ -1,11 +1,11 @@
 declare module '*.css' {
-  interface ClassNames {
+  interface ClassList {
     [name: string]: string
   }
 
-  const classNames: ClassNames;
+  const classes: ClassList;
 
-  export = classNames;
+  export = classes;
 }
 
 declare module '*.gif' {
