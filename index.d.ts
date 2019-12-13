@@ -8,16 +8,16 @@ declare module '*.css' {
   export = classNames;
 }
 
-declare module "*.json" {
-  const content: any;
-
-  export = content;
-}
-
 declare module '*.gif' {
   const image: any;
 
   export = image;
+}
+
+declare module "*.json" {
+  const content: any;
+
+  export = content;
 }
 
 declare module '*.png' {
