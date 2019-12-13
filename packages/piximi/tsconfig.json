@@ -6,19 +6,33 @@
     "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node"
   },
   "references": [
-    {"path": "../components"},
-    {"path": "../fit-classifier-dialog"},
-    {"path": "../gallery-dialog"},
-    {"path": "../hooks"},
-    {"path": "../image-dialog"},
-    {"path": "../models"},
-    {"path": "../navigation-drawer"},
-    {"path": "../store"},
-    {"path": "../translations"},
-    {"path": "../types"},
-    {"path": "../upload-image-dialog"}
+    {
+      "path": "../@piximi/components"
+    },
+    {
+      "path": "../@piximi/hooks"
+    },
+    {
+      "path": "../@piximi/navigation-drawer"
+    },
+    {
+      "path": "../@piximi/store"
+    },
+    {
+      "path": "../@piximi/translations"
+    },
+    {
+      "path": "../@piximi/types"
+    }
   ]
 }
