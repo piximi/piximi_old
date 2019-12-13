@@ -1,9 +1,9 @@
-import { connect } from 'react-redux';
-import { createCategoryAction } from '@piximi/store';
-import uuidv4 from 'uuid';
-import { Dispatch } from 'redux';
-import { Category, Classifier } from '@piximi/types';
-import { CreateCategoryDialog } from './CreateCategoryDialog';
+import {connect} from "react-redux";
+import {createCategoryAction} from "@piximi/store";
+import uuidv4 from "uuid";
+import {Dispatch} from "redux";
+import {Category, Classifier} from "@piximi/types";
+import {CreateCategoryDialog} from "./CreateCategoryDialog";
 
 let index = 0;
 
@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         }
       };
 
-      const payload = { category: category };
+      const payload = {category: category};
 
       const action = createCategoryAction(payload);
 

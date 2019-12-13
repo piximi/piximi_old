@@ -1,15 +1,15 @@
-import React from 'react';
-import { ImageViewerDialog } from '../../image';
-import Image from '../../../components/Image/Image';
-import { useDialog } from '@piximi/hooks';
-import { ConnectedItemLabel } from '../../../containers';
-import { ImageDragSource } from '@piximi/components';
+import React from "react";
+import {ImageViewerDialog} from "../../image";
+import Image from "../../../components/Image/Image";
+import {useDialog} from "@piximi/hooks";
+import {ConnectedItemLabel} from "../../../containers";
+import {ImageDragSource} from "@piximi/components";
 
 export const GalleryItem = (props: any) => {
   // item = image
-  const { selectedItems, onmousedown, containerStyle, item } = props;
+  const {selectedItems, onmousedown, containerStyle, item} = props;
 
-  const { openedDialog, openDialog, closeDialog } = useDialog();
+  const {openedDialog, openDialog, closeDialog} = useDialog();
 
   const unselectedChannels = item.visualization.visibleChannels;
 
@@ -22,7 +22,7 @@ export const GalleryItem = (props: any) => {
       <ConnectedItemLabel image={item} />
 
       <Image
-        key={'img' + item.identifier}
+        key={"img" + item.identifier}
         id={item.identifier}
         openImageViewerDialog={openDialog}
         src={item.data}

@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import { updateCategoryVisibilityAction } from '@piximi/store';
-import { HideOtherCategoriesMenuItem } from './HideOtherCategoriesMenuItem';
-import { Classifier } from '@piximi/types';
-import { Dispatch } from 'redux';
+import {connect} from "react-redux";
+import {updateCategoryVisibilityAction} from "@piximi/store";
+import {HideOtherCategoriesMenuItem} from "./HideOtherCategoriesMenuItem";
+import {Classifier} from "@piximi/types";
+import {Dispatch} from "redux";
 
 type State = {
   classifier: Classifier;
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       categoryIdentifier: string,
       visibility: boolean
     ) => {
-      const payload = { identifier: categoryIdentifier, visible: visibility };
+      const payload = {identifier: categoryIdentifier, visible: visibility};
       const action = updateCategoryVisibilityAction(payload);
 
       dispatch(action);

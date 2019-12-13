@@ -1,11 +1,11 @@
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import * as React from 'react';
-import AddIcon from '@material-ui/icons/Add';
-import { useDialog } from '@piximi/hooks';
-import { ConnectedNewClassifierDialog } from '../../../NewClassifierDialog/ConnectedNewClassifierDialog';
+import {ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import * as React from "react";
+import AddIcon from "@material-ui/icons/Add";
+import {useDialog} from "@piximi/hooks";
+import {ConnectedNewClassifierDialog} from "../../../NewClassifierDialog/ConnectedNewClassifierDialog";
 
 export const NewClassifierListItem = () => {
-  const { openedDialog, openDialog, closeDialog } = useDialog();
+  const {openedDialog, openDialog, closeDialog} = useDialog();
 
   return (
     <React.Fragment>

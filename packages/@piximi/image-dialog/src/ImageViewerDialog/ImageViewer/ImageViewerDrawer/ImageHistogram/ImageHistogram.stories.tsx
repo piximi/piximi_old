@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
-import { ImageHistogram } from './ImageHistogram';
+import {storiesOf} from "@storybook/react";
+import {ImageHistogram} from "./ImageHistogram";
 
-storiesOf('ImageViewer/ImageHistogram', module).add('ImageHistogram', () => {
+storiesOf("ImageViewer/ImageHistogram", module).add("ImageHistogram", () => {
   return <div />;
 });

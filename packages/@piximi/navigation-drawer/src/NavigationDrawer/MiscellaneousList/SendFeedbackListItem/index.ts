@@ -1,1 +1,1 @@
-export { SendFeedbackListItem } from './SendFeedbackListItem';
+export {SendFeedbackListItem} from "./SendFeedbackListItem";

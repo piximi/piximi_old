@@ -1,1 +1,1 @@
-export { ChannelSelection } from './ChannelSelection';
+export {ChannelSelection} from "./ChannelSelection";

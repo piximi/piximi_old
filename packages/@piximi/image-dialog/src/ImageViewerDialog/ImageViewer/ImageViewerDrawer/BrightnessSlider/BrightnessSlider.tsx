@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { useState } from 'react';
-import styles from './BrightnessSlider.css';
-import Slider from '@material-ui/core/Slider';
-import { makeStyles } from '@material-ui/styles';
-import { InputLabel } from '@material-ui/core';
+import * as React from "react";
+import {useState} from "react";
+import styles from "./BrightnessSlider.css";
+import Slider from "@material-ui/core/Slider";
+import {makeStyles} from "@material-ui/styles";
+import {InputLabel} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -21,7 +21,7 @@ export const BrightnessSlider = () => {
       <InputLabel htmlFor="brightness">Brightness</InputLabel>
 
       <Slider
-        classes={{ root: classes.slider }}
+        classes={{root: classes.slider}}
         value={brightness}
         min={0.0}
         max={1.0}

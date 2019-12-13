@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
+import {storiesOf} from "@storybook/react";
 
-import { ColorPicker } from '..';
+import {ColorPicker} from "..";
 
 const categories = [
   {
-    color: '#F44336',
-    description: 'example',
-    identifier: '11111111-1111-1111-1111-11111111111',
+    color: "#F44336",
+    description: "example",
+    identifier: "11111111-1111-1111-1111-11111111111",
     index: 1,
     visible: true
   }
@@ -16,4 +16,4 @@ const categories = [
 
 const onChange = () => {};
 
-storiesOf('ColorPicker', module).add('example', () => <div />);
+storiesOf("ColorPicker", module).add("example", () => <div />);

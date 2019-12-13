@@ -1,4 +1,4 @@
-import { createStyles } from '@material-ui/styles';
+import {createStyles} from "@material-ui/styles";
 
 const drawerWidth = 280;
 
@@ -8,7 +8,7 @@ const styles = () =>
       width: drawerWidth
     },
     content: {
-      width: '400px'
+      width: "400px"
     }
   });
 

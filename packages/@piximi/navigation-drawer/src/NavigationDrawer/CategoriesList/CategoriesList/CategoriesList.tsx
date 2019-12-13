@@ -1,38 +1,38 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   Collapse,
   List,
   ListItem,
   ListItemIcon,
   ListItemText
-} from '@material-ui/core';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { useCollapseList } from '@piximi/hooks';
-import * as _ from 'lodash';
-import { useTranslation } from 'react-i18next';
-import { ConnectedCategoryListItem } from '../CategoryListItem/CategoryListItem/ConnectedCategoryListItem';
-import { CreateCategoryListItem } from '../CreateCategoryListItem';
-import { Category } from '@piximi/types';
+} from "@material-ui/core";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import {useCollapseList} from "@piximi/hooks";
+import * as _ from "lodash";
+import {useTranslation} from "react-i18next";
+import {ConnectedCategoryListItem} from "../CategoryListItem/CategoryListItem/ConnectedCategoryListItem";
+import {CreateCategoryListItem} from "../CreateCategoryListItem";
+import {Category} from "@piximi/types";
 
 type CategoriesListProps = {
   categories: Category[];
 };
 
 export const CategoriesList = (props: CategoriesListProps) => {
-  const { collapsedList, collapseList } = useCollapseList();
+  const {collapsedList, collapseList} = useCollapseList();
 
-  const { t: translation } = useTranslation();
+  const {t: translation} = useTranslation();
 
-  const { categories } = props;
+  const {categories} = props;
 
-  const [unknown, known] = _.partition(categories, category => {
-    if (category.identifier === '00000000-0000-0000-0000-000000000000') {
+  const [unknown, known] = _.partition(categories, (category) => {
+    if (category.identifier === "00000000-0000-0000-0000-000000000000") {
       return category;
     }
   });
 
-  let sortedCategories = _.concat(_.sortBy(known, 'description'), unknown);
+  let sortedCategories = _.concat(_.sortBy(known, "description"), unknown);
 
   return (
     <List dense>
@@ -41,7 +41,7 @@ export const CategoriesList = (props: CategoriesListProps) => {
           {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItemIcon>
 
-        <ListItemText primary={translation('Categories')} />
+        <ListItemText primary={translation("Categories")} />
       </ListItem>
 
       <Collapse in={!collapsedList} timeout="auto" unmountOnExit>

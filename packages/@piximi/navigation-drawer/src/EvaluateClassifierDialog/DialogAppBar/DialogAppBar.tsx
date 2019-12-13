@@ -1,14 +1,8 @@
-import * as React from 'react';
-import { ArrowBack, PlayCircleOutline } from '@material-ui/icons';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import {
-  AppBar,
-  IconButton,
-  Toolbar,
-  Tooltip,
-  Switch
-} from '@material-ui/core';
+import * as React from "react";
+import {ArrowBack, PlayCircleOutline} from "@material-ui/icons";
+import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import classNames from "classnames";
+import {AppBar, IconButton, Toolbar, Tooltip, Switch} from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,10 +14,10 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1
     },
     appBar: {
-      position: 'relative',
-      backgroundColor: 'transparent',
-      boxShadow: 'none',
-      borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
+      position: "relative",
+      backgroundColor: "transparent",
+      boxShadow: "none",
+      borderBottom: "1px solid rgba(0, 0, 0, 0.12)"
     },
     appBarShift: {},
     appBarShiftLeft: {}
@@ -63,7 +57,7 @@ export const DialogAppBar = (props: DialogAppBarProps) => {
             color="primary"
             onClick={closeDialog}
             aria-label="Close"
-            href={''}
+            href={""}
           >
             <ArrowBack />
           </IconButton>
@@ -77,7 +71,7 @@ export const DialogAppBar = (props: DialogAppBarProps) => {
         </Tooltip>
 
         <Tooltip title="Evaluate the model" placement="bottom">
-          <IconButton className={classes.button} onClick={evaluate} href={''}>
+          <IconButton className={classes.button} onClick={evaluate} href={""}>
             <PlayCircleOutline />
           </IconButton>
         </Tooltip>

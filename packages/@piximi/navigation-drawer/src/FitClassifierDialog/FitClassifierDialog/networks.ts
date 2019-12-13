@@ -1,4 +1,4 @@
-import * as tensorflow from '@tensorflow/tfjs';
+import * as tensorflow from "@tensorflow/tfjs";
 
 /**
  * Creates a convolutional neural network (Convnet) for the MNIST data.
@@ -22,26 +22,26 @@ export const createModel = async (numberOfClasses: number) => {
       inputShape: [224, 224, 3],
       kernelSize: 3,
       filters: 16,
-      activation: 'relu'
+      activation: "relu"
     })
   );
 
   // After the first layer we include a MaxPooling layer. This acts as a sort of
   // downsampling using max values in a region instead of averaging.
   // https://www.quora.com/What-is-max-pooling-in-convolutional-neural-networks
-  model.add(tensorflow.layers.maxPooling2d({ poolSize: 2, strides: 2 }));
+  model.add(tensorflow.layers.maxPooling2d({poolSize: 2, strides: 2}));
 
   // Our third layer is another convolution, this time with 32 filters.
   model.add(
-    tensorflow.layers.conv2d({ kernelSize: 3, filters: 32, activation: 'relu' })
+    tensorflow.layers.conv2d({kernelSize: 3, filters: 32, activation: "relu"})
   );
 
   // Max pooling again.
-  model.add(tensorflow.layers.maxPooling2d({ poolSize: 2, strides: 2 }));
+  model.add(tensorflow.layers.maxPooling2d({poolSize: 2, strides: 2}));
 
   // Add another conv2d layer.
   model.add(
-    tensorflow.layers.conv2d({ kernelSize: 3, filters: 32, activation: 'relu' })
+    tensorflow.layers.conv2d({kernelSize: 3, filters: 32, activation: "relu"})
   );
 
   // Now we flatten the output from the 2D filters into a 1D vector to prepare
@@ -49,7 +49,7 @@ export const createModel = async (numberOfClasses: number) => {
   // higher dimensional data to a final classification output layer.
   model.add(tensorflow.layers.flatten({}));
 
-  model.add(tensorflow.layers.dense({ units: 64, activation: 'relu' }));
+  model.add(tensorflow.layers.dense({units: 64, activation: "relu"}));
 
   // Our last layer is a dense layer which has 10 output units, one for each
   // output class (i.e. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9). Here the classes actually
@@ -59,7 +59,7 @@ export const createModel = async (numberOfClasses: number) => {
   // creates a probability distribution over our 10 classes so their output
   // values sum to 1.
   model.add(
-    tensorflow.layers.dense({ units: numberOfClasses, activation: 'softmax' })
+    tensorflow.layers.dense({units: numberOfClasses, activation: "softmax"})
   );
 
   return model;
@@ -67,11 +67,11 @@ export const createModel = async (numberOfClasses: number) => {
 
 export const createMobileNet = async (numberOfClasses: number) => {
   const resource =
-    'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json';
+    "https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json";
 
   const mobilenet = await tensorflow.loadLayersModel(resource);
 
-  const layer = mobilenet.getLayer('conv_pw_13_relu');
+  const layer = mobilenet.getLayer("conv_pw_13_relu");
 
   const backbone = tensorflow.model({
     inputs: mobilenet.inputs,
@@ -100,7 +100,7 @@ export const createMobileNet = async (numberOfClasses: number) => {
   });
 
   const f = tensorflow.layers.activation({
-    activation: 'softmax'
+    activation: "softmax"
   });
 
   const config = {

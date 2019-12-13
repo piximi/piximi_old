@@ -1,1 +1,1 @@
-export { HelpDialog } from './HelpDialog';
+export {HelpDialog} from "./HelpDialog";

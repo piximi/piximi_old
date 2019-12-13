@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
+import {storiesOf} from "@storybook/react";
 
-import { CategoryDescriptionTextField } from '..';
+import {CategoryDescriptionTextField} from "..";
 
-const description: string = 'example';
+const description: string = "example";
 
 const onDescriptionChange = () => {};
 
-storiesOf('CategoryDescriptionTextField', module).add('example', () => (
+storiesOf("CategoryDescriptionTextField", module).add("example", () => (
   <CategoryDescriptionTextField
     description={description}
     onDescriptionChange={onDescriptionChange}

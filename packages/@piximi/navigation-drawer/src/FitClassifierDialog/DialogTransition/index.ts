@@ -1,1 +1,1 @@
-export { DialogTransition } from './DialogTransition';
+export {DialogTransition} from "./DialogTransition";

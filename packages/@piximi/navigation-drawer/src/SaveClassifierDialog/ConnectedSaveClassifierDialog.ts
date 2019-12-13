@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import { Classifier } from '@piximi/types';
-import { SaveClassifierDialog } from './SaveClassifierDialog';
+import {connect} from "react-redux";
+import {Classifier} from "@piximi/types";
+import {SaveClassifierDialog} from "./SaveClassifierDialog";
 
 type State = {
   classifier: Classifier;

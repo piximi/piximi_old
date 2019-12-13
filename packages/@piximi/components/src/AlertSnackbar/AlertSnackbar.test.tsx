@@ -1,12 +1,12 @@
-import { shallow } from 'enzyme';
-import * as React from 'react';
+import {shallow} from "enzyme";
+import * as React from "react";
 
-import { AlertSnackbar } from './AlertSnackbar';
+import {AlertSnackbar} from "./AlertSnackbar";
 
-it('AlertSnackbar', () => {
+it("AlertSnackbar", () => {
   const closeSnackbar = () => {};
 
-  const message = '';
+  const message = "";
 
   const openedSnackbar = true;
 

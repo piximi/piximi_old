@@ -1,5 +1,5 @@
 const collisionWithRectangle = (
-  rectangle1: { x: any; y: any; width: any; height: any },
+  rectangle1: {x: any; y: any; width: any; height: any},
   rectangle2: any
 ) => {
   // Check if two rectangles overlap
@@ -25,7 +25,7 @@ const reCalcWithoutPixelString = (mousePosition: {
   let top = y3;
   let width = x4 - x3;
   let height = y4 - y3;
-  return { x: left, y: top, width: width, height: height };
+  return {x: left, y: top, width: width, height: height};
 };
 
 const collisionDetection = (mousePosition: {
@@ -36,12 +36,12 @@ const collisionDetection = (mousePosition: {
 }) => {
   // Check if any selectable item is overlapping with mouse selection box
   const rectangle1 = reCalcWithoutPixelString(mousePosition);
-  const elements = document.getElementsByTagName('canvas'); // Check collisions with selectable elements
+  const elements = document.getElementsByTagName("canvas"); // Check collisions with selectable elements
   let collisions = [];
   for (let i = 0; i < elements.length; i++) {
     const element = elements[i];
     const rectangle2 = element.getBoundingClientRect();
-    const imageId = element.getAttribute('imgid');
+    const imageId = element.getAttribute("imgid");
     const collisionDetected = collisionWithRectangle(rectangle1, rectangle2);
     if (collisionDetected) {
       collisions.push(imageId);
@@ -61,11 +61,11 @@ const reCalc = (mousePosition: {
   let x4 = Math.max(mousePosition.x1, mousePosition.x2); //Larger X
   let y3 = Math.min(mousePosition.y1, mousePosition.y2); //Smaller Y
   let y4 = Math.max(mousePosition.y1, mousePosition.y2); //Larger Y
-  let left = x3 + 'px';
-  let top = y3 + 'px';
-  let width = x4 - x3 + 'px';
-  let height = y4 - y3 + 'px';
-  return { left: left, top: top, width: width, height: height };
+  let left = x3 + "px";
+  let top = y3 + "px";
+  let width = x4 - x3 + "px";
+  let height = y4 - y3 + "px";
+  return {left: left, top: top, width: width, height: height};
 };
 
-export { collisionDetection, reCalc, reCalcWithoutPixelString };
+export {collisionDetection, reCalc, reCalcWithoutPixelString};

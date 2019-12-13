@@ -1,2 +1,2 @@
-export { SaveClassifierDialog } from './SaveClassifierDialog';
-export { ConnectedSaveClassifierDialog } from './ConnectedSaveClassifierDialog';
+export {SaveClassifierDialog} from "./SaveClassifierDialog";
+export {ConnectedSaveClassifierDialog} from "./ConnectedSaveClassifierDialog";

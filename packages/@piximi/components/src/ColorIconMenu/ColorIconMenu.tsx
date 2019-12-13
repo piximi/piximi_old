@@ -1,8 +1,8 @@
-import {PopoverOrigin} from '@material-ui/core/Popover';
-import {makeStyles} from '@material-ui/styles';
-import * as React from 'react';
-import {ColorPicker} from '..';
-import styles from './ColorIconMenu.css';
+import {PopoverOrigin} from "@material-ui/core/Popover";
+import {makeStyles} from "@material-ui/styles";
+import * as React from "react";
+import {ColorPicker} from "..";
+import styles from "./ColorIconMenu.css";
 import {Popover} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
@@ -34,13 +34,13 @@ export const ColorIconMenu = (props: ColorIconMenuProps) => {
   };
 
   const anchorOrigin: PopoverOrigin = {
-    horizontal: 'center',
-    vertical: 'bottom'
+    horizontal: "center",
+    vertical: "bottom"
   };
 
   const transformOrigin: PopoverOrigin = {
-    horizontal: 'center',
-    vertical: 'top'
+    horizontal: "center",
+    vertical: "top"
   };
 
   return (
@@ -52,7 +52,7 @@ export const ColorIconMenu = (props: ColorIconMenuProps) => {
       transformOrigin={transformOrigin}
     >
       <div className={classes.colorPicker}>
-        <ColorPicker categories={[]} colors={colors} onChange={onChange}/>
+        <ColorPicker categories={[]} colors={colors} onChange={onChange} />
       </div>
     </Popover>
   );

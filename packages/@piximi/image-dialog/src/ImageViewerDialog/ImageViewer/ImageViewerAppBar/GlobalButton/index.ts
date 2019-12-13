@@ -1,1 +1,1 @@
-export { GlobalButton } from './GlobalButton';
+export {GlobalButton} from "./GlobalButton";

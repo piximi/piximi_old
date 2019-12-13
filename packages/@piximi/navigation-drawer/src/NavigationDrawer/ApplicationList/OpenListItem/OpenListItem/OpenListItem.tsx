@@ -1,11 +1,11 @@
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import * as React from 'react';
-import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import { useMenu } from '@piximi/hooks';
-import { OpenMenuList } from '../OpenMenuList';
+import {ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import * as React from "react";
+import FolderOpenIcon from "@material-ui/icons/FolderOpen";
+import {useMenu} from "@piximi/hooks";
+import {OpenMenuList} from "../OpenMenuList";
 
 export const OpenListItem = () => {
-  const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
+  const {anchorEl, openedMenu, openMenu, closeMenu} = useMenu();
 
   return (
     <React.Fragment>

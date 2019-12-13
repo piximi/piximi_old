@@ -1,1 +1,1 @@
-export { NewClassifierDialog } from './NewClassifierDialog';
+export {NewClassifierDialog} from "./NewClassifierDialog";

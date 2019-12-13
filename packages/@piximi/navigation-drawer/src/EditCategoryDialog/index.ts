@@ -1,1 +1,1 @@
-export { EditCategoryDialog } from './EditCategoryDialog';
+export {EditCategoryDialog} from "./EditCategoryDialog";

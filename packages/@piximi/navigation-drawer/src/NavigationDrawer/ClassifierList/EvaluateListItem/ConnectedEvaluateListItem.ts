@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import { Classifier } from '@piximi/types';
-import { EvaluateListItem } from './EvaluateListItem';
+import {connect} from "react-redux";
+import {Classifier} from "@piximi/types";
+import {EvaluateListItem} from "./EvaluateListItem";
 
 type State = {
   classifier: Classifier;

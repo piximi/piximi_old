@@ -1,6 +1,6 @@
-import { Category, Image } from '@piximi/types';
-import * as ImageJS from 'image-js';
-import * as tensorflow from '@tensorflow/tfjs';
+import {Category, Image} from "@piximi/types";
+import * as ImageJS from "image-js";
+import * as tensorflow from "@tensorflow/tfjs";
 
 const VALIDATIONSET_RATIO = 0.2;
 
@@ -37,19 +37,19 @@ const imageToSquare = (
 ): HTMLCanvasElement => {
   const dimensions =
     image instanceof HTMLImageElement
-      ? { width: image.naturalWidth, height: image.naturalHeight }
+      ? {width: image.naturalWidth, height: image.naturalHeight}
       : image;
 
   const scale = size / Math.max(dimensions.height, dimensions.width);
   const width = scale * dimensions.width;
   const height = scale * dimensions.height;
 
-  const canvas = document.createElement('canvas') as HTMLCanvasElement;
+  const canvas = document.createElement("canvas") as HTMLCanvasElement;
 
   canvas.width = size;
   canvas.height = size;
 
-  const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+  const context = canvas.getContext("2d") as CanvasRenderingContext2D;
 
   context.drawImage(image, 0, 0, width, height);
 
@@ -84,7 +84,7 @@ export const createTrainAndTestSet = async (
 ) => {
   const trainData = images.filter(
     (image: Image) =>
-      image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000'
+      image.categoryIdentifier !== "00000000-0000-0000-0000-000000000000"
   );
 
   const numSamplesValidation = Math.max(
@@ -103,13 +103,13 @@ export const createTrainAndTestSet = async (
     categories
   );
 
-  return { trainData: trainDataSet, testData: validationDataSet };
+  return {trainData: trainDataSet, testData: validationDataSet};
 };
 
 export const createPredictionSet = async (images: Image[]) => {
   const predictionImageSet = images.filter(
     (image: Image) =>
-      image.categoryIdentifier === '00000000-0000-0000-0000-000000000000'
+      image.categoryIdentifier === "00000000-0000-0000-0000-000000000000"
   );
 
   const predictionTensorSet: tensorflow.Tensor<tensorflow.Rank>[] = [];
@@ -143,6 +143,5 @@ const createLabledTensorflowDataSet = async (
     tensorflow.oneHot(tensorLables, categories.length - 1)
   );
 
-  return { data: concatenatedTensorData, lables: concatenatedLableData };
+  return {data: concatenatedTensorData, lables: concatenatedLableData};
 };
-

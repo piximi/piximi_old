@@ -1,9 +1,9 @@
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import * as React from 'react';
-import ScatterPlotIcon from '@material-ui/icons/ScatterPlot';
-import { useTranslation } from 'react-i18next';
-import { useDialog } from '@piximi/hooks';
-import { ConnectedFitClassifierDialog } from '../../../FitClassifierDialog/FitClassifierDialog/ConnectedFitClassifierDialog';
+import {ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import * as React from "react";
+import ScatterPlotIcon from "@material-ui/icons/ScatterPlot";
+import {useTranslation} from "react-i18next";
+import {useDialog} from "@piximi/hooks";
+import {ConnectedFitClassifierDialog} from "../../../FitClassifierDialog/FitClassifierDialog/ConnectedFitClassifierDialog";
 
 type FitListItemProps = {
   datasetInitialized: boolean;
@@ -11,11 +11,11 @@ type FitListItemProps = {
 };
 
 export const FitListItem = (props: FitListItemProps) => {
-  const { datasetInitialized, setDatasetInitialized } = props;
+  const {datasetInitialized, setDatasetInitialized} = props;
 
-  const { openedDialog, openDialog, closeDialog } = useDialog();
+  const {openedDialog, openDialog, closeDialog} = useDialog();
 
-  const { t: translation } = useTranslation();
+  const {t: translation} = useTranslation();
 
   const fit = async () => {
     openDialog();
@@ -28,7 +28,7 @@ export const FitListItem = (props: FitListItemProps) => {
           <ScatterPlotIcon />
         </ListItemIcon>
 
-        <ListItemText primary={translation('Fit')} />
+        <ListItemText primary={translation("Fit")} />
       </ListItem>
 
       <ConnectedFitClassifierDialog

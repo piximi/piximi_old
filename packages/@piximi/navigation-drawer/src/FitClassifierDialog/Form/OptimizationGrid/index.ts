@@ -1,1 +1,1 @@
-export { OptimizationGrid } from './OptimizationGrid';
+export {OptimizationGrid} from "./OptimizationGrid";

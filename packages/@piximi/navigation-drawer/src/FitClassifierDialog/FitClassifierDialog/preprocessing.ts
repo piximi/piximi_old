@@ -1,4 +1,4 @@
-import * as types from '@piximi/types';
+import * as types from "@piximi/types";
 
 export const rescaleData = async (
   lowerPercentile: number,
@@ -8,7 +8,7 @@ export const rescaleData = async (
   // do something
   // old :const testDataSet = await createLabledTensorflowDataSet(testData, categories);
   let rescaledSet;
-  return { rescaledSet };
+  return {rescaledSet};
 };
 
 export const resizeData = async (
@@ -18,7 +18,7 @@ export const resizeData = async (
 ) => {
   // do something
   let resizedSet;
-  return { resizedSet };
+  return {resizedSet};
 };
 
 export const augmentData = async (
@@ -28,5 +28,5 @@ export const augmentData = async (
   // do something
   // old :const testDataSet = await createLabledTensorflowDataSet(testData, categories);
   let augmentedSet;
-  return { augmentedSet };
+  return {augmentedSet};
 };

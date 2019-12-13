@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { styles } from './NavigationDrawerAppBar.css';
+import * as React from "react";
+import {styles} from "./NavigationDrawerAppBar.css";
 
-import classNames from 'classnames';
-import MenuIcon from '@material-ui/icons/Menu';
-import { makeStyles } from '@material-ui/styles';
+import classNames from "classnames";
+import MenuIcon from "@material-ui/icons/Menu";
+import {makeStyles} from "@material-ui/styles";
 import {
   AppBar,
   IconButton,
   Toolbar,
   Tooltip,
   Typography
-} from '@material-ui/core';
+} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -20,14 +20,14 @@ type AppBarProps = {
 };
 
 export const NavigationDrawerAppBar = (props: AppBarProps) => {
-  const { toggle, toggled } = props;
+  const {toggle, toggled} = props;
 
   const classes = useStyles({});
 
   return (
     <AppBar className={classNames(classes.appBar)} color="default">
       <Toolbar disableGutters={true}>
-        <Tooltip title={(toggled ? 'Hide ' : 'Show ') + 'sidebar'}>
+        <Tooltip title={(toggled ? "Hide " : "Show ") + "sidebar"}>
           <IconButton
             aria-label="open sidebar"
             className={classNames(classes.menuButton)}

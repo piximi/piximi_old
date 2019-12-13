@@ -1,4 +1,4 @@
 export {
   EvaluateClassifierDialog,
   ConnectedEvaluateClassifierDialog
-} from './EvaluateClassifierDialog';
+} from "./EvaluateClassifierDialog";

@@ -1,23 +1,23 @@
-import * as React from 'react';
-import styles from './PrimaryAppBar.css';
-import AppBar from '@material-ui/core/AppBar';
-import IconButton from '@material-ui/core/IconButton';
-import Toolbar from '@material-ui/core/Toolbar';
-import Tooltip from '@material-ui/core/Tooltip';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import classNames from 'classnames';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import Clear from '@material-ui/icons/Clear';
+import * as React from "react";
+import styles from "./PrimaryAppBar.css";
+import AppBar from "@material-ui/core/AppBar";
+import IconButton from "@material-ui/core/IconButton";
+import Toolbar from "@material-ui/core/Toolbar";
+import Tooltip from "@material-ui/core/Tooltip";
+import Paper from "@material-ui/core/Paper";
+import InputBase from "@material-ui/core/InputBase";
+import classNames from "classnames";
+import MenuIcon from "@material-ui/icons/Menu";
+import SearchIcon from "@material-ui/icons/Search";
+import Clear from "@material-ui/icons/Clear";
 import {
   ImageSearch,
   InitializeSearch,
   ClearSearch
-} from '../ImageSearch/ImageSearch';
-import { ConnectedImportImagesButton } from '../../../containers';
-import { DeleteButton, Logo } from '..';
-import { makeStyles } from '@material-ui/styles';
+} from "../ImageSearch/ImageSearch";
+import {ConnectedImportImagesButton} from "../../../containers";
+import {DeleteButton, Logo} from "..";
+import {makeStyles} from "@material-ui/styles";
 
 const useStyles = makeStyles(styles);
 
@@ -34,7 +34,7 @@ export const PrimaryAppBar = (props: any) => {
     changeImagesVisibility
   } = props;
 
-  const [searchInput, setSearchInput] = React.useState<string>('');
+  const [searchInput, setSearchInput] = React.useState<string>("");
   const [clearSearchResults, setClearSearchResults] = React.useState<boolean>(
     false
   );
@@ -51,12 +51,12 @@ export const PrimaryAppBar = (props: any) => {
 
   const onClearImageSearchClick = () => {
     ClearSearch();
-    setSearchInput('');
+    setSearchInput("");
     setClearSearchResults(false);
   };
 
   const onKeyPress = (ev: any) => {
-    if (ev.key === 'Enter') {
+    if (ev.key === "Enter") {
       onSearchIconClick();
     }
   };
@@ -81,22 +81,22 @@ export const PrimaryAppBar = (props: any) => {
 
         <Logo />
 
-        <div style={{ flexGrow: 1 }} />
+        <div style={{flexGrow: 1}} />
         <Tooltip
           title="Search Images: e.g. cetegory == positive"
           placement="bottom"
         >
-          <Paper style={{ height: 45, justifyContent: 'center' }}>
+          <Paper style={{height: 45, justifyContent: "center"}}>
             <InputBase
               placeholder="Search Images"
-              style={{ paddingLeft: '20px' }}
+              style={{paddingLeft: "20px"}}
               onKeyPress={onKeyPress}
               onChange={onSearchInputChange}
             />
 
             {clearSearchResults && (
               <IconButton
-                style={{ paddingRight: '0px' }}
+                style={{paddingRight: "0px"}}
                 onClick={onClearImageSearchClick}
                 aria-label="clear search results"
               >

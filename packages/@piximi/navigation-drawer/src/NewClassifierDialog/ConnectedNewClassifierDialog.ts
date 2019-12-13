@@ -1,9 +1,9 @@
-import { connect } from 'react-redux';
-import { createClassifierAction } from '@piximi/store';
-import { Classifier } from '@piximi/types';
-import * as uuid from 'uuid';
-import { Dispatch } from 'redux';
-import { NewClassifierDialog } from './NewClassifierDialog';
+import {connect} from "react-redux";
+import {createClassifierAction} from "@piximi/store";
+import {Classifier} from "@piximi/types";
+import * as uuid from "uuid";
+import {Dispatch} from "redux";
+import {NewClassifierDialog} from "./NewClassifierDialog";
 
 type State = {
   classifier: Classifier;

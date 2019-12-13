@@ -1,6 +1,6 @@
-import { Category, Image } from '@piximi/types';
-import * as ImageJS from 'image-js';
-import * as tensorflow from '@tensorflow/tfjs';
+import {Category, Image} from "@piximi/types";
+import * as ImageJS from "image-js";
+import * as tensorflow from "@tensorflow/tfjs";
 
 export const createTrainingSet = async (
   categories: Category[],
@@ -30,7 +30,7 @@ export const createTrainingSet = async (
     tensor.dispose()
   );
 
-  return { data: concatenatedTensorData, labels: concatenatedLabelData };
+  return {data: concatenatedTensorData, labels: concatenatedLabelData};
 };
 
 export const createAutotunerDataSet = async (
@@ -68,7 +68,7 @@ export const createTestSet = async (
   images: Image[]
 ) => {
   const labeledData = images.filter((image: Image) => {
-    return image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000';
+    return image.categoryIdentifier !== "00000000-0000-0000-0000-000000000000";
   });
 
   const testData: Image[] = [];
@@ -80,13 +80,13 @@ export const createTestSet = async (
 
   const testDataSet = await createLabledTensorflowDataSet(testData, categories);
 
-  return { data: testDataSet.data, labels: testDataSet.labels };
+  return {data: testDataSet.data, labels: testDataSet.labels};
 };
 
 export const createPredictionSet = async (images: Image[]) => {
   const predictionImageSet = images.filter(
     (image: Image) =>
-      image.categoryIdentifier === '00000000-0000-0000-0000-000000000000'
+      image.categoryIdentifier === "00000000-0000-0000-0000-000000000000"
   );
 
   const predictionTensorSet: tensorflow.Tensor<tensorflow.Rank>[] = [];
@@ -96,7 +96,7 @@ export const createPredictionSet = async (images: Image[]) => {
     predictionTensorSet.push(await tensorImageData(image));
     imageIdentifiers.push(image.identifier);
   }
-  return { data: predictionTensorSet, identifiers: imageIdentifiers };
+  return {data: predictionTensorSet, identifiers: imageIdentifiers};
 };
 
 var TESTSET_RATIO = 0.2;
@@ -126,7 +126,7 @@ const createLabledTensorflowDataSet = async (
     tensorLabels.push(findCategoryIndex(categories, image.categoryIdentifier));
   }
 
-  return { data: tensorData, labels: tensorLabels };
+  return {data: tensorData, labels: tensorLabels};
 };
 
 const imageToSquare = (
@@ -135,19 +135,19 @@ const imageToSquare = (
 ): HTMLCanvasElement => {
   const dimensions =
     image instanceof HTMLImageElement
-      ? { width: image.naturalWidth, height: image.naturalHeight }
+      ? {width: image.naturalWidth, height: image.naturalHeight}
       : image;
 
   const scale = size / Math.max(dimensions.height, dimensions.width);
   const width = scale * dimensions.width;
   const height = scale * dimensions.height;
 
-  const canvas = document.createElement('canvas') as HTMLCanvasElement;
+  const canvas = document.createElement("canvas") as HTMLCanvasElement;
 
   canvas.width = size;
   canvas.height = size;
 
-  const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+  const context = canvas.getContext("2d") as CanvasRenderingContext2D;
 
   context.drawImage(image, 0, 0, width, height);
 
@@ -160,7 +160,7 @@ const findCategoryIndex = (
 ): number => {
   const labels = categories.filter(
     (category: Category) =>
-      category.identifier !== '00000000-0000-0000-0000-000000000000'
+      category.identifier !== "00000000-0000-0000-0000-000000000000"
   );
   return labels.findIndex(
     (category: Category) => category.identifier === identifier

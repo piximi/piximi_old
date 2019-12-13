@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Grid, AutoSizer } from 'react-virtualized';
-import { ConnectedItem } from '../../../containers';
+import * as React from "react";
+import {Grid, AutoSizer} from "react-virtualized";
+import {ConnectedItem} from "../../../containers";
 
 type GalleryItemsProps = {
   decreaseWidth: any;
@@ -43,8 +43,8 @@ export const GalleryItems = (props: GalleryItemsProps) => {
     style: any;
   }) => undefined | any;
 
-  cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
-    let newStyle = { ...style };
+  cellRenderer = ({columnIndex, key, rowIndex, style}) => {
+    let newStyle = {...style};
     const index = picturesPerRow * rowIndex - 1 + columnIndex + 1;
 
     if (index > noImages - 1) {
@@ -90,7 +90,7 @@ export const GalleryItems = (props: GalleryItemsProps) => {
 
   return (
     <AutoSizer>
-      {({ height, width }) => {
+      {({height, width}) => {
         const calculatedWidth = width - decreaseWidth;
         const columnWidth = calculatedWidth / picturesPerRow;
         const columnCount =
@@ -105,7 +105,7 @@ export const GalleryItems = (props: GalleryItemsProps) => {
             rowCount={rowCount}
             rowHeight={150}
             width={calculatedWidth}
-            style={{ outline: 'none' }}
+            style={{outline: "none"}}
           />
         );
       }}

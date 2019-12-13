@@ -1,11 +1,11 @@
-import { createStyles } from '@material-ui/styles';
-import { Theme } from '@material-ui/core';
+import {createStyles} from "@material-ui/styles";
+import {Theme} from "@material-ui/core";
 
 export const styles = (theme: Theme) =>
   createStyles({
     closeButton: {
       color: theme.palette.grey[500],
-      position: 'absolute',
+      position: "absolute",
       right: theme.spacing(1),
       top: theme.spacing(1)
     },

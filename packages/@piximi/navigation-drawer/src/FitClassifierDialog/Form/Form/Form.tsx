@@ -1,24 +1,24 @@
-import * as React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { OptimizationGrid } from '../OptimizationGrid';
-import { Grid, MenuItem, TextField } from '@material-ui/core';
-import * as _ from 'lodash';
+import * as React from "react";
+import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import {OptimizationGrid} from "../OptimizationGrid";
+import {Grid, MenuItem, TextField} from "@material-ui/core";
+import * as _ from "lodash";
 
 const lossFunctions = {
-  absoluteDifference: 'Absolute difference',
-  cosineDistance: 'Cosine distance',
-  hingeLoss: 'Hinge',
-  huberLoss: 'Huber',
-  logLoss: 'Log',
-  meanSquaredError: 'Mean squared error (MSE)',
-  sigmoidCrossEntropy: 'Sigmoid cross entropy',
-  categoricalCrossentropy: 'Categorical cross entropy'
+  absoluteDifference: "Absolute difference",
+  cosineDistance: "Cosine distance",
+  hingeLoss: "Hinge",
+  huberLoss: "Huber",
+  logLoss: "Log",
+  meanSquaredError: "Mean squared error (MSE)",
+  sigmoidCrossEntropy: "Sigmoid cross entropy",
+  categoricalCrossentropy: "Categorical cross entropy"
 };
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     expansionPanel: {
-      boxShadow: 'none'
+      boxShadow: "none"
     },
     leftIcon: {
       marginRight: theme.spacing(1)
@@ -34,15 +34,15 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     form: {},
     appBar: {
-      position: 'relative',
-      backgroundColor: 'transparent',
-      boxShadow: 'none',
-      borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
+      position: "relative",
+      backgroundColor: "transparent",
+      boxShadow: "none",
+      borderBottom: "1px solid rgba(0, 0, 0, 0.12)"
     },
     container: {
       // width: '100%',
-      display: 'flex',
-      flexWrap: 'wrap'
+      display: "flex",
+      flexWrap: "wrap"
     },
     root: {
       zIndex: 1100
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: 1100
     },
     paperFullScreen: {
-      left: '280px'
+      left: "280px"
     },
     menu: {
       // width: 200,
@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
       flexBasis: 300,
-      width: '100%'
+      width: "100%"
     },
     title: {
       marginLeft: theme.spacing(2),
@@ -114,14 +114,14 @@ export const Form = (props: FormProps) => {
   }
 
   const [values, setValues] = React.useState<State>({
-    lossFunction: 'meanSquaredError',
-    optimizationAlgorithm: 'adam'
+    lossFunction: "meanSquaredError",
+    optimizationAlgorithm: "adam"
   });
 
   const onChange = (name: keyof State) => (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setValues({ ...values, [name]: event.target.value });
+    setValues({...values, [name]: event.target.value});
   };
 
   const classes = useStyles();

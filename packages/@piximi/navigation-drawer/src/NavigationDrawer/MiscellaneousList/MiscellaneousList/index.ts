@@ -1,1 +1,1 @@
-export { MiscellaneousList } from './MiscellaneousList';
+export {MiscellaneousList} from "./MiscellaneousList";

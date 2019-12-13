@@ -1,5 +1,5 @@
-import { Image, Partition, Category } from '@piximi/types';
-import { compileExpression } from 'filtrex';
+import {Image, Partition, Category} from "@piximi/types";
+import {compileExpression} from "filtrex";
 
 let changeImagesVisibilityFunction: (
   itentifiers: string[],
@@ -7,7 +7,7 @@ let changeImagesVisibilityFunction: (
 ) => void;
 let invisibleImages: string[] = [];
 
-const categoryDict: { [identifier: string]: string } = {};
+const categoryDict: {[identifier: string]: string} = {};
 const flattendedImages: {
   identifier: string;
   category: string;
@@ -20,13 +20,13 @@ export const ImageSearch = (searchInput: string) => {
   try {
     var searchFunction = compileExpression(searchInput);
   } catch (error) {
-    alert('invalid search input');
+    alert("invalid search input");
     return true;
   }
 
   const negativeSearchResults: string[] = [];
   const positiveSearchResults: string[] = [];
-  flattendedImages.forEach(image => {
+  flattendedImages.forEach((image) => {
     if (searchFunction(image) === 0) {
       negativeSearchResults.push(image.identifier);
     } else {
@@ -78,7 +78,7 @@ const flattenImage = (image: Image) => {
   let prediction: string;
   if (image.scores.length === 0) {
     probability = -1;
-    prediction = 'none';
+    prediction = "none";
   } else {
     const imagePrediction = getPrediction(image);
     probability = imagePrediction.probability;

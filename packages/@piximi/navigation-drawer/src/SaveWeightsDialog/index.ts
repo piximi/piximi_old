@@ -1,1 +1,1 @@
-export { SaveWeightsDialog } from './SaveWeightsDialog';
+export {SaveWeightsDialog} from "./SaveWeightsDialog";

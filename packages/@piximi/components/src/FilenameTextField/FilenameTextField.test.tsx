@@ -1,10 +1,10 @@
-import { shallow } from 'enzyme';
-import * as React from 'react';
+import {shallow} from "enzyme";
+import * as React from "react";
 
-import { FilenameTextField } from './FilenameTextField';
+import {FilenameTextField} from "./FilenameTextField";
 
-it('FilenameTextField', () => {
-  const filename = '';
+it("FilenameTextField", () => {
+  const filename = "";
 
   const onFilenameChange = () => {};
 

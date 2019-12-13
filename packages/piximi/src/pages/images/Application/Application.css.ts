@@ -1,5 +1,5 @@
-import { createStyles } from '@material-ui/styles';
-import { Theme } from '@material-ui/core';
+import {createStyles} from "@material-ui/styles";
+import {Theme} from "@material-ui/core";
 
 const drawerWidth = 280;
 
@@ -10,19 +10,19 @@ const styles = (theme: Theme) =>
     },
     appFrame: {
       zIndex: 1,
-      overflow: 'hidden',
-      display: 'flex',
-      width: '100%'
+      overflow: "hidden",
+      display: "flex",
+      width: "100%"
     },
     appBar: {
-      position: 'absolute',
-      transition: theme.transitions.create(['margin', 'width'], {
+      position: "absolute",
+      transition: theme.transitions.create(["margin", "width"], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen
       })
     },
     appBarShift: {
-      transition: theme.transitions.create(['margin', 'width'], {
+      transition: theme.transitions.create(["margin", "width"], {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen
       })
@@ -35,21 +35,21 @@ const styles = (theme: Theme) =>
       marginRight: 20
     },
     hide: {
-      display: 'none'
+      display: "none"
     },
     drawerPaper: {
-      position: 'relative',
+      position: "relative",
       width: drawerWidth
     },
     drawerHeader: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-end",
       toolbar: theme.mixins.toolbar
     },
     content: {
       flexGrow: 1,
-      transition: theme.transitions.create('margin', {
+      transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen
       })
@@ -58,7 +58,7 @@ const styles = (theme: Theme) =>
       marginLeft: 0
     },
     contentShift: {
-      transition: theme.transitions.create('margin', {
+      transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen
       })
@@ -67,29 +67,29 @@ const styles = (theme: Theme) =>
       marginLeft: drawerWidth
     },
     fab: {
-      position: 'absolute',
+      position: "absolute",
       bottom: theme.spacing(2),
       right: theme.spacing(2)
     },
     unlabeledToggled: {
-      '&:hover': {
-        background: 'rgba(150,150,150,1)'
+      "&:hover": {
+        background: "rgba(150,150,150,1)"
       },
-      background: 'rgba(200,200,200,1)',
-      position: 'absolute',
+      background: "rgba(200,200,200,1)",
+      position: "absolute",
       bottom: theme.spacing(2),
       right: theme.spacing(2)
     },
     unlabeledUntoggled: {
-      background: 'rgba(200,50,50,1)',
-      position: 'absolute',
+      background: "rgba(200,50,50,1)",
+      position: "absolute",
       bottom: theme.spacing(2),
       right: theme.spacing(2)
     },
     pacmanLoader: {
-      position: 'fixed',
-      top: '50%',
-      left: '50%'
+      position: "fixed",
+      top: "50%",
+      left: "50%"
     }
   });
 

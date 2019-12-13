@@ -1,8 +1,8 @@
-import * as React from 'react';
-import styles from './BrightnessSlider.css';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
-import { makeStyles } from '@material-ui/styles';
+import * as React from "react";
+import styles from "./BrightnessSlider.css";
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
+import {makeStyles} from "@material-ui/styles";
 
 const useStyles = makeStyles(styles);
 
@@ -14,7 +14,7 @@ type Props = {
 const BrightnessSlider = (props: Props) => {
   const classes = useStyles({});
 
-  const { brightness, setBrightness } = props;
+  const {brightness, setBrightness} = props;
 
   const onChange = (event: any, value: any) => {
     setBrightness(value);
@@ -22,13 +22,13 @@ const BrightnessSlider = (props: Props) => {
 
   return (
     <div className={classes.root}>
-      <Typography style={{ color: 'white' }} id="label">
+      <Typography style={{color: "white"}} id="label">
         Brightness
       </Typography>
 
       <Slider
-        style={{ color: 'white' }}
-        classes={{ root: classes.slider }}
+        style={{color: "white"}}
+        classes={{root: classes.slider}}
         value={brightness}
         min={0}
         max={1000}

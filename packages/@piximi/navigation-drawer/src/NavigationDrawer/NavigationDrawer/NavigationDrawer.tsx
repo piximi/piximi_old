@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { styles } from './NavigationDrawer.css';
-import { makeStyles } from '@material-ui/styles';
+import * as React from "react";
+import {styles} from "./NavigationDrawer.css";
+import {makeStyles} from "@material-ui/styles";
 import {
   ApplicationList,
   ClassifierList,
   NavigationDrawerAppBar,
   MiscellaneousList
-} from '../index';
-import { ConnectedCategoriesList } from '../CategoriesList/CategoriesList/ConnectedCategoriesList';
-import { Box, Divider, Drawer } from '@material-ui/core';
+} from "../index";
+import {ConnectedCategoriesList} from "../CategoriesList/CategoriesList/ConnectedCategoriesList";
+import {Box, Divider, Drawer} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -20,17 +20,17 @@ type DrawerProps = {
 export const NavigationDrawer = (props: DrawerProps) => {
   const classes = useStyles({});
 
-  const { toggled, toggle } = props;
+  const {toggled, toggle} = props;
 
   return (
     <Drawer
       anchor="left"
-      classes={{ paper: classes.drawerPaper }}
+      classes={{paper: classes.drawerPaper}}
       open={toggled}
       variant="persistent"
     >
       <Box
-        style={{ paddingTop: 60 }}
+        style={{paddingTop: 60}}
         className={classes.toolbar}
         display="flex"
         justifyContent="flex-end"
@@ -41,15 +41,15 @@ export const NavigationDrawer = (props: DrawerProps) => {
 
       <ApplicationList />
 
-      <Divider component={'hr'} />
+      <Divider component={"hr"} />
 
       <ConnectedCategoriesList />
 
-      <Divider component={'hr'} />
+      <Divider component={"hr"} />
 
       <ClassifierList />
 
-      <Divider component={'hr'} />
+      <Divider component={"hr"} />
 
       <MiscellaneousList />
     </Drawer>

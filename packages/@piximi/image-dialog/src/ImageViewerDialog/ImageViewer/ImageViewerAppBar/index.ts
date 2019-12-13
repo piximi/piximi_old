@@ -1,1 +1,1 @@
-export { ImageViewerAppBar } from './ImageViewerAppBar';
+export {ImageViewerAppBar} from "./ImageViewerAppBar";

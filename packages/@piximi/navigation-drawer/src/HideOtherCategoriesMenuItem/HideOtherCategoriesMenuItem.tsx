@@ -1,6 +1,6 @@
-import * as React from 'react';
-import * as MaterialUI from '@material-ui/core';
-import { Classifier, Category } from '@piximi/types';
+import * as React from "react";
+import * as MaterialUI from "@material-ui/core";
+import {Classifier, Category} from "@piximi/types";
 
 type HideOtherCategoriesProps = {
   classifier: Classifier;
@@ -15,7 +15,7 @@ type HideOtherCategoriesProps = {
 export const HideOtherCategoriesMenuItem = (
   props: HideOtherCategoriesProps
 ) => {
-  const { classifier, categoryProp, closeMenu, makeCategoryInvisible } = props;
+  const {classifier, categoryProp, closeMenu, makeCategoryInvisible} = props;
 
   // check if 'categoryProp' is the only visible category
   const isOnlyVisibleCategory =
@@ -27,8 +27,8 @@ export const HideOtherCategoriesMenuItem = (
     0;
 
   const listItemText = isOnlyVisibleCategory
-    ? 'Show other categories'
-    : 'Hide other categories';
+    ? "Show other categories"
+    : "Hide other categories";
 
   const onClick = () => {
     closeMenu();

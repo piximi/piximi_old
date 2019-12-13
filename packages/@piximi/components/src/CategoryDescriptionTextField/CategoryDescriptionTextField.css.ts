@@ -1,9 +1,9 @@
-import {createStyles} from '@material-ui/styles';
+import {createStyles} from "@material-ui/styles";
 
 const styles = () =>
   createStyles({
     input: {
-      fontSize: '14px'
+      fontSize: "14px"
     }
   });
 

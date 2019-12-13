@@ -1,1 +1,1 @@
-export { OpenWeightsMenuItem } from './OpenWeightsMenuItem';
+export {OpenWeightsMenuItem} from "./OpenWeightsMenuItem";

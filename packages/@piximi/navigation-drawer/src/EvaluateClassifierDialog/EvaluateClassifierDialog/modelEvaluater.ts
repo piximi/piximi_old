@@ -1,4 +1,4 @@
-import * as tensorflow from '@tensorflow/tfjs';
+import * as tensorflow from "@tensorflow/tfjs";
 
 export const evaluateTensorflowModel = (
   model: tensorflow.LayersModel,
@@ -27,8 +27,8 @@ export const evaluateTensorflowModelCV = async (
   );
 
   model.compile({
-    loss: 'categoricalCrossentropy',
-    metrics: ['accuracy'],
+    loss: "categoricalCrossentropy",
+    metrics: ["accuracy"],
     optimizer: tensorflow.train.adam()
   });
 

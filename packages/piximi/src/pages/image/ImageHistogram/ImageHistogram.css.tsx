@@ -1,9 +1,9 @@
-import { createStyles } from '@material-ui/styles';
+import {createStyles} from "@material-ui/styles";
 
 const styles = () =>
   createStyles({
     xyplot: {
-      width: 'calc(100% - 48px)'
+      width: "calc(100% - 48px)"
     }
   });
 

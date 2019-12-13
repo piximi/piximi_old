@@ -1,7 +1,10 @@
 {
   "bugs": "https://github.com/piximi/piximi/issues",
   "devDependencies": {
-    "lerna": "^3.19.0"
+    "husky": "^4.0.0-beta.5",
+    "lerna": "^3.19.0",
+    "lint-staged": "^10.0.0-beta.7",
+    "prettier": "^1.19.1"
   },
   "name": "@piximi/piximi",
   "private": true,
@@ -11,7 +14,8 @@
     "build": "tsc --build ./packages/tsconfig.json",
     "clean": "lerna clean --yes && lerna run clean",
     "compile": "tsc -b packages/@piximi/hooks",
-    "precommit": "lint-staged",
+    "lint-staged": "lint-staged",
+    "prettier": "prettier .prettierrc --write '**/*.+(css|js|jsx|ts|tsx)'",
     "test": "lerna run test"
   },
   "workspaces": [

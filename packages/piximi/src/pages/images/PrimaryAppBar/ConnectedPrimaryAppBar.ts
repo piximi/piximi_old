@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import { updateImageVisibilityAction } from '@piximi/store';
-import { Dispatch } from 'redux';
-import { Classifier } from '@piximi/types';
-import { PrimaryAppBar } from './PrimaryAppBar';
+import {connect} from "react-redux";
+import {updateImageVisibilityAction} from "@piximi/store";
+import {Dispatch} from "redux";
+import {Classifier} from "@piximi/types";
+import {PrimaryAppBar} from "./PrimaryAppBar";
 
 type State = {
   classifier: Classifier;

@@ -1,1 +1,1 @@
-export { DialogAppBar } from './DialogAppBar';
+export {DialogAppBar} from "./DialogAppBar";

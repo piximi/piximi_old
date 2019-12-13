@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   ListItemText,
   MenuItem,
@@ -6,13 +6,13 @@ import {
   Paper,
   Popover,
   Divider
-} from '@material-ui/core';
-import { useDialog } from '@piximi/hooks';
-import { ConnectedEditCategoryDialog } from '../../../../EditCategoryDialog/ConnectedEditCategoryDialog';
-import { ConnectedDeleteCategoryDialog } from '../../../../DeleteCategoryDialog/ConnectedDeleteCategoryDialog';
-import { ConnectedHideOtherCategoriesMenuItem } from '../../../../HideOtherCategoriesMenuItem/ConnectedHideOtherCategoriesMenuItem';
-import { ConnectedChangeCategoryVisibilityMenuItem } from '../../../../ChangeCategoryVisibilityMenuItem/ConnectedChangeCategoryVisibilityMenuItem';
-import { Category } from '@piximi/types';
+} from "@material-ui/core";
+import {useDialog} from "@piximi/hooks";
+import {ConnectedEditCategoryDialog} from "../../../../EditCategoryDialog/ConnectedEditCategoryDialog";
+import {ConnectedDeleteCategoryDialog} from "../../../../DeleteCategoryDialog/ConnectedDeleteCategoryDialog";
+import {ConnectedHideOtherCategoriesMenuItem} from "../../../../HideOtherCategoriesMenuItem/ConnectedHideOtherCategoriesMenuItem";
+import {ConnectedChangeCategoryVisibilityMenuItem} from "../../../../ChangeCategoryVisibilityMenuItem/ConnectedChangeCategoryVisibilityMenuItem";
+import {Category} from "@piximi/types";
 
 type CategoryListItemMenuListProps = {
   anchorEl: any;
@@ -25,7 +25,7 @@ type CategoryListItemMenuListProps = {
 export const CategoryListItemMenuList = (
   props: CategoryListItemMenuListProps
 ) => {
-  const { anchorEl, category, closeMenu, openedMenu } = props;
+  const {anchorEl, category, closeMenu, openedMenu} = props;
 
   const {
     openedDialog: openedEditCategoryDialog,
@@ -57,7 +57,7 @@ export const CategoryListItemMenuList = (
   };
 
   const known: boolean =
-    category.identifier !== '00000000-0000-0000-0000-000000000000';
+    category.identifier !== "00000000-0000-0000-0000-000000000000";
 
   return (
     <React.Fragment>

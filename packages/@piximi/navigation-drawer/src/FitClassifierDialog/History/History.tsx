@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { VictoryAxis, VictoryChart, VictoryLine, VictoryTheme } from 'victory';
-import { Grid, Typography } from '@material-ui/core';
-import { styles } from './History.css';
+import * as React from "react";
+import {makeStyles} from "@material-ui/core/styles";
+import {VictoryAxis, VictoryChart, VictoryLine, VictoryTheme} from "victory";
+import {Grid, Typography} from "@material-ui/core";
+import {styles} from "./History.css";
 
-type Data = { x: Number; y: Number }[];
+type Data = {x: Number; y: Number}[];
 
 type HistoryProps = {
   status: string;
@@ -30,8 +30,8 @@ export const History = (props: HistoryProps) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={4}>
-        <Typography classes={{ root: classes.typography }}>status</Typography>
-        <Typography classes={{ root: classes.typography }}>Loss</Typography>
+        <Typography classes={{root: classes.typography}}>status</Typography>
+        <Typography classes={{root: classes.typography}}>Loss</Typography>
 
         <VictoryChart
           height={100}
@@ -52,16 +52,16 @@ export const History = (props: HistoryProps) => {
             theme={VictoryTheme.material}
           />
 
-          <VictoryLine data={lossData} style={{ data: { stroke: 'red' } }} />
+          <VictoryLine data={lossData} style={{data: {stroke: "red"}}} />
           <VictoryLine
             data={validationLossData}
-            style={{ data: { stroke: 'green' } }}
+            style={{data: {stroke: "green"}}}
           />
         </VictoryChart>
       </Grid>
 
       <Grid item xs={4}>
-        <Typography classes={{ root: classes.typography }}>Accuracy</Typography>
+        <Typography classes={{root: classes.typography}}>Accuracy</Typography>
 
         <VictoryChart
           height={100}
@@ -82,13 +82,10 @@ export const History = (props: HistoryProps) => {
             theme={VictoryTheme.material}
           />
 
-          <VictoryLine
-            data={accuracyData}
-            style={{ data: { stroke: 'red' } }}
-          />
+          <VictoryLine data={accuracyData} style={{data: {stroke: "red"}}} />
           <VictoryLine
             data={validationAccuracyData}
-            style={{ data: { stroke: 'green' } }}
+            style={{data: {stroke: "green"}}}
           />
         </VictoryChart>
       </Grid>

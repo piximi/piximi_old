@@ -1,6 +1,6 @@
-import * as ImageJS from 'image-js';
-import md5 from 'crypto-js/md5';
-import { Plugin, Uppy, UppyFile } from '@uppy/core';
+import * as ImageJS from "image-js";
+import md5 from "crypto-js/md5";
+import {Plugin, Uppy, UppyFile} from "@uppy/core";
 
 type UpdateReduxStoreOptions = {
   createImage: (checksum: string, data: string, identifier: string) => void;
@@ -16,8 +16,8 @@ export class UpdateReduxStore extends Plugin {
     super(uppy, options);
 
     this.createImage = options.createImage;
-    this.id = options.id || 'UpdateReduxStore';
-    this.type = 'uploader';
+    this.id = options.id || "UpdateReduxStore";
+    this.type = "uploader";
 
     this.uploader = this.uploader.bind(this);
   }
@@ -31,12 +31,12 @@ export class UpdateReduxStore extends Plugin {
   }
 
   private uploader(identifiers: Array<string>) {
-    identifiers.forEach(identifier => {
+    identifiers.forEach((identifier) => {
       const file: UppyFile = this.uppy.getFile(identifier);
 
-      this.uppy.emit('preprocess-progress', file, {
-        mode: 'determinate',
-        message: 'preparingUpload',
+      this.uppy.emit("preprocess-progress", file, {
+        mode: "determinate",
+        message: "preparingUpload",
         value: 0
       });
     });
@@ -49,17 +49,17 @@ export class UpdateReduxStore extends Plugin {
 
         const checksum: string = md5(data).toString();
 
-        this.createImage(checksum, data, '');
+        this.createImage(checksum, data, "");
       });
     };
 
-    const promises = identifiers.map(identifier => {
+    const promises = identifiers.map((identifier) => {
       const image: UppyFile = this.uppy.getFile(identifier);
 
       const emit = () => {
-        this.uppy.emit('preprocess-progress', image, {
-          mode: 'determinate',
-          message: 'preparingUpload',
+        this.uppy.emit("preprocess-progress", image, {
+          mode: "determinate",
+          message: "preparingUpload",
           value: 1
         });
       };
@@ -68,10 +68,10 @@ export class UpdateReduxStore extends Plugin {
     });
 
     return Promise.all(promises).then(() => {
-      identifiers.forEach(identifier => {
+      identifiers.forEach((identifier) => {
         const file: UppyFile = this.uppy.getFile(identifier);
 
-        this.uppy.emit('preprocess-complete', file);
+        this.uppy.emit("preprocess-complete", file);
       });
     });
   }

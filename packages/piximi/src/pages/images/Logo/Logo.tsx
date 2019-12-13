@@ -1,13 +1,13 @@
-import * as React from 'react';
-import Typography from '@material-ui/core/Typography';
-import { useTranslation } from 'react-i18next';
+import * as React from "react";
+import Typography from "@material-ui/core/Typography";
+import {useTranslation} from "react-i18next";
 
 export const Logo = () => {
-  const { t: translation } = useTranslation();
+  const {t: translation} = useTranslation();
 
   return (
     <Typography variant="h6" color="inherit">
-      {translation('Piximi')}
+      {translation("Piximi")}
     </Typography>
   );
 };

@@ -1,10 +1,10 @@
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import * as React from 'react';
-import LabelImportantIcon from '@material-ui/icons/LabelImportant';
-import { useTranslation } from 'react-i18next';
-import { Category, Image, Score } from '@piximi/types';
-import { createPredictionSet } from '../../../FitClassifierDialog/FitClassifierDialog/dataset';
-import * as tensorflow from '@tensorflow/tfjs';
+import {ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import * as React from "react";
+import LabelImportantIcon from "@material-ui/icons/LabelImportant";
+import {useTranslation} from "react-i18next";
+import {Category, Image, Score} from "@piximi/types";
+import {createPredictionSet} from "../../../FitClassifierDialog/FitClassifierDialog/dataset";
+import * as tensorflow from "@tensorflow/tfjs";
 
 type PredictListItemProbs = {
   createImageScore: (identifiers: string[], scores: Score[][]) => void;
@@ -15,7 +15,7 @@ type PredictListItemProbs = {
 const createScores = (predictions: any, categories: Category[]) => {
   var scores: Score[][] = [];
   const lables: Category[] = categories.filter((category: Category) => {
-    return category.identifier !== '00000000-0000-0000-0000-000000000000';
+    return category.identifier !== "00000000-0000-0000-0000-000000000000";
   });
   for (let i = 0; i < predictions.length; i++) {
     var imageScore: Score[] = [];
@@ -34,12 +34,12 @@ const createScores = (predictions: any, categories: Category[]) => {
 };
 
 export const PredictListItem = (probs: PredictListItemProbs) => {
-  const { createImageScore, categories, images } = probs;
+  const {createImageScore, categories, images} = probs;
 
-  const { t: translation } = useTranslation();
+  const {t: translation} = useTranslation();
 
   const predict = async () => {
-    const model = await tensorflow.loadLayersModel('indexeddb://mobilenet');
+    const model = await tensorflow.loadLayersModel("indexeddb://mobilenet");
 
     const predictionSet = await createPredictionSet(images);
 
@@ -61,7 +61,7 @@ export const PredictListItem = (probs: PredictListItemProbs) => {
           <LabelImportantIcon />
         </ListItemIcon>
 
-        <ListItemText primary={translation('Predict')} />
+        <ListItemText primary={translation("Predict")} />
       </ListItem>
     </React.Fragment>
   );

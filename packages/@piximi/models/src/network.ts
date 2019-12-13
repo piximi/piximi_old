@@ -1,7 +1,7 @@
-import { Category, Image } from '@piximi/types';
-import * as ImageJS from 'image-js';
-import * as tensorflow from '@tensorflow/tfjs';
-import * as _ from 'lodash';
+import {Category, Image} from "@piximi/types";
+import * as ImageJS from "image-js";
+import * as tensorflow from "@tensorflow/tfjs";
+import * as _ from "lodash";
 
 const createModel = async (
   classes: number,
@@ -11,11 +11,11 @@ const createModel = async (
   optimizer: tensorflow.Optimizer
 ) => {
   const resource =
-    'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json';
+    "https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json";
 
   const mobilenet = await tensorflow.loadLayersModel(resource);
 
-  const layer = mobilenet.getLayer('conv_pw_13_relu');
+  const layer = mobilenet.getLayer("conv_pw_13_relu");
 
   const backbone = tensorflow.model({
     inputs: mobilenet.inputs,
@@ -27,7 +27,7 @@ const createModel = async (
   });
 
   const b = tensorflow.layers.reshape({
-    targetShape: [1,1,backbone.outputs[0].shape[3]]
+    targetShape: [1, 1, backbone.outputs[0].shape[3]]
   });
 
   const c = tensorflow.layers.dropout({
@@ -36,7 +36,7 @@ const createModel = async (
 
   const d = tensorflow.layers.conv2d({
     filters: classes,
-    kernelSize: [1,1]
+    kernelSize: [1, 1]
   });
 
   const e = tensorflow.layers.reshape({
@@ -44,7 +44,7 @@ const createModel = async (
   });
 
   const f = tensorflow.layers.activation({
-    activation: 'softmax'
+    activation: "softmax"
   });
 
   const config = {
@@ -56,7 +56,7 @@ const createModel = async (
   //const optimizer = tensorflow.train.adam();
 
   model.compile({
-    loss: 'categoricalCrossentropy',
+    loss: "categoricalCrossentropy",
     metrics: metrics,
     optimizer: optimizer
   });
@@ -101,4 +101,4 @@ const getArgs = (batchSize: number, epochs: number) => {
   return getArgs;
 };
 
-export { createModel, getArgs };
+export {createModel, getArgs};

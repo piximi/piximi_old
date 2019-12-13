@@ -1,12 +1,12 @@
-import { shallow } from 'enzyme';
-import * as React from 'react';
+import {shallow} from "enzyme";
+import * as React from "react";
 
-import { AlertDialogActions } from './AlertDialogActions';
+import {AlertDialogActions} from "./AlertDialogActions";
 
-it('AlertDialogActions', () => {
-  const acceptanceTitle = '';
+it("AlertDialogActions", () => {
+  const acceptanceTitle = "";
 
-  const cancellationTitle = '';
+  const cancellationTitle = "";
 
   const onAcceptance = () => {};
 

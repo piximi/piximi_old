@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Grid, MenuItem, TextField } from '@material-ui/core';
-import * as _ from 'lodash';
+import * as React from "react";
+import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import {Grid, MenuItem, TextField} from "@material-ui/core";
+import * as _ from "lodash";
 
 const optimizationAlgorithms = {
-  adadelta: 'Adadelta',
-  adam: 'Adam',
-  adamax: 'Adamax',
-  rmsprop: 'RMSProp',
-  sgd: 'Stochastic gradient descent (SGD)'
+  adadelta: "Adadelta",
+  adam: "Adam",
+  adamax: "Adamax",
+  rmsprop: "RMSProp",
+  sgd: "Stochastic gradient descent (SGD)"
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
       flexBasis: 300,
-      width: '100%'
+      width: "100%"
     }
   })
 );
@@ -46,8 +46,8 @@ export const OptimizationGrid = (props: OptimizationGridProps) => {
   }
 
   const [values, setValues] = React.useState<State>({
-    lossFunction: 'softmaxCrossEntropy',
-    optimizationAlgorithm: 'adam'
+    lossFunction: "softmaxCrossEntropy",
+    optimizationAlgorithm: "adam"
   });
 
   const classes = useStyles();

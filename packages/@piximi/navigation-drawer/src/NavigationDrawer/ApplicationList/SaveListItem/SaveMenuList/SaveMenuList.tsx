@@ -1,9 +1,9 @@
-import * as React from 'react';
-import * as MaterialUI from '@material-ui/core';
-import { SaveAnnotationsAndPredictionsDialog } from '../../../../SaveAnnotationsAndPredictionsDialog/';
-import { SaveWeightsDialog } from '../../../../SaveWeightsDialog/';
-import { ConnectedSaveClassifierDialog } from '../../../../SaveClassifierDialog/ConnectedSaveClassifierDialog';
-import { useDialog } from '@piximi/hooks';
+import * as React from "react";
+import * as MaterialUI from "@material-ui/core";
+import {SaveAnnotationsAndPredictionsDialog} from "../../../../SaveAnnotationsAndPredictionsDialog/";
+import {SaveWeightsDialog} from "../../../../SaveWeightsDialog/";
+import {ConnectedSaveClassifierDialog} from "../../../../SaveClassifierDialog/ConnectedSaveClassifierDialog";
+import {useDialog} from "@piximi/hooks";
 
 type Props = {
   anchorEl: any;
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const SaveMenuList = (props: Props) => {
-  const { anchorEl, onClose, open } = props;
+  const {anchorEl, onClose, open} = props;
 
   const anchorPosition = {
     top: open ? anchorEl.getBoundingClientRect().bottom - 3 : 0,

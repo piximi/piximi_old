@@ -13,59 +13,59 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup
-} from '@material-ui/core';
+} from "@material-ui/core";
 
-import * as ImageJS from 'image-js';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
-import * as React from 'react';
-import { DialogAppBar } from '../DialogAppBar';
-import { DialogTransition } from '../DialogTransition';
-import { Form } from '../Form/Form';
-import { RescalingForm } from '../RescalingForm/RescalingForm';
-import { History } from '../History';
-import classNames from 'classnames';
-import { makeStyles } from '@material-ui/styles';
-import * as types from '@piximi/types';
-import * as tensorflow from '@tensorflow/tfjs';
-import { useState, useEffect } from 'react';
-import { styles } from './FitClassifierDialog.css';
-import { useCollapseList } from '@piximi/hooks';
+import * as ImageJS from "image-js";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
+import * as React from "react";
+import {DialogAppBar} from "../DialogAppBar";
+import {DialogTransition} from "../DialogTransition";
+import {Form} from "../Form/Form";
+import {RescalingForm} from "../RescalingForm/RescalingForm";
+import {History} from "../History";
+import classNames from "classnames";
+import {makeStyles} from "@material-ui/styles";
+import * as types from "@piximi/types";
+import * as tensorflow from "@tensorflow/tfjs";
+import {useState, useEffect} from "react";
+import {styles} from "./FitClassifierDialog.css";
+import {useCollapseList} from "@piximi/hooks";
 import {
   createTrainingSet,
   assignToSet,
   setTestsetRatio,
   createAutotunerDataSet
-} from './dataset';
-import { rescaleData, resizeData, augmentData } from './preprocessing';
-import { createModel, createMobileNet } from './networks';
-import * as tfvis from '@tensorflow/tfjs-vis';
+} from "./dataset";
+import {rescaleData, resizeData, augmentData} from "./preprocessing";
+import {createModel, createMobileNet} from "./networks";
+import * as tfvis from "@tensorflow/tfjs-vis";
 
 // additional stuff to test
-import * as tf from '@tensorflow/tfjs';
-import * as seedrandom from 'seedrandom';
-import { assertTypesMatch } from '@tensorflow/tfjs-core/dist/tensor_util';
-import * as tm from '@teachablemachine/image';
+import * as tf from "@tensorflow/tfjs";
+import * as seedrandom from "seedrandom";
+import {assertTypesMatch} from "@tensorflow/tfjs-core/dist/tensor_util";
+import * as tm from "@teachablemachine/image";
 
-import * as tfvis from '@tensorflow/tfjs-vis';
+import * as tfvis from "@tensorflow/tfjs-vis";
 
-const SEED_WORD = 'testSuite';
+const SEED_WORD = "testSuite";
 const seed: seedrandom.prng = seedrandom(SEED_WORD);
 
 const vis = tfvis.visor();
 vis.close();
-const surface = { name: 'show.fitCallbacks', tab: 'Training' };
+const surface = {name: "show.fitCallbacks", tab: "Training"};
 
 // @ts-ignore
-var Table = require('cli-table');
+var Table = require("cli-table");
 
 const BEAN_DATASET_URL =
-  'https://storage.googleapis.com/teachable-machine-models/test_data/image/beans/';
+  "https://storage.googleapis.com/teachable-machine-models/test_data/image/beans/";
 
 const FLOWER_DATASET_URL =
-  'https://storage.googleapis.com/teachable-machine-models/test_data/image/flowers_all/';
+  "https://storage.googleapis.com/teachable-machine-models/test_data/image/flowers_all/";
 
 function loadPngImage(
   c: string,
@@ -80,13 +80,13 @@ function loadPngImage(
     const img = new Image();
     img.onload = () => resolve(img);
     img.onerror = reject;
-    img.crossOrigin = 'anonymous';
+    img.crossOrigin = "anonymous";
     img.src = src;
   });
 }
 
 function loadPiximiImage(image: types.Image): HTMLImageElement {
-  if (image.data.endsWith('.png')) {
+  if (image.data.endsWith(".png")) {
     Promise.resolve(loadPiximiPngImage(image.data));
   }
   return getPiximiImage(image);
@@ -94,7 +94,7 @@ function loadPiximiImage(image: types.Image): HTMLImageElement {
 
 function getPiximiImage(image: types.Image) {
   const img = new Image(224, 224);
-  img.crossOrigin = 'anonymous';
+  img.crossOrigin = "anonymous";
   img.src = image.data;
   return img;
 }
@@ -107,7 +107,7 @@ function loadPiximiPngImage(dataset_url: string): Promise<HTMLImageElement> {
     const img = new Image();
     img.onload = () => resolve(img);
     img.onerror = reject;
-    img.crossOrigin = 'anonymous';
+    img.crossOrigin = "anonymous";
     img.src = src;
   });
 }
@@ -126,7 +126,7 @@ function loadJpgImage(
     const img = new Image();
     img.onload = () => resolve(img);
     img.onerror = reject;
-    img.crossOrigin = 'anonymous';
+    img.crossOrigin = "anonymous";
     img.src = src;
   });
 }
@@ -251,18 +251,18 @@ function showMetrics(
 ) {
   const lastEpoch = logs[logs.length - 1];
 
-  const header = 'α=' + alpha + ', t=' + (time / 1000).toFixed(1) + 's';
+  const header = "α=" + alpha + ", t=" + (time / 1000).toFixed(1) + "s";
 
   const table = new Table({
-    head: [header, 'Accuracy', 'Loss'],
+    head: [header, "Accuracy", "Loss"],
     colWidths: [18, 10, 10]
   });
 
   table.push(
-    ['Train', lastEpoch.acc.toFixed(3), lastEpoch.loss.toFixed(5)],
-    ['Validation', lastEpoch.val_acc.toFixed(3), lastEpoch.val_loss.toFixed(5)]
+    ["Train", lastEpoch.acc.toFixed(3), lastEpoch.loss.toFixed(5)],
+    ["Validation", lastEpoch.val_acc.toFixed(3), lastEpoch.val_loss.toFixed(5)]
   );
-  console.log('\n' + table.toString());
+  console.log("\n" + table.toString());
 }
 
 async function testModel(
@@ -299,7 +299,7 @@ async function testModel(
         learningRate,
         batchSize: 16
       },
-      tfvis.show.fitCallbacks(surface, ['loss', 'acc'])
+      tfvis.show.fitCallbacks(surface, ["loss", "acc"])
     );
     const end = window.performance.now();
     time = end - start;
@@ -317,7 +317,7 @@ async function testMobilenet(
   earlyStop: boolean = false
 ) {
   // classes, samplesPerClass, url
-  const metadata = await (await fetch(dataset_url + 'metadata.json')).json();
+  const metadata = await (await fetch(dataset_url + "metadata.json")).json();
   // 1. Setup dataset parameters
   const classLabels = metadata.classes as string[];
 
@@ -330,10 +330,10 @@ async function testMobilenet(
 
   const table = new Table();
   table.push({
-    'train/validation size':
+    "train/validation size":
       TRAIN_VALIDATION_SIZE_PER_CLASS * classLabels.length
   });
-  console.log('\n' + table.toString());
+  console.log("\n" + table.toString());
 
   // 2. Create our datasets once
   const datasets = await createDatasets(
@@ -363,13 +363,13 @@ async function testMobilenet(
   const earlyStopEpochs = earlyStop ? 5 : EPOCHS;
 
   for (let a of VALID_ALPHAS) {
-    const lineStart = '\n//====================================';
-    const lineEnd = '====================================//\n\n';
+    const lineStart = "\n//====================================";
+    const lineEnd = "====================================//\n\n";
     console.log(lineStart);
     // 3. Test data on the model
     const teachableMobileNetV2 = await tm.createTeachable(
-      { tfjsVersion: tf.version.tfjs },
-      { version: MOBILENET_VERSION, alpha: a }
+      {tfjsVersion: tf.version.tfjs},
+      {version: MOBILENET_VERSION, alpha: a}
     );
 
     const lastEpoch = await testModel(
@@ -388,11 +388,11 @@ async function testMobilenet(
     // assert.isTrue(accuracyV2 > 0.7);
     console.log(lineEnd);
 
-    return { model: teachableMobileNetV2, lastEpoch };
+    return {model: teachableMobileNetV2, lastEpoch};
   }
 }
 
-const optimizationAlgorithms: { [identifier: string]: any } = {
+const optimizationAlgorithms: {[identifier: string]: any} = {
   adadelta: tensorflow.train.adadelta,
   adam: tensorflow.train.adam,
   adamax: tensorflow.train.adamax,
@@ -400,7 +400,7 @@ const optimizationAlgorithms: { [identifier: string]: any } = {
   sgd: tensorflow.train.sgd
 };
 
-const lossFunctions: { [identifier: string]: any } = {
+const lossFunctions: {[identifier: string]: any} = {
   absoluteDifference: tensorflow.losses.absoluteDifference,
   cosineDistance: tensorflow.losses.cosineDistance,
   hingeLoss: tensorflow.losses.hingeLoss,
@@ -413,7 +413,7 @@ const lossFunctions: { [identifier: string]: any } = {
 
 const useStyles = makeStyles(styles);
 
-type LossHistory = { x: number; y: number }[];
+type LossHistory = {x: number; y: number}[];
 
 type FitClassifierDialogProps = {
   categories: types.Category[];
@@ -542,7 +542,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     return `${value}%`;
   }
 
-  const { collapsedList, collapseList } = useCollapseList();
+  const {collapsedList, collapseList} = useCollapseList();
   const [
     collapsedClasssifierSettingsList,
     setCollapsedClasssifierSettingsList
@@ -567,19 +567,19 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
   const [epochs, setEpochs] = useState<number>(10);
 
   const [optimizationAlgorithm, setOptimizationAlgorithm] = useState<string>(
-    'adam'
+    "adam"
   );
   const [learningRate, setLearningRate] = useState<number>(0.01);
-  const [lossFunction, setLossFunction] = useState<string>('meanSquaredError');
-  const [trainStatus, setTrainStatus] = useState<string>('meanSquaredError');
-  const [inputShape, setInputShape] = useState<string>('224, 224, 3');
+  const [lossFunction, setLossFunction] = useState<string>("meanSquaredError");
+  const [trainStatus, setTrainStatus] = useState<string>("meanSquaredError");
+  const [inputShape, setInputShape] = useState<string>("224, 224, 3");
 
   const [trainingLossHistory, setTrainingLossHistory] = useState<LossHistory>(
     []
   );
   const updateLossHistory = (x: number, y: number) => {
     var history = trainingLossHistory;
-    history.push({ x, y });
+    history.push({x, y});
     setTrainingLossHistory(history);
   };
 
@@ -588,7 +588,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
   >([]);
   const updateAccuracHistory = (x: number, y: number) => {
     var history = trainingAccuracyHistory;
-    history.push({ x, y });
+    history.push({x, y});
     setTrainingAccuracyHistory(history);
   };
 
@@ -598,7 +598,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
   ] = useState<LossHistory>([]);
   const updateValidationAccuracHistory = (x: number, y: number) => {
     var history = trainingValidationAccuracyHistory;
-    history.push({ x, y });
+    history.push({x, y});
     setTrainingValidationAccuracyHistory(history);
   };
 
@@ -609,7 +609,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
   const updateValidationLossHistory = (x: number, y: number) => {
     var history = trainingValidationLossHistory;
-    history.push({ x, y });
+    history.push({x, y});
     setTrainingValidationLossHistory(history);
   };
 
@@ -671,20 +671,20 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     paper: styles.paper
   };
 
-  const lossLabelElement = document.getElementById('loss-label');
-  const accuracyLabelElement = document.getElementById('accuracy-label');
+  const lossLabelElement = document.getElementById("loss-label");
+  const accuracyLabelElement = document.getElementById("accuracy-label");
   const lossValues = [[], []];
   function plotLoss(batch: any, loss: any, set: any) {
-    const series = set === 'train' ? 0 : 1;
+    const series = set === "train" ? 0 : 1;
     // @ts-ignore
-    lossValues[series].push({ x: batch, y: loss });
-    const lossContainer = document.getElementById('loss-canvas');
+    lossValues[series].push({x: batch, y: loss});
+    const lossContainer = document.getElementById("loss-canvas");
     tfvis.render.linechart(
       lossContainer,
-      { values: lossValues, series: ['train', 'validation'] },
+      {values: lossValues, series: ["train", "validation"]},
       {
-        xLabel: 'Batch #',
-        yLabel: 'Loss',
+        xLabel: "Batch #",
+        yLabel: "Loss",
         width: 400,
         height: 300
       }
@@ -700,12 +700,12 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     earlyStop: boolean = false
   ) {
     // classes, samplesPerClass, url
-    const metadata = await (await fetch(dataset_url + 'metadata.json')).json();
+    const metadata = await (await fetch(dataset_url + "metadata.json")).json();
     // 1. Setup dataset parameters
     //const classLabels = metadata.classes as string[];
     const classLabels: string[] = [];
     for (let i = 0; i < categories.length; i++) {
-      if (categories[i].identifier !== '00000000-0000-0000-0000-000000000000') {
+      if (categories[i].identifier !== "00000000-0000-0000-0000-000000000000") {
         classLabels.push(categories[i].identifier);
       }
     }
@@ -720,10 +720,10 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
     const table = new Table();
     table.push({
-      'train/validation size':
+      "train/validation size":
         TRAIN_VALIDATION_SIZE_PER_CLASS * classLabels.length
     });
-    console.log('\n' + table.toString());
+    console.log("\n" + table.toString());
 
     // 2. Create our datasets once
     // const datasets = await createDatasets(
@@ -734,7 +734,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     //   loadFunction
     // );
     const classes = categories.filter((category: types.Category) => {
-      return category.identifier !== '00000000-0000-0000-0000-000000000000';
+      return category.identifier !== "00000000-0000-0000-0000-000000000000";
     });
     const datasets = await createDatasetsFromPiximiImages(images, classes);
     const trainAndValidationImages = datasets.trainAndValidationImages;
@@ -757,13 +757,13 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     const earlyStopEpochs = earlyStop ? 5 : EPOCHS;
 
     for (let a of VALID_ALPHAS) {
-      const lineStart = '\n//====================================';
-      const lineEnd = '====================================//\n\n';
+      const lineStart = "\n//====================================";
+      const lineEnd = "====================================//\n\n";
       console.log(lineStart);
       // 3. Test data on the model
       const teachableMobileNetV2 = await tm.createTeachable(
-        { tfjsVersion: tf.version.tfjs },
-        { version: MOBILENET_VERSION, alpha: a }
+        {tfjsVersion: tf.version.tfjs},
+        {version: MOBILENET_VERSION, alpha: a}
       );
 
       const lastEpoch = await testModel(
@@ -782,7 +782,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
       // assert.isTrue(accuracyV2 > 0.7);
       console.log(lineEnd);
 
-      return { model: teachableMobileNetV2, lastEpoch };
+      return {model: teachableMobileNetV2, lastEpoch};
     }
   }
 
@@ -825,18 +825,18 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
         {
           onEpochEnd: function(epoch: any, log: any) {
             const accSurface = {
-              name: 'Accuracy History',
-              tab: 'Training'
+              name: "Accuracy History",
+              tab: "Training"
             };
             const lossSurface = {
-              name: 'Loss History',
-              tab: 'Training'
+              name: "Loss History",
+              tab: "Training"
             };
             const options = {
-              xLabel: 'Epoch',
-              yLabel: 'Value',
+              xLabel: "Epoch",
+              yLabel: "Value",
               yAxisDomain: [0, 1],
-              seriesColors: ['teal', 'tomato']
+              seriesColors: ["teal", "tomato"]
             }; // Prep the data
 
             epochLogs.push(log);
@@ -859,12 +859,12 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
             const accData = {
               values: [acc, valAcc],
               // Custom names for the series
-              series: ['Accuracy', 'Validation Accuracy'] // render the chart
+              series: ["Accuracy", "Validation Accuracy"] // render the chart
             };
             const lossData = {
               values: [loss, valLoss],
               // Custom names for the series
-              series: ['Loss', 'Validation Loss'] // render the chart
+              series: ["Loss", "Validation Loss"] // render the chart
             };
             tfvis.render.linechart(accSurface, accData, options);
             tfvis.render.linechart(lossSurface, lossData, options);
@@ -886,14 +886,14 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
   };
 
   enum LossFunction {
-    'absoluteDifference',
-    'cosineDistance',
-    'hingeLoss',
-    'huberLoss',
-    'logLoss',
-    'meanSquaredError',
-    'sigmoidCrossEntropy',
-    'categoricalCrossentropy'
+    "absoluteDifference",
+    "cosineDistance",
+    "hingeLoss",
+    "huberLoss",
+    "logLoss",
+    "meanSquaredError",
+    "sigmoidCrossEntropy",
+    "categoricalCrossentropy"
   }
 
   // specifies interface
@@ -907,7 +907,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
       onClose={closeDialog}
       open={openedDialog}
       TransitionComponent={DialogTransition}
-      style={{ zIndex: 900 }}
+      style={{zIndex: 900}}
     >
       <DialogAppBar
         onStopTrainingChange={onStopTrainingChange}
@@ -921,7 +921,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
           <ListItem
             button
             onClick={onPreprocessingListClick}
-            style={{ padding: '12px 0px' }}
+            style={{padding: "12px 0px"}}
           >
             <ListItemIcon>
               {collapsedPreprocessingList ? (
@@ -931,7 +931,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
               )}
             </ListItemIcon>
 
-            <ListItemText primary="Preprocessing" style={{ fontSize: '1em' }} />
+            <ListItemText primary="Preprocessing" style={{fontSize: "1em"}} />
           </ListItem>
 
           <Collapse
@@ -988,7 +988,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
           <ListItem
             button
             onClick={onClasssifierSettingsListClick}
-            style={{ padding: '12px 0px' }}
+            style={{padding: "12px 0px"}}
           >
             <ListItemIcon>
               {collapsedClasssifierSettingsList ? (
@@ -1000,7 +1000,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
             <ListItemText
               primary="Classifier Settings"
-              style={{ fontSize: '20px' }}
+              style={{fontSize: "20px"}}
             />
           </ListItem>
 
@@ -1031,7 +1031,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
           <ListItem
             button
             onClick={onDatasetSettingsListClick}
-            style={{ padding: '12px 0px' }}
+            style={{padding: "12px 0px"}}
           >
             <ListItemIcon>
               {collapsedDatasetSettingsList ? (
@@ -1043,7 +1043,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
             <ListItemText
               primary="Dataset Settings"
-              style={{ fontSize: '1em' }}
+              style={{fontSize: "1em"}}
             />
           </ListItem>
 
@@ -1062,7 +1062,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
               </Button>
             </Tooltip>
 
-            <div style={{ padding: '12px 0px', width: '300' }}>
+            <div style={{padding: "12px 0px", width: "300"}}>
               <Typography id="range-slider" gutterBottom>
                 Dataset Splits
               </Typography>

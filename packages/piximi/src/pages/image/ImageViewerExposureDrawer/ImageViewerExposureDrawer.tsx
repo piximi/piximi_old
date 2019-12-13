@@ -1,13 +1,13 @@
-import * as React from 'react';
-import styles from './ImageViewerExposureDrawer.css';
-import Drawer from '@material-ui/core/Drawer';
+import * as React from "react";
+import styles from "./ImageViewerExposureDrawer.css";
+import Drawer from "@material-ui/core/Drawer";
 import {
   BrightnessSlider,
   ChannelSelection,
   ContrastSlider,
   ImageHistogram
-} from '..';
-import { makeStyles } from '@material-ui/styles';
+} from "..";
+import {makeStyles} from "@material-ui/styles";
 
 const useStyles = makeStyles(styles);
 
@@ -28,10 +28,10 @@ const ImageViewerExposureDrawer = (props: any) => {
 
   return (
     <Drawer
-      classes={{ paper: classes.drawerPaper }}
+      classes={{paper: classes.drawerPaper}}
       anchor="right"
-      style={{ backgroundColor: '#202124' }}
-      variant={'persistent'}
+      style={{backgroundColor: "#202124"}}
+      variant={"persistent"}
       onClose={onClose}
       open={open}
     >

@@ -1,5 +1,5 @@
-import { useDrag } from 'react-dnd';
-import React from 'react';
+import {useDrag} from "react-dnd";
+import React from "react";
 
 type ImageDragSourceProps = {
   children: React.ReactNode;
@@ -14,11 +14,11 @@ type ImageDragSourceProps = {
  * @constructor
  */
 export const ImageDragSource = (props: ImageDragSourceProps) => {
-  const { children, selectedItems, onmousedown, item } = props;
+  const {children, selectedItems, onmousedown, item} = props;
   const spec = {
     item: {
       selectedItems: selectedItems,
-      type: 'image'
+      type: "image"
     }
   };
 
@@ -28,8 +28,8 @@ export const ImageDragSource = (props: ImageDragSourceProps) => {
 
   return (
     <div
-      className={selected ? 'selected' : 'unselected'}
-      key={'div' + item.identifier}
+      className={selected ? "selected" : "unselected"}
+      key={"div" + item.identifier}
       onMouseDown={() => onmousedown(item.identifier)}
       ref={dragSource}
     >

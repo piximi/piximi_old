@@ -1,11 +1,11 @@
-import { connect } from 'react-redux';
-import { ImageViewer } from './ImageViewer';
+import {connect} from "react-redux";
+import {ImageViewer} from "./ImageViewer";
 import {
   updateImageBrightnessAction,
   updateImageContrastAction
-} from '@piximi/store';
-import { Dispatch } from 'redux';
-import { Classifier, Image } from '@piximi/types';
+} from "@piximi/store";
+import {Dispatch} from "redux";
+import {Classifier, Image} from "@piximi/types";
 
 type State = {
   classifier: Classifier;

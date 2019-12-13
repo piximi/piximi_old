@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 type ImageProps = {
   brightness: number;
@@ -26,7 +26,7 @@ export const Image = (props: ImageProps) => {
     width
   } = props;
 
-  const [imageStatus, setImageStatus] = React.useState<string>('loading');
+  const [imageStatus, setImageStatus] = React.useState<string>("loading");
   const [image, setImage] = React.useState<HTMLImageElement>();
   const [imageHeight, setImageHeight] = React.useState<number>(0);
   const [imageWidth, setImageWidth] = React.useState<number>(0);
@@ -39,7 +39,7 @@ export const Image = (props: ImageProps) => {
     const width: number = image.width;
     const height: number = image.height;
 
-    setImageStatus('loaded');
+    setImageStatus("loaded");
 
     setImage(image);
 
@@ -47,14 +47,14 @@ export const Image = (props: ImageProps) => {
 
     setImageWidth(width);
 
-    image.style.height = '0px';
+    image.style.height = "0px";
   };
 
   React.useEffect(() => {
-    if (imageStatus === 'loaded') {
+    if (imageStatus === "loaded") {
       const canvas: HTMLCanvasElement = canvasRef.current;
 
-      const context: CanvasRenderingContext2D | null = canvas.getContext('2d');
+      const context: CanvasRenderingContext2D | null = canvas.getContext("2d");
 
       canvas.height = height * 0.9;
 
@@ -104,16 +104,11 @@ export const Image = (props: ImageProps) => {
         height={height}
         onDoubleClick={openImageViewerDialog}
         ref={canvasRef}
-        style={{ verticalAlign: 'middle', padding: '2px' }}
+        style={{verticalAlign: "middle", padding: "2px"}}
         width={width}
       />
 
-      <img
-        alt="foo"
-        onLoad={onLoad}
-        src={src}
-        style={{ visibility: 'hidden' }}
-      />
+      <img alt="foo" onLoad={onLoad} src={src} style={{visibility: "hidden"}} />
     </React.Fragment>
   );
 };

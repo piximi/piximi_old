@@ -1,1 +1,1 @@
-export { HideOtherCategoriesMenuItem } from './HideOtherCategoriesMenuItem';
+export {HideOtherCategoriesMenuItem} from "./HideOtherCategoriesMenuItem";

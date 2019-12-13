@@ -1,15 +1,15 @@
-import * as React from 'react';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContentText from '@material-ui/core/DialogContentText';
+import * as React from "react";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContentText from "@material-ui/core/DialogContentText";
 
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from "react-i18next";
 
 export const DeleteImageDialog = (props: any) => {
-  const { onClose, open, selectedImages } = props;
+  const {onClose, open, selectedImages} = props;
 
   function onClickDeleteButton() {
     props.setSelectedImages([]);
@@ -20,19 +20,19 @@ export const DeleteImageDialog = (props: any) => {
   const noSelectedImages = selectedImages.length;
   let title =
     noSelectedImages > 0
-      ? 'Do you want to delete the ' + noSelectedImages + ' selected images?'
-      : 'Please select images before clicking on this button';
+      ? "Do you want to delete the " + noSelectedImages + " selected images?"
+      : "Please select images before clicking on this button";
   let text =
     noSelectedImages > 0
-      ? 'Please confirm that you want to delete the currently selected images'
+      ? "Please confirm that you want to delete the currently selected images"
       : null;
 
   if (noSelectedImages === 1) {
-    title = 'Do you want to delete the selected image';
-    text = 'Please confirm you want to delete this image';
+    title = "Do you want to delete the selected image";
+    text = "Please confirm you want to delete this image";
   }
 
-  const { t: translation } = useTranslation();
+  const {t: translation} = useTranslation();
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -46,12 +46,12 @@ export const DeleteImageDialog = (props: any) => {
 
       <DialogActions>
         <Button onClick={() => props.onClose()} color="primary">
-          {translation('Cancel')}
+          {translation("Cancel")}
         </Button>
 
         {noSelectedImages > 0 ? (
           <Button onClick={() => onClickDeleteButton()} color="primary">
-            {translation('Delete')}
+            {translation("Delete")}
           </Button>
         ) : null}
       </DialogActions>

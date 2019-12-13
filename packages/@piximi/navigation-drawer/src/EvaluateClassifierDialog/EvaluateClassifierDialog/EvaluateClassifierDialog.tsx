@@ -1,25 +1,25 @@
-import { Dialog, DialogContent } from '@material-ui/core';
-import * as React from 'react';
-import { DialogAppBar } from '../DialogAppBar';
-import { DialogTransition } from '../DialogTransition';
-import classNames from 'classnames';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/styles';
-import { Category, Image } from '@piximi/types';
-import * as tensorflow from '@tensorflow/tfjs';
-import { useState } from 'react';
-import { styles } from './EvaluateClassifierDialog.css';
+import {Dialog, DialogContent} from "@material-ui/core";
+import * as React from "react";
+import {DialogAppBar} from "../DialogAppBar";
+import {DialogTransition} from "../DialogTransition";
+import classNames from "classnames";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import {makeStyles} from "@material-ui/styles";
+import {Category, Image} from "@piximi/types";
+import * as tensorflow from "@tensorflow/tfjs";
+import {useState} from "react";
+import {styles} from "./EvaluateClassifierDialog.css";
 
 import {
   createTestSet,
   assignToSet
-} from '../../FitClassifierDialog/FitClassifierDialog/dataset';
-import * as tfvis from '@tensorflow/tfjs-vis';
+} from "../../FitClassifierDialog/FitClassifierDialog/dataset";
+import * as tfvis from "@tensorflow/tfjs-vis";
 import {
   evaluateTensorflowModel,
   evaluateTensorflowModelCV
-} from './modelEvaluater';
+} from "./modelEvaluater";
 
 const useStyles = makeStyles(styles);
 
@@ -36,7 +36,7 @@ type EvaluateClassifierDialogProps = {
 
 function roundToFour(num: number) {
   // @ts-ignore
-  return +(Math.round(num + 'e+4') + 'e-4');
+  return +(Math.round(num + "e+4") + "e-4");
 }
 
 export const EvaluateClassifierDialog = (
@@ -69,7 +69,7 @@ export const EvaluateClassifierDialog = (
 
   const styles = useStyles({});
   const [useCrossValidation, setUseCrossValidation] = useState<boolean>(false);
-  const [accuracy, setAccuracy] = useState<string>('not evaluated yet');
+  const [accuracy, setAccuracy] = useState<string>("not evaluated yet");
 
   const onUseCrossValidationChange = (event: React.FormEvent<EventTarget>) => {
     setUseCrossValidation(!useCrossValidation);
@@ -86,7 +86,7 @@ export const EvaluateClassifierDialog = (
 
   const evaluate = async () => {
     const numberOfClasses: number = categories.length - 1;
-    const model = await tensorflow.loadLayersModel('indexeddb://mobilenet');
+    const model = await tensorflow.loadLayersModel("indexeddb://mobilenet");
 
     var modelEvaluationResults;
     if (useCrossValidation) {
@@ -121,12 +121,12 @@ export const EvaluateClassifierDialog = (
       values.push(row);
     }
     const lableCategories = categories.filter((category: Category) => {
-      return category.identifier !== '00000000-0000-0000-0000-000000000000';
+      return category.identifier !== "00000000-0000-0000-0000-000000000000";
     });
     const lables = lableCategories.map((category: Category) => {
       return category.description;
     });
-    const data = { values: values, tickLabels: lables };
+    const data = {values: values, tickLabels: lables};
 
     tfvis.render.confusionMatrix(EvaluateClassifierDialog, data);
   };
@@ -146,7 +146,7 @@ export const EvaluateClassifierDialog = (
       onClose={closeDialog}
       open={openedDialog}
       TransitionComponent={DialogTransition}
-      style={{ zIndex: 1203 }}
+      style={{zIndex: 1203}}
     >
       <DialogAppBar
         closeDialog={closeDialog}
@@ -161,9 +161,9 @@ export const EvaluateClassifierDialog = (
           <Grid id="evaluationID">
             <Paper
               style={{
-                margin: '24px',
-                padding: '24px',
-                fontSize: 'larger'
+                margin: "24px",
+                padding: "24px",
+                fontSize: "larger"
               }}
             >
               accuracy: {accuracy}
@@ -172,14 +172,14 @@ export const EvaluateClassifierDialog = (
         </Grid>
       </div>
 
-      <DialogContent style={{ padding: '0px', margin: '12px' }}>
+      <DialogContent style={{padding: "0px", margin: "12px"}}>
         <div
           id="tfjs-visor-container"
           style={{
-            position: 'absolute',
-            height: '100%',
-            width: '100%',
-            padding: '12px'
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            padding: "12px"
           }}
         />
       </DialogContent>

@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import { Gallery } from '../pages/images';
-import { Classifier } from '@piximi/types';
+import {connect} from "react-redux";
+import {Gallery} from "../pages/images";
+import {Classifier} from "@piximi/types";
 
 type State = {
   classifier: Classifier;

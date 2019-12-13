@@ -1,1 +1,1 @@
-export { ClassifierList } from './ClassifierList';
+export {ClassifierList} from "./ClassifierList";

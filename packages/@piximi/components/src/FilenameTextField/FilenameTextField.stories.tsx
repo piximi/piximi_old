@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
+import {storiesOf} from "@storybook/react";
 
-import { FilenameTextField } from '..';
+import {FilenameTextField} from "..";
 
-const filename = '';
+const filename = "";
 
 const onFilenameChange = () => {};
 
-storiesOf('FilenameTextField', module).add('example', () => (
+storiesOf("FilenameTextField", module).add("example", () => (
   <FilenameTextField filename={filename} onFilenameChange={onFilenameChange} />
 ));

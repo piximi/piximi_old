@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Grid, MenuItem, TextField } from '@material-ui/core';
-import * as _ from 'lodash';
+import * as React from "react";
+import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import {Grid, MenuItem, TextField} from "@material-ui/core";
+import * as _ from "lodash";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     expansionPanel: {
-      boxShadow: 'none'
+      boxShadow: "none"
     },
     leftIcon: {
       marginRight: theme.spacing(1)
@@ -22,15 +22,15 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     form: {},
     appBar: {
-      position: 'relative',
-      backgroundColor: 'transparent',
-      boxShadow: 'none',
-      borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
+      position: "relative",
+      backgroundColor: "transparent",
+      boxShadow: "none",
+      borderBottom: "1px solid rgba(0, 0, 0, 0.12)"
     },
     container: {
       // width: '100%',
-      display: 'flex',
-      flexWrap: 'wrap'
+      display: "flex",
+      flexWrap: "wrap"
     },
     root: {
       zIndex: 1100
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: 1100
     },
     paperFullScreen: {
-      left: '280px'
+      left: "280px"
     },
     menu: {
       // width: 200,
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
       flexBasis: 300,
-      width: '100%'
+      width: "100%"
     },
     title: {
       marginLeft: theme.spacing(2),

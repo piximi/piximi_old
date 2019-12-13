@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { ConnectedUploadImageDialog } from './ConnectedUploadImageDialog';
-import { Provider } from 'react-redux';
-import { store } from '@piximi/store';
-import { storiesOf } from '@storybook/react';
-import { useDialog } from '@piximi/hooks';
+import * as React from "react";
+import {ConnectedUploadImageDialog} from "./ConnectedUploadImageDialog";
+import {Provider} from "react-redux";
+import {store} from "@piximi/store";
+import {storiesOf} from "@storybook/react";
+import {useDialog} from "@piximi/hooks";
 
-storiesOf('UploadImageDialog', module).add('example', () => {
-  const { openedDialog, openDialog, closeDialog } = useDialog();
+storiesOf("UploadImageDialog", module).add("example", () => {
+  const {openedDialog, openDialog, closeDialog} = useDialog();
 
   return (
     <Provider store={store}>

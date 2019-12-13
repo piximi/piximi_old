@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import { DeleteCategoryDialog } from './DeleteCategoryDialog';
-import { deleteCategoryAction } from '@piximi/store';
-import { Classifier } from '@piximi/types';
-import { Dispatch } from 'redux';
+import {connect} from "react-redux";
+import {DeleteCategoryDialog} from "./DeleteCategoryDialog";
+import {deleteCategoryAction} from "@piximi/store";
+import {Classifier} from "@piximi/types";
+import {Dispatch} from "redux";
 
 type State = {
   classifier: Classifier;

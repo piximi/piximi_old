@@ -1,3 +1,3 @@
 /// <reference types="react-vis-types" />
 
-declare module '*.jpg';
+declare module "*.jpg";

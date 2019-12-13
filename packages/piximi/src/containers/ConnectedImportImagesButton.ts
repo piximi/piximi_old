@@ -1,9 +1,9 @@
-import { connect } from 'react-redux';
-import { createImagesAction } from '@piximi/store';
-import * as uuid from 'uuid';
-import { ImportImagesButton } from '../pages/images';
-import { Dispatch } from 'redux';
-import { Classifier, Image, Partition } from '@piximi/types';
+import {connect} from "react-redux";
+import {createImagesAction} from "@piximi/store";
+import * as uuid from "uuid";
+import {ImportImagesButton} from "../pages/images";
+import {Dispatch} from "redux";
+import {Classifier, Image, Partition} from "@piximi/types";
 
 type State = {
   classifier: Classifier;
@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     createImages: (imagePropsArray: imageProps[]) => {
       const images: Image[] = imagePropsArray.map((imageProps: imageProps) => {
         const image: Image = {
-          categoryIdentifier: '00000000-0000-0000-0000-000000000000',
+          categoryIdentifier: "00000000-0000-0000-0000-000000000000",
           checksum: imageProps.checksum,
           data: imageProps.data,
           identifier: uuid.v4(),

@@ -1,17 +1,17 @@
-import * as React from 'react';
-import styles from './ImageViewer.css';
-import AppBar from '@material-ui/core/AppBar';
-import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import EqualizerIcon from '@material-ui/icons/Equalizer';
-import PublicIcon from '@material-ui/icons/Public';
-import { ImageViewerExposureDrawer } from '..';
-import Image from '../../../components/Image/Image';
-import { makeStyles } from '@material-ui/styles';
+import * as React from "react";
+import styles from "./ImageViewer.css";
+import AppBar from "@material-ui/core/AppBar";
+import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
+import Tooltip from "@material-ui/core/Tooltip";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import EqualizerIcon from "@material-ui/icons/Equalizer";
+import PublicIcon from "@material-ui/icons/Public";
+import {ImageViewerExposureDrawer} from "..";
+import Image from "../../../components/Image/Image";
+import {makeStyles} from "@material-ui/styles";
 
 const useStyles = makeStyles(styles);
 
@@ -36,7 +36,7 @@ const ImageViewer = (props: Props) => {
   const [contrast, setContrast] = React.useState(100);
   const [unselectedChannels, setUnselectedChannels] = React.useState([]);
 
-  const { src, imgIdentifier, onClose, images } = props;
+  const {src, imgIdentifier, onClose, images} = props;
 
   const toggleExposureDrawer = () => {
     setExposureDrawerToggled(!exposureDrawerToggled);

@@ -1,11 +1,11 @@
-import { useCallback, useState } from 'react';
+import {useCallback, useState} from "react";
 
 export const useMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const openedMenu = Boolean(anchorEl);
 
-  const openMenu = useCallback(event => {
+  const openMenu = useCallback((event) => {
     setAnchorEl(event.currentTarget);
   }, []);
 

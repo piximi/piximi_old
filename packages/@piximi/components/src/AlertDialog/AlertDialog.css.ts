@@ -1,9 +1,9 @@
-import {createStyles} from '@material-ui/styles';
+import {createStyles} from "@material-ui/styles";
 
 const styles = () =>
   createStyles({
     paper: {
-      borderRadius: '10px'
+      borderRadius: "10px"
     }
   });
 

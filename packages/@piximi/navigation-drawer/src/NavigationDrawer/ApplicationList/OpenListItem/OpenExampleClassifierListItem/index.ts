@@ -1,1 +1,1 @@
-export { OpenExampleClassifierListItem } from './OpenExampleClassifierListItem';
+export {OpenExampleClassifierListItem} from "./OpenExampleClassifierListItem";

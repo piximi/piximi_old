@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { useMemo, useRef } from 'react';
-import * as THREE from 'three';
-import * as imagejs from 'image-js';
+import * as React from "react";
+import {useMemo, useRef} from "react";
+import * as THREE from "three";
+import * as imagejs from "image-js";
 
 type ImageProps = {
-  channels: { r: boolean; g: boolean; b: boolean };
+  channels: {r: boolean; g: boolean; b: boolean};
   image: imagejs.Image;
 };
 
 export const Image = (props: ImageProps) => {
-  const { channels, image } = props;
+  const {channels, image} = props;
 
   const ref = useRef();
 

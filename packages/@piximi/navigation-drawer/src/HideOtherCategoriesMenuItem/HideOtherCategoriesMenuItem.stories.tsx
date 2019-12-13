@@ -1,21 +1,21 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { HideOtherCategoriesMenuItem } from './HideOtherCategoriesMenuItem';
-import { Category, Classifier, Image } from '@piximi/types';
+import React from "react";
+import {storiesOf} from "@storybook/react";
+import {HideOtherCategoriesMenuItem} from "./HideOtherCategoriesMenuItem";
+import {Category, Classifier, Image} from "@piximi/types";
 
 const category: Category = {
-  description: 'example',
-  identifier: '11111111-1111-1111-1111-11111111111',
+  description: "example",
+  identifier: "11111111-1111-1111-1111-11111111111",
   index: 1,
   visualization: {
-    color: '#F44336',
+    color: "#F44336",
     visible: true
   }
 };
 
 const categories: Category[] = [];
 const images: Image[] = [];
-const name: string = 'test';
+const name: string = "test";
 
 const classifier: Classifier = {
   categories,
@@ -30,7 +30,7 @@ const makeCategoryInvisible = (
   visibility: boolean
 ) => {};
 
-storiesOf('HideOtherCategoriesMenuItem', module).add('example', () => (
+storiesOf("HideOtherCategoriesMenuItem", module).add("example", () => (
   <HideOtherCategoriesMenuItem
     classifier={classifier}
     categoryProp={category}

@@ -1,9 +1,9 @@
-import { shallow } from 'enzyme';
-import * as React from 'react';
+import {shallow} from "enzyme";
+import * as React from "react";
 
-import { AlertDialog } from './AlertDialog';
+import {AlertDialog} from "./AlertDialog";
 
-it('AlertDialog', () => {
+it("AlertDialog", () => {
   const open = true;
 
   const onClose = () => {};

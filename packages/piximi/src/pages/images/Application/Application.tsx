@@ -1,13 +1,13 @@
-import * as React from 'react';
-import styles from './Application.css';
-import classNames from 'classnames';
-import { ConnectedPrimaryAppBar } from '..';
-import HTML5Backend from 'react-dnd-html5-backend';
-import { DndProvider } from 'react-dnd';
-import { useDrawer } from '@piximi/hooks';
-import { makeStyles } from '@material-ui/styles';
-import { ConnectedGallery } from '../../../containers';
-import { NavigationDrawer } from '@piximi/navigation-drawer';
+import * as React from "react";
+import styles from "./Application.css";
+import classNames from "classnames";
+import {ConnectedPrimaryAppBar} from "..";
+import HTML5Backend from "react-dnd-html5-backend";
+import {DndProvider} from "react-dnd";
+import {useDrawer} from "@piximi/hooks";
+import {makeStyles} from "@material-ui/styles";
+import {ConnectedGallery} from "../../../containers";
+import {NavigationDrawer} from "@piximi/navigation-drawer";
 
 const useStyles = makeStyles(styles);
 
@@ -19,9 +19,9 @@ export const Application = (props: Props) => {
   const classes = useStyles({});
 
   const [selectedImages, setSelectedImages] = React.useState([]);
-  const { openedDrawer, toggleDrawer } = useDrawer();
+  const {openedDrawer, toggleDrawer} = useDrawer();
 
-  const { updateImageCategory } = props;
+  const {updateImageCategory} = props;
 
   return (
     <DndProvider backend={HTML5Backend}>

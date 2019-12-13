@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
+import {storiesOf} from "@storybook/react";
 
-import { AlertDialog } from '..';
+import {AlertDialog} from "..";
 
 const onClose = () => {};
 
 const open = true;
 
-storiesOf('AlertDialog', module).add('example', () => (
+storiesOf("AlertDialog", module).add("example", () => (
   <AlertDialog onClose={onClose} open={open}>
     <div />
   </AlertDialog>

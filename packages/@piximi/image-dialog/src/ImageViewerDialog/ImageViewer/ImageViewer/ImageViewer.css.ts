@@ -1,4 +1,4 @@
-import { createStyles } from '@material-ui/styles';
+import {createStyles} from "@material-ui/styles";
 
 const styles = () =>
   createStyles({
@@ -6,8 +6,8 @@ const styles = () =>
       flexGrow: 1
     },
     container: {
-      bottom: '16px',
-      position: 'absolute',
+      bottom: "16px",
+      position: "absolute",
       top: 0
     },
     flex: {
@@ -16,12 +16,12 @@ const styles = () =>
     menuButton: {
       marginLeft: -12,
       marginRight: 20,
-      color: '#FFF'
+      color: "#FFF"
     },
     globalButton: {
       marginLeft: -12,
       marginRight: 20,
-      color: '#2196f3'
+      color: "#2196f3"
     },
     grow: {
       flexGrow: 1

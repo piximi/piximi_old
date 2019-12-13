@@ -1,9 +1,9 @@
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import * as React from 'react';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import { useTranslation } from 'react-i18next';
-import { useDialog } from '@piximi/hooks';
-import { ConnectedEvaluateClassifierDialog } from '../../../EvaluateClassifierDialog/EvaluateClassifierDialog';
+import {ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import * as React from "react";
+import BarChartIcon from "@material-ui/icons/BarChart";
+import {useTranslation} from "react-i18next";
+import {useDialog} from "@piximi/hooks";
+import {ConnectedEvaluateClassifierDialog} from "../../../EvaluateClassifierDialog/EvaluateClassifierDialog";
 
 type EvaluateListItemProbs = {
   datasetInitialized: boolean;
@@ -11,11 +11,11 @@ type EvaluateListItemProbs = {
 };
 
 export const EvaluateListItem = (probs: EvaluateListItemProbs) => {
-  const { datasetInitialized, setDatasetInitialized } = probs;
+  const {datasetInitialized, setDatasetInitialized} = probs;
 
-  const { openedDialog, openDialog, closeDialog } = useDialog();
+  const {openedDialog, openDialog, closeDialog} = useDialog();
 
-  const { t: translation } = useTranslation();
+  const {t: translation} = useTranslation();
 
   const evaluate = async () => {
     openDialog();
@@ -28,7 +28,7 @@ export const EvaluateListItem = (probs: EvaluateListItemProbs) => {
           <BarChartIcon />
         </ListItemIcon>
 
-        <ListItemText primary={translation('Evaluate')} />
+        <ListItemText primary={translation("Evaluate")} />
       </ListItem>
 
       <ConnectedEvaluateClassifierDialog

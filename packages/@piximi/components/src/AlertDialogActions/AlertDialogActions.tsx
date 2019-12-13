@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/styles';
-import { useTranslation } from 'react-i18next';
-import * as React from 'react';
-import styles from './AlertDialogActions.css';
-import { Button, DialogActions } from '@material-ui/core';
+import {makeStyles} from "@material-ui/styles";
+import {useTranslation} from "react-i18next";
+import * as React from "react";
+import styles from "./AlertDialogActions.css";
+import {Button, DialogActions} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -28,15 +28,15 @@ export const AlertDialogActions = (props: AlertDialogProps) => {
 
   const classes = useStyles({});
 
-  const { t: translation } = useTranslation();
+  const {t: translation} = useTranslation();
 
   return (
     <DialogActions>
-      <Button classes={{ root: classes.button }} onClick={onCancellation}>
+      <Button classes={{root: classes.button}} onClick={onCancellation}>
         {translation(cancellationTitle)}
       </Button>
 
-      <Button classes={{ root: classes.button }} onClick={onAcceptance}>
+      <Button classes={{root: classes.button}} onClick={onAcceptance}>
         {translation(acceptanceTitle)}
       </Button>
     </DialogActions>

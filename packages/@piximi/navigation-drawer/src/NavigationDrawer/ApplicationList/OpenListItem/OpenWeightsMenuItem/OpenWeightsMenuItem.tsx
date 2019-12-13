@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { ListItemText, MenuItem } from '@material-ui/core';
+import * as React from "react";
+import {ListItemText, MenuItem} from "@material-ui/core";
 
 export const OpenWeightsMenuItem = (props: any) => {
-  const { closeMenu } = props;
+  const {closeMenu} = props;
 
   const onChange = () => {};
 
@@ -17,7 +17,7 @@ export const OpenWeightsMenuItem = (props: any) => {
         id="open-weights"
         name="file"
         onChange={onChange}
-        style={{ display: 'none' }}
+        style={{display: "none"}}
         type="file"
       />
 

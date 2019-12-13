@@ -1,18 +1,18 @@
-import { keyframes } from 'styled-components';
-import Color from 'color';
-import { createStyles } from '@material-ui/styles';
+import {keyframes} from "styled-components";
+import Color from "color";
+import {createStyles} from "@material-ui/styles";
 
 export const styles = () =>
   createStyles({
     icon: {
-      color: 'rgba(0,0,0,0.50)',
-      cursor: 'pointer',
-      '&:hover': {
-        color: 'rgba(0,0,0,0.87)'
+      color: "rgba(0,0,0,0.50)",
+      cursor: "pointer",
+      "&:hover": {
+        color: "rgba(0,0,0,0.87)"
       }
     },
     isOver: {
-      background: 'rgba(0, 0, 0, 0.20)'
+      background: "rgba(0, 0, 0, 0.20)"
     }
   });
 

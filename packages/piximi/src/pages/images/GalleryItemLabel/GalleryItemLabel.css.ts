@@ -1,12 +1,12 @@
-import { createStyles } from '@material-ui/styles';
+import {createStyles} from "@material-ui/styles";
 
 const styles = () =>
   createStyles({
     iconButton: {
-      padding: '8px',
-      position: 'absolute',
-      '&:hover': {
-        background: 'none'
+      padding: "8px",
+      position: "absolute",
+      "&:hover": {
+        background: "none"
       }
     }
   });

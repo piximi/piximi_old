@@ -1,1 +1,1 @@
-export { DeleteCategoryDialog } from './DeleteCategoryDialog';
+export {DeleteCategoryDialog} from "./DeleteCategoryDialog";

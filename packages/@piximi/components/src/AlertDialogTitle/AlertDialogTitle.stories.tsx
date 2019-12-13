@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
+import {storiesOf} from "@storybook/react";
 
-import { AlertDialogTitle } from '..';
+import {AlertDialogTitle} from "..";
 
-const title = '';
+const title = "";
 
-storiesOf('AlertDialogTitle', module).add('example', () => (
+storiesOf("AlertDialogTitle", module).add("example", () => (
   <AlertDialogTitle title={title} />
 ));

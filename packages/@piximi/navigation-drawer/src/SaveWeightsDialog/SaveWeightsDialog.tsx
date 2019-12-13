@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   AlertDialog,
   AlertDialogActions,
   AlertDialogContent,
   AlertDialogTitle,
   FilenameTextField
-} from '@piximi/components';
+} from "@piximi/components";
 
 type SaveWeightsDialogProps = {
   open: boolean;
@@ -13,9 +13,9 @@ type SaveWeightsDialogProps = {
 };
 
 export const SaveWeightsDialog = (props: SaveWeightsDialogProps) => {
-  const { open, onClose } = props;
+  const {open, onClose} = props;
 
-  const [filename, setFilename] = React.useState<string>('');
+  const [filename, setFilename] = React.useState<string>("");
 
   const onAcceptance = () => {
     onClose();

@@ -1,12 +1,12 @@
-import * as React from 'react';
-import LabelIcon from '@material-ui/icons/Label';
-import * as _ from 'lodash';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MenuList from '@material-ui/core/MenuList';
-import MenuItem from '@material-ui/core/MenuItem';
-import Paper from '@material-ui/core/Paper';
-import Popover from '@material-ui/core/Popover';
+import * as React from "react";
+import LabelIcon from "@material-ui/icons/Label";
+import * as _ from "lodash";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import MenuList from "@material-ui/core/MenuList";
+import MenuItem from "@material-ui/core/MenuItem";
+import Paper from "@material-ui/core/Paper";
+import Popover from "@material-ui/core/Popover";
 
 export const GalleryItemCategoryMenu = (props: any) => {
   const {
@@ -29,13 +29,13 @@ export const GalleryItemCategoryMenu = (props: any) => {
     onClose();
   };
 
-  const [unknown, known] = _.partition(categories, category => {
-    if (category.identifier === '00000000-0000-0000-0000-000000000000') {
+  const [unknown, known] = _.partition(categories, (category) => {
+    if (category.identifier === "00000000-0000-0000-0000-000000000000") {
       return category;
     }
   });
 
-  let sortedCategories = _.concat(_.sortBy(known, 'description'), unknown);
+  let sortedCategories = _.concat(_.sortBy(known, "description"), unknown);
 
   const items = sortedCategories.map((category: any) => (
     <MenuItem
@@ -43,7 +43,7 @@ export const GalleryItemCategoryMenu = (props: any) => {
       onClick={() => onMenuItemClick(category)}
     >
       <ListItemIcon>
-        <LabelIcon style={{ color: category.visualization.color }} />
+        <LabelIcon style={{color: category.visualization.color}} />
       </ListItemIcon>
 
       <ListItemText primary={category.description} />

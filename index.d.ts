@@ -1,6 +1,6 @@
-declare module '*.css' {
+declare module "*.css" {
   interface ClassList {
-    [name: string]: string
+    [name: string]: string;
   }
 
   const classes: ClassList;
@@ -8,7 +8,7 @@ declare module '*.css' {
   export = classes;
 }
 
-declare module '*.gif' {
+declare module "*.gif" {
   const image: any;
 
   export = image;
@@ -20,7 +20,7 @@ declare module "*.json" {
   export = content;
 }
 
-declare module '*.png' {
+declare module "*.png" {
   const image: any;
 
   export = image;

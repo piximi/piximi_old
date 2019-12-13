@@ -1,21 +1,21 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   IconButton,
   ListItem,
   ListItemIcon,
   ListItemSecondaryAction,
   ListItemText
-} from '@material-ui/core';
-import LabelIcon from '@material-ui/icons/Label';
-import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import StyledCategory from './StyledCategory';
-import { styles } from './CategoryListItem.css';
-import { makeStyles } from '@material-ui/styles';
-import { useMenu } from '@piximi/hooks';
-import { ConnectedCategoryDropTarget } from '../../CategoryDropTarget/ConnectedCategoryDropTarget';
-import { CategoryListItemMenuList } from '../CategoryListItemMenuList';
-import { Category } from '@piximi/types';
+} from "@material-ui/core";
+import LabelIcon from "@material-ui/icons/Label";
+import LabelOutlinedIcon from "@material-ui/icons/LabelOutlined";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import StyledCategory from "./StyledCategory";
+import {styles} from "./CategoryListItem.css";
+import {makeStyles} from "@material-ui/styles";
+import {useMenu} from "@piximi/hooks";
+import {ConnectedCategoryDropTarget} from "../../CategoryDropTarget/ConnectedCategoryDropTarget";
+import {CategoryListItemMenuList} from "../CategoryListItemMenuList";
+import {Category} from "@piximi/types";
 
 const useStyles = makeStyles(styles);
 
@@ -25,12 +25,12 @@ type VisibleIconProps = {
 };
 
 const VisibleIcon = (props: VisibleIconProps) => {
-  const { color, visible } = props;
+  const {color, visible} = props;
 
   if (visible) {
-    return <LabelIcon style={{ color: color }} />;
+    return <LabelIcon style={{color: color}} />;
   } else {
-    return <LabelOutlinedIcon style={{ color: color }} />;
+    return <LabelOutlinedIcon style={{color: color}} />;
   }
 };
 
@@ -43,9 +43,9 @@ type CategoryListItemProps = {
 };
 
 export const CategoryListItem = (props: CategoryListItemProps) => {
-  const { categories, category, toggleVisibility } = props;
+  const {categories, category, toggleVisibility} = props;
 
-  const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
+  const {anchorEl, openedMenu, openMenu, closeMenu} = useMenu();
 
   const [animateOnDrop, setAnimateOnDrop] = React.useState<Partial<boolean>>();
 
@@ -56,16 +56,16 @@ export const CategoryListItem = (props: CategoryListItemProps) => {
   const className =
     animateOnDrop !== null
       ? animateOnDrop
-        ? 'onDropPulse'
-        : 'onDropPulse2'
-      : '';
+        ? "onDropPulse"
+        : "onDropPulse2"
+      : "";
 
   const onDrop = () => {
     setAnimateOnDrop(!animateOnDrop);
   };
 
   const listItemClasses = {
-    root: ''
+    root: ""
   };
 
   return (
@@ -75,7 +75,7 @@ export const CategoryListItem = (props: CategoryListItemProps) => {
         onDrop={onDrop}
         className={className}
       >
-        <ListItem classes={listItemClasses} dense style={{ cursor: 'pointer' }}>
+        <ListItem classes={listItemClasses} dense style={{cursor: "pointer"}}>
           <ListItemIcon onClick={onToggleVisibilityClick}>
             <VisibleIcon
               color={category.visualization.color}

@@ -1,6 +1,6 @@
-import { shallow } from 'enzyme';
-import * as React from 'react';
+import {shallow} from "enzyme";
+import * as React from "react";
 
-it('BackButton', () => {
+it("BackButton", () => {
   shallow(<div />);
 });

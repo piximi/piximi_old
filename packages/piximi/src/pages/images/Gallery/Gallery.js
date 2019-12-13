@@ -1,16 +1,16 @@
-import * as React from 'react';
-import './Gallery.css';
-import { GalleryCustomDragLayer, GalleryItems, GallerySelectionBox } from '..';
-import { collisionDetection } from '../helper';
+import * as React from "react";
+import "./Gallery.css";
+import {GalleryCustomDragLayer, GalleryItems, GallerySelectionBox} from "..";
+import {collisionDetection} from "../helper";
 
-export const Gallery = props => {
-  const { images, categories, imagesPerRow, decreaseWidth } = props;
+export const Gallery = (props) => {
+  const {images, categories, imagesPerRow, decreaseWidth} = props;
 
   const visibleCategories = categories
-    .filter(category => category.visualization.visible)
-    .map(category => category.identifier);
+    .filter((category) => category.visualization.visible)
+    .map((category) => category.identifier);
 
-  const imageIsVisible = image => {
+  const imageIsVisible = (image) => {
     return (
       visibleCategories.includes(image.categoryIdentifier) &&
       image.visualization.visible
@@ -18,7 +18,9 @@ export const Gallery = props => {
   };
 
   const visibleImages =
-    images.length > 0 ? images.filter(image => imageIsVisible(image)) : images;
+    images.length > 0
+      ? images.filter((image) => imageIsVisible(image))
+      : images;
 
   const [selected, setSelected] = React.useState([]);
   const [collisions, setCollisions] = React.useState([]);
@@ -29,7 +31,7 @@ export const Gallery = props => {
     y2: 0
   });
   const [selectionBoxVisibility, setSelectionBoxVisibility] = React.useState(
-    'hidden'
+    "hidden"
   );
   const [currentlyDraggedItem, setCurrentlyDraggedItem] = React.useState(null);
   const [shiftKeyPressed, setShiftKeyPressed] = React.useState(false);
@@ -38,12 +40,12 @@ export const Gallery = props => {
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
 
   React.useEffect(() => {
-    document.addEventListener('keydown', keyEvent);
-    document.addEventListener('keyup', keyEvent);
-    window.addEventListener('resize', windowResizeEvent);
+    document.addEventListener("keydown", keyEvent);
+    document.addEventListener("keyup", keyEvent);
+    window.addEventListener("resize", windowResizeEvent);
   }, []);
 
-  const onmousedown = e => {
+  const onmousedown = (e) => {
     let currentSelectionBoxCoordinates = {
       ...selectionBoxCoordinates
     };
@@ -56,12 +58,12 @@ export const Gallery = props => {
     setSelectionBoxCoordinates(currentSelectionBoxCoordinates);
 
     // Only activate selection box when not dragging on a selectable item
-    if (e.target.getAttribute('type') !== 'selectableElement') {
-      setSelectionBoxVisibility('visible');
+    if (e.target.getAttribute("type") !== "selectableElement") {
+      setSelectionBoxVisibility("visible");
     }
   };
 
-  const onmousemove = e => {
+  const onmousemove = (e) => {
     // Always update coordinates based on mouse position
     let currentSelectionBoxCoordinates = {
       ...selectionBoxCoordinates
@@ -72,7 +74,7 @@ export const Gallery = props => {
       setSelectionBoxCoordinates(currentSelectionBoxCoordinates);
     }
     // Only check for collisions if selection box is active
-    if (selectionBoxVisibility === 'visible') {
+    if (selectionBoxVisibility === "visible") {
       const collisions = collisionDetection(currentSelectionBoxCoordinates);
       setSelected(collisions);
       setCollisions(collisions);
@@ -80,10 +82,10 @@ export const Gallery = props => {
     }
   };
 
-  const onmouseup = e => {
+  const onmouseup = (e) => {
     // Check if no collisions occured and mouseup event is outside of a selectable item
     if (
-      e.target.getAttribute('type') !== 'selectableElement' &&
+      e.target.getAttribute("type") !== "selectableElement" &&
       collisions.length === 0
     ) {
       // if so unselect all items
@@ -92,11 +94,11 @@ export const Gallery = props => {
     }
     // Hide selection box und reset collisions
     setMouseDown(false);
-    setSelectionBoxVisibility('hidden');
+    setSelectionBoxVisibility("hidden");
     setCollisions([]);
   };
 
-  const selectItem = imgId => {
+  const selectItem = (imgId) => {
     let selectedItems = [...selected];
     const noSelectedItems = selectedItems.length;
     // Check if clicked on an already selected item
@@ -129,12 +131,12 @@ export const Gallery = props => {
     setSelected(selectedItems);
   };
 
-  const keyEvent = e => {
+  const keyEvent = (e) => {
     setShiftKeyPressed(e.shiftKey);
     setAltKeyPressed(e.altKey);
   };
 
-  const windowResizeEvent = e => {
+  const windowResizeEvent = (e) => {
     setWindowWidth(e.target.innerWidth);
   };
 
@@ -145,7 +147,7 @@ export const Gallery = props => {
 
   return (
     <div
-      style={{ zIndex: 999, paddingTop: 60 }}
+      style={{zIndex: 999, paddingTop: 60}}
       className="container noselect"
       onMouseDown={onmousedown}
       onMouseMove={onmousemove}

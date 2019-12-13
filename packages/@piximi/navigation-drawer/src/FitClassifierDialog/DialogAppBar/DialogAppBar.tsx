@@ -1,13 +1,13 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   ArrowBack,
   Stop,
   PlayCircleOutline,
   ReplayRounded
-} from '@material-ui/icons';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import { AppBar, IconButton, Toolbar, Tooltip } from '@material-ui/core';
+} from "@material-ui/icons";
+import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import classNames from "classnames";
+import {AppBar, IconButton, Toolbar, Tooltip} from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,10 +19,10 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1
     },
     appBar: {
-      position: 'relative',
-      backgroundColor: 'transparent',
-      boxShadow: 'none',
-      borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
+      position: "relative",
+      backgroundColor: "transparent",
+      boxShadow: "none",
+      borderBottom: "1px solid rgba(0, 0, 0, 0.12)"
     },
     appBarShift: {},
     appBarShiftLeft: {}
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const DialogAppBar = (props: any) => {
-  const { onStopTrainingChange, closeDialog, fit, openedDrawer } = props;
+  const {onStopTrainingChange, closeDialog, fit, openedDrawer} = props;
 
   const classes = useStyles();
 
@@ -48,7 +48,7 @@ export const DialogAppBar = (props: any) => {
             color="primary"
             onClick={closeDialog}
             aria-label="Close"
-            href={''}
+            href={""}
           >
             <ArrowBack />
           </IconButton>
@@ -57,7 +57,7 @@ export const DialogAppBar = (props: any) => {
         <div className={classes.grow} />
 
         <Tooltip title="Fit the model" placement="bottom">
-          <IconButton className={classes.button} onClick={fit} href={''}>
+          <IconButton className={classes.button} onClick={fit} href={""}>
             <PlayCircleOutline />
           </IconButton>
         </Tooltip>
@@ -66,7 +66,7 @@ export const DialogAppBar = (props: any) => {
           <IconButton
             className={classes.button}
             onClick={onStopTrainingChange}
-            href={''}
+            href={""}
           >
             <Stop />
           </IconButton>
@@ -76,7 +76,7 @@ export const DialogAppBar = (props: any) => {
           disabled
           className={classes.button}
           onClick={closeDialog}
-          href={''}
+          href={""}
         >
           <ReplayRounded />
         </IconButton>

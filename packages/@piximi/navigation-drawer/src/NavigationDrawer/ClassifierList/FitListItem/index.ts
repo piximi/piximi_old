@@ -1,1 +1,1 @@
-export { FitListItem } from './FitListItem';
+export {FitListItem} from "./FitListItem";

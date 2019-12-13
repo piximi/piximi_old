@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   Button,
   Dialog,
@@ -6,9 +6,9 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle
-} from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
-import { Category } from '@piximi/types';
+} from "@material-ui/core";
+import {useTranslation} from "react-i18next";
+import {Category} from "@piximi/types";
 
 type DeleteCategoryDialogProps = {
   category: Category;
@@ -18,7 +18,7 @@ type DeleteCategoryDialogProps = {
 };
 
 export const DeleteCategoryDialog = (props: DeleteCategoryDialogProps) => {
-  const { category, deleteCategory, open, onClose } = props;
+  const {category, deleteCategory, open, onClose} = props;
 
   const onDeleteCategoryClick = () => {
     deleteCategory(category.identifier);
@@ -28,7 +28,7 @@ export const DeleteCategoryDialog = (props: DeleteCategoryDialogProps) => {
 
   const dialogContentText = `Images categorized as ${category.description} won’t be deleted.`;
 
-  const { t: translation } = useTranslation();
+  const {t: translation} = useTranslation();
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -42,11 +42,11 @@ export const DeleteCategoryDialog = (props: DeleteCategoryDialogProps) => {
 
       <DialogActions>
         <Button onClick={onClose} color="primary">
-          {translation('Cancel')}
+          {translation("Cancel")}
         </Button>
 
         <Button onClick={onDeleteCategoryClick} color="primary">
-          {translation('Yes')}
+          {translation("Yes")}
         </Button>
       </DialogActions>
     </Dialog>

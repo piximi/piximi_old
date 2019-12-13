@@ -1,1 +1,1 @@
-export { CategoryDropTarget } from './CategoryDropTarget';
+export {CategoryDropTarget} from "./CategoryDropTarget";

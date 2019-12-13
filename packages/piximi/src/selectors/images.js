@@ -1,9 +1,9 @@
-import { createSelector } from 'reselect';
+import {createSelector} from "reselect";
 
-const getImages = images => images;
+const getImages = (images) => images;
 
 // Calculate no of visible categories for memoization
-const getVisibleCategories = state => {
+const getVisibleCategories = (state) => {
   let noOfVisibleCategories = 0;
   for (let category of state.categories) {
     if (category.visible) noOfVisibleCategories += 1;
@@ -11,7 +11,7 @@ const getVisibleCategories = state => {
   return noOfVisibleCategories;
 };
 
-export const selectVisibleImages = state => {
+export const selectVisibleImages = (state) => {
   let result = {};
   for (let key in state.images) {
     if (state.images[key].visible) result[key] = state.images[key];
@@ -21,7 +21,7 @@ export const selectVisibleImages = state => {
 
 export const getVisibleImages = createSelector(
   [getImages, getVisibleCategories],
-  images => selectVisibleImages(images)
+  (images) => selectVisibleImages(images)
 );
 
 export default getVisibleImages;

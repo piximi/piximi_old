@@ -1,6 +1,6 @@
-import * as React from 'react';
-import '../Gallery/Gallery.css';
-import { reCalc } from '../helper';
+import * as React from "react";
+import "../Gallery/Gallery.css";
+import {reCalc} from "../helper";
 
 type GallerySelectionBoxProps = {
   selectionBoxCoordinates: {
@@ -13,15 +13,15 @@ type GallerySelectionBoxProps = {
 };
 
 export const GallerySelectionBox = (props: GallerySelectionBoxProps) => {
-  const { selectionBoxCoordinates, visibility } = props;
+  const {selectionBoxCoordinates, visibility} = props;
 
   const [style, setStyle] = React.useState({
     zIndex: 1,
-    position: 'fixed' as 'fixed',
-    background: '#eaeaea',
+    position: "fixed" as "fixed",
+    background: "#eaeaea",
     opacity: 0.4,
-    border: '0.1em solid',
-    borderColor: '#AAAAAA'
+    border: "0.1em solid",
+    borderColor: "#AAAAAA"
   });
 
   const styleFromBoxCoordinates = reCalc(selectionBoxCoordinates);

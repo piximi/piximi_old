@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import { useDialog } from '@piximi/hooks';
-import { useTranslation } from 'react-i18next';
-import { ConnectedCreateCategoryDialog } from '../../../CreateCategoryDialog/ConnectedCreateCategoryDialog';
+import * as React from "react";
+import {ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import {useDialog} from "@piximi/hooks";
+import {useTranslation} from "react-i18next";
+import {ConnectedCreateCategoryDialog} from "../../../CreateCategoryDialog/ConnectedCreateCategoryDialog";
 
 export const CreateCategoryListItem = () => {
-  const { openedDialog, openDialog, closeDialog } = useDialog();
+  const {openedDialog, openDialog, closeDialog} = useDialog();
 
-  const { t: translation } = useTranslation();
+  const {t: translation} = useTranslation();
 
   return (
     <React.Fragment>
@@ -17,7 +17,7 @@ export const CreateCategoryListItem = () => {
           <AddIcon />
         </ListItemIcon>
 
-        <ListItemText primary={translation('Create category')} />
+        <ListItemText primary={translation("Create category")} />
       </ListItem>
 
       <ConnectedCreateCategoryDialog

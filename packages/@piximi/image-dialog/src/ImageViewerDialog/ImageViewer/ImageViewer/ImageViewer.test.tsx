@@ -1,6 +1,6 @@
-import { shallow } from 'enzyme';
-import * as React from 'react';
+import {shallow} from "enzyme";
+import * as React from "react";
 
-it('Example', () => {
+it("Example", () => {
   shallow(<div />);
 });

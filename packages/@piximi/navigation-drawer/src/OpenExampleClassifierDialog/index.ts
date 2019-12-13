@@ -1,1 +1,1 @@
-export { OpenExampleClassifierDialog } from './OpenExampleClassifierDialog';
+export {OpenExampleClassifierDialog} from "./OpenExampleClassifierDialog";

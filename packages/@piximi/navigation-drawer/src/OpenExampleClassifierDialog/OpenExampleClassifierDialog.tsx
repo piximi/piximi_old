@@ -1,6 +1,6 @@
-import * as React from 'react';
-import axios from 'axios';
-import { styles } from './OpenExampleClassifierDialog.css';
+import * as React from "react";
+import axios from "axios";
+import {styles} from "./OpenExampleClassifierDialog.css";
 import {
   Dialog,
   DialogActions,
@@ -9,16 +9,16 @@ import {
   IconButton,
   List,
   Typography
-} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
-import { makeStyles } from '@material-ui/styles';
-import { useTranslation } from 'react-i18next';
+} from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/Close";
+import {makeStyles} from "@material-ui/styles";
+import {useTranslation} from "react-i18next";
 // @ts-ignore
 
 var test;
 
-import { OpenExampleClassifierListItem } from '../NavigationDrawer';
-import { Category, Image } from '@piximi/types';
+import {OpenExampleClassifierListItem} from "../NavigationDrawer";
+import {Category, Image} from "@piximi/types";
 
 const useStyles = makeStyles(styles);
 
@@ -38,14 +38,14 @@ export const OpenExampleClassifierDialog = (
 ) => {
   const classes = useStyles({});
 
-  const { t: translation } = useTranslation();
+  const {t: translation} = useTranslation();
 
-  const { openClassifier, open, onClose, closeMenu } = props;
+  const {openClassifier, open, onClose, closeMenu} = props;
 
   const openExampleClassifier = (name: string) => {
     closeMenu();
     return axios
-      .get('https://storage.piximi.app/examples/' + name + '.piximi')
+      .get("https://storage.piximi.app/examples/" + name + ".piximi")
       .then((result: any) => {
         openClassifier(result.data.categories, result.data.images, name);
       })
@@ -63,7 +63,7 @@ export const OpenExampleClassifierDialog = (
     <Dialog fullWidth maxWidth="sm" open={open}>
       <DialogTitle disableTypography className={classes.dialogTitle}>
         <Typography variant="h6">
-          {translation('Open example classifier')}
+          {translation("Open example classifier")}
         </Typography>
 
         <IconButton
@@ -75,7 +75,7 @@ export const OpenExampleClassifierDialog = (
         </IconButton>
       </DialogTitle>
 
-      <DialogContent classes={{ root: classes.dialogContent }}>
+      <DialogContent classes={{root: classes.dialogContent}}>
         <List>
           <OpenExampleClassifierListItem
             src="https://storage.piximi.app/examples/MNIST.png"
@@ -83,7 +83,7 @@ export const OpenExampleClassifierDialog = (
             secondary=""
             onClick={() => {
               onClose();
-              openExampleClassifier('mnist');
+              openExampleClassifier("mnist");
             }}
           />
         </List>

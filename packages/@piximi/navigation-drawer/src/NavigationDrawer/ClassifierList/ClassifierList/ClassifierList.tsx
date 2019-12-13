@@ -4,18 +4,18 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText
-} from '@material-ui/core';
-import * as React from 'react';
-import { useState } from 'react';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { useCollapseList } from '@piximi/hooks';
-import { ConnectedFitListItem } from '../FitListItem/ConnectedFitListItem';
-import { ConnectedEvaluateListItem } from '../EvaluateListItem/ConnectedEvaluateListItem';
-import { ConnectedPredictListItem } from '../PredictListItem/ConnectedPredictListItem';
+} from "@material-ui/core";
+import * as React from "react";
+import {useState} from "react";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import {useCollapseList} from "@piximi/hooks";
+import {ConnectedFitListItem} from "../FitListItem/ConnectedFitListItem";
+import {ConnectedEvaluateListItem} from "../EvaluateListItem/ConnectedEvaluateListItem";
+import {ConnectedPredictListItem} from "../PredictListItem/ConnectedPredictListItem";
 
 export const ClassifierList = () => {
-  const { collapsedList, collapseList } = useCollapseList();
+  const {collapsedList, collapseList} = useCollapseList();
 
   const [datasetInitialized, setDatasetInitialized] = useState<boolean>(false);
 

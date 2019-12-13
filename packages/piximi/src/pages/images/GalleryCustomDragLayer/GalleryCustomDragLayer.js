@@ -1,26 +1,26 @@
-import * as React from 'react';
-import './GalleryCustomDragLayer.css';
+import * as React from "react";
+import "./GalleryCustomDragLayer.css";
 
 const layerStyles = {
-  position: 'fixed',
-  pointerEvents: 'none',
+  position: "fixed",
+  pointerEvents: "none",
   zIndex: 9999,
   left: 0,
   top: 0,
-  width: '100%',
-  height: '100%'
+  width: "100%",
+  height: "100%"
 };
 
-const getItemStyles = props => {
-  const { currentOffset } = props;
+const getItemStyles = (props) => {
+  const {currentOffset} = props;
 
   if (!currentOffset) {
     return {
-      display: 'none'
+      display: "none"
     };
   }
 
-  const { x, y } = currentOffset;
+  const {x, y} = currentOffset;
 
   const transform = `translate(${x}px, ${y}px)`;
 
@@ -37,8 +37,8 @@ let swapArrayElements = (arr, indexA, indexB) => {
   arr[indexB] = temp;
 };
 
-export const GalleryCustomDragLayer = props => {
-  const { item, itemType, isDragging } = props;
+export const GalleryCustomDragLayer = (props) => {
+  const {item, itemType, isDragging} = props;
 
   // const spec = {
   //   collect: (monitor, props) => {
@@ -54,7 +54,7 @@ export const GalleryCustomDragLayer = props => {
   // const collectedProps = useDragLayer(spec);
 
   const renderItem = (type, item) => {
-    const list = document.getElementsByClassName('selected');
+    const list = document.getElementsByClassName("selected");
 
     let imgSources = [];
 
@@ -65,11 +65,11 @@ export const GalleryCustomDragLayer = props => {
 
       const imgElement = list[i].childNodes[2];
 
-      let img = <img key={'draglayerImg' + i} src={imgElement.src} alt="foo" />;
+      let img = <img key={"draglayerImg" + i} src={imgElement.src} alt="foo" />;
 
       imgSources.push(img);
 
-      if (element.getAttribute('imgid') === item.item.identifier) {
+      if (element.getAttribute("imgid") === item.item.identifier) {
         draggedIndex = i;
       }
     }
@@ -78,7 +78,7 @@ export const GalleryCustomDragLayer = props => {
 
     return (
       <div id="drag-layer">
-        {imgSources} <span>{list.length}</span>{' '}
+        {imgSources} <span>{list.length}</span>{" "}
       </div>
     );
   };

@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/styles';
-import { useTranslation } from 'react-i18next';
-import * as React from 'react';
-import styles from './FilenameTextField.css';
-import { TextField } from '@material-ui/core';
+import {makeStyles} from "@material-ui/styles";
+import {useTranslation} from "react-i18next";
+import * as React from "react";
+import styles from "./FilenameTextField.css";
+import {TextField} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -17,11 +17,11 @@ type Props = {
  * @constructor
  */
 export const FilenameTextField = (props: Props) => {
-  const { filename, onFilenameChange } = props;
+  const {filename, onFilenameChange} = props;
 
   const classes = useStyles({});
 
-  const { t: translation } = useTranslation();
+  const {t: translation} = useTranslation();
 
   const inputProps = {
     className: classes.input
@@ -33,7 +33,7 @@ export const FilenameTextField = (props: Props) => {
       fullWidth
       id="description"
       inputProps={inputProps}
-      label={translation('Filename')}
+      label={translation("Filename")}
       margin="dense"
       onChange={onFilenameChange}
       type="text"

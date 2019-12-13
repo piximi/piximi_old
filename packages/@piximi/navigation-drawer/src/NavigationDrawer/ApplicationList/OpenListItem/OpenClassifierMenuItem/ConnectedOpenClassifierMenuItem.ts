@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import { OpenClassifierMenuItem } from './OpenClassifierMenuItem';
-import { Category, Classifier, Image } from '@piximi/types';
-import { Dispatch } from 'redux';
-import { openClassifierAction } from '@piximi/store';
+import {connect} from "react-redux";
+import {OpenClassifierMenuItem} from "./OpenClassifierMenuItem";
+import {Category, Classifier, Image} from "@piximi/types";
+import {Dispatch} from "redux";
+import {openClassifierAction} from "@piximi/store";
 
 type State = {
   classifier: Classifier;

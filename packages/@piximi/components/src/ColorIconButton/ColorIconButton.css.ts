@@ -1,16 +1,16 @@
-import {createStyles} from '@material-ui/styles';
+import {createStyles} from "@material-ui/styles";
 
 const styles = () =>
   createStyles({
     iconButton: {
-      margin: '0 15px 0 5px',
-      padding: '3px'
+      margin: "0 15px 0 5px",
+      padding: "3px"
     },
     avatar: {
-      backgroundColor: '#F3F3F3'
+      backgroundColor: "#F3F3F3"
     },
     colorPicker: {
-      margin: '16px'
+      margin: "16px"
     }
   });
 

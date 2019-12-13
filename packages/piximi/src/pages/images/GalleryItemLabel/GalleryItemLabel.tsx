@@ -1,12 +1,12 @@
-import * as React from 'react';
-import LabelIcon from '@material-ui/icons/Label';
-import LabelImportantIcon from '@material-ui/icons/LabelImportant';
-import styles from './GalleryItemLabel.css';
-import IconButton from '@material-ui/core/IconButton';
-import { ConnectedItemCategoryMenu } from '../../../containers';
-import { makeStyles } from '@material-ui/styles';
-import { useMenu } from '@piximi/hooks';
-import { Image, Category, Score } from '@piximi/types';
+import * as React from "react";
+import LabelIcon from "@material-ui/icons/Label";
+import LabelImportantIcon from "@material-ui/icons/LabelImportant";
+import styles from "./GalleryItemLabel.css";
+import IconButton from "@material-ui/core/IconButton";
+import {ConnectedItemCategoryMenu} from "../../../containers";
+import {makeStyles} from "@material-ui/styles";
+import {useMenu} from "@piximi/hooks";
+import {Image, Category, Score} from "@piximi/types";
 
 const useStyles = makeStyles(styles);
 
@@ -28,18 +28,18 @@ type GalleryItemLabelProps = {
 };
 
 export const GalleryItemLabel = (props: GalleryItemLabelProps) => {
-  const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
+  const {anchorEl, openedMenu, openMenu, closeMenu} = useMenu();
 
-  const { categories, image } = props;
+  const {categories, image} = props;
 
   const classes = useStyles({});
 
   const predictedImage: boolean =
-    image.categoryIdentifier === '00000000-0000-0000-0000-000000000000' &&
+    image.categoryIdentifier === "00000000-0000-0000-0000-000000000000" &&
     image.scores.length !== 0;
   const predictedCategoryIdentifier: string = predictedImage
     ? getLableIndex(image.scores)
-    : '00000000-0000-0000-0000-000000000000';
+    : "00000000-0000-0000-0000-000000000000";
 
   const findCategoryColor = (categoryIdentifier: string) => {
     const index = categories.findIndex((category: any) => {
@@ -49,7 +49,7 @@ export const GalleryItemLabel = (props: GalleryItemLabelProps) => {
     if (index > -1) {
       return categories[index].visualization.color;
     } else {
-      return '#000';
+      return "#000";
     }
   };
 
@@ -57,17 +57,17 @@ export const GalleryItemLabel = (props: GalleryItemLabelProps) => {
     <React.Fragment>
       <IconButton
         aria-label="categorize"
-        classes={{ root: classes.iconButton }}
+        classes={{root: classes.iconButton}}
         disableRipple
         onClick={openMenu}
       >
         {!predictedImage ? (
           <LabelIcon
-            style={{ color: findCategoryColor(image.categoryIdentifier) }}
+            style={{color: findCategoryColor(image.categoryIdentifier)}}
           />
         ) : (
           <LabelImportantIcon
-            style={{ color: findCategoryColor(predictedCategoryIdentifier) }}
+            style={{color: findCategoryColor(predictedCategoryIdentifier)}}
           />
         )}
       </IconButton>

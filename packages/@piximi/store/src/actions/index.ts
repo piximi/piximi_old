@@ -40,4 +40,4 @@ export {
   updateImagesCategoryAction,
   updateImageVisibilityAction,
   updateImagesPartitionAction
-}
+};

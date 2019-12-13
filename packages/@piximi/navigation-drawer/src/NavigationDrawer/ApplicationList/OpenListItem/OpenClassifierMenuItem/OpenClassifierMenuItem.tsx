@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { ListItemText, MenuItem } from '@material-ui/core';
+import * as React from "react";
+import {ListItemText, MenuItem} from "@material-ui/core";
 
 export const OpenClassifierMenuItem = (props: any) => {
-  const { closeMenu, openClassifier } = props;
+  const {closeMenu, openClassifier} = props;
 
   const onChange = (e: any) => {
     const reader = new FileReader();
 
-    reader.readAsText(e.target.files[0], 'UTF-8');
+    reader.readAsText(e.target.files[0], "UTF-8");
 
-    reader.onload = e => {
+    reader.onload = (e) => {
       const target = e.target as FileReader;
 
       const classifier = JSON.parse(target.result as string);
@@ -26,7 +26,7 @@ export const OpenClassifierMenuItem = (props: any) => {
         id="open-classifier"
         name="file"
         onChange={onChange}
-        style={{ display: 'none' }}
+        style={{display: "none"}}
         type="file"
       />
 

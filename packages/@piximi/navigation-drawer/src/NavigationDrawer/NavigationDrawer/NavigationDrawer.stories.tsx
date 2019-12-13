@@ -1,22 +1,22 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { NavigationDrawer } from './NavigationDrawer';
-import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core';
-import { store, test } from '@piximi/store';
-import { Provider } from 'react-redux';
-import HTML5Backend from 'react-dnd-html5-backend';
-import { DndProvider } from 'react-dnd';
+import React from "react";
+import {storiesOf} from "@storybook/react";
+import {NavigationDrawer} from "./NavigationDrawer";
+import {ThemeProvider} from "@material-ui/styles";
+import {createMuiTheme} from "@material-ui/core";
+import {store, test} from "@piximi/store";
+import {Provider} from "react-redux";
+import HTML5Backend from "react-dnd-html5-backend";
+import {DndProvider} from "react-dnd";
 
 const theme = createMuiTheme({
   palette: {
-    type: 'light'
+    type: "light"
   }
 });
 
 const toggle = () => {};
 
-storiesOf('NavigationDrawer', module).add('example', () => (
+storiesOf("NavigationDrawer", module).add("example", () => (
   <DndProvider backend={HTML5Backend}>
     <Provider store={test}>
       <ThemeProvider theme={theme}>

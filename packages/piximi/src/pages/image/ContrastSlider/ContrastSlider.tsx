@@ -1,8 +1,8 @@
-import * as React from 'react';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
-import styles from './ContrastSlider.css';
-import { makeStyles } from '@material-ui/styles';
+import * as React from "react";
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
+import styles from "./ContrastSlider.css";
+import {makeStyles} from "@material-ui/styles";
 
 const useStyles = makeStyles(styles);
 
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const ContrastSlider = (props: Props) => {
-  const { contrast, setContrast } = props;
+  const {contrast, setContrast} = props;
 
   const classes = useStyles({});
 
@@ -22,12 +22,12 @@ const ContrastSlider = (props: Props) => {
 
   return (
     <div className={classes.root}>
-      <Typography style={{ color: 'white' }} id="label">
+      <Typography style={{color: "white"}} id="label">
         Contrast
       </Typography>
 
       <Slider
-        classes={{ root: classes.slider }}
+        classes={{root: classes.slider}}
         min={50}
         max={300}
         step={0.1}

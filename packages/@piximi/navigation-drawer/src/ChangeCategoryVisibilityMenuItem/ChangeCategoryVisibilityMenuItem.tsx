@@ -1,6 +1,6 @@
-import * as React from 'react';
-import * as MaterialUI from '@material-ui/core';
-import { Category } from '@piximi/types';
+import * as React from "react";
+import * as MaterialUI from "@material-ui/core";
+import {Category} from "@piximi/types";
 
 type ChangeCategoryVisibilityProps = {
   categoryProp: Category;
@@ -14,11 +14,11 @@ type ChangeCategoryVisibilityProps = {
 export const ChangeCategoryVisibilityMenuItem = (
   props: ChangeCategoryVisibilityProps
 ) => {
-  const { categoryProp, closeMenu, makeCategoryInvisible } = props;
+  const {categoryProp, closeMenu, makeCategoryInvisible} = props;
 
   const categoryIsVisible = categoryProp.visualization.visible;
 
-  const listItemText = categoryIsVisible ? 'Hide category' : 'Show category';
+  const listItemText = categoryIsVisible ? "Hide category" : "Show category";
 
   const onClick = () => {
     closeMenu();
@@ -27,7 +27,7 @@ export const ChangeCategoryVisibilityMenuItem = (
 
   return (
     <MaterialUI.MenuItem onClick={onClick}>
-      <MaterialUI.ListItemText primary={listItemText}/>
+      <MaterialUI.ListItemText primary={listItemText} />
     </MaterialUI.MenuItem>
   );
 };

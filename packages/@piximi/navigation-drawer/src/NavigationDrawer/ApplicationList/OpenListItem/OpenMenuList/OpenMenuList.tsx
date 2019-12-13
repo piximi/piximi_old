@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from "react";
 
 import {
   OpenExampleClassifierMenuItem,
   OpenWeightsMenuItem
-} from '../../../index';
-import { ConnectedOpenClassifierMenuItem } from '../OpenClassifierMenuItem';
-import { Divider, MenuList, Paper, Popover } from '@material-ui/core';
+} from "../../../index";
+import {ConnectedOpenClassifierMenuItem} from "../OpenClassifierMenuItem";
+import {Divider, MenuList, Paper, Popover} from "@material-ui/core";
 
 type Props = {
   anchorEl: any;
@@ -14,7 +14,7 @@ type Props = {
 };
 
 export const OpenMenuList = (props: Props) => {
-  const { anchorEl, closeMenu, openedMenu } = props;
+  const {anchorEl, closeMenu, openedMenu} = props;
 
   const anchorPosition = {
     top: openedMenu ? anchorEl.getBoundingClientRect().bottom - 3 : 0,

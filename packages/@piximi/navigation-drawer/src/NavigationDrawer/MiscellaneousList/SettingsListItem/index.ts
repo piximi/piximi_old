@@ -1,1 +1,1 @@
-export { SettingsListItem } from './SettingsListItem';
+export {SettingsListItem} from "./SettingsListItem";

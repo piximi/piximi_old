@@ -1,3 +1,1 @@
-export {
-  ChangeCategoryVisibilityMenuItem
-} from './ChangeCategoryVisibilityMenuItem';
+export {ChangeCategoryVisibilityMenuItem} from "./ChangeCategoryVisibilityMenuItem";

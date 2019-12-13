@@ -1,1 +1,1 @@
-export { ImageHistogram } from './ImageHistogram';
+export {ImageHistogram} from "./ImageHistogram";

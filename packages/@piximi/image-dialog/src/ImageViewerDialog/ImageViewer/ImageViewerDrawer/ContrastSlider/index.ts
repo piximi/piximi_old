@@ -1,1 +1,1 @@
-export { ContrastSlider } from './ContrastSlider';
+export {ContrastSlider} from "./ContrastSlider";

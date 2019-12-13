@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
+import {storiesOf} from "@storybook/react";
 
-import { AlertDialog, AlertDialogActions } from '..';
+import {AlertDialog, AlertDialogActions} from "..";
 
-const acceptanceTitle: string = 'OK';
+const acceptanceTitle: string = "OK";
 
-const cancellationTitle: string = 'Cancel';
+const cancellationTitle: string = "Cancel";
 
 const open: boolean = true;
 
@@ -16,7 +16,7 @@ const onCancellation = () => {};
 
 const onClose = () => {};
 
-storiesOf('AlertDialogActions', module).add('example', () => (
+storiesOf("AlertDialogActions", module).add("example", () => (
   <AlertDialog onClose={onClose} open={open}>
     <AlertDialogActions
       acceptanceTitle={acceptanceTitle}

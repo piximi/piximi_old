@@ -1,31 +1,31 @@
-import * as React from 'react';
+import * as React from "react";
 
-const Image = props => {
-  const { src, openImageViewerDialog, id } = props;
+const Image = (props) => {
+  const {src, openImageViewerDialog, id} = props;
 
-  const [imageStatus, setImageStatus] = React.useState('loading');
+  const [imageStatus, setImageStatus] = React.useState("loading");
   const [image, setImage] = React.useState(null);
   const [imageHeight, setImageHeight] = React.useState(null);
   const [imageWidth, setImageWidth] = React.useState(null);
 
   let canvasRef = React.useRef();
 
-  const onLoad = e => {
+  const onLoad = (e) => {
     const image = e.target;
     const width = image.width;
     const height = image.height;
-    setImageStatus('loaded');
+    setImageStatus("loaded");
     setImage(image);
     setImageHeight(height);
     setImageWidth(width);
-    image.style.height = '0px';
+    image.style.height = "0px";
   };
 
   // Draw canvas
   const draw = () => {
-    if (imageStatus === 'loaded') {
+    if (imageStatus === "loaded") {
       const canvas = canvasRef.current;
-      const context = canvas.getContext('2d');
+      const context = canvas.getContext("2d");
       canvas.height = props.height * 0.9;
       canvas.width = props.width * 0.9;
       const ratio = Math.min(
@@ -37,17 +37,17 @@ const Image = props => {
 
       // Apply filters to context
       context.filter =
-        'brightness(' +
+        "brightness(" +
         props.brightness +
-        '%)  contrast(' +
+        "%)  contrast(" +
         props.contrast +
-        '%)';
+        "%)";
 
       context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-      image.crossOrigin = 'Anonymous';
+      image.crossOrigin = "Anonymous";
 
-      image.setAttribute('crossOrigin', '');
+      image.setAttribute("crossOrigin", "");
 
       // FIXME: Sat Jun 15 (Allen)
       // Apply selected channel filter
@@ -73,20 +73,15 @@ const Image = props => {
   return (
     <div>
       <canvas
-        type={'selectableElement'}
+        type={"selectableElement"}
         onDoubleClick={openImageViewerDialog}
         imgid={id}
-        style={{ verticalAlign: 'middle', padding: '2px' }}
+        style={{verticalAlign: "middle", padding: "2px"}}
         ref={canvasRef}
         height={props.height}
         width={props.width}
       />
-      <img
-        onLoad={onLoad}
-        alt="foo"
-        src={src}
-        style={{ visibility: 'hidden' }}
-      />
+      <img onLoad={onLoad} alt="foo" src={src} style={{visibility: "hidden"}} />
     </div>
   );
 };

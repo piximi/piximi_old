@@ -8,7 +8,7 @@ type Category = {
 type CategoryVisualization = {
   color: string;
   visible: boolean;
-}
+};
 
 type Classifier = {
   categories: Category[];
@@ -59,4 +59,4 @@ export {
   Partition,
   Score,
   Settings
-}
+};

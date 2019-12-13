@@ -1,9 +1,9 @@
-import '@uppy/core/dist/style.css';
-import '@uppy/dashboard/dist/style.css';
-import * as React from 'react';
-import Uppy from '@uppy/core';
-import { DashboardModal } from '@uppy/react';
-import { UpdateReduxStore } from './UpdateReduxStore';
+import "@uppy/core/dist/style.css";
+import "@uppy/dashboard/dist/style.css";
+import * as React from "react";
+import Uppy from "@uppy/core";
+import {DashboardModal} from "@uppy/react";
+import {UpdateReduxStore} from "./UpdateReduxStore";
 
 type UploadImageDialogProps = {
   closeDialog: () => void;
@@ -22,7 +22,7 @@ export const UploadImageDialog = ({
     createImage: createImage
   });
 
-  const plugins: Array<string> = ['UpdateReduxStore'];
+  const plugins: Array<string> = ["UpdateReduxStore"];
 
   return (
     <DashboardModal

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
+import {storiesOf} from "@storybook/react";
 
-import { ColorIconMenu } from '..';
-import { useMenu } from '@piximi/hooks';
+import {ColorIconMenu} from "..";
+import {useMenu} from "@piximi/hooks";
 
-storiesOf('ColorIconMenu', module).add('example', () => <div />);
+storiesOf("ColorIconMenu", module).add("example", () => <div />);

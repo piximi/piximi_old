@@ -1,6 +1,6 @@
-import { Category } from '@piximi/types';
-import { CirclePicker } from 'react-color';
-import * as React from 'react';
+import {Category} from "@piximi/types";
+import {CirclePicker} from "react-color";
+import * as React from "react";
 
 type ColorPickerProps = {
   categories: Category[];
@@ -17,7 +17,7 @@ export const unusedColors = (
   categories: Category[],
   colors: string[]
 ): string[] | [] => {
-  return colors.filter(color => {
+  return colors.filter((color) => {
     return !usedColors(categories).includes(color.toUpperCase());
   });
 };
@@ -38,7 +38,7 @@ export const usedColors = (categories: Category[]): string[] => {
  * @constructor
  */
 export const ColorPicker = (props: ColorPickerProps) => {
-  const { categories, colors, onChange } = props;
+  const {categories, colors, onChange} = props;
 
   const unused: string[] = unusedColors(categories, colors);
 
