@@ -10,7 +10,7 @@ import {
   EnhancedStore,
   Middleware,
   StoreEnhancer
-} from "redux-starter-kit";
+} from "@reduxjs/toolkit";
 
 import {reducer} from "./reducer";
 

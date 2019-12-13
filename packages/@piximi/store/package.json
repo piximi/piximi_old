@@ -13,14 +13,19 @@
     "@types/react": "^16.9.16",
     "@types/react-color": "^3.0.1",
     "@types/redux-logger": "^3.0.7",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
     "typescript": "^3.7.3"
   },
   "files": [
     "dist",
     "src"
   ],
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
+  },
   "license": "BSD-3-Clause",
   "main": "./dist/index.js",
   "name": "@piximi/store",
@@ -31,8 +36,9 @@
     "redux": "^4.0.4"
   },
   "scripts": {
-    "build": "tsc",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo"
+    "build": "tsc --build tsconfig.json",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "test": "yarn build && jest"
   },
   "types": "./dist/index.d.ts",
   "version": "0.0.0"

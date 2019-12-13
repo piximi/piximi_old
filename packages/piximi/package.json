@@ -11,8 +11,7 @@
     "flow": "flow",
     "precommit": "lint-staged",
     "predeploy": "npm run build",
-    "start": "react-scripts start",
-    "test": "react-scripts test"
+    "start": "react-scripts start"
   },
   "homepage": ".",
   "lint-staged": {
