@@ -3,7 +3,7 @@ import * as React from "react";
 import LabelImportantIcon from "@material-ui/icons/LabelImportant";
 import {useTranslation} from "react-i18next";
 import {Category, Image, Score} from "@piximi/types";
-import {createPredictionSet} from "../../../FitClassifierDialog/FitClassifierDialog/dataset";
+import {createPredictionSet} from "./dataset";
 import * as tensorflow from "@tensorflow/tfjs";
 
 type PredictListItemProbs = {

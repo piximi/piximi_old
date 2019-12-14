@@ -1,5 +1,26 @@
 {
+  "dependencies": {
+    "@material-ui/core": "^4.7.2",
+    "@material-ui/styles": "^4.7.1",
+    "@piximi/hooks": "*",
+    "@piximi/image-dialog": "*",
+    "@piximi/store": "*",
+    "@piximi/types": "*",
+    "@tensorflow/tfjs": "^1.4.0",
+    "@tensorflow/tfjs-vis": "^1.3.0",
+    "classnames": "^2.2.6",
+    "react": "^16.12.0",
+    "react-i18next": "^11.2.6",
+    "react-redux": "^7.1.3",
+    "redux": "^4.0.4"
+  },
   "devDependencies": {
+    "@storybook/react": "^5.2.8",
+    "@types/jest": "^24.0.23",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
     "typescript": "^3.7.3"
   },
   "files": [

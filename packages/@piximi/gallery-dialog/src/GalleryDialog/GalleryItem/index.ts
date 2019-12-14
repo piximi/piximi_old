@@ -1,0 +1,1 @@
+export {ConnectedGalleryItem} from "./ConnectedGalleryItem";

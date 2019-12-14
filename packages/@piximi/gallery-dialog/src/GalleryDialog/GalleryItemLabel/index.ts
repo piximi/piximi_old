@@ -1,0 +1,1 @@
+export {ConnectedGalleryItemLabel} from "./ConnectedGalleryItemLabel";

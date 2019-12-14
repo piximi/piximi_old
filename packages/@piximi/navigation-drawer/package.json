@@ -8,6 +8,7 @@
     "@piximi/fit-classifier-dialog": "*",
     "@piximi/help-dialog": "*",
     "@piximi/hooks": "*",
+    "@piximi/open-example-classifier-dialog": "*",
     "@piximi/store": "*",
     "@piximi/types": "*",
     "@teachablemachine/image": "^0.8.4",

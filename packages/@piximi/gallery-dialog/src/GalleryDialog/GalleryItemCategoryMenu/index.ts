@@ -1,0 +1,1 @@
+export {ConnectedGalleryItemCategoryMenu} from "./ConnectedGalleryItemCategoryMenu";

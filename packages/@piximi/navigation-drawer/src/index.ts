@@ -1,6 +1,5 @@
 export {CreateCategoryDialog} from "./CreateCategoryDialog";
 export {DeleteCategoryDialog} from "./DeleteCategoryDialog";
-export {FitClassifierDialog} from "./FitClassifierDialog";
 export {HideOtherCategoriesMenuItem} from "./HideOtherCategoriesMenuItem";
 export {NavigationDrawer} from "./NavigationDrawer";
 export {EditCategoryDialog} from "./EditCategoryDialog";
