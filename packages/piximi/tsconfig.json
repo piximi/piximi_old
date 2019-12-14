@@ -16,23 +16,12 @@
     "moduleResolution": "node"
   },
   "references": [
-    {
-      "path": "../@piximi/components"
-    },
-    {
-      "path": "../@piximi/hooks"
-    },
-    {
-      "path": "../@piximi/navigation-drawer"
-    },
-    {
-      "path": "../@piximi/store"
-    },
-    {
-      "path": "../@piximi/translations"
-    },
-    {
-      "path": "../@piximi/types"
-    }
+    {"path": "../@piximi/components"},
+    {"path": "../@piximi/gallery-dialog"},
+    {"path": "../@piximi/hooks"},
+    {"path": "../@piximi/navigation-drawer"},
+    {"path": "../@piximi/store"},
+    {"path": "../@piximi/translations"},
+    {"path": "../@piximi/types"}
   ]
 }
