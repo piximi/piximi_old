@@ -1,4 +1,4 @@
-import {ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import {ListItem, ListItemIcon, ListItemText, Paper} from "@material-ui/core";
 import * as React from "react";
 import AddIcon from "@material-ui/icons/Add";
 import {useDialog} from "@piximi/hooks";
@@ -18,7 +18,7 @@ export const NewClassifierListItem = () => {
         // @ts-ignore
         <ListItemText primary="New classifier…" />
       </ListItem>
-
+      // @ts-ignore
       <ConnectedNewClassifierDialog
         closeDialog={closeDialog}
         openedDialog={openedDialog}

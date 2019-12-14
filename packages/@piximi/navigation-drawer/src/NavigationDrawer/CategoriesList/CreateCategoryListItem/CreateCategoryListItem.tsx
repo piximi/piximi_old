@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import {ListItem, ListItemIcon, ListItemText, Paper} from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import {useDialog} from "@piximi/hooks";
 import {useTranslation} from "react-i18next";
@@ -21,7 +21,7 @@ export const CreateCategoryListItem = () => {
         // @ts-ignore
         <ListItemText primary={translation("Create category")} />
       </ListItem>
-
+      // @ts-ignore
       <ConnectedCreateCategoryDialog
         onClose={closeDialog}
         open={openedDialog}

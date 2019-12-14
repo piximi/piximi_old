@@ -17,7 +17,7 @@ import {useTranslation} from "react-i18next";
 
 var test;
 
-import {OpenExampleClassifierListItem} from "../NavigationDrawer";
+import {OpenExampleClassifierListItem} from "../OpenExampleClassifierListItem";
 import {Category, Image} from "@piximi/types";
 
 const useStyles = makeStyles(styles);

@@ -4,7 +4,8 @@ import {
   ListItem,
   ListItemIcon,
   ListItemSecondaryAction,
-  ListItemText
+  ListItemText,
+  Paper
 } from "@material-ui/core";
 import LabelIcon from "@material-ui/icons/Label";
 import LabelOutlinedIcon from "@material-ui/icons/LabelOutlined";
@@ -69,6 +70,7 @@ export const CategoryListItem = (props: CategoryListItemProps) => {
   };
 
   return (
+    // @ts-ignore
     <ConnectedCategoryDropTarget category={category}>
       <StyledCategory
         color={category.visualization.color}

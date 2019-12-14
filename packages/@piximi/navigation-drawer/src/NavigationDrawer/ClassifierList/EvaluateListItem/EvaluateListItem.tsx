@@ -3,7 +3,7 @@ import * as React from "react";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import {useTranslation} from "react-i18next";
 import {useDialog} from "@piximi/hooks";
-import {ConnectedEvaluateClassifierDialog} from "../../../EvaluateClassifierDialog/EvaluateClassifierDialog";
+import {ConnectedEvaluateClassifierDialog} from "@piximi/evaluate-classifier-dialog";
 
 type EvaluateListItemProbs = {
   datasetInitialized: boolean;
@@ -32,7 +32,7 @@ export const EvaluateListItem = (probs: EvaluateListItemProbs) => {
         // @ts-ignore
         <ListItemText primary={translation("Evaluate")} />
       </ListItem>
-
+      // @ts-ignore
       <ConnectedEvaluateClassifierDialog
         closeDialog={closeDialog}
         openedDialog={openedDialog}

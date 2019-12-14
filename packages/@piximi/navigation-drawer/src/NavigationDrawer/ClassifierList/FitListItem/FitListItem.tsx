@@ -1,4 +1,4 @@
-import {ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import {ListItem, ListItemIcon, ListItemText, Paper} from "@material-ui/core";
 import * as React from "react";
 import ScatterPlotIcon from "@material-ui/icons/ScatterPlot";
 import {useTranslation} from "react-i18next";
@@ -32,7 +32,7 @@ export const FitListItem = (props: FitListItemProps) => {
         // @ts-ignore
         <ListItemText primary={translation("Fit")} />
       </ListItem>
-
+      // @ts-ignore
       <ConnectedFitClassifierDialog
         closeDialog={closeDialog}
         openedDialog={openedDialog}

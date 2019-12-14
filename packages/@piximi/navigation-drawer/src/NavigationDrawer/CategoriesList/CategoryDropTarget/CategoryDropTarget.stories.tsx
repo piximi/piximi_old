@@ -6,6 +6,7 @@ import HTML5Backend from "react-dnd-html5-backend";
 import {DndProvider} from "react-dnd";
 import {store} from "@piximi/store";
 import {Provider} from "react-redux";
+import {Paper} from "@material-ui/core";
 
 const category = {
   description: "example",
@@ -22,6 +23,7 @@ storiesOf("CategoryDropTarget", module).add("example", () => (
   <Provider store={store}>
     <DndProvider backend={HTML5Backend}>
       <ConnectedCategoryDropTarget category={category}>
+        // @ts-ignore
         <ConnectedCategoryListItem category={category} isOver={true} />
       </ConnectedCategoryDropTarget>
     </DndProvider>

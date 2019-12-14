@@ -8,7 +8,7 @@ import {
   MiscellaneousList
 } from "../index";
 import {ConnectedCategoriesList} from "../CategoriesList/CategoriesList/ConnectedCategoriesList";
-import {Box, Divider, Drawer} from "@material-ui/core";
+import {Box, Divider, Drawer, Paper} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -41,6 +41,7 @@ export const NavigationDrawer = (props: DrawerProps) => {
       <NavigationDrawerAppBar toggle={toggle} toggled={toggled} />
       <ApplicationList />
       <Divider component={"hr"} />
+      // @ts-ignore
       <ConnectedCategoriesList />
       <Divider component={"hr"} />
       <ClassifierList />

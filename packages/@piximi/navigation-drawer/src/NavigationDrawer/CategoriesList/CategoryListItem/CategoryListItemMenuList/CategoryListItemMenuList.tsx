@@ -74,16 +74,16 @@ export const CategoryListItemMenuList = (
         <Paper>
           // @ts-ignore
           <MenuList dense>
+            // @ts-ignore
             <ConnectedHideOtherCategoriesMenuItem
               categoryProp={category}
               closeMenu={closeMenu}
             />
-
+            // @ts-ignore
             <ConnectedChangeCategoryVisibilityMenuItem
               categoryProp={category}
               closeMenu={closeMenu}
             />
-
             {known && (
               <div>
                 <Divider />
@@ -102,11 +102,13 @@ export const CategoryListItemMenuList = (
           </MenuList>
         </Paper>
       </Popover>
+      // @ts-ignore
       <ConnectedEditCategoryDialog
         category={category}
         onClose={closeEditCategoryDialog}
         open={openedEditCategoryDialog}
       />
+      // @ts-ignore
       <ConnectedDeleteCategoryDialog
         category={category}
         onClose={closeDeleteCategoryDialog}

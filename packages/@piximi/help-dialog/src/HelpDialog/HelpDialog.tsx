@@ -17,14 +17,11 @@ export const HelpDialog = (props: HelpDialogProps) => {
   const {t: translation} = useTranslation();
 
   return (
-    // @ts-ignore
     <Dialog open={open} onClose={onClose}>
-      // @ts-ignore
       <DialogContent>
-        // @ts-ignore
         <DialogContentText>&nbsp;</DialogContentText>
       </DialogContent>
-      // @ts-ignore
+
       <DialogActions>
         <Button onClick={onClose} color="primary">
           {translation("Cancel")}

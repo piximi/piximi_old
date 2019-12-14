@@ -10,11 +10,7 @@ import {Category, Image} from "@piximi/types";
 import * as tensorflow from "@tensorflow/tfjs";
 import {useState} from "react";
 import {styles} from "./EvaluateClassifierDialog.css";
-
-import {
-  createTestSet,
-  assignToSet
-} from "../../FitClassifierDialog/FitClassifierDialog/dataset";
+import {createTestSet, assignToSet} from "./dataset";
 import * as tfvis from "@tensorflow/tfjs-vis";
 import {
   evaluateTensorflowModel,

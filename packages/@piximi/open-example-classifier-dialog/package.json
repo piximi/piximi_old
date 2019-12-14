@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "@material-ui/core": "^4.7.2",
+    "react": "^16.12.0",
+    "react-i18next": "^11.2.6"
+  },
+  "devDependencies": {
+    "@storybook/react": "^5.2.8",
+    "@types/jest": "^24.0.23",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.3"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/src/setupTests.ts"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
+  },
+  "license": "BSD-3-Clause",
+  "main": "./dist/index.js",
+  "name": "@piximi/open-example-classifier-dialog",
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "test": "yarn build && jest"
+  },
+  "types": "./dist/index.d.ts",
+  "version": "0.0.0"
+}

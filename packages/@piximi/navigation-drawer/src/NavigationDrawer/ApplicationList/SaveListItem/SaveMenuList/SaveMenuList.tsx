@@ -4,6 +4,7 @@ import {SaveAnnotationsAndPredictionsDialog} from "../../../../SaveAnnotationsAn
 import {SaveWeightsDialog} from "../../../../SaveWeightsDialog/";
 import {ConnectedSaveClassifierDialog} from "../../../../SaveClassifierDialog/ConnectedSaveClassifierDialog";
 import {useDialog} from "@piximi/hooks";
+import {Paper} from "@material-ui/core";
 
 type Props = {
   anchorEl: any;
@@ -88,6 +89,7 @@ export const SaveMenuList = (props: Props) => {
           </MaterialUI.MenuList>
         </MaterialUI.Paper>
       </MaterialUI.Popover>
+      // @ts-ignore
       <ConnectedSaveClassifierDialog
         open={openedSaveClassifierDialog}
         onClose={closeSaveClassifierDialog}

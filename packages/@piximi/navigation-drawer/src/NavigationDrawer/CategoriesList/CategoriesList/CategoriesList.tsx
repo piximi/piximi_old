@@ -4,7 +4,8 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  Paper
 } from "@material-ui/core";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -47,6 +48,7 @@ export const CategoriesList = (props: CategoriesListProps) => {
       // @ts-ignore
       <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
         {sortedCategories.map((category: Category, index: number) => (
+          // @ts-ignore
           <ConnectedCategoryListItem
             category={category}
             key={category.identifier}

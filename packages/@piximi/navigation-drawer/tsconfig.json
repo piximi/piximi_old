@@ -8,17 +8,13 @@
   "exclude": ["src/setupTests.ts", "src/**/*.stories.tsx", "src/**/*.test.tsx"],
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "references": [
-    {
-      "path": "../components"
-    },
-    {
-      "path": "../hooks"
-    },
-    {
-      "path": "../store"
-    },
-    {
-      "path": "../types"
-    }
+    {"path": "../components"},
+    {"path": "../evaluate-classifier-dialog"},
+    {"path": "../fit-classifier-dialog"},
+    {"path": "../help-dialog"},
+    {"path": "../hooks"},
+    {"path": "../open-example-classifier-dialog"},
+    {"path": "../store"},
+    {"path": "../types"}
   ]
 }

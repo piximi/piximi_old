@@ -3,7 +3,8 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  Paper
 } from "@material-ui/core";
 import * as React from "react";
 import {useState} from "react";
@@ -31,16 +32,17 @@ export const ClassifierList = () => {
       </ListItem>
       // @ts-ignore
       <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
+        // @ts-ignore
         <ConnectedFitListItem
           datasetInitialized={datasetInitialized}
           setDatasetInitialized={setDatasetInitialized}
         />
-
+        // @ts-ignore
         <ConnectedEvaluateListItem
           datasetInitialized={datasetInitialized}
           setDatasetInitialized={setDatasetInitialized}
         />
-
+        // @ts-ignore
         <ConnectedPredictListItem />
       </Collapse>
     </List>

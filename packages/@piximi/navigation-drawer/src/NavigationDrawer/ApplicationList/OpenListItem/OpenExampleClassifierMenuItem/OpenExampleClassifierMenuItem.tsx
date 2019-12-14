@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import {useDialog} from "@piximi/hooks";
-import {ConnectedOpenExampleClassifierDialog} from "../../../../OpenExampleClassifierDialog/ConnectedOpenExampleClassifierDialog";
-import {ListItemText, MenuItem} from "@material-ui/core";
+import {ConnectedOpenExampleClassifierDialog} from "@piximi/open-example-classifier-dialog";
+import {ListItemText, MenuItem, Paper} from "@material-ui/core";
 
 type OpenExampleClassifierMenuItemProps = {
   closeMenu: () => void;
@@ -26,7 +26,7 @@ export const OpenExampleClassifierMenuItem = (
         // @ts-ignore
         <ListItemText primary="Open example classifier" />
       </MenuItem>
-
+      // @ts-ignore
       <ConnectedOpenExampleClassifierDialog
         onClose={closeDialog}
         open={openedDialog}

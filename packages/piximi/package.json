@@ -1,4 +1,10 @@
 {
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "dependencies": {
     "@material-ui/core": "^4.7.2",
     "@material-ui/icons": "^4.5.1",
@@ -31,11 +37,16 @@
     "react-scripts": "^3.3.0",
     "typescript": "^3.7.3"
   },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "homepage": ".",
+  "license": "BSD-3-Clause",
   "name": "piximi",
-  "version": "0.0.0",
   "private": false,
   "scripts": {
-    "storybook": "start-storybook",
     "analyze": "source-map-explorer build/static/js/main.*",
     "build": "react-scripts build",
     "deploy": "gh-pages -d build",
@@ -43,24 +54,8 @@
     "flow": "flow",
     "precommit": "lint-staged",
     "predeploy": "npm run build",
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "storybook": "start-storybook"
   },
-  "homepage": ".",
-  "lint-staged": {
-    "src/**/*.{css,js,json,jsx,ts,tsx}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "version": "0.0.0"
 }
