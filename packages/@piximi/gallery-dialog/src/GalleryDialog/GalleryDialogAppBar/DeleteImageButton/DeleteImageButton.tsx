@@ -1,5 +1,5 @@
 import * as React from "react";
-import styles from "./DeleteButton.css";
+import {styles} from "./DeleteImageButton.css";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Delete from "@material-ui/icons/Delete";
@@ -10,7 +10,12 @@ import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles(styles);
 
-export const DeleteImageButton = (props: any) => {
+type DeleteImageButtonProps = {
+  selectedImages: any;
+  setSelectedImages: any;
+};
+
+export const DeleteImageButton = (props: DeleteImageButtonProps) => {
   const {t: translation} = useTranslation();
 
   const {openedDialog, openDialog, closeDialog} = useDialog();

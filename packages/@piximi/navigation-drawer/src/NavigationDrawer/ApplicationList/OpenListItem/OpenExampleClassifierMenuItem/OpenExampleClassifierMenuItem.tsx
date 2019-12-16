@@ -20,13 +20,11 @@ export const OpenExampleClassifierMenuItem = (
   };
 
   return (
-    // @ts-ignore
     <React.Fragment>
       <MenuItem onClick={onClick}>
-        // @ts-ignore
         <ListItemText primary="Open example classifier" />
       </MenuItem>
-      // @ts-ignore
+
       <ConnectedOpenExampleClassifierDialog
         onClose={closeDialog}
         open={openedDialog}

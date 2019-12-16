@@ -5,13 +5,17 @@ import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
 import classNames from "classnames";
 import MenuIcon from "@material-ui/icons/Menu";
-import {InitializeSearch, ClearSearch, Search} from "../Search/Search";
+import {
+  initializeSearch,
+  clearSearch,
+  ImageSearch,
+  search
+} from "../ImageSearch/ImageSearch";
 import {ConnectedImportImagesButton} from "../ImportImagesButton";
 import {Logo} from "../Logo";
 import {DeleteImageButton} from "../DeleteImageButton";
 import {makeStyles} from "@material-ui/styles";
 
-// @ts-ignore
 const useStyles = makeStyles(styles);
 
 export const GalleryDialogAppBar = (props: any) => {
@@ -37,13 +41,13 @@ export const GalleryDialogAppBar = (props: any) => {
   };
 
   const onSearchIconClick = () => {
-    InitializeSearch(categories, images, changeImagesVisibility);
-    const searchResultsToClear: boolean = Search(searchInput);
+    initializeSearch(categories, images, changeImagesVisibility);
+    const searchResultsToClear: boolean = search(searchInput);
     setClearSearchResults(searchResultsToClear);
   };
 
   const onClearImageSearchClick = () => {
-    ClearSearch();
+    clearSearch();
     setSearchInput("");
     setClearSearchResults(false);
   };
@@ -76,7 +80,7 @@ export const GalleryDialogAppBar = (props: any) => {
 
         <div style={{flexGrow: 1}} />
 
-        <Search
+        <ImageSearch
           onClearImageSearchClick={onClearImageSearchClick}
           onSearchIconClick={onSearchIconClick}
           onSearchInputChange={onSearchInputChange}

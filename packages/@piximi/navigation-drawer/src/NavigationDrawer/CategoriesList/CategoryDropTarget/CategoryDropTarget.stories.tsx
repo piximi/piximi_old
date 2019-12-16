@@ -1,5 +1,5 @@
 import {storiesOf} from "@storybook/react";
-import React from "react";
+import * as React from "react";
 import {ConnectedCategoryDropTarget} from "./ConnectedCategoryDropTarget";
 import {ConnectedCategoryListItem} from "../CategoryListItem/CategoryListItem/ConnectedCategoryListItem";
 import HTML5Backend from "react-dnd-html5-backend";
@@ -23,7 +23,6 @@ storiesOf("CategoryDropTarget", module).add("example", () => (
   <Provider store={store}>
     <DndProvider backend={HTML5Backend}>
       <ConnectedCategoryDropTarget category={category}>
-        // @ts-ignore
         <ConnectedCategoryListItem category={category} isOver={true} />
       </ConnectedCategoryDropTarget>
     </DndProvider>

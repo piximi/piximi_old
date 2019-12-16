@@ -1,5 +1,5 @@
 import * as React from "react";
-import {styles} from "./GalleryDialogContainer.css";
+import {styles} from "./GalleryDialog.css";
 import classNames from "classnames";
 import {ConnectedGalleryDialogAppBar} from "../GalleryDialogAppBar";
 import HTML5Backend from "react-dnd-html5-backend";

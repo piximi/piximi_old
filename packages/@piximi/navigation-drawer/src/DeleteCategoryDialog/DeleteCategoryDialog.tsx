@@ -31,18 +31,15 @@ export const DeleteCategoryDialog = (props: DeleteCategoryDialogProps) => {
   const {t: translation} = useTranslation();
 
   return (
-    // @ts-ignore
     <Dialog open={open} onClose={onClose}>
-      // @ts-ignore
       <DialogTitle id="alert-dialog-title">{dialogTitle}</DialogTitle>
-      // @ts-ignore
+
       <DialogContent>
-        // @ts-ignore
         <DialogContentText id="alert-dialog-description">
           {dialogContentText}
         </DialogContentText>
       </DialogContent>
-      // @ts-ignore
+
       <DialogActions>
         <Button onClick={onClose} color="primary">
           {translation("Cancel")}

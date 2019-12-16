@@ -23,26 +23,24 @@ export const ClassifierList = () => {
   return (
     <List dense>
       <ListItem button onClick={collapseList}>
-        // @ts-ignore
         <ListItemIcon>
           {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItemIcon>
-        // @ts-ignore
+
         <ListItemText primary="Classifier" />
       </ListItem>
-      // @ts-ignore
+
       <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
-        // @ts-ignore
         <ConnectedFitListItem
           datasetInitialized={datasetInitialized}
           setDatasetInitialized={setDatasetInitialized}
         />
-        // @ts-ignore
+
         <ConnectedEvaluateListItem
           datasetInitialized={datasetInitialized}
           setDatasetInitialized={setDatasetInitialized}
         />
-        // @ts-ignore
+
         <ConnectedPredictListItem />
       </Collapse>
     </List>

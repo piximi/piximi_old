@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {storiesOf} from "@storybook/react";
 import {ConnectedDeleteCategoryDialog} from "./ConnectedDeleteCategoryDialog";
 import {Category} from "@piximi/types";

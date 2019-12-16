@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {GalleryDialog} from "./GalleryDialogContainer";
+import {GalleryDialog} from "./GalleryDialog";
 import {Dispatch} from "redux";
 import {Classifier} from "@piximi/types";
 import {updateImageCategoryAction} from "@piximi/store";

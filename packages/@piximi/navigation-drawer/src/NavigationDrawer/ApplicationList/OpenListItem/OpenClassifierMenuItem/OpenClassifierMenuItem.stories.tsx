@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {storiesOf} from "@storybook/react";
 import {Provider} from "react-redux";
 import {store} from "@piximi/store";

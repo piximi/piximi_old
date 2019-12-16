@@ -11,17 +11,15 @@ export const CreateCategoryListItem = () => {
   const {t: translation} = useTranslation();
 
   return (
-    // @ts-ignore
     <React.Fragment>
       <ListItem button onClick={openDialog}>
-        // @ts-ignore
         <ListItemIcon>
           <AddIcon />
         </ListItemIcon>
-        // @ts-ignore
+
         <ListItemText primary={translation("Create category")} />
       </ListItem>
-      // @ts-ignore
+
       <ConnectedCreateCategoryDialog
         onClose={closeDialog}
         open={openedDialog}

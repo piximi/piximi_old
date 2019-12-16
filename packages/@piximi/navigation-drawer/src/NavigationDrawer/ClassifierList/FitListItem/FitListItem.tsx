@@ -22,17 +22,15 @@ export const FitListItem = (props: FitListItemProps) => {
   };
 
   return (
-    // @ts-ignore
     <React.Fragment>
       <ListItem button dense onClick={fit}>
-        // @ts-ignore
         <ListItemIcon>
           <ScatterPlotIcon />
         </ListItemIcon>
-        // @ts-ignore
+
         <ListItemText primary={translation("Fit")} />
       </ListItem>
-      // @ts-ignore
+
       <ConnectedFitClassifierDialog
         closeDialog={closeDialog}
         openedDialog={openedDialog}

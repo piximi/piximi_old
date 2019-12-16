@@ -22,17 +22,15 @@ export const EvaluateListItem = (probs: EvaluateListItemProbs) => {
   };
 
   return (
-    // @ts-ignore
     <React.Fragment>
       <ListItem button dense onClick={evaluate}>
-        // @ts-ignore
         <ListItemIcon>
           <BarChartIcon />
         </ListItemIcon>
-        // @ts-ignore
+
         <ListItemText primary={translation("Evaluate")} />
       </ListItem>
-      // @ts-ignore
+
       <ConnectedEvaluateClassifierDialog
         closeDialog={closeDialog}
         openedDialog={openedDialog}

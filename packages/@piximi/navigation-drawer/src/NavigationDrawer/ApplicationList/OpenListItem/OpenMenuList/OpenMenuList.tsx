@@ -2,6 +2,7 @@ import * as React from "react";
 import {OpenWeightsMenuItem} from "../OpenWeightsMenuItem";
 import {OpenExampleClassifierMenuItem} from "../OpenExampleClassifierMenuItem";
 import {Divider, MenuList, Paper, Popover} from "@material-ui/core";
+import {ConnectedOpenClassifierMenuItem} from "../OpenClassifierMenuItem";
 
 type Props = {
   anchorEl: any;
@@ -18,18 +19,14 @@ export const OpenMenuList = (props: Props) => {
   };
 
   return (
-    // @ts-ignore
     <Popover
       anchorPosition={anchorPosition}
       anchorReference="anchorPosition"
       onClose={closeMenu}
       open={openedMenu}
     >
-      // @ts-ignore
       <Paper>
-        // @ts-ignore
         <MenuList dense>
-          // @ts-ignore
           <ConnectedOpenClassifierMenuItem closeMenu={closeMenu} />
           <Divider />
           <OpenExampleClassifierMenuItem closeMenu={closeMenu} />

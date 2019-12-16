@@ -8,9 +8,9 @@ export const ApplicationList = () => {
   return (
     <List dense>
       <NewClassifierListItem />
-      // @ts-ignore
+
       <ConnectedOpenListItem />
-      // @ts-ignore
+
       <ConnectedSaveListItem />
     </List>
   );

@@ -48,11 +48,11 @@ export const search = (searchInput: string) => {
   return invisibleImages.length !== 0;
 };
 
-export const ClearSearch = () => {
+export const clearSearch = () => {
   changeImagesVisibilityFunction(invisibleImages, true);
 };
 
-export const InitializeSearch = (
+export const initializeSearch = (
   categories: Category[],
   images: Image[],
   changeImagesVisibility: (itentifiers: string[], visibility: boolean) => void
@@ -104,7 +104,7 @@ const flattenImage = (image: Image) => {
   });
 };
 
-type SearchProps = {
+type ImageSearchProps = {
   onClearImageSearchClick: () => void;
   onSearchIconClick: () => void;
   onSearchInputChange: any;
@@ -112,7 +112,7 @@ type SearchProps = {
   onKeyPress: any;
 };
 
-export const Search = (props: SearchProps) => {
+export const ImageSearch = (props: ImageSearchProps) => {
   const {
     clearSearchResults,
     onClearImageSearchClick,

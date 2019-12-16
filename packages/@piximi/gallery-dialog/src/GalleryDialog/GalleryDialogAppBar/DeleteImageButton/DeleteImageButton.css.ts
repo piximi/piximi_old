@@ -1,6 +1,7 @@
 import {createStyles} from "@material-ui/styles";
+import {Theme} from "@material-ui/core";
 
-const styles = () =>
+export const styles = ({palette, spacing}: Theme) =>
   createStyles({
     button: {
       padding: "8px"
@@ -9,5 +10,3 @@ const styles = () =>
       padding: "4px 8px"
     }
   });
-
-export default styles;

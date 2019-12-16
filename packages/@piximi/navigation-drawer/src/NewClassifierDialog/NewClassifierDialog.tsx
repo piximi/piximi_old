@@ -36,7 +36,6 @@ export const NewClassifierDialog = (props: NewClassifierDialogProps) => {
       <AlertDialogTitle title={"Create new classifier"} />
 
       <AlertDialogContent>
-        // @ts-ignore
         <TextField
           autoFocus
           fullWidth

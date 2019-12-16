@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {storiesOf} from "@storybook/react";
 import {ChangeCategoryVisibilityMenuItem} from "./ChangeCategoryVisibilityMenuItem";
 import {Category, Classifier, Image} from "@piximi/types";

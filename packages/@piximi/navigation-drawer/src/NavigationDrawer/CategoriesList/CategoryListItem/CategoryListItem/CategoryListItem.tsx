@@ -70,7 +70,6 @@ export const CategoryListItem = (props: CategoryListItemProps) => {
   };
 
   return (
-    // @ts-ignore
     <ConnectedCategoryDropTarget category={category}>
       <StyledCategory
         color={category.visualization.color}
@@ -78,16 +77,15 @@ export const CategoryListItem = (props: CategoryListItemProps) => {
         className={className}
       >
         <ListItem classes={listItemClasses} dense style={{cursor: "pointer"}}>
-          // @ts-ignore
           <ListItemIcon onClick={onToggleVisibilityClick}>
             <VisibleIcon
               color={category.visualization.color}
               visible={category.visualization.visible}
             />
           </ListItemIcon>
-          // @ts-ignore
+
           <ListItemText primary={category.description} />
-          // @ts-ignore
+
           <ListItemSecondaryAction>
             <IconButton onClick={openMenu}>
               <MoreHorizIcon />
