@@ -11,7 +11,9 @@
     {"path": "../components"},
     {"path": "../hooks"},
     {"path": "../image-dialog"},
+    {"path": "../navigation-drawer"},
     {"path": "../store"},
-    {"path": "../types"}
+    {"path": "../types"},
+    {"path": "../upload-image-dialog"}
   ]
 }

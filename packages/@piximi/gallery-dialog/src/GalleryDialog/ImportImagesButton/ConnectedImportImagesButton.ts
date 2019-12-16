@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {createImagesAction} from "@piximi/store";
 import * as uuid from "uuid";
-import {ImportImagesButton} from "../pages/images";
+import {ImportImagesButton} from "./ImportImagesButton";
 import {Dispatch} from "redux";
 import {Classifier, Image, Partition} from "@piximi/types";
 
@@ -52,9 +52,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const ConnectedImportImagesButton = connect(
+export const ConnectedImportImagesButton = connect(
   mapStateToProps,
   mapDispatchToProps
 )(ImportImagesButton);
-
-export default ConnectedImportImagesButton;

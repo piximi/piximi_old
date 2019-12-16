@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {DeleteImageDialog} from "../pages/images";
+import {DeleteImageDialog} from "./DeleteImageDialog";
 import {deleteImageAction} from "@piximi/store";
 import {Dispatch} from "redux";
 import {Classifier} from "@piximi/types";
@@ -30,9 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const ConnectedDeleteImageDialog = connect(
+export const ConnectedDeleteImageDialog = connect(
   mapStateToProps,
   mapDispatchToProps
 )(DeleteImageDialog);
-
-export default ConnectedDeleteImageDialog;

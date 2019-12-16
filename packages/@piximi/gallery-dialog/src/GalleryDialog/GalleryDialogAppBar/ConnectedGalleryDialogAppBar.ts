@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import {updateImageVisibilityAction} from "@piximi/store";
 import {Dispatch} from "redux";
 import {Classifier} from "@piximi/types";
-import {PrimaryAppBar} from "./PrimaryAppBar";
+import {GalleryDialogAppBar} from "./GalleryDialogAppBar";
 
 type State = {
   classifier: Classifier;
@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-export const ConnectedPrimaryAppBar = connect(
+export const ConnectedGalleryDialogAppBar = connect(
   mapStateToProps,
   mapDispatchToProps
-)(PrimaryAppBar);
+)(GalleryDialogAppBar);

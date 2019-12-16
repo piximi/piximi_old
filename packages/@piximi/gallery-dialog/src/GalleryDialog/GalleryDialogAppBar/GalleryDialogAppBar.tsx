@@ -15,13 +15,15 @@ import {
   InitializeSearch,
   ClearSearch
 } from "../ImageSearch/ImageSearch";
-import {ConnectedImportImagesButton} from "../../../containers";
-import {DeleteButton, Logo} from "..";
+import {ConnectedImportImagesButton} from "../ImportImagesButton";
+import {Logo} from "../Logo";
+import {DeleteButton} from "../DeleteButton";
 import {makeStyles} from "@material-ui/styles";
 
+// @ts-ignore
 const useStyles = makeStyles(styles);
 
-export const PrimaryAppBar = (props: any) => {
+export const GalleryDialogAppBar = (props: any) => {
   const classes = useStyles({});
 
   const {

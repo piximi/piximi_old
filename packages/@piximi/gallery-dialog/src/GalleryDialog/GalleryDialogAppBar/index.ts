@@ -1,0 +1,1 @@
+export {ConnectedGalleryDialogAppBar} from "./ConnectedGalleryDialogAppBar";

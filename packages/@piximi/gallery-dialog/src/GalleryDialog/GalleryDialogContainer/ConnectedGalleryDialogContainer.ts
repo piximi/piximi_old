@@ -1,16 +1,18 @@
 import {connect} from "react-redux";
-import {GalleryItemCategoryMenu} from "../pages/images";
-import {updateImageCategoryAction} from "@piximi/store";
+import {GalleryDialogContainer} from "./GalleryDialogContainer";
 import {Dispatch} from "redux";
 import {Classifier} from "@piximi/types";
+import {updateImageCategoryAction} from "@piximi/store";
 
 type State = {
   classifier: Classifier;
+  settings: any;
 };
 
 const mapStateToProps = (state: State) => {
   return {
-    categories: state.classifier.categories
+    categories: state.classifier.categories,
+    images: state.classifier.images
   };
 };
 
@@ -29,9 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const ConnectedItemCategoryMenu = connect(
+export const ConnectedGalleryDialogContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GalleryItemCategoryMenu);
-
-export default ConnectedItemCategoryMenu;
+)(GalleryDialogContainer);
