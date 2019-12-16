@@ -1,19 +1,4 @@
 {
-  "files": [
-    "dist",
-    "src"
-  ],
-  "main": "./dist/index.js",
-  "name": "@piximi/upload-image-dialog",
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "build": "tsc --build ./tsconfig.json",
-    "clean": "rm -rf ./dist ./tsconfig.tsbuildinfo"
-  },
-  "types": "./dist/index.d.ts",
-  "version": "0.0.0",
   "dependencies": {
     "@material-ui/core": "^4.7.2",
     "@material-ui/icons": "^4.5.1",
@@ -37,5 +22,21 @@
     "@types/redux-logger": "^3.0.7",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1"
-  }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "./dist/index.js",
+  "name": "@piximi/upload-image-dialog",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc --build ./tsconfig.json",
+    "clean": "rm -rf ./dist ./tsconfig.tsbuildinfo",
+    "storybook": "start-storybook"
+  },
+  "types": "./dist/index.d.ts",
+  "version": "0.0.0"
 }

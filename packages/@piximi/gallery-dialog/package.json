@@ -32,7 +32,8 @@
   "name": "@piximi/gallery-dialog",
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo"
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "storybook": "start-storybook"
   },
   "types": "./dist/index.d.ts",
   "version": "0.0.0"

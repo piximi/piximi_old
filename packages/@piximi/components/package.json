@@ -4,6 +4,7 @@
     "@material-ui/styles": "^4.7.1",
     "@piximi/hooks": "*",
     "@piximi/types": "*",
+    "@storybook/react": "^5.2.8",
     "i18next": "^19.0.2",
     "react": "^16.12.0",
     "react-color": "^2.17.3",
@@ -13,13 +14,16 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
+    "@storybook/addon-info": "^5.2.8",
     "@storybook/react": "^5.2.8",
     "@types/jest": "^24.0.23",
     "@types/react-color": "^3.0.1",
     "@types/redux-logger": "^3.0.7",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
+    "react-docgen-typescript-loader": "^3.6.0",
     "typescript": "^3.7.3",
     "webpack": "^4.41.2"
   },
@@ -32,7 +36,8 @@
   "name": "@piximi/components",
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo"
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "storybook": "start-storybook"
   },
   "types": "./dist/index.d.ts",
   "version": "0.0.0"

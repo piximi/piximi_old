@@ -40,6 +40,7 @@
   "scripts": {
     "build": "tsc --build tsconfig.json",
     "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "storybook": "start-storybook",
     "test": "yarn build && jest"
   },
   "types": "./dist/index.d.ts",
