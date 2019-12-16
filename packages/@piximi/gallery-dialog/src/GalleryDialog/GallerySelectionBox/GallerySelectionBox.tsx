@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../GalleryDialog/Gallery.css";
+// import "./GallerySelectionBox.css";
 import {reCalc} from "../helper";
 
 type GallerySelectionBoxProps = {

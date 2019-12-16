@@ -3,7 +3,7 @@ import {Theme} from "@material-ui/core";
 
 const drawerWidth = 280;
 
-const styles = (theme: Theme) =>
+export const styles = (theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1
@@ -92,5 +92,3 @@ const styles = (theme: Theme) =>
       left: "50%"
     }
   });
-
-export default styles;

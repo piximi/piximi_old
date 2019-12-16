@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ConnectedApplication} from "./containers";
+import {ConnectedGalleryDialogContainer} from "@piximi/gallery-dialog";
 import {createMuiTheme} from "@material-ui/core/styles";
 import {ThemeProvider} from "@material-ui/styles";
 
@@ -11,8 +11,10 @@ const theme = createMuiTheme({
 
 const App = () => {
   return (
+    // @ts-ignore
     <ThemeProvider theme={theme}>
-      <ConnectedApplication />
+      // @ts-ignore
+      <ConnectedGalleryDialogContainer />
     </ThemeProvider>
   );
 };

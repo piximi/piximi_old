@@ -1,5 +1,5 @@
 import * as React from "react";
-import styles from "./PrimaryAppBar.css";
+import {styles} from "./GalleryDialogAppBar.css";
 import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";

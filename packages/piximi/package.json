@@ -11,6 +11,7 @@
     "@material-ui/styles": "^4.7.1",
     "@types/react-dom": "^16.9.4",
     "@types/string-hash": "^1.1.1",
+    "@piximi/gallery-dialog": "*",
     "cli-table": "^0.3.1",
     "d3": "^5.14.2",
     "filtrex": "^2.0.0",

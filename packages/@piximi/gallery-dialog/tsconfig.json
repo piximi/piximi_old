@@ -2,11 +2,12 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "./dist",
+    "plugins": [{"name": "typescript-plugin-css-modules"}],
     "rootDir": "./src"
   },
   "exclude": ["src/setupTests.ts", "src/**/*.stories.tsx", "src/**/*.test.tsx"],
   "extends": "../../../tsconfig.json",
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*.css", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {"path": "../components"},
     {"path": "../hooks"},

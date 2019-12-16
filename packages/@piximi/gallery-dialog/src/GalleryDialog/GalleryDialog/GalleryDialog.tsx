@@ -1,4 +1,4 @@
-import "./Gallery.css";
+// import "./Gallery.css";
 import * as React from "react";
 import {collisionDetection} from "../helper";
 import {GalleryCustomDragLayer} from "../GalleryCustomDragLayer";
