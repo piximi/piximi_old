@@ -1,0 +1,1 @@
+export {DeleteImageButton} from "./DeleteImageButton";

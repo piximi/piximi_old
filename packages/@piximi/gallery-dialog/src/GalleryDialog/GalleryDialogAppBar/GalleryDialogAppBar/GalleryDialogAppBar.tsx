@@ -3,21 +3,12 @@ import {styles} from "./GalleryDialogAppBar.css";
 import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
-import Tooltip from "@material-ui/core/Tooltip";
-import Paper from "@material-ui/core/Paper";
-import InputBase from "@material-ui/core/InputBase";
 import classNames from "classnames";
 import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import Clear from "@material-ui/icons/Clear";
-import {
-  ImageSearch,
-  InitializeSearch,
-  ClearSearch
-} from "../ImageSearch/ImageSearch";
+import {InitializeSearch, ClearSearch, Search} from "../Search/Search";
 import {ConnectedImportImagesButton} from "../ImportImagesButton";
 import {Logo} from "../Logo";
-import {DeleteButton} from "../DeleteButton";
+import {DeleteImageButton} from "../DeleteImageButton";
 import {makeStyles} from "@material-ui/styles";
 
 // @ts-ignore
@@ -47,7 +38,7 @@ export const GalleryDialogAppBar = (props: any) => {
 
   const onSearchIconClick = () => {
     InitializeSearch(categories, images, changeImagesVisibility);
-    const searchResultsToClear: boolean = ImageSearch(searchInput);
+    const searchResultsToClear: boolean = Search(searchInput);
     setClearSearchResults(searchResultsToClear);
   };
 
@@ -84,33 +75,14 @@ export const GalleryDialogAppBar = (props: any) => {
         <Logo />
 
         <div style={{flexGrow: 1}} />
-        <Tooltip
-          title="Search Images: e.g. cetegory == positive"
-          placement="bottom"
-        >
-          <Paper style={{height: 45, justifyContent: "center"}}>
-            <InputBase
-              placeholder="Search Images"
-              style={{paddingLeft: "20px"}}
-              onKeyPress={onKeyPress}
-              onChange={onSearchInputChange}
-            />
 
-            {clearSearchResults && (
-              <IconButton
-                style={{paddingRight: "0px"}}
-                onClick={onClearImageSearchClick}
-                aria-label="clear search results"
-              >
-                <Clear />
-              </IconButton>
-            )}
-
-            <IconButton aria-label="search" onClick={onSearchIconClick}>
-              <SearchIcon />
-            </IconButton>
-          </Paper>
-        </Tooltip>
+        <Search
+          onClearImageSearchClick={onClearImageSearchClick}
+          onSearchIconClick={onSearchIconClick}
+          onSearchInputChange={onSearchInputChange}
+          clearSearchResults={clearSearchResults}
+          onKeyPress={onKeyPress}
+        />
 
         <div className={classNames(classes.padding)} />
 
@@ -118,7 +90,7 @@ export const GalleryDialogAppBar = (props: any) => {
 
         <div className={classNames(classes.padding)} />
 
-        <DeleteButton
+        <DeleteImageButton
           selectedImages={selectedImages}
           setSelectedImages={setSelectedImages}
         />

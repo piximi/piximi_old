@@ -1,1 +1,1 @@
-export {ConnectedGalleryDialogContainer} from "./GalleryDialog";
+export {ConnectedGalleryDialog} from "./GalleryDialog";

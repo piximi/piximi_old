@@ -11,9 +11,7 @@ const theme = createMuiTheme({
 
 const App = () => {
   return (
-    // @ts-ignore
     <ThemeProvider theme={theme}>
-      // @ts-ignore
       <ConnectedGalleryDialogContainer />
     </ThemeProvider>
   );

@@ -1,5 +1,12 @@
 import {Image, Partition, Category} from "@piximi/types";
 import {compileExpression} from "filtrex";
+import * as React from "react";
+import Paper from "@material-ui/core/Paper";
+import InputBase from "@material-ui/core/InputBase";
+import IconButton from "@material-ui/core/IconButton";
+import Clear from "@material-ui/icons/Clear";
+import SearchIcon from "@material-ui/icons/Search";
+import Tooltip from "@material-ui/core/Tooltip";
 
 let changeImagesVisibilityFunction: (
   itentifiers: string[],
@@ -16,7 +23,7 @@ const flattendedImages: {
   partition: string;
 }[] = [];
 
-export const ImageSearch = (searchInput: string) => {
+export const search = (searchInput: string) => {
   try {
     var searchFunction = compileExpression(searchInput);
   } catch (error) {
@@ -95,4 +102,52 @@ const flattenImage = (image: Image) => {
     prediction: prediction,
     partition: partition
   });
+};
+
+type SearchProps = {
+  onClearImageSearchClick: () => void;
+  onSearchIconClick: () => void;
+  onSearchInputChange: any;
+  clearSearchResults: any;
+  onKeyPress: any;
+};
+
+export const Search = (props: SearchProps) => {
+  const {
+    clearSearchResults,
+    onClearImageSearchClick,
+    onSearchIconClick,
+    onSearchInputChange,
+    onKeyPress
+  } = props;
+
+  return (
+    <Tooltip
+      title="Search Images: e.g. cetegory == positive"
+      placement="bottom"
+    >
+      <Paper style={{height: 45, justifyContent: "center"}}>
+        <InputBase
+          placeholder="Search Images"
+          style={{paddingLeft: "20px"}}
+          onKeyPress={onKeyPress}
+          onChange={onSearchInputChange}
+        />
+
+        {clearSearchResults && (
+          <IconButton
+            style={{paddingRight: "0px"}}
+            onClick={onClearImageSearchClick}
+            aria-label="clear search results"
+          >
+            <Clear />
+          </IconButton>
+        )}
+
+        <IconButton aria-label="search" onClick={onSearchIconClick}>
+          <SearchIcon />
+        </IconButton>
+      </Paper>
+    </Tooltip>
+  );
 };

@@ -3,14 +3,14 @@ import styles from "./DeleteButton.css";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Delete from "@material-ui/icons/Delete";
-import {ConnectedDeleteImageDialog} from "../DeleteImageDialog";
+import {ConnectedDeleteImageDialog} from "../../DeleteImageDialog";
 import {makeStyles} from "@material-ui/styles";
 import {useDialog} from "@piximi/hooks";
 import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles(styles);
 
-export const DeleteButton = (props: any) => {
+export const DeleteImageButton = (props: any) => {
   const {t: translation} = useTranslation();
 
   const {openedDialog, openDialog, closeDialog} = useDialog();
