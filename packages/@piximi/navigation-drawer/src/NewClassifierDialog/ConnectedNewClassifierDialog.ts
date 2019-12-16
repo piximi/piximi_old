@@ -1,16 +1,16 @@
 import {connect} from "react-redux";
-import {createClassifierAction} from "@piximi/store";
-import {Classifier} from "@piximi/types";
+import {createProject} from "@piximi/store";
+import {Project} from "@piximi/types";
 import * as uuid from "uuid";
 import {Dispatch} from "redux";
 import {NewClassifierDialog} from "./NewClassifierDialog";
 
 type State = {
-  classifier: Classifier;
+  project: Project;
 };
 
 const mapStateToProps = (state: State) => {
-  return state.classifier;
+  return state.project;
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         name: name
       };
 
-      const action = createClassifierAction(classifier);
+      const action = createProject(classifier);
 
       dispatch(action);
     }

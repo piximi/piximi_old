@@ -1,16 +1,16 @@
-import {Classifier, Image, Partition} from "@piximi/types";
+import {Project, Image, Partition} from "@piximi/types";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
-import {createImageAction} from "@piximi/store";
+import {createImage} from "@piximi/store";
 import {UploadImageDialog} from "./UploadImageDialog";
 
 type State = {
-  classifier: Classifier;
+  project: Project;
 };
 
 const mapStateToProps = (state: State) => {
   return {
-    images: state.classifier.images
+    images: state.project.images
   };
 };
 
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         }
       };
 
-      const action = createImageAction(payload);
+      const action = createImage(payload);
 
       dispatch(action);
     }

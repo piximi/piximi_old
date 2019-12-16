@@ -1,17 +1,17 @@
 import {connect} from "react-redux";
-import {updateImagesPartitionAction} from "@piximi/store";
-import {Classifier} from "@piximi/types";
+import {updateImagesPartition} from "@piximi/store";
+import {Project} from "@piximi/types";
 import {Dispatch} from "redux";
 import {FitClassifierDialog} from "./FitClassifierDialog";
 
 type State = {
-  classifier: Classifier;
+  project: Project;
 };
 
 const mapStateToProps = (state: State) => {
   return {
-    categories: state.classifier.categories,
-    images: state.classifier.images
+    categories: state.project.categories,
+    images: state.project.images
   };
 };
 
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     setImagesPartition: (partitions: number[]) => {
       const payload = {partitions: partitions};
 
-      const action = updateImagesPartitionAction(payload);
+      const action = updateImagesPartition(payload);
 
       dispatch(action);
     }

@@ -1,19 +1,16 @@
 import {connect} from "react-redux";
 import {ImageViewer} from "./ImageViewer";
-import {
-  updateImageBrightnessAction,
-  updateImageContrastAction
-} from "@piximi/store";
+import {updateImageBrightness, updateImageContrast} from "@piximi/store";
 import {Dispatch} from "redux";
-import {Classifier, Image} from "@piximi/types";
+import {Project, Image} from "@piximi/types";
 
 type State = {
-  classifier: Classifier;
+  project: Project;
 };
 
 const mapStateToProps = (state: State) => {
   return {
-    images: state.classifier.images
+    images: state.project.images
   };
 };
 
@@ -25,7 +22,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         brightness: brightness
       };
 
-      const brightnessAction = updateImageBrightnessAction(brightnessPayload);
+      const brightnessAction = updateImageBrightness(brightnessPayload);
 
       dispatch(brightnessAction);
 
@@ -34,7 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         contrast: contrast
       };
 
-      const contrastAction = updateImageContrastAction(contrastPayload);
+      const contrastAction = updateImageContrast(contrastPayload);
 
       dispatch(contrastAction);
     },
@@ -49,7 +46,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
           brightness: brightness
         };
 
-        const brightnessAction = updateImageBrightnessAction(brightnessPayload);
+        const brightnessAction = updateImageBrightness(brightnessPayload);
 
         dispatch(brightnessAction);
 
@@ -58,7 +55,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
           contrast: contrast
         };
 
-        const contrastAction = updateImageContrastAction(contrastPayload);
+        const contrastAction = updateImageContrast(contrastPayload);
 
         dispatch(contrastAction);
       }

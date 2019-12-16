@@ -56,7 +56,7 @@ export const PredictListItem = (probs: PredictListItemProbs) => {
 
   return (
     <React.Fragment>
-      <ListItem button dense onClick={predict}>
+      <ListItem button dense disabled onClick={predict}>
         <ListItemIcon>
           <LabelImportantIcon />
         </ListItemIcon>

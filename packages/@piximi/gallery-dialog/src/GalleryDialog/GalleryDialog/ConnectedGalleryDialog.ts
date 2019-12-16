@@ -1,18 +1,17 @@
 import {connect} from "react-redux";
 import {GalleryDialog} from "./GalleryDialog";
 import {Dispatch} from "redux";
-import {Classifier} from "@piximi/types";
-import {updateImageCategoryAction} from "@piximi/store";
+import {Project} from "@piximi/types";
+import {updateImageCategory} from "@piximi/store";
 
 type State = {
-  classifier: Classifier;
-  settings: any;
+  project: Project;
 };
 
 const mapStateToProps = (state: State) => {
   return {
-    categories: state.classifier.categories,
-    images: state.classifier.images
+    categories: state.project.categories,
+    images: state.project.images
   };
 };
 
@@ -24,7 +23,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         categoryIdentifier: categoryIdentifier
       };
 
-      const action = updateImageCategoryAction(payload);
+      const action = updateImageCategory(payload);
 
       dispatch(action);
     }

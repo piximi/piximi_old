@@ -1,17 +1,17 @@
 import {connect} from "react-redux";
-import {updateImageVisibilityAction} from "@piximi/store";
+import {updateImageVisibility} from "@piximi/store";
 import {Dispatch} from "redux";
-import {Classifier} from "@piximi/types";
+import {Project} from "@piximi/types";
 import {GalleryDialogAppBar} from "./GalleryDialogAppBar";
 
 type State = {
-  classifier: Classifier;
+  project: Project;
 };
 
 const mapStateToProps = (state: State) => {
   return {
-    images: state.classifier.images,
-    categories: state.classifier.categories
+    images: state.project.images,
+    categories: state.project.categories
   };
 };
 
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         visible: visibility
       };
 
-      const action = updateImageVisibilityAction(payload);
+      const action = updateImageVisibility(payload);
 
       dispatch(action);
     }

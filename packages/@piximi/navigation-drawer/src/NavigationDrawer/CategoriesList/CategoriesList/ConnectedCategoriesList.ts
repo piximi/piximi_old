@@ -1,19 +1,19 @@
 import {connect} from "react-redux";
 import {
-  toggleCategoryVisibilityAction,
-  updateCategoryVisibilityAction
+  toggleCategoryVisibility,
+  updateCategoryVisibility
 } from "@piximi/store";
-import {Classifier} from "@piximi/types";
+import {Project} from "@piximi/types";
 import {Dispatch} from "redux";
 import {CategoriesList} from "./CategoriesList";
 
 type State = {
-  classifier: Classifier;
+  project: Project;
 };
 
 const mapStateToProps = (state: State) => {
   return {
-    categories: state.classifier.categories
+    categories: state.project.categories
   };
 };
 
@@ -22,14 +22,14 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     toggleVisibility: (identifier: string) => {
       const payload = {identifier: identifier};
 
-      const action = toggleCategoryVisibilityAction(payload);
+      const action = toggleCategoryVisibility(payload);
 
       dispatch(action);
     },
     updateVisibility: (identifier: string, visible: boolean) => {
       const payload = {identifier: identifier, visible: visible};
 
-      const action = updateCategoryVisibilityAction(payload);
+      const action = updateCategoryVisibility(payload);
 
       dispatch(action);
     }
