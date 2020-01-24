@@ -94,8 +94,7 @@ export function ImportImagesButton(props: any) {
   };
 
   // prettier-ignore
-  //@ts-ignore
-  const inputElement = <input ref={inputElFolder} type="file" onChange={onInputChange} directory="" webkitdirectory="" style={{ display: 'none' }} />
+  const inputElement = <input ref={inputElFolder} type="file" onChange={onInputChange} style={{ display: 'none' }} />
 
   return (
     <div>
