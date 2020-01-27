@@ -27,7 +27,6 @@ export const DeleteImageButton = (props: DeleteImageButtonProps) => {
   return (
     // @ts-ignore
     <React.Fragment>
-      // @ts-ignore
       <Tooltip title={translation("Delete images")}>
         <IconButton
           aria-label={translation("Delete images")}
@@ -37,7 +36,6 @@ export const DeleteImageButton = (props: DeleteImageButtonProps) => {
           <Delete classes={{root: classes.icon}} />
         </IconButton>
       </Tooltip>
-      // @ts-ignore
       <ConnectedDeleteImageDialog
         setSelectedImages={setSelectedImages}
         selectedImages={selectedImages}
