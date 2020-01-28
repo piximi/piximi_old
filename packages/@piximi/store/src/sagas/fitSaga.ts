@@ -1,10 +1,24 @@
 import {fit} from "@piximi/models";
-import {put, takeEvery} from "redux-saga/effects";
+import {put, select, takeEvery} from "redux-saga/effects";
 
 import {fittedAction} from "../actions";
+import {
+  compiledSelector,
+  dataSelector,
+  fitOptionsSelector,
+  validationDataSelector
+} from "../selectors";
 
 export function* fitSaga(action: any) {
-  const {compiled, data, validationData, options} = action.payload;
+  const _ = action.payload;
+
+  const compiled = yield select(compiledSelector);
+
+  const data = yield select(dataSelector);
+
+  const validationData = yield select(validationDataSelector);
+
+  const options = yield select(fitOptionsSelector);
 
   const {fitted, status} = yield fit(compiled, data, validationData, options);
 
