@@ -1,10 +1,13 @@
 import {compile} from "@piximi/models";
-import {put, takeEvery} from "redux-saga/effects";
+import {put, select, takeEvery} from "redux-saga/effects";
 
 import {compiledAction} from "../actions";
+import {openedSelector} from "../selectors";
 
 export function* compileSaga(action: any) {
-  const {opened, options} = action.payload;
+  const {options} = action.payload;
+
+  const opened = yield select(openedSelector);
 
   const compiled = yield compile(opened, options);
 

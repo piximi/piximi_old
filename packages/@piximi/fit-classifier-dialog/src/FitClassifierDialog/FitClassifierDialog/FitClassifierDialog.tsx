@@ -1,5 +1,3 @@
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
 import Dialog from "@material-ui/core/Dialog/Dialog";
 import * as React from "react";
 

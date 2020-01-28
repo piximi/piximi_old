@@ -3,6 +3,7 @@ import {useStyles} from "./GeneratorOptionsActions.css";
 import Button from "@material-ui/core/Button/Button";
 import ArrowBack from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
+import {GenerateButton} from "../GenerateButton";
 
 type GeneratorOptionsActionsProps = {
   activeStep: any;
@@ -32,14 +33,7 @@ export const GeneratorOptionsActions = ({
           <ArrowBack />
         </IconButton>
 
-        <Button
-          className={classes.button}
-          color="primary"
-          onClick={onCompileClick}
-          variant="contained"
-        >
-          Preprocess
-        </Button>
+        <GenerateButton next={next} />
       </div>
     </div>
   );
