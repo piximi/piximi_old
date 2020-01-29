@@ -35,12 +35,12 @@ const unknownCategory: Category = {
 state.categories.push(unknownCategory);
 
 export const reducer = createReducer(state, {
-  [actions.createCategory.toString()]: (state, action) => {
+  [actions.createCategoryAction.toString()]: (state, action) => {
     const {category} = action.payload;
 
     state.categories.push(category);
   },
-  [actions.createProject.toString()]: (state, action) => {
+  [actions.createProjectAction.toString()]: (state, action) => {
     const {name} = action.payload;
 
     state.categories = [];
@@ -51,7 +51,7 @@ export const reducer = createReducer(state, {
 
     state.name = name;
   },
-  [actions.openProject.toString()]: (state, action) => {
+  [actions.openProjectAction.toString()]: (state, action) => {
     const {categories, images, name} = action.payload;
 
     state.categories = categories;
@@ -60,17 +60,17 @@ export const reducer = createReducer(state, {
 
     state.name = name;
   },
-  [actions.createImage.toString()]: (state, action) => {
+  [actions.createImageAction.toString()]: (state, action) => {
     const {image} = action.payload;
 
     state.images.push(image);
   },
-  [actions.createImages.toString()]: (state, action) => {
+  [actions.createImagesAction.toString()]: (state, action) => {
     const {images} = action.payload;
 
     images.forEach((image: Image) => state.images.push(image));
   },
-  [actions.createImageScore.toString()]: (state, action) => {
+  [actions.createImageScoreAction.toString()]: (state, action) => {
     const {identifiers, scores} = action.payload;
     for (let i = 0; i < identifiers.length; i++) {
       const index: number = findImageIndex(state.images, identifiers[i]);
@@ -78,7 +78,7 @@ export const reducer = createReducer(state, {
       image.scores = scores[i];
     }
   },
-  [actions.deleteCategory.toString()]: (state, action) => {
+  [actions.deleteCategoryAction.toString()]: (state, action) => {
     const {identifier} = action.payload;
 
     state.categories = state.categories.filter((category: Category) => {
@@ -93,14 +93,14 @@ export const reducer = createReducer(state, {
       return image;
     });
   },
-  [actions.deleteImage.toString()]: (state, action) => {
+  [actions.deleteImageAction.toString()]: (state, action) => {
     const {identifier} = action.payload;
 
     state.images = state.images.filter(
       (image: Image) => image.identifier !== identifier
     );
   },
-  [actions.toggleCategoryVisibility.toString()]: (state, action) => {
+  [actions.toggleCategoryVisibilityAction.toString()]: (state, action) => {
     const {identifier} = action.payload;
 
     const index: number = findCategoryIndex(state.categories, identifier);
@@ -109,7 +109,7 @@ export const reducer = createReducer(state, {
 
     category.visualization.visible = !category.visualization.visible;
   },
-  [actions.updateCategoryColor.toString()]: (state, action) => {
+  [actions.updateCategoryColorAction.toString()]: (state, action) => {
     const {identifier, color} = action.payload;
 
     const index: number = findCategoryIndex(state.categories, identifier);
@@ -118,7 +118,7 @@ export const reducer = createReducer(state, {
 
     category.visualization.color = color;
   },
-  [actions.updateCategoryDescription.toString()]: (state, action) => {
+  [actions.updateCategoryDescriptionAction.toString()]: (state, action) => {
     const {identifier, description} = action.payload;
 
     const index: number = findCategoryIndex(state.categories, identifier);
@@ -127,7 +127,7 @@ export const reducer = createReducer(state, {
 
     category.description = description;
   },
-  [actions.updateCategoryVisibility.toString()]: (state, action) => {
+  [actions.updateCategoryVisibilityAction.toString()]: (state, action) => {
     const {identifier, visible} = action.payload;
 
     const index: number = findCategoryIndex(state.categories, identifier);
@@ -136,12 +136,12 @@ export const reducer = createReducer(state, {
 
     category.visualization.visible = visible;
   },
-  [actions.updateProjectName.toString()]: (state, action) => {
+  [actions.updateProjectNameAction.toString()]: (state, action) => {
     const {name} = action.payload;
 
     state.name = name;
   },
-  [actions.updateImageBrightness.toString()]: (state, action) => {
+  [actions.updateImageBrightnessAction.toString()]: (state, action) => {
     const {identifier, brightness} = action.payload;
 
     const index: number = findImageIndex(state.images, identifier);
@@ -150,7 +150,7 @@ export const reducer = createReducer(state, {
 
     image.visualization.brightness = brightness;
   },
-  [actions.updateImageCategory.toString()]: (state, action) => {
+  [actions.updateImageCategoryAction.toString()]: (state, action) => {
     const {identifier, categoryIdentifier} = action.payload;
 
     const index: number = findImageIndex(state.images, identifier);
@@ -159,7 +159,7 @@ export const reducer = createReducer(state, {
 
     image.categoryIdentifier = categoryIdentifier;
   },
-  [actions.updateImagesCategory.toString()]: (state, action) => {
+  [actions.updateImagesCategoryAction.toString()]: (state, action) => {
     const {identifiers, categoryIdentifier} = action.payload;
 
     identifiers.forEach((identifier: string) => {
@@ -168,7 +168,7 @@ export const reducer = createReducer(state, {
       image.categoryIdentifier = categoryIdentifier;
     });
   },
-  [actions.updateImageContrast.toString()]: (state, action) => {
+  [actions.updateImageContrastAction.toString()]: (state, action) => {
     const {identifier, contrast} = action.payload;
 
     const index: number = findImageIndex(state.images, identifier);
@@ -177,7 +177,7 @@ export const reducer = createReducer(state, {
 
     image.visualization.contrast = contrast;
   },
-  [actions.updateImageVisibility.toString()]: (state, action) => {
+  [actions.updateImageVisibilityAction.toString()]: (state, action) => {
     const {identifiers, visible} = action.payload;
 
     for (let i = 0; i < identifiers.length; i++) {
@@ -188,7 +188,7 @@ export const reducer = createReducer(state, {
       image.visualization.visible = visible;
     }
   },
-  [actions.updateImagesPartition.toString()]: (state, action) => {
+  [actions.updateImagesPartitionAction.toString()]: (state, action) => {
     const {partitions} = action.payload;
 
     state.images.forEach((image: Image) => {

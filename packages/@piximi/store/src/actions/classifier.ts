@@ -42,11 +42,7 @@ export const fittedAction = createAction<{
   status: History;
 }>("CLASSIFIER_FITTED");
 
-export const generateAction = createAction<{
-  images: Array<Image>;
-  categories: Array<Category>;
-  options: ValidationOptions;
-}>("CLASSIFIER_GENERATE");
+export const generateAction = createAction<{}>("CLASSIFIER_GENERATE");
 
 export const generatedAction = createAction<{
   data: Dataset<{xs: Tensor; ys: Tensor}>;

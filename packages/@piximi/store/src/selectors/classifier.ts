@@ -1,4 +1,4 @@
-import {CompileOptions, FitOptions} from "@piximi/types";
+import {ClassifierState, CompileOptions, FitOptions} from "@piximi/types";
 import {LayersModel, Tensor} from "@tensorflow/tfjs";
 import {Dataset} from "@tensorflow/tfjs-data";
 
@@ -27,6 +27,16 @@ export const fitOptionsSelector = ({classifier}): FitOptions => {
 
 export const fittedSelector = ({classifier}): LayersModel => {
   return classifier.fitted;
+};
+
+export const generatorOptionsSelector = ({
+  classifier
+}: {
+  classifier: ClassifierState;
+}): {validationPercentage: number} => {
+  return {
+    validationPercentage: classifier.validationPercentage
+  };
 };
 
 export const openedSelector = ({classifier}): LayersModel => {
