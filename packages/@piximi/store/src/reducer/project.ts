@@ -1,6 +1,6 @@
 import {Category, Image, Project} from "@piximi/types";
 import {createReducer} from "@reduxjs/toolkit";
-
+import * as _ from "underscore";
 import * as actions from "../actions/project";
 
 const findCategoryIndex = (
@@ -35,51 +35,37 @@ const unknownCategory: Category = {
 state.categories.push(unknownCategory);
 
 export const reducer = createReducer(state, {
-  [actions.createCategoryAction.toString()]: (state, action) => {
+  PROJECT_CREATE_CATEGORY: (state, action) => {
     const {category} = action.payload;
 
     state.categories.push(category);
   },
-  [actions.createProjectAction.toString()]: (state, action) => {
-    const {name} = action.payload;
-
-    state.categories = [];
-
-    state.categories.push(unknownCategory);
-
-    state.images = [];
-
-    state.name = name;
-  },
-  [actions.openProjectAction.toString()]: (state, action) => {
-    const {categories, images, name} = action.payload;
-
-    state.categories = categories;
-
-    state.images = images;
-
-    state.name = name;
-  },
-  [actions.createImageAction.toString()]: (state, action) => {
+  PROJECT_CREATE_IMAGE: (state, action) => {
     const {image} = action.payload;
 
     state.images.push(image);
   },
-  [actions.createImagesAction.toString()]: (state, action) => {
+  PROJECT_CREATE_IMAGES: (state, action) => {
     const {images} = action.payload;
 
     images.forEach((image: Image) => state.images.push(image));
   },
-  [actions.createImageScoreAction.toString()]: (state, action) => {
-    const {identifiers, scores} = action.payload;
-    for (let i = 0; i < identifiers.length; i++) {
-      const index: number = findImageIndex(state.images, identifiers[i]);
-      const image: Image = state.images[index];
-      image.scores = scores[i];
+  PROJECT_CREATE_IMAGES_SCORES: (state, action) => {
+    const {images, scores} = action.payload;
+
+    for (const [index] of images.entries()) {
+      state.images[index].scores = scores[index];
     }
   },
-  [actions.deleteCategoryAction.toString()]: (state, action) => {
-    const {identifier} = action.payload;
+  PROJECT_CREATE_PROJECT: (state, action) => {
+    const {project} = action.payload;
+
+    state = project;
+  },
+  PROJECT_DELETE_CATEGORY: (state, action) => {
+    const {category} = action.payload;
+
+    const identifier: string = category.identifier;
 
     state.categories = state.categories.filter((category: Category) => {
       return category.identifier !== identifier;
@@ -93,14 +79,21 @@ export const reducer = createReducer(state, {
       return image;
     });
   },
-  [actions.deleteImageAction.toString()]: (state, action) => {
-    const {identifier} = action.payload;
+  PROJECT_DELETE_IMAGE: (state, action) => {
+    const {image} = action.payload;
 
-    state.images = state.images.filter(
-      (image: Image) => image.identifier !== identifier
-    );
+    const identifier: string = image.identifier;
+
+    state.images = state.images.filter((image: Image) => {
+      return image.identifier !== identifier;
+    });
   },
-  [actions.toggleCategoryVisibilityAction.toString()]: (state, action) => {
+  PROJECT_OPEN_PROJECT: (state, action) => {
+    const {project} = action.payload;
+
+    state = project;
+  },
+  PROJECT_TOGGLE_CATEGORY_VISIBILITY: (state, action) => {
     const {identifier} = action.payload;
 
     const index: number = findCategoryIndex(state.categories, identifier);
@@ -109,57 +102,58 @@ export const reducer = createReducer(state, {
 
     category.visualization.visible = !category.visualization.visible;
   },
-  [actions.updateCategoryColorAction.toString()]: (state, action) => {
-    const {identifier, color} = action.payload;
+  PROJECT_UPDATE_CATEGORY_COLOR: (state, action) => {
+    const {category, color} = action.payload;
 
-    const index: number = findCategoryIndex(state.categories, identifier);
+    const index: number = findCategoryIndex(
+      state.categories,
+      category.identifier
+    );
 
-    const category: Category = state.categories[index];
-
-    category.visualization.color = color;
+    state.categories[index].visualization.color = color;
   },
-  [actions.updateCategoryDescriptionAction.toString()]: (state, action) => {
-    const {identifier, description} = action.payload;
+  PROJECT_UPDATE_CATEGORY_DESCRIPTION: (state, action) => {
+    const {category, description} = action.payload;
 
-    const index: number = findCategoryIndex(state.categories, identifier);
+    const index: number = findCategoryIndex(
+      state.categories,
+      category.identifier
+    );
 
-    const category: Category = state.categories[index];
-
-    category.description = description;
+    state.categories[index].description = description;
   },
-  [actions.updateCategoryVisibilityAction.toString()]: (state, action) => {
-    const {identifier, visible} = action.payload;
+  PROJECT_UPDATE_CATEGORY_VISIBILITY: (state, action) => {
+    const {category, visible} = action.payload;
 
-    const index: number = findCategoryIndex(state.categories, identifier);
+    const index: number = findCategoryIndex(
+      state.categories,
+      category.identifier
+    );
 
-    const category: Category = state.categories[index];
-
-    category.visualization.visible = visible;
+    state.categories[index].visualization.visible = visible;
   },
-  [actions.updateProjectNameAction.toString()]: (state, action) => {
-    const {name} = action.payload;
+  PROJECT_UPDATE_IMAGE_BRIGHTNESS: (state, action) => {
+    const {image, brightness} = action.payload;
 
-    state.name = name;
+    const index: number = findImageIndex(state.images, image.identifier);
+
+    state.images[index].visualization.brightness = brightness;
   },
-  [actions.updateImageBrightnessAction.toString()]: (state, action) => {
-    const {identifier, brightness} = action.payload;
+  PROJECT_UPDATE_IMAGE_CATEGORY: (state, action) => {
+    const {image, category} = action.payload;
 
-    const index: number = findImageIndex(state.images, identifier);
+    const index: number = findImageIndex(state.images, image.identifier);
 
-    const image: Image = state.images[index];
-
-    image.visualization.brightness = brightness;
+    state.images[index].categoryIdentifier = category.identifier;
   },
-  [actions.updateImageCategoryAction.toString()]: (state, action) => {
-    const {identifier, categoryIdentifier} = action.payload;
+  PROJECT_UPDATE_IMAGE_CONTRAST: (state, action) => {
+    const {image, contrast} = action.payload;
 
-    const index: number = findImageIndex(state.images, identifier);
+    const index: number = findImageIndex(state.images, image.identifier);
 
-    const image: Image = state.images[index];
-
-    image.categoryIdentifier = categoryIdentifier;
+    state.images[index].visualization.contrast = contrast;
   },
-  [actions.updateImagesCategoryAction.toString()]: (state, action) => {
+  PROJECT_UPDATE_IMAGES_CATEGORY: (state, action) => {
     const {identifiers, categoryIdentifier} = action.payload;
 
     identifiers.forEach((identifier: string) => {
@@ -168,16 +162,15 @@ export const reducer = createReducer(state, {
       image.categoryIdentifier = categoryIdentifier;
     });
   },
-  [actions.updateImageContrastAction.toString()]: (state, action) => {
-    const {identifier, contrast} = action.payload;
+  PROJECT_UPDATE_IMAGES_PARTITION: (state, action) => {
+    const {partitions} = action.payload;
 
-    const index: number = findImageIndex(state.images, identifier);
-
-    const image: Image = state.images[index];
-
-    image.visualization.contrast = contrast;
+    state.images.forEach((image: Image) => {
+      image.partition = partitions[0];
+      partitions.splice(0, 1);
+    });
   },
-  [actions.updateImageVisibilityAction.toString()]: (state, action) => {
+  PROJECT_UPDATE_IMAGE_VISIBILITY: (state, action) => {
     const {identifiers, visible} = action.payload;
 
     for (let i = 0; i < identifiers.length; i++) {
@@ -188,12 +181,9 @@ export const reducer = createReducer(state, {
       image.visualization.visible = visible;
     }
   },
-  [actions.updateImagesPartitionAction.toString()]: (state, action) => {
-    const {partitions} = action.payload;
+  PROJECT_UPDATE_NAME: (state, action) => {
+    const {name} = action.payload;
 
-    state.images.forEach((image: Image) => {
-      image.partition = partitions[0];
-      partitions.splice(0, 1);
-    });
+    state.name = name;
   }
 });

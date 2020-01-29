@@ -1,5 +1,5 @@
-import {createAction} from "@reduxjs/toolkit";
 import {Category, Image, Partition, Project, Score} from "@piximi/types";
+import {createAction} from "@reduxjs/toolkit";
 
 export const createCategoryAction = createAction<{category: Category}>(
   "PROJECT_CREATE_CATEGORY"
@@ -13,10 +13,10 @@ export const createImagesAction = createAction<{images: Array<Image>}>(
   "PROJECT_CREATE_IMAGES"
 );
 
-export const createImageScoreAction = createAction<{
-  image: Image;
-  score: Score;
-}>("PROJECT_CREATE_IMAGES_SCORE");
+export const createImagesScoresAction = createAction<{
+  images: Array<Image>;
+  scores: Array<Array<Score>>;
+}>("PROJECT_CREATE_IMAGES_SCORES");
 
 export const createProjectAction = createAction<{project: Project}>(
   "PROJECT_CREATE_PROJECT"
@@ -50,7 +50,7 @@ export const updateCategoryDescriptionAction = createAction<{
 
 export const updateCategoryVisibilityAction = createAction<{
   category: Category;
-  visibility: boolean;
+  visible: boolean;
 }>("PROJECT_UPDATE_CATEGORY_VISIBILITY");
 
 export const updateImageBrightnessAction = createAction<{
@@ -78,9 +78,9 @@ export const updateImagesPartitionAction = createAction<{
   partition: Partition;
 }>("PROJECT_UPDATE_IMAGES_PARTITION");
 
-export const updateImageVisibilityAction = createAction<{
-  image: Image;
-  visibility: boolean;
+export const updateImagesVisibilityAction = createAction<{
+  images: Array<Image>;
+  visible: boolean;
 }>("PROJECT_UPDATE_IMAGE_VISIBILITY");
 
 export const updateProjectNameAction = createAction<{name: string}>(

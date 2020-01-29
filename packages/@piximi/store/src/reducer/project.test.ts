@@ -3,6 +3,16 @@ import {Category, Image, Partition, Project, Score} from "@piximi/types";
 import * as actions from "../actions";
 import * as project from "./project";
 
+const unknownCategory = {
+  description: "Unknown",
+  identifier: "00000000-0000-0000-0000-000000000000",
+  index: 0,
+  visualization: {
+    color: "rgb(233, 165, 177)",
+    visible: true
+  }
+};
+
 it("createCategoryAction", () => {
   const state: Project = {
     categories: [
@@ -61,172 +71,6 @@ it("createCategoryAction", () => {
     ],
     images: [],
     name: "Untitled classifier"
-  };
-
-  expect(reducer).toEqual(expected);
-});
-
-it("createClassifierAction", () => {
-  const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
-    images: [],
-    name: "Untitled classifier"
-  };
-
-  const payload = {
-    name: "example"
-  };
-
-  const action = actions.createProjectAction(payload);
-
-  const reducer = project.reducer(state, action);
-
-  const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
-    images: [],
-    name: "example"
-  };
-
-  expect(reducer).toEqual(expected);
-});
-
-it("openClassifierAction", () => {
-  const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
-    images: [],
-    name: "Untitled classifier"
-  };
-
-  const payload: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "1",
-        identifier: "18be6295-dade-445e-a13f-e9f2268ac8e6",
-        index: 0,
-        visualization: {
-          color: "#9c27b0",
-          visible: true
-        }
-      },
-      {
-        description: "0",
-        identifier: "789f08ed-fe80-4785-bdf6-0e7108ec29a3",
-        index: 0,
-        visualization: {
-          color: "#00e676",
-          visible: true
-        }
-      }
-    ],
-    images: [
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      }
-    ],
-    name: "example"
-  };
-
-  const action = actions.openProjectAction(payload);
-
-  const reducer = project.reducer(state, action);
-
-  const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "1",
-        identifier: "18be6295-dade-445e-a13f-e9f2268ac8e6",
-        index: 0,
-        visualization: {
-          color: "#9c27b0",
-          visible: true
-        }
-      },
-      {
-        description: "0",
-        identifier: "789f08ed-fe80-4785-bdf6-0e7108ec29a3",
-        index: 0,
-        visualization: {
-          color: "#00e676",
-          visible: true
-        }
-      }
-    ],
-    images: [
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      }
-    ],
-    name: "example"
   };
 
   expect(reducer).toEqual(expected);
@@ -440,178 +284,213 @@ it("createImagesAction", () => {
   expect(reducer).toEqual(expected);
 });
 
-it("createImageScoreAction", () => {
+// it("createImagesScoresAction", () => {
+//   const state: Project = {
+//     categories: [
+//       {
+//         description: "Unknown",
+//         identifier: "00000000-0000-0000-0000-000000000000",
+//         index: 0,
+//         visualization: {
+//           color: "rgb(233, 165, 177)",
+//           visible: true
+//         }
+//       },
+//       {
+//         description: "example",
+//         identifier: "11111111-1111-1111-1111-11111111111",
+//         index: 1,
+//         visualization: {
+//           color: "#FFFFFF",
+//           visible: true
+//         }
+//       }
+//     ],
+//     images: [
+//       {
+//         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+//         checksum: "",
+//         data: "",
+//         identifier: "22222222-2222-2222-1111-22222222222",
+//         partition: Partition.Training,
+//         scores: [],
+//         visualization: {
+//           brightness: 0,
+//           contrast: 0,
+//           visible: true,
+//           visibleChannels: []
+//         }
+//       },
+//       {
+//         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+//         checksum: "",
+//         data: "",
+//         identifier: "22222222-2222-2222-2222-22222222222",
+//         partition: Partition.Training,
+//         scores: [],
+//         visualization: {
+//           brightness: 0,
+//           contrast: 0,
+//           visible: true,
+//           visibleChannels: []
+//         }
+//       },
+//       {
+//         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+//         checksum: "",
+//         data: "",
+//         identifier: "22222222-2222-2222-3333-22222222222",
+//         partition: Partition.Training,
+//         scores: [],
+//         visualization: {
+//           brightness: 0,
+//           contrast: 0,
+//           visible: true,
+//           visibleChannels: []
+//         }
+//       }
+//     ],
+//     name: "Untitled classifier"
+//   };
+//
+//   const scores: Score[][] = [
+//     [
+//       {
+//         categoryIdentifier: "11111111-1111-1111-1111-11111111111",
+//         probability: 0.8
+//       }
+//     ],
+//     [
+//       {
+//         categoryIdentifier: "11111111-1111-1111-1111-11111111111",
+//         probability: 0.3
+//       }
+//     ]
+//   ];
+//
+//   const payload = {
+//     images: state.images,
+//     scores: scores
+//   };
+//
+//   const action = actions.createImagesScoresAction(payload);
+//
+//   const reducer = project.reducer(state, action);
+//
+//   const expected: Project = {
+//     categories: [
+//       {
+//         description: "Unknown",
+//         identifier: "00000000-0000-0000-0000-000000000000",
+//         index: 0,
+//         visualization: {
+//           color: "rgb(233, 165, 177)",
+//           visible: true
+//         }
+//       },
+//       {
+//         description: "example",
+//         identifier: "11111111-1111-1111-1111-11111111111",
+//         index: 1,
+//         visualization: {
+//           color: "#FFFFFF",
+//           visible: true
+//         }
+//       }
+//     ],
+//     images: [
+//       {
+//         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+//         checksum: "",
+//         data: "",
+//         identifier: "22222222-2222-2222-1111-22222222222",
+//         partition: Partition.Training,
+//         scores: [],
+//         visualization: {
+//           brightness: 0,
+//           contrast: 0,
+//           visible: true,
+//           visibleChannels: []
+//         }
+//       },
+//       {
+//         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+//         checksum: "",
+//         data: "",
+//         identifier: "22222222-2222-2222-2222-22222222222",
+//         partition: Partition.Training,
+//         scores: [
+//           {
+//             categoryIdentifier: "11111111-1111-1111-1111-11111111111",
+//             probability: 0.8
+//           }
+//         ],
+//         visualization: {
+//           brightness: 0,
+//           contrast: 0,
+//           visible: true,
+//           visibleChannels: []
+//         }
+//       },
+//       {
+//         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+//         checksum: "",
+//         data: "",
+//         identifier: "22222222-2222-2222-3333-22222222222",
+//         partition: Partition.Training,
+//         scores: [
+//           {
+//             categoryIdentifier: "11111111-1111-1111-1111-11111111111",
+//             probability: 0.3
+//           }
+//         ],
+//         visualization: {
+//           brightness: 0,
+//           contrast: 0,
+//           visible: true,
+//           visibleChannels: []
+//         }
+//       }
+//     ],
+//     name: "Untitled classifier"
+//   };
+//
+//   expect(reducer).toEqual(expected);
+// });
+
+it("createProjectAction", () => {
   const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
-    images: [
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-1111-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      },
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-2222-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      },
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-3333-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      }
-    ],
+    categories: [unknownCategory],
+    images: [],
     name: "Untitled classifier"
   };
 
-  const scores: Score[][] = [
-    [
-      {
-        categoryIdentifier: "11111111-1111-1111-1111-11111111111",
-        probability: 0.8
-      }
-    ],
-    [
-      {
-        categoryIdentifier: "11111111-1111-1111-1111-11111111111",
-        probability: 0.3
-      }
-    ]
-  ];
-
   const payload = {
-    identifiers: [
-      "22222222-2222-2222-2222-22222222222",
-      "22222222-2222-2222-3333-22222222222"
-    ],
-    scores: scores
+    project: {
+      categories: [
+        {
+          description: "Unknown",
+          identifier: "00000000-0000-0000-0000-000000000000",
+          index: 0,
+          visualization: {
+            color: "rgb(233, 165, 177)",
+            visible: true
+          }
+        }
+      ],
+      images: [],
+      name: "Untitled classifier"
+    }
   };
 
-  const action = actions.createImageScoreAction(payload);
+  const action = actions.createProjectAction(payload);
 
   const reducer = project.reducer(state, action);
 
   const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
-    images: [
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-1111-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      },
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-2222-22222222222",
-        partition: Partition.Training,
-        scores: [
-          {
-            categoryIdentifier: "11111111-1111-1111-1111-11111111111",
-            probability: 0.8
-          }
-        ],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      },
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-3333-22222222222",
-        partition: Partition.Training,
-        scores: [
-          {
-            categoryIdentifier: "11111111-1111-1111-1111-11111111111",
-            probability: 0.3
-          }
-        ],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      }
-    ],
-    name: "Untitled classifier"
+    categories: [unknownCategory],
+    images: [],
+    name: "example"
   };
 
   expect(reducer).toEqual(expected);
@@ -659,7 +538,7 @@ it("deleteCategoryAction", () => {
   };
 
   const payload = {
-    identifier: "11111111-1111-1111-1111-11111111111"
+    category: state.categories[1]
   };
 
   const action = actions.deleteCategoryAction(payload);
@@ -733,7 +612,7 @@ it("deleteImageAction", () => {
   };
 
   const payload = {
-    identifier: "11111111-1111-1111-1111-11111111111"
+    image: state.images[1]
   };
 
   const action = actions.deleteImageAction(payload);
@@ -759,310 +638,78 @@ it("deleteImageAction", () => {
   expect(reducer).toEqual(expected);
 });
 
-it("toggleCategoryVisibilityAction", () => {
+it("openProjectAction", () => {
   const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [],
     name: "Untitled classifier"
   };
 
   const payload = {
-    identifier: "11111111-1111-1111-1111-11111111111"
+    project: {
+      categories: [
+        unknownCategory,
+        {
+          description: "1",
+          identifier: "18be6295-dade-445e-a13f-e9f2268ac8e6",
+          index: 0,
+          visualization: {
+            color: "#9c27b0",
+            visible: true
+          }
+        },
+        {
+          description: "0",
+          identifier: "789f08ed-fe80-4785-bdf6-0e7108ec29a3",
+          index: 0,
+          visualization: {
+            color: "#00e676",
+            visible: true
+          }
+        }
+      ],
+      images: [
+        {
+          categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+          checksum: "",
+          data: "",
+          identifier: "11111111-1111-1111-1111-11111111111",
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        }
+      ],
+      name: "example"
+    }
   };
 
-  const action = actions.toggleCategoryVisibilityAction(payload);
+  const action = actions.openProjectAction(payload);
 
   const reducer = project.reducer(state, action);
 
   const expected: Project = {
     categories: [
+      unknownCategory,
       {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
+        description: "1",
+        identifier: "18be6295-dade-445e-a13f-e9f2268ac8e6",
         index: 0,
         visualization: {
-          color: "rgb(233, 165, 177)",
+          color: "#9c27b0",
           visible: true
         }
       },
       {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: false
-        }
-      }
-    ],
-    images: [],
-    name: "Untitled classifier"
-  };
-
-  expect(reducer).toEqual(expected);
-});
-
-it("updateCategoryColorAction", () => {
-  const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
+        description: "0",
+        identifier: "789f08ed-fe80-4785-bdf6-0e7108ec29a3",
         index: 0,
         visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
-    images: [],
-    name: "Untitled classifier"
-  };
-
-  const payload = {
-    identifier: "11111111-1111-1111-1111-11111111111",
-    color: "#000000"
-  };
-
-  const action = actions.updateCategoryColorAction(payload);
-
-  const reducer = project.reducer(state, action);
-
-  const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#000000",
-          visible: true
-        }
-      }
-    ],
-    images: [],
-    name: "Untitled classifier"
-  };
-
-  expect(reducer).toEqual(expected);
-});
-
-it("updateCategoryDescriptionAction", () => {
-  const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
-    images: [],
-    name: "Untitled classifier"
-  };
-
-  const payload = {
-    description: "updated",
-    identifier: "11111111-1111-1111-1111-11111111111"
-  };
-
-  const action = actions.updateCategoryDescriptionAction(payload);
-
-  const reducer = project.reducer(state, action);
-
-  const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "updated",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
-    images: [],
-    name: "Untitled classifier"
-  };
-
-  expect(reducer).toEqual(expected);
-});
-
-it("updateCategoryVisibilityAction", () => {
-  const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
-    images: [],
-    name: "Untitled classifier"
-  };
-
-  const payload = {
-    identifier: "11111111-1111-1111-1111-11111111111",
-    visible: false
-  };
-
-  const action = actions.updateCategoryVisibilityAction(payload);
-
-  const reducer = project.reducer(state, action);
-
-  const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: false
-        }
-      }
-    ],
-    images: [],
-    name: "Untitled classifier"
-  };
-
-  expect(reducer).toEqual(expected);
-});
-
-it("updateClassifierNameAction", () => {
-  const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
-    images: [],
-    name: "Untitled classifier"
-  };
-
-  const payload = {
-    name: "updated"
-  };
-
-  const action = actions.updateProjectNameAction(payload);
-
-  const reducer = project.reducer(state, action);
-
-  const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
-    images: [],
-    name: "updated"
-  };
-
-  expect(reducer).toEqual(expected);
-});
-
-it("updateImageBrightnessAction", () => {
-  const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
+          color: "#00e676",
           visible: true
         }
       }
@@ -1083,12 +730,224 @@ it("updateImageBrightnessAction", () => {
         }
       }
     ],
+    name: "example"
+  };
+
+  expect(reducer).toEqual(expected);
+});
+
+it("toggleCategoryVisibilityAction", () => {
+  const state: Project = {
+    categories: [
+      unknownCategory,
+      {
+        description: "example",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        index: 1,
+        visualization: {
+          color: "#FFFFFF",
+          visible: true
+        }
+      }
+    ],
+    images: [],
     name: "Untitled classifier"
   };
 
   const payload = {
-    brightness: 1,
-    identifier: "11111111-1111-1111-1111-11111111111"
+    category: state.categories[1]
+  };
+
+  const action = actions.toggleCategoryVisibilityAction(payload);
+
+  const reducer = project.reducer(state, action);
+
+  const expected: Project = {
+    categories: [
+      unknownCategory,
+      {
+        description: "example",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        index: 1,
+        visualization: {
+          color: "#FFFFFF",
+          visible: false
+        }
+      }
+    ],
+    images: [],
+    name: "Untitled classifier"
+  };
+
+  expect(reducer).toEqual(expected);
+});
+
+it("updateCategoryColorAction", () => {
+  const state: Project = {
+    categories: [
+      unknownCategory,
+      {
+        description: "example",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        index: 1,
+        visualization: {
+          color: "#FFFFFF",
+          visible: true
+        }
+      }
+    ],
+    images: [],
+    name: "Untitled classifier"
+  };
+
+  const payload = {
+    category: state.categories[1],
+    color: "#000000"
+  };
+
+  const action = actions.updateCategoryColorAction(payload);
+
+  const reducer = project.reducer(state, action);
+
+  const expected: Project = {
+    categories: [
+      unknownCategory,
+      {
+        description: "example",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        index: 1,
+        visualization: {
+          color: "#000000",
+          visible: true
+        }
+      }
+    ],
+    images: [],
+    name: "Untitled classifier"
+  };
+
+  expect(reducer).toEqual(expected);
+});
+
+it("updateCategoryDescriptionAction", () => {
+  const state: Project = {
+    categories: [
+      unknownCategory,
+      {
+        description: "example",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        index: 1,
+        visualization: {
+          color: "#FFFFFF",
+          visible: true
+        }
+      }
+    ],
+    images: [],
+    name: "Untitled classifier"
+  };
+
+  const payload = {
+    category: state.categories[1],
+    description: "updated"
+  };
+
+  const action = actions.updateCategoryDescriptionAction(payload);
+
+  const reducer = project.reducer(state, action);
+
+  const expected: Project = {
+    categories: [
+      unknownCategory,
+      {
+        description: "updated",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        index: 1,
+        visualization: {
+          color: "#FFFFFF",
+          visible: true
+        }
+      }
+    ],
+    images: [],
+    name: "Untitled classifier"
+  };
+
+  expect(reducer).toEqual(expected);
+});
+
+it("updateCategoryVisibilityAction", () => {
+  const state: Project = {
+    categories: [
+      unknownCategory,
+      {
+        description: "example",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        index: 1,
+        visualization: {
+          color: "#FFFFFF",
+          visible: true
+        }
+      }
+    ],
+    images: [],
+    name: "Untitled classifier"
+  };
+
+  const payload = {
+    category: state.categories[1],
+    visible: false
+  };
+
+  const action = actions.updateCategoryVisibilityAction(payload);
+
+  const reducer = project.reducer(state, action);
+
+  const expected: Project = {
+    categories: [
+      unknownCategory,
+      {
+        description: "example",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        index: 1,
+        visualization: {
+          color: "#FFFFFF",
+          visible: false
+        }
+      }
+    ],
+    images: [],
+    name: "Untitled classifier"
+  };
+
+  expect(reducer).toEqual(expected);
+});
+
+it("updateImageBrightnessAction", () => {
+  const state: Project = {
+    categories: [unknownCategory],
+    images: [
+      {
+        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+        checksum: "",
+        data: "",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        partition: Partition.Training,
+        scores: [],
+        visualization: {
+          brightness: 0,
+          contrast: 0,
+          visible: true,
+          visibleChannels: []
+        }
+      }
+    ],
+    name: "Untitled classifier"
+  };
+
+  const payload = {
+    image: state.images[0],
+    brightness: 1
   };
 
   const action = actions.updateImageBrightnessAction(payload);
@@ -1096,17 +955,7 @@ it("updateImageBrightnessAction", () => {
   const reducer = project.reducer(state, action);
 
   const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [
       {
         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
@@ -1132,15 +981,7 @@ it("updateImageBrightnessAction", () => {
 it("updateImageCategoryAction", () => {
   const state: Project = {
     categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
+      unknownCategory,
       {
         description: "example",
         identifier: "11111111-1111-1111-1111-11111111111",
@@ -1171,8 +1012,8 @@ it("updateImageCategoryAction", () => {
   };
 
   const payload = {
-    identifier: "22222222-2222-2222-2222-22222222222",
-    categoryIdentifier: "11111111-1111-1111-1111-11111111111"
+    image: state.images[0],
+    category: state.categories[1]
   };
 
   const action = actions.updateImageCategoryAction(payload);
@@ -1181,15 +1022,7 @@ it("updateImageCategoryAction", () => {
 
   const expected: Project = {
     categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
+      unknownCategory,
       {
         description: "example",
         identifier: "11111111-1111-1111-1111-11111111111",
@@ -1206,159 +1039,6 @@ it("updateImageCategoryAction", () => {
         checksum: "",
         data: "",
         identifier: "22222222-2222-2222-2222-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      }
-    ],
-    name: "Untitled classifier"
-  };
-
-  expect(reducer).toEqual(expected);
-});
-
-it("updateImagesCategoryAction", () => {
-  const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
-    images: [
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-1111-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      },
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-2222-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      },
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-3333-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      }
-    ],
-    name: "Untitled classifier"
-  };
-
-  const payload = {
-    identifiers: [
-      "22222222-2222-2222-1111-22222222222",
-      "22222222-2222-2222-2222-22222222222",
-      "22222222-2222-2222-3333-22222222222"
-    ],
-    categoryIdentifier: "11111111-1111-1111-1111-11111111111"
-  };
-
-  const action = actions.updateImagesCategoryAction(payload);
-
-  const reducer = project.reducer(state, action);
-
-  const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
-    images: [
-      {
-        categoryIdentifier: "11111111-1111-1111-1111-11111111111",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-1111-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      },
-      {
-        categoryIdentifier: "11111111-1111-1111-1111-11111111111",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-2222-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      },
-      {
-        categoryIdentifier: "11111111-1111-1111-1111-11111111111",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-3333-22222222222",
         partition: Partition.Training,
         scores: [],
         visualization: {
@@ -1377,17 +1057,7 @@ it("updateImagesCategoryAction", () => {
 
 it("updateImageContrastAction", () => {
   const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [
       {
         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
@@ -1408,8 +1078,8 @@ it("updateImageContrastAction", () => {
   };
 
   const payload = {
-    contrast: 1,
-    identifier: "11111111-1111-1111-1111-11111111111"
+    image: state.images[0],
+    contrast: 1
   };
 
   const action = actions.updateImageContrastAction(payload);
@@ -1417,17 +1087,7 @@ it("updateImageContrastAction", () => {
   const reducer = project.reducer(state, action);
 
   const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [
       {
         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
@@ -1450,15 +1110,16 @@ it("updateImageContrastAction", () => {
   expect(reducer).toEqual(expected);
 });
 
-it("updateImageVisibilityAction", () => {
+it("updateImagesCategoryAction", () => {
   const state: Project = {
     categories: [
+      unknownCategory,
       {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
+        description: "example",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        index: 1,
         visualization: {
-          color: "rgb(233, 165, 177)",
+          color: "#FFFFFF",
           visible: true
         }
       }
@@ -1468,7 +1129,35 @@ it("updateImageVisibilityAction", () => {
         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
         checksum: "",
         data: "",
-        identifier: "11111111-1111-1111-1111-11111111111",
+        identifier: "22222222-2222-2222-1111-22222222222",
+        partition: Partition.Training,
+        scores: [],
+        visualization: {
+          brightness: 0,
+          contrast: 0,
+          visible: true,
+          visibleChannels: []
+        }
+      },
+      {
+        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+        checksum: "",
+        data: "",
+        identifier: "22222222-2222-2222-2222-22222222222",
+        partition: Partition.Training,
+        scores: [],
+        visualization: {
+          brightness: 0,
+          contrast: 0,
+          visible: true,
+          visibleChannels: []
+        }
+      },
+      {
+        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+        checksum: "",
+        data: "",
+        identifier: "22222222-2222-2222-3333-22222222222",
         partition: Partition.Training,
         scores: [],
         visualization: {
@@ -1483,38 +1172,67 @@ it("updateImageVisibilityAction", () => {
   };
 
   const payload = {
-    identifiers: ["11111111-1111-1111-1111-11111111111"],
-    visible: false
+    images: state.images,
+    category: state.categories[1]
   };
 
-  const action = actions.updateImageVisibilityAction(payload);
+  const action = actions.updateImagesCategoryAction(payload);
 
   const reducer = project.reducer(state, action);
 
   const expected: Project = {
     categories: [
+      unknownCategory,
       {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
+        description: "example",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        index: 1,
         visualization: {
-          color: "rgb(233, 165, 177)",
+          color: "#FFFFFF",
           visible: true
         }
       }
     ],
     images: [
       {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+        categoryIdentifier: "11111111-1111-1111-1111-11111111111",
         checksum: "",
         data: "",
-        identifier: "11111111-1111-1111-1111-11111111111",
+        identifier: "22222222-2222-2222-1111-22222222222",
         partition: Partition.Training,
         scores: [],
         visualization: {
           brightness: 0,
           contrast: 0,
-          visible: false,
+          visible: true,
+          visibleChannels: []
+        }
+      },
+      {
+        categoryIdentifier: "11111111-1111-1111-1111-11111111111",
+        checksum: "",
+        data: "",
+        identifier: "22222222-2222-2222-2222-22222222222",
+        partition: Partition.Training,
+        scores: [],
+        visualization: {
+          brightness: 0,
+          contrast: 0,
+          visible: true,
+          visibleChannels: []
+        }
+      },
+      {
+        categoryIdentifier: "11111111-1111-1111-1111-11111111111",
+        checksum: "",
+        data: "",
+        identifier: "22222222-2222-2222-3333-22222222222",
+        partition: Partition.Training,
+        scores: [],
+        visualization: {
+          brightness: 0,
+          contrast: 0,
+          visible: true,
           visibleChannels: []
         }
       }
@@ -1527,17 +1245,7 @@ it("updateImageVisibilityAction", () => {
 
 it("updateImagesPartitionAction", () => {
   const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [
       {
         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
@@ -1585,24 +1293,16 @@ it("updateImagesPartitionAction", () => {
     name: "Untitled classifier"
   };
 
-  const payload = {partitions: [0, 1, 2]};
+  const payload = {
+    partitions: [0, 1, 2]
+  };
 
   const action = actions.updateImagesPartitionAction(payload);
 
   const reducer = project.reducer(state, action);
 
   const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [
       {
         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
@@ -1648,6 +1348,85 @@ it("updateImagesPartitionAction", () => {
       }
     ],
     name: "Untitled classifier"
+  };
+
+  expect(reducer).toEqual(expected);
+});
+
+it("updateImagesVisibilityAction", () => {
+  const state: Project = {
+    categories: [unknownCategory],
+    images: [
+      {
+        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+        checksum: "",
+        data: "",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        partition: Partition.Training,
+        scores: [],
+        visualization: {
+          brightness: 0,
+          contrast: 0,
+          visible: true,
+          visibleChannels: []
+        }
+      }
+    ],
+    name: "Untitled classifier"
+  };
+
+  const payload = {
+    images: state.images,
+    visible: false
+  };
+
+  const action = actions.updateImagesVisibilityAction(payload);
+
+  const reducer = project.reducer(state, action);
+
+  const expected: Project = {
+    categories: [unknownCategory],
+    images: [
+      {
+        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
+        checksum: "",
+        data: "",
+        identifier: "11111111-1111-1111-1111-11111111111",
+        partition: Partition.Training,
+        scores: [],
+        visualization: {
+          brightness: 0,
+          contrast: 0,
+          visible: false,
+          visibleChannels: []
+        }
+      }
+    ],
+    name: "Untitled classifier"
+  };
+
+  expect(reducer).toEqual(expected);
+});
+
+it("updateProjectNameAction", () => {
+  const state: Project = {
+    categories: [unknownCategory],
+    images: [],
+    name: "Untitled classifier"
+  };
+
+  const payload = {
+    name: "updated"
+  };
+
+  const action = actions.updateProjectNameAction(payload);
+
+  const reducer = project.reducer(state, action);
+
+  const expected: Project = {
+    categories: [unknownCategory],
+    images: [],
+    name: "updated"
   };
 
   expect(reducer).toEqual(expected);
