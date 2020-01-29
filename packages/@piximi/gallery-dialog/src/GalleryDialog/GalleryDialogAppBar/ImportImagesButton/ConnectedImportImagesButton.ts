@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {createImages} from "@piximi/store";
+import {createImagesAction} from "@piximi/store";
 import * as uuid from "uuid";
 import {ImportImagesButton} from "./ImportImagesButton";
 import {Dispatch} from "redux";
@@ -45,7 +45,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         images: images
       };
 
-      const action = createImages(payload);
+      const action = createImagesAction(payload);
 
       dispatch(action);
     }

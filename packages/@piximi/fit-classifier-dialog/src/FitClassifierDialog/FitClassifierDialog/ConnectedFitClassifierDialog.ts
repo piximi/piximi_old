@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import {updateImagesPartition} from "@piximi/store";
-import {Project} from "@piximi/types";
+import {updateImagesPartitionsAction} from "@piximi/store";
+import {Image, Partition, Project} from "@piximi/types";
 import {Dispatch} from "redux";
 import {FitClassifierDialog} from "./FitClassifierDialog";
 
@@ -17,10 +17,13 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setImagesPartition: (partitions: number[]) => {
-      const payload = {partitions: partitions};
+    setImagesPartition: (
+      images: Array<Image>,
+      partitions: Array<Partition>
+    ) => {
+      const payload = {images: images, partitions: partitions};
 
-      const action = updateImagesPartition(payload);
+      const action = updateImagesPartitionsAction(payload);
 
       dispatch(action);
     }

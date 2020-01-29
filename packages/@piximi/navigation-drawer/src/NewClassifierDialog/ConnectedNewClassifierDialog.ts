@@ -1,7 +1,6 @@
 import {connect} from "react-redux";
-import {createProject} from "@piximi/store";
+import {createProjectAction} from "@piximi/store";
 import {Project} from "@piximi/types";
-import * as uuid from "uuid";
 import {Dispatch} from "redux";
 import {NewClassifierDialog} from "./NewClassifierDialog";
 
@@ -17,11 +16,14 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     openClassifier: (name: string) => {
       const classifier = {
-        identifier: uuid.v4(),
+        categories: [],
+        images: [],
         name: name
       };
 
-      const action = createProject(classifier);
+      const payload = {project: classifier};
+
+      const action = createProjectAction(payload);
 
       dispatch(action);
     }

@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {Category, Project, Image} from "@piximi/types";
 import {Dispatch} from "redux";
-import {openProject} from "@piximi/store";
+import {openProjectAction} from "@piximi/store";
 import {OpenExampleClassifierDialog} from "./OpenExampleClassifierDialog";
 
 type State = {
@@ -21,13 +21,15 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       images: Image[],
       name: string
     ) => {
-      const payload: Project = {
+      const project: Project = {
         categories: categories,
         images: images,
         name: name
       };
 
-      const action = openProject(payload);
+      const payload = {project: project};
+
+      const action = openProjectAction(payload);
 
       dispatch(action);
     }

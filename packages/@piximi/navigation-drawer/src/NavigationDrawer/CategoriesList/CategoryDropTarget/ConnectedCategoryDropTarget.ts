@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import {updateImagesCategory} from "@piximi/store";
-import {Project} from "@piximi/types";
+import {updateImagesCategoryAction} from "@piximi/store";
+import {Category, Image, Project} from "@piximi/types";
 import {Dispatch} from "redux";
 import {CategoryDropTarget} from "./CategoryDropTarget";
 
@@ -16,16 +16,13 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    updateImagesCategory: (
-      identifiers: string[],
-      categoryIdentifier: string
-    ) => {
+    updateImagesCategory: (images: Array<Image>, category: Category) => {
       const payload = {
-        categoryIdentifier: categoryIdentifier,
-        identifiers: identifiers
+        images: images,
+        category: category
       };
 
-      const action = updateImagesCategory(payload);
+      const action = updateImagesCategoryAction(payload);
 
       dispatch(action);
     }

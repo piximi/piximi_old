@@ -6,10 +6,7 @@ type HideOtherCategoriesProps = {
   project: Project;
   categoryProp: Category;
   closeMenu: () => void;
-  makeCategoryInvisible: (
-    categoryIdentifier: string,
-    visibility: boolean
-  ) => void;
+  makeCategoryInvisible: (category: Category, visible: boolean) => void;
 };
 
 export const HideOtherCategoriesMenuItem = (
@@ -34,7 +31,7 @@ export const HideOtherCategoriesMenuItem = (
     closeMenu();
     project.categories.forEach((category: Category) => {
       if (category.identifier !== categoryProp.identifier) {
-        makeCategoryInvisible(category.identifier, isOnlyVisibleCategory);
+        makeCategoryInvisible(category, isOnlyVisibleCategory);
       }
     });
   };

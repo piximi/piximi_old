@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
-import {updateImageVisibility} from "@piximi/store";
+import {updateImagesVisibilityAction} from "@piximi/store";
 import {Dispatch} from "redux";
-import {Project} from "@piximi/types";
+import {Image, Project} from "@piximi/types";
 import {GalleryDialogAppBar} from "./GalleryDialogAppBar";
 
 type State = {
@@ -17,13 +17,13 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    changeImagesVisibility: (identifiers: string[], visibility: boolean) => {
+    changeImagesVisibility: (images: Array<Image>, visible: boolean) => {
       const payload = {
-        identifiers: identifiers,
-        visible: visibility
+        images: images,
+        visible: visible
       };
 
-      const action = updateImageVisibility(payload);
+      const action = updateImagesVisibilityAction(payload);
 
       dispatch(action);
     }

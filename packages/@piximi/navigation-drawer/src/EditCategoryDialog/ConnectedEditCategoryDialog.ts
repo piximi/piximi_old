@@ -1,6 +1,9 @@
 import {connect} from "react-redux";
-import {updateCategoryColor, updateCategoryDescription} from "@piximi/store";
-import {Project} from "@piximi/types";
+import {
+  updateCategoryColorAction,
+  updateCategoryDescriptionAction
+} from "@piximi/store";
+import {Category, Project} from "@piximi/types";
 import {Dispatch} from "redux";
 import {EditCategoryDialog} from "./EditCategoryDialog";
 
@@ -16,17 +19,17 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    updateColor: (identifier: string, color: string) => {
-      const payload = {identifier: identifier, color: color};
+    updateColor: (category: Category, color: string) => {
+      const payload = {category: category, color: color};
 
-      const action = updateCategoryColor(payload);
+      const action = updateCategoryColorAction(payload);
 
       dispatch(action);
     },
-    updateDescription: (identifier: string, description: string) => {
-      const payload = {identifier: identifier, description: description};
+    updateDescription: (category: Category, description: string) => {
+      const payload = {category: category, description: description};
 
-      const action = updateCategoryDescription(payload);
+      const action = updateCategoryDescriptionAction(payload);
 
       dispatch(action);
     }

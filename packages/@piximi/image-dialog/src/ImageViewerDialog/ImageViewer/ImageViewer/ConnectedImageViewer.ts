@@ -1,6 +1,9 @@
 import {connect} from "react-redux";
 import {ImageViewer} from "./ImageViewer";
-import {updateImageBrightness, updateImageContrast} from "@piximi/store";
+import {
+  updateImageBrightnessAction,
+  updateImageContrastAction
+} from "@piximi/store";
 import {Dispatch} from "redux";
 import {Project, Image} from "@piximi/types";
 
@@ -16,22 +19,22 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    saveEdits: (identifier: string, brightness: number, contrast: number) => {
+    saveEdits: (image: Image, brightness: number, contrast: number) => {
       const brightnessPayload = {
-        identifier: identifier,
+        image: image,
         brightness: brightness
       };
 
-      const brightnessAction = updateImageBrightness(brightnessPayload);
+      const brightnessAction = updateImageBrightnessAction(brightnessPayload);
 
       dispatch(brightnessAction);
 
       const contrastPayload = {
-        identifier: identifier,
+        image: image,
         contrast: contrast
       };
 
-      const contrastAction = updateImageContrast(contrastPayload);
+      const contrastAction = updateImageContrastAction(contrastPayload);
 
       dispatch(contrastAction);
     },
@@ -42,20 +45,20 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     ) => {
       for (let image of images) {
         const brightnessPayload = {
-          identifier: image.identifier,
+          image: image,
           brightness: brightness
         };
 
-        const brightnessAction = updateImageBrightness(brightnessPayload);
+        const brightnessAction = updateImageBrightnessAction(brightnessPayload);
 
         dispatch(brightnessAction);
 
         const contrastPayload = {
-          identifier: image.identifier,
+          image: image,
           contrast: contrast
         };
 
-        const contrastAction = updateImageContrast(contrastPayload);
+        const contrastAction = updateImageContrastAction(contrastPayload);
 
         dispatch(contrastAction);
       }

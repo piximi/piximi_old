@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {createCategory} from "@piximi/store";
+import {createCategoryAction} from "@piximi/store";
 import uuidv4 from "uuid";
 import {Dispatch} from "redux";
 import {Category, Project} from "@piximi/types";
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 
       const payload = {category: category};
 
-      const action = createCategory(payload);
+      const action = createCategoryAction(payload);
 
       dispatch(action);
     }

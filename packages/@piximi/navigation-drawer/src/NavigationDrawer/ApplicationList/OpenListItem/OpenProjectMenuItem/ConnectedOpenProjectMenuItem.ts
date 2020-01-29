@@ -8,7 +8,7 @@ import {
   CompileOptions
 } from "@piximi/types";
 import {Dispatch} from "redux";
-import {openProject} from "@piximi/store";
+import {openProjectAction} from "@piximi/store";
 
 type State = {
   project: Project;
@@ -22,22 +22,12 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    openClassifier: (
-      categories: Category[],
-      images: Image[],
-      name: string,
-      fitOptions: FitOptions,
-      compileOptions: CompileOptions
-    ) => {
+    openClassifier: (project: Project) => {
       const payload = {
-        categories: categories,
-        images: images,
-        name: name,
-        fitOptions: fitOptions,
-        compileOptions: compileOptions
+        project: project
       };
 
-      const action = openProject(payload);
+      const action = openProjectAction(payload);
 
       dispatch(action);
     }

@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {DeleteCategoryDialog} from "./DeleteCategoryDialog";
-import {deleteCategory} from "@piximi/store";
-import {Project} from "@piximi/types";
+import {deleteCategoryAction} from "@piximi/store";
+import {Category, Project} from "@piximi/types";
 import {Dispatch} from "redux";
 
 type State = {
@@ -16,12 +16,12 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    deleteCategory: (identifier: string) => {
+    deleteCategory: (category: Category) => {
       const payload = {
-        identifier: identifier
+        category: category
       };
 
-      const action = deleteCategory(payload);
+      const action = deleteCategoryAction(payload);
 
       dispatch(action);
     }

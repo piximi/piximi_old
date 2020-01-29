@@ -1,8 +1,8 @@
 import {connect} from "react-redux";
 import {GalleryDialog} from "./GalleryDialog";
 import {Dispatch} from "redux";
-import {Project} from "@piximi/types";
-import {updateImageCategory} from "@piximi/store";
+import {Category, Image, Project} from "@piximi/types";
+import {updateImageCategoryAction} from "@piximi/store";
 
 type State = {
   project: Project;
@@ -17,13 +17,13 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    updateImageCategory: (identifier: string, categoryIdentifier: string) => {
+    updateImageCategory: (image: Image, category: Category) => {
       const payload = {
-        identifier: identifier,
-        categoryIdentifier: categoryIdentifier
+        image: image,
+        category: category
       };
 
-      const action = updateImageCategory(payload);
+      const action = updateImageCategoryAction(payload);
 
       dispatch(action);
     }

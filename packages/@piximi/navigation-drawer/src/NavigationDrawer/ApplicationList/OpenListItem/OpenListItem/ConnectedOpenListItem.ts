@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {createCategory, createImage} from "@piximi/store";
+import {createCategoryAction, createImageAction} from "@piximi/store";
 import {Dispatch} from "redux";
 import {Project} from "@piximi/types";
 import {OpenListItem} from "./OpenListItem";
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
           image: image
         };
 
-        const action = createImage(payload);
+        const action = createImageAction(payload);
 
         dispatch(action);
       }
@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
           category: category
         };
 
-        const action = createCategory(payload);
+        const action = createCategoryAction(payload);
 
         dispatch(action);
       }

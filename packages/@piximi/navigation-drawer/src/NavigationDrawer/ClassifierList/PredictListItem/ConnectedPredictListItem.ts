@@ -1,7 +1,6 @@
 import {connect} from "react-redux";
-import {Project, Score} from "@piximi/types";
+import {Image, Project, Score} from "@piximi/types";
 import {PredictListItem} from "./PredictListItem";
-import {createImageScore} from "@piximi/store";
 import {Dispatch} from "redux";
 
 type State = {
@@ -18,13 +17,7 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    createImageScore: (identifiers: string[], scores: Score[][]) => {
-      const payload = {identifiers: identifiers, scores: scores};
-
-      const action = createImageScore(payload);
-
-      dispatch(action);
-    }
+    createImageScore: (images: Array<Image>, scores: Array<Array<Score>>) => {}
   };
 };
 
