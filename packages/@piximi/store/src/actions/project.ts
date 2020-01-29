@@ -13,11 +13,6 @@ export const createImagesAction = createAction<{images: Array<Image>}>(
   "PROJECT_CREATE_IMAGES"
 );
 
-export const createImagesScoresAction = createAction<{
-  images: Array<Image>;
-  scores: Array<Array<Score>>;
-}>("PROJECT_CREATE_IMAGES_SCORES");
-
 export const createProjectAction = createAction<{project: Project}>(
   "PROJECT_CREATE_PROJECT"
 );
@@ -73,15 +68,15 @@ export const updateImagesCategoryAction = createAction<{
   category: Category;
 }>("PROJECT_UPDATE_IMAGES_CATEGORY");
 
-export const updateImagesPartitionAction = createAction<{
+export const updateImagesPartitionsAction = createAction<{
   images: Array<Image>;
-  partition: Partition;
-}>("PROJECT_UPDATE_IMAGES_PARTITION");
+  partitions: Array<Partition>;
+}>("PROJECT_UPDATE_IMAGES_PARTITIONS");
 
 export const updateImagesVisibilityAction = createAction<{
   images: Array<Image>;
   visible: boolean;
-}>("PROJECT_UPDATE_IMAGE_VISIBILITY");
+}>("PROJECT_UPDATE_IMAGES_VISIBILITY");
 
 export const updateProjectNameAction = createAction<{name: string}>(
   "PROJECT_UPDATE_NAME"

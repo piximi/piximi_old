@@ -1,7 +1,5 @@
 import {Category, Image, Project} from "@piximi/types";
 import {createReducer} from "@reduxjs/toolkit";
-import * as _ from "underscore";
-import * as actions from "../actions/project";
 
 const findCategoryIndex = (
   categories: Array<Category>,
@@ -50,17 +48,12 @@ export const reducer = createReducer(state, {
 
     images.forEach((image: Image) => state.images.push(image));
   },
-  PROJECT_CREATE_IMAGES_SCORES: (state, action) => {
-    const {images, scores} = action.payload;
-
-    for (const [index] of images.entries()) {
-      state.images[index].scores = scores[index];
-    }
-  },
   PROJECT_CREATE_PROJECT: (state, action) => {
     const {project} = action.payload;
 
-    state = project;
+    state.categories = project.categories;
+    state.images = project.images;
+    state.name = project.name;
   },
   PROJECT_DELETE_CATEGORY: (state, action) => {
     const {category} = action.payload;
@@ -80,27 +73,27 @@ export const reducer = createReducer(state, {
     });
   },
   PROJECT_DELETE_IMAGE: (state, action) => {
-    const {image} = action.payload;
-
-    const identifier: string = image.identifier;
-
     state.images = state.images.filter((image: Image) => {
-      return image.identifier !== identifier;
+      return image.identifier !== action.payload.image.identifier;
     });
   },
   PROJECT_OPEN_PROJECT: (state, action) => {
     const {project} = action.payload;
 
-    state = project;
+    state.categories = project.categories;
+    state.images = project.images;
+    state.name = project.name;
   },
   PROJECT_TOGGLE_CATEGORY_VISIBILITY: (state, action) => {
-    const {identifier} = action.payload;
+    const {category} = action.payload;
 
-    const index: number = findCategoryIndex(state.categories, identifier);
+    const index: number = findCategoryIndex(
+      state.categories,
+      category.identifier
+    );
 
-    const category: Category = state.categories[index];
-
-    category.visualization.visible = !category.visualization.visible;
+    state.categories[index].visualization.visible = !state.categories[index]
+      .visualization.visible;
   },
   PROJECT_UPDATE_CATEGORY_COLOR: (state, action) => {
     const {category, color} = action.payload;
@@ -154,32 +147,31 @@ export const reducer = createReducer(state, {
     state.images[index].visualization.contrast = contrast;
   },
   PROJECT_UPDATE_IMAGES_CATEGORY: (state, action) => {
-    const {identifiers, categoryIdentifier} = action.payload;
+    const {images, category} = action.payload;
 
-    identifiers.forEach((identifier: string) => {
-      const index: number = findImageIndex(state.images, identifier);
-      const image: Image = state.images[index];
-      image.categoryIdentifier = categoryIdentifier;
+    images.forEach((image: Image) => {
+      const index: number = findImageIndex(state.images, image.identifier);
+
+      state.images[index].categoryIdentifier = category.identifier;
     });
   },
-  PROJECT_UPDATE_IMAGES_PARTITION: (state, action) => {
-    const {partitions} = action.payload;
+  PROJECT_UPDATE_IMAGES_PARTITIONS: (state, action) => {
+    const {images, partitions} = action.payload;
 
-    state.images.forEach((image: Image) => {
-      image.partition = partitions[0];
-      partitions.splice(0, 1);
+    images.forEach((image: Image, index: number) => {
+      const imageIndex: number = findImageIndex(state.images, image.identifier);
+
+      state.images[imageIndex].partition = partitions[index];
     });
   },
-  PROJECT_UPDATE_IMAGE_VISIBILITY: (state, action) => {
-    const {identifiers, visible} = action.payload;
+  PROJECT_UPDATE_IMAGES_VISIBILITY: (state, action) => {
+    const {images, visible} = action.payload;
 
-    for (let i = 0; i < identifiers.length; i++) {
-      const index: number = findImageIndex(state.images, identifiers[i]);
+    images.forEach((image: Image) => {
+      const index: number = findImageIndex(state.images, image.identifier);
 
-      const image: Image = state.images[index];
-
-      image.visualization.visible = visible;
-    }
+      state.images[index].visualization.visible = visible;
+    });
   },
   PROJECT_UPDATE_NAME: (state, action) => {
     const {name} = action.payload;

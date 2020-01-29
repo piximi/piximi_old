@@ -1,4 +1,4 @@
-import {Category, Image, Partition, Project, Score} from "@piximi/types";
+import {Category, Image, Partition, Project} from "@piximi/types";
 
 import * as actions from "../actions";
 import * as project from "./project";
@@ -13,15 +13,13 @@ const unknownCategory: Category = {
   }
 };
 
-const exampleProject: Project = {
+const newProjectState: Project = {
   categories: [unknownCategory],
   images: [],
   name: "Untitled classifier"
 };
 
 it("createCategoryAction", () => {
-  const state = exampleProject;
-
   const category: Category = {
     description: "example",
     identifier: "11111111-1111-1111-1111-11111111111",
@@ -38,7 +36,7 @@ it("createCategoryAction", () => {
 
   const action = actions.createCategoryAction(payload);
 
-  const reducer = project.reducer(state, action);
+  const reducer = project.reducer(newProjectState, action);
 
   const expected: Project = {
     categories: [
@@ -61,8 +59,6 @@ it("createCategoryAction", () => {
 });
 
 it("createImageAction", () => {
-  const state = exampleProject;
-
   const image: Image = {
     categoryIdentifier: "00000000-0000-0000-0000-000000000000",
     checksum: "",
@@ -85,7 +81,7 @@ it("createImageAction", () => {
 
   const action = actions.createImageAction(payload);
 
-  const reducer = project.reducer(state, action);
+  const reducer = project.reducer(newProjectState, action);
 
   const expected: Project = {
     categories: [unknownCategory],
@@ -224,194 +220,18 @@ it("createImagesAction", () => {
   expect(reducer).toEqual(expected);
 });
 
-it("createImagesScoresAction", () => {
-  const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
-    images: [
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-1111-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      },
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-2222-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      },
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-3333-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      }
-    ],
-    name: "Untitled classifier"
-  };
-
-  const scores: Score[][] = [
-    [
-      {
-        categoryIdentifier: "11111111-1111-1111-1111-11111111111",
-        probability: 0.8
-      }
-    ],
-    [
-      {
-        categoryIdentifier: "11111111-1111-1111-1111-11111111111",
-        probability: 0.3
-      }
-    ]
-  ];
-
-  const payload = {
-    images: state.images,
-    scores: scores
-  };
-
-  const action = actions.createImagesScoresAction(payload);
-
-  const reducer = project.reducer(state, action);
-
-  const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
-      {
-        description: "example",
-        identifier: "11111111-1111-1111-1111-11111111111",
-        index: 1,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
-    images: [
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-1111-22222222222",
-        partition: Partition.Training,
-        scores: [],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      },
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-2222-22222222222",
-        partition: Partition.Training,
-        scores: [
-          {
-            categoryIdentifier: "11111111-1111-1111-1111-11111111111",
-            probability: 0.8
-          }
-        ],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      },
-      {
-        categoryIdentifier: "00000000-0000-0000-0000-000000000000",
-        checksum: "",
-        data: "",
-        identifier: "22222222-2222-2222-3333-22222222222",
-        partition: Partition.Training,
-        scores: [
-          {
-            categoryIdentifier: "11111111-1111-1111-1111-11111111111",
-            probability: 0.3
-          }
-        ],
-        visualization: {
-          brightness: 0,
-          contrast: 0,
-          visible: true,
-          visibleChannels: []
-        }
-      }
-    ],
-    name: "Untitled classifier"
-  };
-
-  expect(reducer).toEqual(expected);
-});
-
 it("createProjectAction", () => {
-  const state = exampleProject;
-
   const payload = {
     project: {
       categories: [unknownCategory],
       images: [],
-      name: "Untitled classifier"
+      name: "example"
     }
   };
 
   const action = actions.createProjectAction(payload);
 
-  const reducer = project.reducer(state, action);
+  const reducer = project.reducer(newProjectState, action);
 
   const expected: Project = {
     categories: [unknownCategory],
@@ -507,17 +327,7 @@ it("deleteCategoryAction", () => {
 
 it("deleteImageAction", () => {
   const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [
       {
         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
@@ -538,7 +348,7 @@ it("deleteImageAction", () => {
   };
 
   const payload = {
-    image: state.images[1]
+    image: state.images[0]
   };
 
   const action = actions.deleteImageAction(payload);
@@ -546,17 +356,7 @@ it("deleteImageAction", () => {
   const reducer = project.reducer(state, action);
 
   const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "#FFFFFF",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [],
     name: "Untitled classifier"
   };
@@ -565,8 +365,6 @@ it("deleteImageAction", () => {
 });
 
 it("openProjectAction", () => {
-  const state = exampleProject;
-
   const payload = {
     project: {
       categories: [
@@ -612,7 +410,7 @@ it("openProjectAction", () => {
 
   const action = actions.openProjectAction(payload);
 
-  const reducer = project.reducer(state, action);
+  const reducer = project.reducer(newProjectState, action);
 
   const expected: Project = {
     categories: [
@@ -1165,7 +963,7 @@ it("updateImagesCategoryAction", () => {
   expect(reducer).toEqual(expected);
 });
 
-it("updateImagesPartitionAction", () => {
+it("updateImagesPartitionsAction", () => {
   const state: Project = {
     categories: [unknownCategory],
     images: [
@@ -1216,10 +1014,11 @@ it("updateImagesPartitionAction", () => {
   };
 
   const payload = {
-    partitions: [0, 1, 2]
+    images: state.images,
+    partitions: [Partition.Training, Partition.Validation, Partition.Test]
   };
 
-  const action = actions.updateImagesPartitionAction(payload);
+  const action = actions.updateImagesPartitionsAction(payload);
 
   const reducer = project.reducer(state, action);
 
@@ -1331,15 +1130,13 @@ it("updateImagesVisibilityAction", () => {
 });
 
 it("updateProjectNameAction", () => {
-  const state = exampleProject;
-
   const payload = {
     name: "updated"
   };
 
   const action = actions.updateProjectNameAction(payload);
 
-  const reducer = project.reducer(state, action);
+  const reducer = project.reducer(newProjectState, action);
 
   const expected: Project = {
     categories: [unknownCategory],
