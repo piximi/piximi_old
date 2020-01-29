@@ -1,4 +1,4 @@
 export * from "./actions";
 export * from "./selectors";
-export {persistor, store} from "./store";
+export {persistor, store, testStore} from "./store";
 export {reducer} from "./reducer";

@@ -4,10 +4,7 @@ import {
   Middleware,
   StoreEnhancer
 } from "@reduxjs/toolkit";
-import localforage from "localforage";
 import logger from "redux-logger";
-import {Persistor, persistReducer, persistStore} from "redux-persist";
-import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 import createSagaMiddleware from "redux-saga";
 import thunk from "redux-thunk";
 
@@ -46,36 +43,19 @@ const project: Project = {
   name: "example"
 };
 
-const state = {
+const preloadedState = {
   classifier: classifier,
   project: project
 };
-
-const preloadedState = {};
-
-const storage = localforage.createInstance({
-  driver: localforage.INDEXEDDB,
-  name: "piximi-test"
-});
-
-const persistConfig = {
-  key: "root",
-  storage: storage,
-  stateReconciler: autoMergeLevel2
-};
-
-const persistedReducer = persistReducer(persistConfig, reducer);
 
 const options = {
   devTools: true,
   enhancers: enhancers,
   middleware: middleware,
   preloadedState: preloadedState,
-  reducer: persistedReducer
+  reducer: reducer
 };
 
 export const testStore: EnhancedStore = configureStore(options);
 
 saga.run(root);
-
-export const testPersistor: Persistor = persistStore(testStore);

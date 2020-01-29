@@ -1,3 +1,3 @@
-export {productionPersistor, productionStore} from "./production";
+export {persistor, store} from "./production";
 
-export {testPersistor, testStore} from "./test";
+export {testStore} from "./test";

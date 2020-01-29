@@ -43,8 +43,8 @@ const options = {
   reducer: persistedReducer
 };
 
-export const productionStore: EnhancedStore = configureStore(options);
+export const store: EnhancedStore = configureStore(options);
 
 saga.run(root);
 
-export const productionPersistor: Persistor = persistStore(productionStore);
+export const persistor: Persistor = persistStore(store);

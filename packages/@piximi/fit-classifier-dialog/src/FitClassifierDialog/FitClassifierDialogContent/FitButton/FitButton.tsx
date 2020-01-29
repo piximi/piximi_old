@@ -23,6 +23,8 @@ export const FitButton = ({next}: {next: any}) => {
       options: options
     };
 
+    console.log(payload);
+
     dispatch(fitAction(payload));
 
     next();

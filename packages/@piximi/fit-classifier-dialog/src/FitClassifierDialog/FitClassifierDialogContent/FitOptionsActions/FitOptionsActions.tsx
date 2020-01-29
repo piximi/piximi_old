@@ -1,9 +1,9 @@
-import Button from "@material-ui/core/Button/Button";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBack from "@material-ui/icons/ArrowBack";
 import * as React from "react";
 
 import {useStyles} from "./FitOptionsActions.css";
+import {FitButton} from "../FitButton";
 
 type FitOptionsActionsProps = {
   activeStep: any;
@@ -18,10 +18,6 @@ export const FitOptionsActions = ({
 }: FitOptionsActionsProps) => {
   const classes = useStyles({});
 
-  const onFitClick = () => {
-    next();
-  };
-
   return (
     <div className={classes.actionsContainer}>
       <div>
@@ -33,14 +29,7 @@ export const FitOptionsActions = ({
           <ArrowBack />
         </IconButton>
 
-        <Button
-          className={classes.button}
-          color="primary"
-          onClick={onFitClick}
-          variant="contained"
-        >
-          Fit
-        </Button>
+        <FitButton next={next} />
       </div>
     </div>
   );
