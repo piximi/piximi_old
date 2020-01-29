@@ -15,17 +15,7 @@ const unknownCategory = {
 
 it("createCategoryAction", () => {
   const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [],
     name: "Untitled classifier"
   };
@@ -50,15 +40,7 @@ it("createCategoryAction", () => {
 
   const expected: Project = {
     categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      },
+      unknownCategory,
       {
         description: "example",
         identifier: "11111111-1111-1111-1111-11111111111",
@@ -78,17 +60,7 @@ it("createCategoryAction", () => {
 
 it("createImageAction", () => {
   const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [],
     name: "Untitled classifier"
   };
@@ -118,17 +90,7 @@ it("createImageAction", () => {
   const reducer = project.reducer(state, action);
 
   const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [
       {
         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
@@ -153,17 +115,7 @@ it("createImageAction", () => {
 
 it("createImagesAction", () => {
   const state: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [
       {
         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
@@ -223,17 +175,7 @@ it("createImagesAction", () => {
   const reducer = project.reducer(state, action);
 
   const expected: Project = {
-    categories: [
-      {
-        description: "Unknown",
-        identifier: "00000000-0000-0000-0000-000000000000",
-        index: 0,
-        visualization: {
-          color: "rgb(233, 165, 177)",
-          visible: true
-        }
-      }
-    ],
+    categories: [unknownCategory],
     images: [
       {
         categoryIdentifier: "00000000-0000-0000-0000-000000000000",
@@ -467,17 +409,7 @@ it("createProjectAction", () => {
 
   const payload = {
     project: {
-      categories: [
-        {
-          description: "Unknown",
-          identifier: "00000000-0000-0000-0000-000000000000",
-          index: 0,
-          visualization: {
-            color: "rgb(233, 165, 177)",
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [],
       name: "Untitled classifier"
     }
