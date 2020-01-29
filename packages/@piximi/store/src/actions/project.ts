@@ -1,5 +1,5 @@
 import {createAction} from "@reduxjs/toolkit";
-import {Category, Image, Project, Score} from "@piximi/types";
+import {Category, Image, Partition, Project, Score} from "@piximi/types";
 
 export const createCategoryAction = createAction<{category: Category}>(
   "PROJECT_CREATE_CATEGORY"
@@ -48,32 +48,41 @@ export const updateCategoryDescriptionAction = createAction<{
   description: string;
 }>("PROJECT_UPDATE_CATEGORY_DESCRIPTION");
 
-export const updateCategoryVisibilityAction = createAction<{}>(
-  "PROJECT_UPDATE_CATEGORY_VISIBILITY"
-);
+export const updateCategoryVisibilityAction = createAction<{
+  category: Category;
+  visibility: boolean;
+}>("PROJECT_UPDATE_CATEGORY_VISIBILITY");
 
-export const updateImageBrightnessAction = createAction<{}>(
-  "PROJECT_UPDATE_IMAGE_BRIGHTNESS"
-);
+export const updateImageBrightnessAction = createAction<{
+  image: Image;
+  brightness: number;
+}>("PROJECT_UPDATE_IMAGE_BRIGHTNESS");
 
-export const updateImageCategoryAction = createAction<{}>(
-  "PROJECT_UPDATE_IMAGE_CATEGORY"
-);
+export const updateImageCategoryAction = createAction<{
+  image: Image;
+  category: Category;
+}>("PROJECT_UPDATE_IMAGE_CATEGORY");
 
-export const updateImageContrastAction = createAction<{}>(
-  "PROJECT_UPDATE_IMAGE_CONTRAST"
-);
+export const updateImageContrastAction = createAction<{
+  image: Image;
+  contrast: number;
+}>("PROJECT_UPDATE_IMAGE_CONTRAST");
 
-export const updateImagesCategoryAction = createAction<{}>(
-  "PROJECT_UPDATE_IMAGES_CATEGORY"
-);
+export const updateImagesCategoryAction = createAction<{
+  images: Array<Image>;
+  category: Category;
+}>("PROJECT_UPDATE_IMAGES_CATEGORY");
 
-export const updateImagesPartitionAction = createAction<{}>(
-  "PROJECT_UPDATE_IMAGES_PARTITION"
-);
+export const updateImagesPartitionAction = createAction<{
+  images: Array<Image>;
+  partition: Partition;
+}>("PROJECT_UPDATE_IMAGES_PARTITION");
 
-export const updateImageVisibilityAction = createAction<{}>(
-  "PROJECT_UPDATE_IMAGE_VISIBILITY"
-);
+export const updateImageVisibilityAction = createAction<{
+  image: Image;
+  visibility: boolean;
+}>("PROJECT_UPDATE_IMAGE_VISIBILITY");
 
-export const updateProjectNameAction = createAction<{}>("PROJECT_UPDATE_NAME");
+export const updateProjectNameAction = createAction<{name: string}>(
+  "PROJECT_UPDATE_NAME"
+);
