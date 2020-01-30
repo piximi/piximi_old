@@ -32,6 +32,16 @@ export const encodeImage = async (item: {
   });
 };
 
+export const resizeImage = async (item: {
+  xs: tensorflow.Tensor3D;
+  ys: tensorflow.Tensor;
+}): Promise<{xs: tensorflow.Tensor; ys: tensorflow.Tensor}> => {
+  const resizedImage = tensorflow.image.resizeBilinear(item.xs, [224, 224]);
+  return new Promise((resolve) => {
+    return resolve({...item, xs: resizedImage});
+  });
+};
+
 export const generator = (
   images: Array<Image>,
   categories: Array<Category>
@@ -71,11 +81,12 @@ export const generate = async (
   return {
     data: tensorflow.data
       .generator(generator(images, categories))
-      .map(encodeCategory(categories.length))
-      .mapAsync(encodeImage),
+      .map(encodeCategory(categories.length - 1))
+      .mapAsync(encodeImage)
+      .mapAsync(resizeImage),
     validationData: tensorflow.data
       .generator(generator(images, categories))
-      .map(encodeCategory(categories.length))
+      .map(encodeCategory(categories.length - 1))
       .mapAsync(encodeImage)
   };
 };
