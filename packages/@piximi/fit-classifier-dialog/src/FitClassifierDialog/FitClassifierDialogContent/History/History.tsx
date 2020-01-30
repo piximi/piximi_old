@@ -3,6 +3,11 @@ import {VictoryAxis, VictoryChart, VictoryLine, VictoryTheme} from "victory";
 import {Grid, Typography} from "@material-ui/core";
 import {useStyles} from "./History.css";
 import Badge from "@material-ui/core/Badge";
+import {useSelector} from "react-redux";
+import {
+  lossHistorySelector,
+  validationLossHistorySelector
+} from "@piximi/store";
 
 type HistoryProps = {
   status: string;
@@ -33,6 +38,9 @@ export const History = (props: HistoryProps) => {
     validationAccuracyData
   } = props;
 
+  const lossHistory = useSelector(lossHistorySelector);
+  const validationLossHistory = useSelector(validationLossHistorySelector);
+
   const classes = useStyles({});
 
   return (
@@ -61,9 +69,9 @@ export const History = (props: HistoryProps) => {
               domain={{y: [0.0, 3.0]}}
             />
 
-            <VictoryLine data={lossData} style={{data: {stroke: "red"}}} />
+            <VictoryLine data={lossHistory} style={{data: {stroke: "red"}}} />
             <VictoryLine
-              data={validationLossData}
+              data={validationLossHistory}
               style={{data: {stroke: "green"}}}
             />
           </VictoryChart>

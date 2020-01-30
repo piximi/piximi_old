@@ -10,7 +10,7 @@ import {
 } from "../selectors";
 
 export function* fitSaga(action: any) {
-  const _ = action.payload;
+  const {callback} = action.payload;
 
   const compiled = yield select(compiledSelector);
 
@@ -20,7 +20,13 @@ export function* fitSaga(action: any) {
 
   const options = yield select(fitOptionsSelector);
 
-  const {fitted, status} = yield fit(compiled, data, validationData, options);
+  const {fitted, status} = yield fit(
+    compiled,
+    data,
+    validationData,
+    options,
+    callback
+  );
 
   yield put(fittedAction({fitted: fitted, status: status}));
 }

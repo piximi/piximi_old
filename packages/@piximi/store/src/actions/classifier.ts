@@ -35,6 +35,7 @@ export const fitAction = createAction<{
   data: Dataset<{xs: Tensor; ys: Tensor}>;
   validationData: Dataset<{xs: Tensor; ys: Tensor}>;
   options: FitOptions;
+  callback?: any;
 }>("CLASSIFIER_FIT");
 
 export const fittedAction = createAction<{
@@ -75,6 +76,11 @@ export const updateLossFunctionAction = createAction<{
   lossFunction: Loss;
 }>("CLASSIFIER_UPDATE_LOSS_FUNCTION");
 
+export const updateLossHistoryAction = createAction<{
+  batch: number;
+  loss: number;
+}>("CLASSIFIER_UPDATE_LOSS_HISTORY");
+
 export const updateMetricsAction = createAction<{
   metrics: Array<Metric>;
 }>("CLASSIFIER_UPDATE_METRICS");
@@ -82,6 +88,11 @@ export const updateMetricsAction = createAction<{
 export const updateOptimizationFunctionAction = createAction<{
   optimizationFunction: Optimizer;
 }>("CLASSIFIER_UPDATE_OPTIMIZATION_FUNCTION");
+
+export const updateValidationLossHistoryAction = createAction<{
+  batch: number;
+  loss: number;
+}>("CLASSIFIER_UPDATE_VALIDATION_LOSS_HISTORY");
 
 export const updateValidationPercentageAction = createAction<{
   validationPercentage: number;
