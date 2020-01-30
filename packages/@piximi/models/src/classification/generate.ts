@@ -70,25 +70,11 @@ export const generate = async (
 }> => {
   return {
     data: tensorflow.data
-      .generator(
-        generator(
-          images.filter(
-            (image: Image) => image.partition === Partition.Training
-          ),
-          categories
-        )
-      )
+      .generator(generator(images, categories))
       .map(encodeCategory(categories.length))
       .mapAsync(encodeImage),
     validationData: tensorflow.data
-      .generator(
-        generator(
-          images.filter(
-            (image: Image) => image.partition === Partition.Validation
-          ),
-          categories
-        )
-      )
+      .generator(generator(images, categories))
       .map(encodeCategory(categories.length))
       .mapAsync(encodeImage)
   };
