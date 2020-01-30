@@ -20,5 +20,8 @@
   "workspaces": [
     "packages/@piximi/*",
     "packages/piximi"
-  ]
+  ],
+  "dependencies": {
+    "rimraf": "^3.0.1"
+  }
 }

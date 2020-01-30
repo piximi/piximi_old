@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "tsc --build ./tsconfig.json",
-    "clean": "rm -rf ./dist ./tsconfig.tsbuildinfo"
+    "clean": "rimraf ./dist ./tsconfig.tsbuildinfo"
   },
   "types": "./dist/index.d.ts",
   "version": "0.0.0",

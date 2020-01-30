@@ -42,7 +42,7 @@
   "name": "@piximi/store",
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "clean": "rimraf dist tsconfig.tsbuildinfo",
     "test": "yarn build && jest"
   },
   "types": "./dist/index.d.ts",
