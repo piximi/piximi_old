@@ -36,6 +36,7 @@ export type ClassifierState = {
   history?: History;
   learningRate: number;
   lossFunction: Loss | Array<Loss> | {[outputName: string]: Loss};
+  lossHistory?: Array<{x: number; y: number}>;
   metrics: Array<Metric>;
   model?: LayersModel;
   opened?: LayersModel;
@@ -45,6 +46,7 @@ export type ClassifierState = {
   predictions?: Tensor;
   saving: boolean;
   validationData?: Dataset<{xs: Tensor; ys: Tensor}>;
+  validationLossHistory?: Array<{x: number; y: number}>;
   validationPercentage: number;
 };
 

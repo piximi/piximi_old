@@ -88,5 +88,6 @@ export const generate = async (
       .generator(generator(images, categories))
       .map(encodeCategory(categories.length - 1))
       .mapAsync(encodeImage)
+      .mapAsync(resizeImage)
   };
 };

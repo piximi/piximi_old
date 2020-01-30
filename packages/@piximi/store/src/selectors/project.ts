@@ -11,3 +11,7 @@ export const categorizedImagesSelector = ({project}): Array<Image> => {
     return image.categoryIdentifier !== "00000000-0000-0000-0000-00000000000";
   });
 };
+
+export const categoriesCountSelector = ({project}): number => {
+  return project.categories.length - 1;
+};

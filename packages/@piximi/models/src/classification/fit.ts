@@ -6,13 +6,12 @@ export const fit = async (
   compiled: LayersModel,
   data: Dataset<{xs: Tensor; ys: Tensor}>,
   validationData: Dataset<{xs: Tensor; ys: Tensor}>,
-  options: FitOptions
+  options: FitOptions,
+  callback?: any
 ): Promise<{fitted: LayersModel; status: History}> => {
   const args = {
     callbacks: {
-      onEpochEnd: (epoch, logs) => {
-        console.log(logs.loss);
-      }
+      onBatchEnd: callback
     },
     epochs: options.epochs,
     validationData: validationData.batch(16)

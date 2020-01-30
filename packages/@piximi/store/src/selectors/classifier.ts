@@ -39,6 +39,14 @@ export const generatorOptionsSelector = ({
   };
 };
 
+export const lossHistorySelector = ({
+  classifier
+}: {
+  classifier: ClassifierState;
+}): Array<{x: number; y: number}> => {
+  return classifier.lossHistory;
+};
+
 export const openedSelector = ({classifier}): LayersModel => {
   return classifier.opened;
 };
@@ -47,6 +55,14 @@ export const validationDataSelector = ({
   classifier
 }): Dataset<{xs: Tensor; ys: Tensor}> => {
   return classifier.validationData;
+};
+
+export const validationLossHistorySelector = ({
+  classifier
+}: {
+  classifier: ClassifierState;
+}): Array<{x: number; y: number}> => {
+  return classifier.validationLossHistory;
 };
 
 export const validationPercentageSelector = ({classifier}): number => {

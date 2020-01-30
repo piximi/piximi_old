@@ -14,11 +14,13 @@ const state: ClassifierState = {
   generating: false,
   learningRate: 0.01,
   lossFunction: Loss.CategoricalCrossentropy,
+  lossHistory: [],
   metrics: [Metric.CategoricalAccuracy],
   opening: false,
   optimizationFunction: Optimizer.SGD,
   predicting: false,
   saving: false,
+  validationLossHistory: [],
   validationPercentage: 0.25
 };
 
@@ -138,6 +140,14 @@ export const reducer = createReducer(state, {
       lossFunction: lossFunction
     };
   },
+  [actions.updateLossHistoryAction.toString()]: (state, action) => {
+    const {batch, loss} = action.payload;
+
+    return {
+      ...state,
+      lossHistory: [...state.lossHistory, {x: batch, y: loss}]
+    };
+  },
   [actions.updateMetricsAction.toString()]: (state, action) => {
     const {metrics} = action.payload;
 
@@ -152,6 +162,17 @@ export const reducer = createReducer(state, {
     return {
       ...state,
       optimizationFunction: optimizationFunction
+    };
+  },
+  [actions.updateValidationLossHistoryAction.toString()]: (state, action) => {
+    const {batch, loss} = action.payload;
+
+    return {
+      ...state,
+      validationLossHistory: [
+        ...state.validationLossHistory,
+        {x: batch, y: loss}
+      ]
     };
   },
   [actions.updateValidationPercentageAction.toString()]: (state, action) => {
