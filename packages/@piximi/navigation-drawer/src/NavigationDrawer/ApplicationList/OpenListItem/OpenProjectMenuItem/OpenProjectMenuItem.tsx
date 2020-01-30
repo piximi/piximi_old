@@ -22,14 +22,17 @@ export const OpenProjectMenuItem = (props: OpenProjectMenuItemProps) => {
 
       openProject(project);
     };
+
     closeMenu();
   };
+
+  const onClick = () => {};
 
   return (
     <React.Fragment>
       <input
-        accept=".piximi"
-        id="open-classifier"
+        accept="*"
+        id="open-project"
         name="file"
         onChange={onChange}
         style={{display: "none"}}
@@ -37,7 +40,7 @@ export const OpenProjectMenuItem = (props: OpenProjectMenuItemProps) => {
       />
 
       <label htmlFor="open-project">
-        <MenuItem>
+        <MenuItem onClick={onClick}>
           <ListItemText primary="Open project" />
         </MenuItem>
       </label>
