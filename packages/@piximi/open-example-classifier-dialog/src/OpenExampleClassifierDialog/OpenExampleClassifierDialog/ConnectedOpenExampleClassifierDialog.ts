@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {Category, Project, Image} from "@piximi/types";
+import {Project} from "@piximi/types";
 import {Dispatch} from "redux";
 import {openProjectAction} from "@piximi/store";
 import {OpenExampleClassifierDialog} from "./OpenExampleClassifierDialog";
@@ -16,17 +16,7 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    openClassifier: async (
-      categories: Category[],
-      images: Image[],
-      name: string
-    ) => {
-      const project: Project = {
-        categories: categories,
-        images: images,
-        name: name
-      };
-
+    openProject: async (project: Project) => {
       const payload = {project: project};
 
       const action = openProjectAction(payload);

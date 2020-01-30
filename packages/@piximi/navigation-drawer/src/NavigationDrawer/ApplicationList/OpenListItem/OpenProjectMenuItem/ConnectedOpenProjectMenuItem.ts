@@ -22,7 +22,7 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    openClassifier: (project: Project) => {
+    openProject: (project: Project) => {
       const payload = {
         project: project
       };

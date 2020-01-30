@@ -18,16 +18,12 @@ import {useTranslation} from "react-i18next";
 var test;
 
 import {OpenExampleClassifierListItem} from "../OpenExampleClassifierListItem";
-import {Category, Image} from "@piximi/types";
+import {Category, Image, Project} from "@piximi/types";
 
 const useStyles = makeStyles(styles);
 
 type OpenExampleClassifierDialogProps = {
-  openClassifier: (
-    categories: Category[],
-    images: Image[],
-    name: string
-  ) => void;
+  openProject: (project: Project) => void;
   open: boolean;
   onClose: () => void;
   closeMenu: () => void;
@@ -40,14 +36,20 @@ export const OpenExampleClassifierDialog = (
 
   const {t: translation} = useTranslation();
 
-  const {openClassifier, open, onClose, closeMenu} = props;
+  const {openProject, open, onClose, closeMenu} = props;
 
   const openExampleClassifier = (name: string) => {
     closeMenu();
     return axios
       .get("https://storage.piximi.app/examples/" + name + ".piximi")
       .then((result: any) => {
-        openClassifier(result.data.categories, result.data.images, name);
+        const project: Project = {
+          categories: result.data.categories,
+          images: result.data.images,
+          name: name
+        };
+
+        openProject(project);
       })
       .catch(function(error: Error) {
         alert(error);

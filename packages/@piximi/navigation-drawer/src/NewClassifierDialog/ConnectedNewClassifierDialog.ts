@@ -14,7 +14,7 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    openClassifier: (name: string) => {
+    openProject: (name: string) => {
       const classifier = {
         categories: [],
         images: [],

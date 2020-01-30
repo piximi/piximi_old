@@ -1,9 +1,14 @@
 import * as React from "react";
 import {ListItemText, MenuItem} from "@material-ui/core";
-import * as types from "@piximi/types";
+import {Project} from "@piximi/types";
 
-export const OpenProjectMenuItem = (props: any) => {
-  const {closeMenu, openClassifier} = props;
+type OpenProjectMenuItemProps = {
+  closeMenu: () => void;
+  openProject: (project: Project) => void;
+};
+
+export const OpenProjectMenuItem = (props: OpenProjectMenuItemProps) => {
+  const {closeMenu, openProject} = props;
 
   const onChange = (e: any) => {
     const reader = new FileReader();
@@ -13,9 +18,9 @@ export const OpenProjectMenuItem = (props: any) => {
     reader.onload = (e) => {
       const target = e.target as FileReader;
 
-      const classifier = JSON.parse(target.result as string) as types.Project;
+      const project = JSON.parse(target.result as string) as Project;
 
-      openClassifier(classifier.categories, classifier.images, classifier.name);
+      openProject(project);
     };
     closeMenu();
   };

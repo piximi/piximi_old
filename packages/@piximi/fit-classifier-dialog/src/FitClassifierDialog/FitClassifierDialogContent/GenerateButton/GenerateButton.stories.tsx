@@ -1,6 +1,6 @@
 import {createMuiTheme} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
-import {createCategory, createImages, store} from "@piximi/store";
+import {createCategoryAction, createImagesAction, store} from "@piximi/store";
 import {storiesOf} from "@storybook/react";
 import * as React from "react";
 import {Provider, useDispatch} from "react-redux";
@@ -69,10 +69,10 @@ const theme = createMuiTheme({
 storiesOf("GenerateButton", module).add("example", () => {
   const next = () => {};
 
-  store.dispatch(createImages({images: images}));
+  store.dispatch(createImagesAction({images: images}));
 
   categories.forEach((category: Category) => {
-    store.dispatch(createCategory({category: category}));
+    store.dispatch(createCategoryAction({category: category}));
   });
 
   return (

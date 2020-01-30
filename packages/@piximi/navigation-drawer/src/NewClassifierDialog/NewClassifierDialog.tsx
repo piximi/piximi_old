@@ -9,20 +9,20 @@ import {useTranslation} from "react-i18next";
 import * as React from "react";
 
 type NewClassifierDialogProps = {
-  openClassifier: any;
-  openedDialog: any;
-  closeDialog: any;
+  openProject: (name: string) => void;
+  openedDialog: boolean;
+  closeDialog: () => void;
 };
 
 export const NewClassifierDialog = (props: NewClassifierDialogProps) => {
-  const {openClassifier, openedDialog, closeDialog} = props;
+  const {openProject, openedDialog, closeDialog} = props;
 
   const {t: translation} = useTranslation();
 
   const [name, setName] = React.useState(translation("Untitled classifier"));
 
   const onCreateClassifierClick = () => {
-    openClassifier(name);
+    openProject(name);
 
     closeDialog();
   };
