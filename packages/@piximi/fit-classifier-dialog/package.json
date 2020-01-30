@@ -42,7 +42,7 @@
   "name": "@piximi/fit-classifier-dialog",
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "clean": "rimraf dist tsconfig.tsbuildinfo",
     "storybook": "start-storybook",
     "test": "yarn build && jest"
   },

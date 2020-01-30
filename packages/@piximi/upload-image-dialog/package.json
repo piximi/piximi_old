@@ -34,7 +34,7 @@
   },
   "scripts": {
     "build": "tsc --build ./tsconfig.json",
-    "clean": "rm -rf ./dist ./tsconfig.tsbuildinfo",
+    "clean": "rimraf ./dist ./tsconfig.tsbuildinfo",
     "storybook": "start-storybook"
   },
   "types": "./dist/index.d.ts",
