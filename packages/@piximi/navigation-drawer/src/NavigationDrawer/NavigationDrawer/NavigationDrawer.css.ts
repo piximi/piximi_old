@@ -9,6 +9,9 @@ export const styles = (theme: Theme) =>
       alignItems: "center",
       toolbar: theme.mixins.toolbar
     },
+    drawer: {
+      zIndex: 10000
+    },
     drawerPaper: {
       position: "fixed",
       width: drawerWidth,

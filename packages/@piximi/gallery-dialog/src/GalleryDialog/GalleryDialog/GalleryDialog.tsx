@@ -26,31 +26,28 @@ export const GalleryDialog = (props: Props) => {
   const {updateImageCategory} = props;
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div className={classes.appFrame}>
-        <ConnectedGalleryDialogAppBar
+    <div>
+      <ConnectedGalleryDialogAppBar
+        selectedImages={selectedImages}
+        setSelectedImages={setSelectedImages}
+        toggle={toggleDrawer}
+        toggled={openedDrawer}
+      />
+      <main
+        className={classNames(classes.content, classes.contentLeft, {
+          [classes.contentShift]: openedDrawer,
+          [classes.contentShiftLeft]: openedDrawer
+        })}
+      >
+        <div className={classes.drawerHeader} />
+        <ConnectedGalleryDialogImageList
           selectedImages={selectedImages}
+          imagesPerRow={10}
+          decreaseWidth={openedDrawer ? 280 + 24 : 24}
+          callOnDragEnd={updateImageCategory}
           setSelectedImages={setSelectedImages}
-          toggle={toggleDrawer}
-          toggled={openedDrawer}
         />
-        <NavigationDrawer toggled={openedDrawer} toggle={toggleDrawer} />
-        <main
-          className={classNames(classes.content, classes.contentLeft, {
-            [classes.contentShift]: openedDrawer,
-            [classes.contentShiftLeft]: openedDrawer
-          })}
-        >
-          <div className={classes.drawerHeader} />
-          <ConnectedGalleryDialogImageList
-            selectedImages={selectedImages}
-            imagesPerRow={10}
-            decreaseWidth={openedDrawer ? 280 + 24 : 24}
-            callOnDragEnd={updateImageCategory}
-            setSelectedImages={setSelectedImages}
-          />
-        </main>
-      </div>
-    </DndProvider>
+      </main>
+    </div>
   );
 };

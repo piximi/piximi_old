@@ -12,6 +12,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
+import {ConnectedGalleryDialog} from "@piximi/gallery-dialog";
 
 const theme = createMuiTheme();
 
@@ -45,7 +46,7 @@ export const App = () => {
 
           <NavigationDrawer toggled={openedDrawer} toggle={toggleDrawer} />
 
-          {/*<ConnectedGalleryDialog />*/}
+          <ConnectedGalleryDialog />
         </div>
       </DndProvider>
     </ThemeProvider>

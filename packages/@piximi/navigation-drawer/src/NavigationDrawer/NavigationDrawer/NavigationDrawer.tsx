@@ -25,6 +25,7 @@ export const NavigationDrawer = (props: DrawerProps) => {
   return (
     <Drawer
       anchor="left"
+      className={classes.drawer}
       classes={{paper: classes.drawerPaper}}
       open={toggled}
       variant="persistent"
