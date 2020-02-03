@@ -10,7 +10,7 @@ export const styles = (theme: Theme) =>
       toolbar: theme.mixins.toolbar
     },
     drawer: {
-      // zIndex: 10000
+      // zIndex: 1000
     },
     drawerPaper: {
       position: "fixed",

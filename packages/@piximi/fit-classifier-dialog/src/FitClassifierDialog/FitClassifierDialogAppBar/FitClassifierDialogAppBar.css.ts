@@ -6,7 +6,8 @@ const styles = ({spacing}: Theme) =>
     appBar: {
       backgroundColor: "transparent !important",
       borderBottom: "1px solid rgba(0, 0, 0, 0.12) !important",
-      boxShadow: "none !important"
+      boxShadow: "none !important",
+      zIndex: 10000
     },
     arrowBackIconButton: {
       left: "240px",

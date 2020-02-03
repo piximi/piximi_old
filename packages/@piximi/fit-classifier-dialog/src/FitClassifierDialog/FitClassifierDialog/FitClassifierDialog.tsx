@@ -14,7 +14,12 @@ export const FitClassifierDialog = ({
   openedDialog
 }: FitClassifierDialog) => {
   return (
-    <Dialog fullScreen onClose={closeDialog} open={openedDialog}>
+    <Dialog
+      fullScreen
+      onClose={closeDialog}
+      open={openedDialog}
+      style={{zIndex: 100}}
+    >
       <FitClassifierDialogAppBar closeDialog={closeDialog} />
 
       <FitClassifierDialogContent />
