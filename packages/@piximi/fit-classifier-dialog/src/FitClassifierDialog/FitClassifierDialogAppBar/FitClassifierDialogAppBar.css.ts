@@ -8,6 +8,10 @@ const styles = ({spacing}: Theme) =>
       borderBottom: "1px solid rgba(0, 0, 0, 0.12) !important",
       boxShadow: "none !important"
     },
+    arrowBackIconButton: {
+      left: "240px",
+      marginLeft: spacing(2)
+    },
     leftIcon: {
       marginRight: spacing(1)
     },

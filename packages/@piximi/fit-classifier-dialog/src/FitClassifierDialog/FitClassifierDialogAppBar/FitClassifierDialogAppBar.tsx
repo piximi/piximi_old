@@ -28,7 +28,11 @@ export const FitClassifierDialogAppBar = ({
     <AppBar className={classes.appBar}>
       <Toolbar>
         <Tooltip title={"Close"}>
-          <IconButton aria-label={"close"} onClick={closeDialog}>
+          <IconButton
+            aria-label={"close"}
+            className={classes.arrowBackIconButton}
+            onClick={closeDialog}
+          >
             <ArrowBack />
           </IconButton>
         </Tooltip>

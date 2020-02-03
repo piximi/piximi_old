@@ -3,12 +3,15 @@ import * as React from "react";
 
 import {FitClassifierDialogContentStepper} from "../FitClassifierDialogContentStepper";
 import {History} from "../History";
+import {useStyles} from "./FitClassifierDialogContent.css";
 
 type FitClassifierDialogContentStepperProps = {};
 
 export const FitClassifierDialogContent = ({}: FitClassifierDialogContentStepperProps) => {
+  const classes = useStyles({});
+
   return (
-    <DialogContent style={{paddingTop: "80px"}}>
+    <DialogContent className={classes.dialogContent}>
       <History
         status={"Training"}
         lossData={[]}

@@ -9,6 +9,11 @@ const styles = (theme: Theme) =>
     button: {
       marginTop: theme.spacing(1),
       marginRight: theme.spacing(1)
+    },
+    dialogContent: {
+      left: "240px",
+      marginLeft: 240 + theme.spacing(2),
+      marginTop: theme.spacing(8)
     }
   });
 
