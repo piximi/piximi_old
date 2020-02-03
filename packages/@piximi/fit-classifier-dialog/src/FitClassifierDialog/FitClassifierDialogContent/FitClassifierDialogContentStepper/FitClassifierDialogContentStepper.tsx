@@ -32,64 +32,62 @@ export const FitClassifierDialogContentStepper = ({}: FitClassifierDiaslogConten
   };
 
   return (
-    <Grid item md={8}>
-      <Stepper activeStep={activeStep} orientation="vertical">
-        <Step key="model-options">
-          <StepLabel>Model options</StepLabel>
+    <Stepper activeStep={activeStep} orientation="vertical">
+      <Step key="model-options">
+        <StepLabel>Model options</StepLabel>
 
-          <StepContent>
-            <ModelOptionsForm />
+        <StepContent>
+          <ModelOptionsForm />
 
-            <ModelOptionsActions
-              activeStep={activeStep}
-              next={next}
-              previous={previous}
-            />
-          </StepContent>
-        </Step>
+          <ModelOptionsActions
+            activeStep={activeStep}
+            next={next}
+            previous={previous}
+          />
+        </StepContent>
+      </Step>
 
-        <Step key="compile-options">
-          <StepLabel>Compile options</StepLabel>
+      <Step key="compile-options">
+        <StepLabel>Compile options</StepLabel>
 
-          <StepContent>
-            <CompileOptionsForm />
+        <StepContent>
+          <CompileOptionsForm />
 
-            <CompileOptionsActions
-              activeStep={activeStep}
-              next={next}
-              previous={previous}
-            />
-          </StepContent>
-        </Step>
+          <CompileOptionsActions
+            activeStep={activeStep}
+            next={next}
+            previous={previous}
+          />
+        </StepContent>
+      </Step>
 
-        <Step key="preprocessing-options">
-          <StepLabel>Generator options</StepLabel>
+      <Step key="preprocessing-options">
+        <StepLabel>Generator options</StepLabel>
 
-          <StepContent>
-            <GeneratorOptionsForm />
+        <StepContent>
+          <GeneratorOptionsForm />
 
-            <GeneratorOptionsActions
-              activeStep={activeStep}
-              next={next}
-              previous={previous}
-            />
-          </StepContent>
-        </Step>
+          <GeneratorOptionsActions
+            activeStep={activeStep}
+            next={next}
+            previous={previous}
+          />
+        </StepContent>
+      </Step>
 
-        <Step key="fit-options">
-          <StepLabel>Fit options</StepLabel>
+      <Step key="fit-options">
+        <StepLabel>Fit options</StepLabel>
 
-          <StepContent>
-            <FitOptionsForm />
+        <StepContent>
+          <FitOptionsForm />
 
-            <FitOptionsActions
-              activeStep={activeStep}
-              next={next}
-              previous={previous}
-            />
-          </StepContent>
-        </Step>
-      </Stepper>
-    </Grid>
+          <FitOptionsActions
+            activeStep={activeStep}
+            next={next}
+            previous={previous}
+          />
+        </StepContent>
+      </Step>
+    </Stepper>
   );
 };

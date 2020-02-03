@@ -8,7 +8,7 @@ import {
   MiscellaneousList
 } from "../index";
 import {ConnectedCategoriesList} from "../CategoriesList/CategoriesList/ConnectedCategoriesList";
-import {Box, Divider, Drawer, Paper} from "@material-ui/core";
+import {Box, Divider, Drawer} from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -37,7 +37,7 @@ export const NavigationDrawer = (props: DrawerProps) => {
         justifyContent="flex-end"
         px={8}
       />
-      <NavigationDrawerAppBar toggle={toggle} toggled={toggled} />
+      <NavigationDrawerAppBar />
       <ApplicationList />
       <Divider component={"hr"} />
 

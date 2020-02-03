@@ -7,7 +7,6 @@ export const styles = (theme: Theme) =>
   createStyles({
     appBar: {
       backgroundColor: "rgba(0, 0, 0, 0) !important",
-      borderBottom: "1px solid rgba(0, 0, 0, 0.12) !important",
       boxShadow: "none !important",
       transition: theme.transitions.create(["margin", "width"], {
         easing: theme.transitions.easing.sharp,

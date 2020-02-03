@@ -16,12 +16,7 @@ export const styles = () =>
       boxShadow: "none !important",
       zIndex: 10000
     },
-    appBarShift: {},
-    appBarShiftLeft: {
-      marginLeft: drawerWidth
-    },
     typography: {
-      color: "rgba(0, 0, 0, 0.87)",
-      margin: "0 20px 0 12px"
+      color: "rgba(0, 0, 0, 0.87)"
     }
   });
