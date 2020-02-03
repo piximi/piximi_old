@@ -1,4 +1,4 @@
-import {Category, Image, Partition} from "@piximi/types";
+import {Category, Image} from "@piximi/types";
 import * as tensorflow from "@tensorflow/tfjs";
 import {Tensor} from "@tensorflow/tfjs";
 import * as ImageJS from "image-js";
@@ -32,13 +32,14 @@ export const encodeImage = async (item: {
   });
 };
 
-export const resizeImage = async (item: {
+export const resize = async (item: {
   xs: tensorflow.Tensor3D;
   ys: tensorflow.Tensor;
 }): Promise<{xs: tensorflow.Tensor; ys: tensorflow.Tensor}> => {
-  const resizedImage = tensorflow.image.resizeBilinear(item.xs, [224, 224]);
+  const resized = tensorflow.image.resizeBilinear(item.xs, [224, 224]);
+
   return new Promise((resolve) => {
-    return resolve({...item, xs: resizedImage});
+    return resolve({...item, xs: resized});
   });
 };
 
@@ -78,16 +79,20 @@ export const generate = async (
   data: Dataset<{xs: Tensor; ys: Tensor}>;
   validationData: Dataset<{xs: Tensor; ys: Tensor}>;
 }> => {
+  const data = tensorflow.data
+    .generator(generator(images, categories))
+    .map(encodeCategory(categories.length - 1))
+    .mapAsync(encodeImage)
+    .mapAsync(resize);
+
+  const validationData = tensorflow.data
+    .generator(generator(images, categories))
+    .map(encodeCategory(categories.length - 1))
+    .mapAsync(encodeImage)
+    .mapAsync(resize);
+
   return {
-    data: tensorflow.data
-      .generator(generator(images, categories))
-      .map(encodeCategory(categories.length - 1))
-      .mapAsync(encodeImage)
-      .mapAsync(resizeImage),
-    validationData: tensorflow.data
-      .generator(generator(images, categories))
-      .map(encodeCategory(categories.length - 1))
-      .mapAsync(encodeImage)
-      .mapAsync(resizeImage)
+    data: data,
+    validationData: validationData
   };
 };

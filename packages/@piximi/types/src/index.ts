@@ -57,6 +57,11 @@ export type CompileOptions = {
   optimizationFunction: Optimizer;
 };
 
+export type FitOptions = {
+  epochs: number;
+  initialEpoch: number;
+};
+
 export enum Optimizer {
   Adadelta = "Adadelta",
   Adagrad = "Adagrad",
@@ -100,11 +105,6 @@ export const DefaultCompileOptions: CompileOptions = {
   lossFunction: Loss.BinaryCrossentropy,
   metrics: [Metric.BinaryAccuracy],
   optimizationFunction: Optimizer.Adadelta
-};
-
-export type FitOptions = {
-  epochs: number;
-  initialEpoch: number;
 };
 
 export const DefaultFitOptions: FitOptions = {
