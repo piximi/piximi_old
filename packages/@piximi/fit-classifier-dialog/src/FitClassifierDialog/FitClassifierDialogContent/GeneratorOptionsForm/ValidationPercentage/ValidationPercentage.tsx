@@ -36,12 +36,11 @@ export const ValidationPercentage = () => {
         <Grid item xs={10}>
           <Slider
             aria-labelledby="validation-percentage"
-            defaultValue={validationPercentage}
             max={1.0}
             min={0.0}
             onChange={onChange}
             step={0.05}
-            valueLabelDisplay="auto"
+            value={validationPercentage}
           />
         </Grid>
 
