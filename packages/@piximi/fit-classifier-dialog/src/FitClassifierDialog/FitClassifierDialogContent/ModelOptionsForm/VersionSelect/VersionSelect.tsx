@@ -23,6 +23,7 @@ export const VersionSelect = ({}: VersionProps) => {
         labelId="architecture-label"
         onChange={onChange}
         value={2}
+        disabled={true}
       >
         <MenuItem key={1} value={1}>
           1
