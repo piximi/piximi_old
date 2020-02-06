@@ -1,5 +1,19 @@
-import {Category, Image, Project} from "@piximi/types";
+import {Category, Image, Project, Partition} from "@piximi/types";
 import {createReducer} from "@reduxjs/toolkit";
+
+const getImagePartition = (
+  trainingPercentage: number,
+  validationPercentage: number
+) => {
+  const rnd = Math.random();
+  if (rnd < trainingPercentage) {
+    return Partition.Training;
+  } else if (rnd > trainingPercentage + validationPercentage) {
+    return Partition.Test;
+  } else {
+    return Partition.Validation;
+  }
+};
 
 const findCategoryIndex = (
   categories: Array<Category>,
@@ -156,13 +170,14 @@ export const reducer = createReducer(state, {
     });
   },
   PROJECT_UPDATE_IMAGES_PARTITIONS: (state, action) => {
-    const {images, partitions} = action.payload;
+    const {trainingPercentage, validationPercentage} = action.payload;
 
-    images.forEach((image: Image, index: number) => {
-      const imageIndex: number = findImageIndex(state.images, image.identifier);
-
-      state.images[imageIndex].partition = partitions[index];
-    });
+    for (let imageIndex = 0; imageIndex < state.images.length; imageIndex++) {
+      state.images[imageIndex].partition = getImagePartition(
+        trainingPercentage,
+        validationPercentage
+      );
+    }
   },
   PROJECT_UPDATE_IMAGES_VISIBILITY: (state, action) => {
     const {images, visible} = action.payload;
