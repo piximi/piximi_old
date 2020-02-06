@@ -34,7 +34,8 @@ const classifier: ClassifierState = {
   optimizationFunction: Optimizer.SGD,
   predicting: false,
   saving: false,
-  validationPercentage: 0.2
+  trainingPercentage: 0.5,
+  validationPercentage: 0.25
 };
 
 const project: Project = {

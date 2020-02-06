@@ -51,6 +51,10 @@ export const openedSelector = ({classifier}): LayersModel => {
   return classifier.opened;
 };
 
+export const trainingPercentageSelector = ({classifier}): number => {
+  return classifier.trainingPercentage;
+};
+
 export const validationDataSelector = ({
   classifier
 }): Dataset<{xs: Tensor; ys: Tensor}> => {

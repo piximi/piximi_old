@@ -89,6 +89,10 @@ export const updateOptimizationFunctionAction = createAction<{
   optimizationFunction: Optimizer;
 }>("CLASSIFIER_UPDATE_OPTIMIZATION_FUNCTION");
 
+export const updateTrainingPercentageAction = createAction<{
+  trainingPercentage: number;
+}>("CLASSIFIER_UPDATE_TRAINING_PERCENTAGE");
+
 export const updateValidationLossHistoryAction = createAction<{
   batch: number;
   loss: number;
