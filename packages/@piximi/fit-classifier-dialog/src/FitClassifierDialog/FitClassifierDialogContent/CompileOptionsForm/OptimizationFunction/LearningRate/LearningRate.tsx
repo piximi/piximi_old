@@ -10,9 +10,9 @@ export const LearningRate = ({}: LearningRateProps) => {
   const dispatch = useDispatch();
 
   const onChange = React.useCallback(
-    (event: React.ChangeEvent<{value: string}>) => {
+    (event: any) => {
       const action = updateLearningRateAction({
-        learningRate: parseFloat(event.target.value)
+        learningRate: event.target.value
       });
 
       dispatch(action);
@@ -33,6 +33,7 @@ export const LearningRate = ({}: LearningRateProps) => {
       label="Learning rate"
       onChange={onChange}
       value={learningRate}
+      type={"number"}
     />
   );
 };
