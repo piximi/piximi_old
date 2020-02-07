@@ -3,7 +3,7 @@ import * as React from "react";
 import ScatterPlotIcon from "@material-ui/icons/ScatterPlot";
 import {useTranslation} from "react-i18next";
 import {useDialog} from "@piximi/hooks";
-import {ConnectedFitClassifierDialog} from "@piximi/fit-classifier-dialog";
+import {FitClassifierDialog} from "@piximi/fit-classifier-dialog";
 
 type FitListItemProps = {
   datasetInitialized: boolean;
@@ -31,7 +31,7 @@ export const FitListItem = (props: FitListItemProps) => {
         <ListItemText primary={translation("Fit")} />
       </ListItem>
 
-      <ConnectedFitClassifierDialog
+      <FitClassifierDialog
         closeDialog={closeDialog}
         openedDialog={openedDialog}
       />
