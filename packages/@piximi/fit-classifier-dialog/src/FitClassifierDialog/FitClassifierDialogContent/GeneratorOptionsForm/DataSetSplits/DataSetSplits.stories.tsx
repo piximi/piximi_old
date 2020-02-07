@@ -1,6 +1,6 @@
 import * as React from "react";
 import {storiesOf} from "@storybook/react";
-import {ValidationPercentage} from "./ValidationPercentage";
+import {DataSetSplits} from "./DataSetSplits";
 import {ThemeProvider} from "@material-ui/styles";
 import {createMuiTheme} from "@material-ui/core";
 import {Provider} from "react-redux";
@@ -22,7 +22,7 @@ storiesOf("ValidationPercentage", module).add("example", () => {
       <ThemeProvider theme={theme}>
         <Grid container>
           <Grid item xs={6}>
-            <ValidationPercentage />
+            <DataSetSplits />
           </Grid>
         </Grid>
       </ThemeProvider>
