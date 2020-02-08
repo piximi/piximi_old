@@ -32,19 +32,12 @@ export const DataSetSplits = () => {
 
       dispatch(updateTrainingPercentageAction(trainingPercentagePayload));
       dispatch(updateValidationPercentageAction(validationPercentagePayload));
-
-      setValue(newValue);
     },
     [dispatch]
   );
 
   const trainingPercentage = useSelector(trainingPercentageSelector);
   const validationPercentage = useSelector(validationPercentageSelector);
-
-  const [value, setValue] = React.useState([
-    trainingPercentage,
-    trainingPercentage + validationPercentage
-  ]);
 
   const trainingPercentageToString = (): string => {
     return `Training set percentage: ${trainingPercentage * 100}%`;
@@ -74,7 +67,10 @@ export const DataSetSplits = () => {
             min={0.0}
             onChange={onChange}
             step={0.01}
-            value={value}
+            value={[
+              trainingPercentage,
+              trainingPercentage + validationPercentage
+            ]}
           />
         </Grid>
       </Grid>
