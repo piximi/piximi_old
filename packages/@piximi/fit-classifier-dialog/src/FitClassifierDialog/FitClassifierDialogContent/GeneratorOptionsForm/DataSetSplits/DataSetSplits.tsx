@@ -80,10 +80,18 @@ export const DataSetSplits = () => {
       </Grid>
 
       <Grid item xs={2}>
-        <Input value={trainingPercentageToString()} margin="dense" />
+        <Input
+          value={trainingPercentageToString()}
+          margin="dense"
+          style={{minWidth: "210px"}}
+        />
       </Grid>
       <Grid item xs={2}>
-        <Input value={validationPercentageToString()} margin="dense" />
+        <Input
+          value={validationPercentageToString()}
+          margin="dense"
+          style={{minWidth: "220px"}}
+        />
       </Grid>
       <Grid item xs={2}>
         <Input value={testPercentageToString()} margin="dense" />

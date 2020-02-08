@@ -7,7 +7,7 @@ type OutputShapeProps = {};
 export const OutputShape = ({}: OutputShapeProps) => {
   return (
     <>
-      <Grid item xs={2}>
+      <Grid item xs={1}>
         <TextField
           fullWidth
           id="output-shape-width"
@@ -17,7 +17,7 @@ export const OutputShape = ({}: OutputShapeProps) => {
         />
       </Grid>
 
-      <Grid item xs={2}>
+      <Grid item xs={1}>
         <TextField
           fullWidth
           id="output-shape-height"
