@@ -7,44 +7,41 @@ import * as React from "react";
 
 import {useStyles} from "./InputShape.css";
 
+const INPUT_SHAPES = new Map<string, number[]>();
+INPUT_SHAPES.set("96 × 96 × 3", [96, 96, 3]);
+INPUT_SHAPES.set("128 × 128 × 3", [128, 128, 3]);
+INPUT_SHAPES.set("160 × 160 × 3", [160, 160, 3]);
+INPUT_SHAPES.set("192 × 192 × 3", [192, 192, 3]);
+INPUT_SHAPES.set("224 × 224 × 3", [224, 224, 3]);
+
 type InputShapeProps = {};
 
 export const InputShape = ({}: InputShapeProps) => {
   const classes = useStyles({});
 
-  const onChange = () => {};
+  const onChange = React.useCallback((event: any, newValue: any) => {
+    setInputShape(newValue.key);
+  }, []);
+
+  const [inputShape, setInputShape] = React.useState("224 × 224 × 3");
 
   return (
     <FormControl className={classes.formControl}>
-      <InputLabel id="architecture-label">Input shape</InputLabel>
-
+      <InputLabel id="input-shape-label">Input shape</InputLabel>
       <Select
-        id="architecture"
-        labelId="architecture-label"
+        id="input-shape"
+        labelId="input-shape-label"
         onChange={onChange}
-        value={2}
+        value={inputShape}
       >
-        <MenuItem key={1} value={1}>
-          96 × 96 × 3
-        </MenuItem>
-
-        <MenuItem key={1} value={1}>
-          128 × 128 × 3
-        </MenuItem>
-
-        <MenuItem key={1} value={1}>
-          160 × 160 × 3
-        </MenuItem>
-
-        <MenuItem key={1} value={1}>
-          192 × 192 × 3
-        </MenuItem>
-
-        <MenuItem key={2} value={2}>
-          224 × 224 × 3
-        </MenuItem>
+        {Array.from(INPUT_SHAPES).map(([k, v]: [string, number[]]) => {
+          return (
+            <MenuItem key={k} value={k}>
+              {k}
+            </MenuItem>
+          );
+        })}
       </Select>
-
       <FormHelperText>&nbsp;</FormHelperText>
     </FormControl>
   );

@@ -1,11 +1,13 @@
 import {generate} from "@piximi/models";
 import {put, select, takeEvery} from "redux-saga/effects";
 import {Category, Image} from "@piximi/types";
-import {generatedAction} from "../actions";
+import {generatedAction, updateImagesPartitionsAction} from "../actions";
 import {
   categoriesSelector,
   categorizedImagesSelector,
-  generatorOptionsSelector
+  generatorOptionsSelector,
+  trainingPercentageSelector,
+  validationPercentageSelector
 } from "../selectors";
 
 export function* generateSaga() {
@@ -14,6 +16,16 @@ export function* generateSaga() {
   const categories: Array<Category> = yield select(categoriesSelector);
 
   const options = yield select(generatorOptionsSelector);
+
+  const trainingPercentage = yield select(trainingPercentageSelector);
+  const validationPercentage = yield select(validationPercentageSelector);
+
+  yield put(
+    updateImagesPartitionsAction({
+      trainingPercentage: trainingPercentage,
+      validationPercentage: validationPercentage
+    })
+  );
 
   const {data, validationData} = yield generate(images, categories, options);
 

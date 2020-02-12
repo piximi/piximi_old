@@ -6,14 +6,14 @@ import {OutputShape} from "../OutputShape";
 import {ContrastLimitedAdaptiveHistogramEqualization} from "../ContrastLimitedAdaptiveHistogramEqualization";
 import {useStyles} from "./GeneratorOptionsForm.css";
 import {Typography} from "@material-ui/core";
-import {ValidationPercentage} from "../ValidationPercentage";
+import {DataSetSplits} from "../DataSetSplits";
 
 export const GeneratorOptionsForm = () => {
   const classes = useStyles({});
 
   return (
     <>
-      <ValidationPercentage />
+      <DataSetSplits />
 
       <ContrastLimitedAdaptiveHistogramEqualization />
 

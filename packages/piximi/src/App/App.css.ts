@@ -1,7 +1,5 @@
 import {createStyles} from "@material-ui/core/styles";
 
-const drawerWidth = 280;
-
 export const styles = () =>
   createStyles({
     appFrame: {

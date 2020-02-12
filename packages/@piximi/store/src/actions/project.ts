@@ -69,8 +69,8 @@ export const updateImagesCategoryAction = createAction<{
 }>("PROJECT_UPDATE_IMAGES_CATEGORY");
 
 export const updateImagesPartitionsAction = createAction<{
-  images: Array<Image>;
-  partitions: Array<Partition>;
+  trainingPercentage: Number;
+  validationPercentage: Number;
 }>("PROJECT_UPDATE_IMAGES_PARTITIONS");
 
 export const updateImagesVisibilityAction = createAction<{

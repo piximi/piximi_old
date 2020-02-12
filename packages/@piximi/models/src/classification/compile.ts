@@ -9,6 +9,9 @@ export const compile = (
 
   const optimizer = () => {
     switch (options.optimizationFunction) {
+      case Optimizer.SGD: {
+        return tensorflow.train.sgd(options.learningRate);
+      }
       case Optimizer.RMSProp: {
         return tensorflow.train.rmsprop(options.learningRate);
       }
