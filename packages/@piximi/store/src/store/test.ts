@@ -23,6 +23,7 @@ const classifier: ClassifierState = {
   evaluating: false,
   fitOptions: {
     epochs: 1,
+    batchSize: 32,
     initialEpoch: 0
   },
   fitting: false,

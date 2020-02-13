@@ -96,7 +96,7 @@ describe("fit", () => {
 
     const {data, validationData} = await generate(images, categories);
 
-    const options = {epochs: 1, initialEpoch: 0};
+    const options = {epochs: 1, batchSize: 32, initialEpoch: 0};
 
     const {fitted, status} = await fit(compiled, data, validationData, options);
 

@@ -86,6 +86,7 @@ it("fit", async () => {
 
   const {fitted, status} = await fit(compiled, data, data, {
     epochs: 1,
+    batchSize: 32,
     initialEpoch: 1
   });
 

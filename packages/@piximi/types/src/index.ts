@@ -60,6 +60,7 @@ export type CompileOptions = {
 
 export type FitOptions = {
   epochs: number;
+  batchSize: number;
   initialEpoch: number;
 };
 
@@ -110,6 +111,7 @@ export const DefaultCompileOptions: CompileOptions = {
 
 export const DefaultFitOptions: FitOptions = {
   epochs: 10,
+  batchSize: 32,
   initialEpoch: 1
 };
 
