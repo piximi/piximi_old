@@ -68,6 +68,10 @@ export const predictedAction = createAction<{
   predictions: Tensor;
 }>("CLASSIFIER_PREDICTED");
 
+export const updateBatchSizeAction = createAction<{
+  batchSize: number;
+}>("CLASSIFIER_UPDATE_BATCH_SIZE");
+
 export const updateEpochsAction = createAction<{
   epochs: number;
 }>("CLASSIFIER_UPDATE_EPOCHS");

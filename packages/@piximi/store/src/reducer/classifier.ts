@@ -126,6 +126,10 @@ export const reducer = createReducer(state, {
     };
   },
   [actions.savedAction.toString()]: (state, action) => {},
+  [actions.updateBatchSizeAction.toString()]: (state, action) => {
+    const {batchSize} = action.payload;
+    state.fitOptions.batchSize = batchSize;
+  },
   [actions.updateEpochsAction.toString()]: (state, action) => {
     const {epochs} = action.payload;
     state.fitOptions.epochs = epochs;
