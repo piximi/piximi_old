@@ -13,11 +13,11 @@ export const fit = async (
     callbacks: {
       onBatchEnd: callback
     },
-    epochs: 10,
-    validationData: validationData.batch(32)
+    epochs: options.epochs,
+    validationData: validationData.batch(options.batchSize)
   };
 
-  const status = await compiled.fitDataset(data.batch(32), args);
+  const status = await compiled.fitDataset(data.batch(options.batchSize), args);
 
   return {fitted: compiled, status: status};
 };

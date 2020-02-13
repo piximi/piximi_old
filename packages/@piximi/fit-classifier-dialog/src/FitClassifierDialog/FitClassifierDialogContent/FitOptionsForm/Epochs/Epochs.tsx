@@ -12,7 +12,7 @@ export const Epochs = ({}: EpochsProps) => {
   const onChange = React.useCallback(
     (event: any) => {
       const action = updateEpochsAction({
-        epochs: event.target.value
+        epochs: Math.round(event.target.value)
       });
 
       dispatch(action);
