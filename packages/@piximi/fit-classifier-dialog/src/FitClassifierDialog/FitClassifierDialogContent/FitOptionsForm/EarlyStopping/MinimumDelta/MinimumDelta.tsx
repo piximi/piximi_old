@@ -11,6 +11,7 @@ export const MinimumDelta = ({}: MinimumDeltaProps) => {
       label="Minimum δ"
       onChange={() => {}}
       value={0}
+      disabled={true}
     />
   );
 };

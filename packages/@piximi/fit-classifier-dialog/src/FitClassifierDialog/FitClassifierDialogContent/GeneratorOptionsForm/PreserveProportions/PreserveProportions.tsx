@@ -13,6 +13,7 @@ export const PreserveProportions = ({}: PreserveProportionsProps) => {
           control={<Switch checked />}
           label="Preserve proportions"
           value="preserve-proportions"
+          disabled={true}
         />
       </Grid>
     </Grid>

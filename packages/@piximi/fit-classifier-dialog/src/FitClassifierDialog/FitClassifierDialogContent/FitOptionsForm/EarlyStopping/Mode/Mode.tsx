@@ -15,6 +15,7 @@ export const Mode = ({}: ModeProps) => {
         labelId="mode-label"
         onChange={() => {}}
         value="automatic"
+        disabled={true}
       >
         <MenuItem value="automatic">Automatic</MenuItem>
         <MenuItem value="maximum">Maximum</MenuItem>
