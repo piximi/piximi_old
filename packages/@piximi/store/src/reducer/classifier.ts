@@ -125,6 +125,10 @@ export const reducer = createReducer(state, {
     };
   },
   [actions.savedAction.toString()]: (state, action) => {},
+  [actions.updateEpochsAction.toString()]: (state, action) => {
+    const {epochs} = action.payload;
+    state.fitOptions.epochs = epochs;
+  },
   [actions.updateLearningRateAction.toString()]: (state, action) => {
     const {learningRate} = action.payload;
 
