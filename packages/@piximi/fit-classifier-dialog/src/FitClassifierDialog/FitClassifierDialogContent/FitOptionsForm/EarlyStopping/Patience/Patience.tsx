@@ -11,6 +11,7 @@ export const Patience = ({}: PatienceProps) => {
       label="Patience"
       onChange={() => {}}
       value={0}
+      disabled={true}
     />
   );
 };

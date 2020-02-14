@@ -12,6 +12,7 @@ export const InitialEpoch = ({}: InitialEpochProps) => {
       label="Initial epoch"
       onChange={() => {}}
       value={1}
+      disabled={true}
     />
   );
 };

@@ -14,6 +14,7 @@ export const OutputShape = ({}: OutputShapeProps) => {
           label="Output shape"
           onChange={() => {}}
           value={224}
+          disabled={true}
         />
       </Grid>
 
@@ -24,6 +25,7 @@ export const OutputShape = ({}: OutputShapeProps) => {
           label="&nbsp;"
           onChange={() => {}}
           value={224}
+          disabled={true}
         />
       </Grid>
     </>

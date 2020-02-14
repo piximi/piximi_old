@@ -13,6 +13,7 @@ export const ContrastLimitedAdaptiveHistogramEqualization = ({}: ContrastLimited
           style={{paddingTop: "20px"}}
           control={<Switch checked onChange={() => {}} value="clahe" />}
           label="Contrast limited adaptive histogram equalization (CLAHE)"
+          disabled={true}
         />
       </Grid>
     </Grid>

@@ -8,6 +8,7 @@ const state: ClassifierState = {
   evaluating: false,
   fitOptions: {
     epochs: 1,
+    batchSize: 32,
     initialEpoch: 0
   },
   fitting: false,
@@ -125,6 +126,14 @@ export const reducer = createReducer(state, {
     };
   },
   [actions.savedAction.toString()]: (state, action) => {},
+  [actions.updateBatchSizeAction.toString()]: (state, action) => {
+    const {batchSize} = action.payload;
+    state.fitOptions.batchSize = batchSize;
+  },
+  [actions.updateEpochsAction.toString()]: (state, action) => {
+    const {epochs} = action.payload;
+    state.fitOptions.epochs = epochs;
+  },
   [actions.updateLearningRateAction.toString()]: (state, action) => {
     const {learningRate} = action.payload;
 

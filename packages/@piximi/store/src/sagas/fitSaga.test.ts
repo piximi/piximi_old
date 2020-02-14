@@ -94,11 +94,9 @@ describe("fit", () => {
 
     const compiled = await compile(opened, compileOptions);
 
-    const {data, validationData} = await generate(images, categories, {
-      validationPercentage: 0.25
-    });
+    const {data, validationData} = await generate(images, categories);
 
-    const options = {epochs: 1, initialEpoch: 0};
+    const options = {epochs: 1, batchSize: 32, initialEpoch: 0};
 
     const {fitted, status} = await fit(compiled, data, validationData, options);
 

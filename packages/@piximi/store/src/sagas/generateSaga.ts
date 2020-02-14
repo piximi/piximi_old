@@ -15,8 +15,6 @@ export function* generateSaga() {
 
   const categories: Array<Category> = yield select(categoriesSelector);
 
-  const options = yield select(generatorOptionsSelector);
-
   const trainingPercentage = yield select(trainingPercentageSelector);
   const validationPercentage = yield select(validationPercentageSelector);
 
@@ -27,7 +25,7 @@ export function* generateSaga() {
     })
   );
 
-  const {data, validationData} = yield generate(images, categories, options);
+  const {data, validationData} = yield generate(images, categories);
 
   yield put(generatedAction({data: data, validationData: validationData}));
 }

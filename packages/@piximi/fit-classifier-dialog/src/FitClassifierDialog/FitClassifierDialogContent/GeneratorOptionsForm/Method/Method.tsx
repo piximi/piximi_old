@@ -21,6 +21,7 @@ export const Method = ({}: MethodProps) => {
           value={3}
           onChange={() => {}}
           style={{width: "100%"}}
+          disabled={true}
         >
           <MenuItem value={0}>Bicubic interpolation</MenuItem>
           <MenuItem value={1}>Bilinear interpolation</MenuItem>
