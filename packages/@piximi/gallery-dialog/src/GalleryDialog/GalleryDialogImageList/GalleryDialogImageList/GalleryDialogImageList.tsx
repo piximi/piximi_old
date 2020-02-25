@@ -4,9 +4,28 @@ import {collisionDetection} from "../helper";
 import {GalleryCustomDragLayer} from "../GalleryCustomDragLayer";
 import {GalleryItems} from "../GalleryItems";
 import {GallerySelectionBox} from "../GallerySelectionBox";
+import {makeStyles} from "@material-ui/styles";
+import {Theme} from "@material-ui/core";
+import {createStyles} from "@material-ui/core/styles";
+
+export const styles = (theme: Theme) =>
+  createStyles({
+    container: {
+      paddingTop: "12px",
+      paddingLeft: "12px",
+      position: "fixed",
+      zIndex: 1202,
+      width: "100%",
+      height: "95%"
+    }
+  });
+
+const useStyles = makeStyles(styles);
 
 export const GalleryDialogImageList = (props) => {
   const {images, categories, imagesPerRow, decreaseWidth} = props;
+
+  const classes = useStyles({});
 
   const visibleCategories = categories
     .filter((category) => category.visualization.visible)
@@ -150,7 +169,7 @@ export const GalleryDialogImageList = (props) => {
   return (
     <div
       style={{zIndex: 999, paddingTop: 60}}
-      className="container noselect"
+      className={classes.container}
       onMouseDown={onmousedown}
       onMouseMove={onmousemove}
       onMouseUp={onmouseup}
