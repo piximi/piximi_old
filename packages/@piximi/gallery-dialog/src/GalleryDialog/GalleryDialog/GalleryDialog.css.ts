@@ -1,9 +1,10 @@
 import {createStyles} from "@material-ui/core/styles";
 import {Theme} from "@material-ui/core";
+import {makeStyles} from "@material-ui/styles";
 
 const drawerWidth = 280;
 
-export const styles = (theme: Theme) =>
+const styles = (theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1
@@ -29,6 +30,9 @@ export const styles = (theme: Theme) =>
     },
     appBarShiftLeft: {
       marginLeft: drawerWidth
+    },
+    dialog: {
+      zIndex: 100
     },
     menuButton: {
       marginLeft: 12,
@@ -92,3 +96,5 @@ export const styles = (theme: Theme) =>
       left: "50%"
     }
   });
+
+export const useStyles = makeStyles(styles);
