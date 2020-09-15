@@ -11,13 +11,13 @@
     "bootstrap": "lerna bootstrap",
     "build": "tsc --build ./packages/tsconfig.json",
     "clean": "lerna clean --yes && lerna run clean",
-    "prettier": "prettier --write '**/*.+(css|js|json|jsx|ts|tsx)'",
-    "test": "lerna run test"
+    "prettier": "prettier --write '**/*.+(css|js|json|jsx|ts|tsx)'"
   },
   "devDependencies": {
-    "husky": "^4.0.0-beta.5",
-    "lerna": "^3.19.0",
-    "lint-staged": "^10.0.0-beta.7",
-    "prettier": "^1.19.1"
+    "husky": "^4.3.0",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.3.0",
+    "listr2": "^3.0.1",
+    "prettier": "^2.1.1"
   }
 }
