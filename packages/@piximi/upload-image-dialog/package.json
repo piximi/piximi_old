@@ -1,16 +1,31 @@
 {
+  "name": "@piximi/upload-image-dialog",
+  "version": "0.0.0",
+  "license": "BSD-3-Clause",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc --build ./tsconfig.json",
+    "clean": "rm -rf ./dist ./tsconfig.tsbuildinfo",
+    "storybook": "start-storybook"
+  },
   "dependencies": {
-    "@material-ui/core": "^4.7.2",
+    "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.5.1",
-    "@material-ui/styles": "^4.7.1",
+    "@material-ui/styles": "^4.10.0",
     "@uppy/core": "^1.6.0",
     "@uppy/react": "^1.4.0",
-    "crypto-js": "^3.1.9-1",
+    "crypto-js": "^4.0.0",
     "i18next": "^19.0.2",
-    "image-js": "^0.21.8",
-    "react": "^16.12.0",
+    "image-js": "^0.28.0",
+    "prettier": "^2.1.1",
+    "react": "^16.13.1",
     "react-color": "^2.17.3",
-    "react-dnd": "^10.0.2",
+    "react-dnd": "^11.1.3",
     "react-dom": "^16.12.0",
     "react-i18next": "^11.2.6",
     "redux-logger": "^3.0.6"
@@ -23,20 +38,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
-  "main": "./dist/index.js",
-  "name": "@piximi/upload-image-dialog",
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "build": "tsc --build ./tsconfig.json",
-    "clean": "rm -rf ./dist ./tsconfig.tsbuildinfo",
-    "storybook": "start-storybook"
-  },
-  "types": "./dist/index.d.ts",
-  "version": "0.0.0"
+  }
 }

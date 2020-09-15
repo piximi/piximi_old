@@ -1,22 +1,19 @@
 {
-  "dependencies": {
-    "@material-ui/core": "^4.7.2",
-    "react": "^16.12.0",
-    "react-i18next": "^11.2.6"
-  },
-  "devDependencies": {
-    "@storybook/react": "^5.2.8",
-    "@types/jest": "^24.0.23",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
-    "jest": "^24.9.0",
-    "ts-jest": "^24.2.0",
-    "typescript": "^3.7.3"
-  },
+  "name": "@piximi/open-example-classifier-dialog",
+  "version": "0.0.0",
+  "license": "BSD-3-Clause",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "storybook": "start-storybook",
+    "test": "yarn build && jest"
+  },
   "jest": {
     "setupFiles": [
       "<rootDir>/src/setupTests.ts"
@@ -25,15 +22,19 @@
       "^.+\\.(ts|tsx)$": "ts-jest"
     }
   },
-  "license": "BSD-3-Clause",
-  "main": "./dist/index.js",
-  "name": "@piximi/open-example-classifier-dialog",
-  "scripts": {
-    "build": "tsc --build tsconfig.json",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo",
-    "storybook": "start-storybook",
-    "test": "yarn build && jest"
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "prettier": "^2.1.1",
+    "react": "^16.13.1",
+    "react-i18next": "^11.2.6"
   },
-  "types": "./dist/index.d.ts",
-  "version": "0.0.0"
+  "devDependencies": {
+    "@storybook/react": "^6.0.21",
+    "@types/jest": "^24.0.23",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^4.0.2"
+  }
 }

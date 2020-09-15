@@ -1,22 +1,37 @@
 {
+  "name": "@piximi/components",
+  "version": "0.0.0",
+  "license": "BSD-3-Clause",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "storybook": "start-storybook"
+  },
   "dependencies": {
-    "@material-ui/core": "^4.7.2",
-    "@material-ui/styles": "^4.7.1",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/styles": "^4.10.0",
     "@piximi/hooks": "*",
     "@piximi/types": "*",
-    "@storybook/react": "^5.2.8",
+    "@storybook/react": "^6.0.21",
     "i18next": "^19.0.2",
-    "react": "^16.12.0",
+    "prettier": "^2.1.1",
+    "react": "^16.13.1",
     "react-color": "^2.17.3",
-    "react-dnd": "^10.0.2",
+    "react-dnd": "^11.1.3",
     "react-dom": "^16.12.0",
     "react-i18next": "^11.2.6"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@storybook/addon-info": "^5.2.8",
-    "@storybook/react": "^5.2.8",
-    "@types/jest": "^24.0.23",
+    "@storybook/react": "^6.0.21",
+    "@types/jest": "^26.0.13",
     "@types/react-color": "^3.0.1",
     "@types/redux-logger": "^3.0.7",
     "awesome-typescript-loader": "^5.2.1",
@@ -24,21 +39,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "react-docgen-typescript-loader": "^3.6.0",
-    "typescript": "^3.7.3",
+    "typescript": "^4.0.2",
     "webpack": "^4.41.2"
-  },
-  "files": [
-    "dist",
-    "src"
-  ],
-  "license": "BSD-3-Clause",
-  "main": "./dist/index.js",
-  "name": "@piximi/components",
-  "scripts": {
-    "build": "tsc --build tsconfig.json",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo",
-    "storybook": "start-storybook"
-  },
-  "types": "./dist/index.d.ts",
-  "version": "0.0.0"
+  }
 }

@@ -1,39 +1,19 @@
 {
-  "dependencies": {
-    "@material-ui/core": "^4.7.2",
-    "@material-ui/icons": "^4.5.1",
-    "@material-ui/styles": "^4.7.1",
-    "@piximi/store": "*",
-    "@piximi/types": "*",
-    "i18next": "^19.0.2",
-    "image-js": "^0.21.8",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-i18next": "^11.2.6",
-    "react-redux": "^7.1.3",
-    "react-three-fiber": "^3.0.16",
-    "react-vis": "^1.11.7",
-    "redux": "^4.0.4",
-    "three": "^0.111.0"
-  },
-  "devDependencies": {
-    "@storybook/react": "^5.2.8",
-    "@types/enzyme": "^3.10.4",
-    "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/jest": "^24.0.23",
-    "@types/react-color": "^3.0.1",
-    "@types/redux-logger": "^3.0.7",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
-    "jest": "^24.9.0",
-    "react-vis-types": "^0.0.3",
-    "ts-jest": "^24.2.0",
-    "typescript": "^3.7.3"
-  },
+  "name": "@piximi/image-dialog",
+  "version": "0.0.0",
+  "license": "BSD-3-Clause",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "storybook": "start-storybook",
+    "test": "yarn build && jest"
+  },
   "jest": {
     "setupFiles": [
       "<rootDir>/src/setupTests.ts"
@@ -42,15 +22,36 @@
       "^.+\\.(ts|tsx)$": "ts-jest"
     }
   },
-  "license": "BSD-3-Clause",
-  "main": "./dist/index.js",
-  "name": "@piximi/image-dialog",
-  "scripts": {
-    "build": "tsc --build tsconfig.json",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo",
-    "storybook": "start-storybook",
-    "test": "yarn build && jest"
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/styles": "^4.10.0",
+    "@piximi/store": "*",
+    "@piximi/types": "*",
+    "i18next": "^19.0.2",
+    "image-js": "^0.28.0",
+    "prettier": "^2.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.12.0",
+    "react-i18next": "^11.2.6",
+    "react-redux": "^7.2.1",
+    "react-three-fiber": "^4.2.21",
+    "react-vis": "^1.11.7",
+    "redux": "^4.0.5",
+    "three": "^0.120.1"
   },
-  "types": "./dist/index.d.ts",
-  "version": "0.0.0"
+  "devDependencies": {
+    "@storybook/react": "^6.0.21",
+    "@types/enzyme": "^3.10.4",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^26.0.13",
+    "@types/react-color": "^3.0.1",
+    "@types/redux-logger": "^3.0.7",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "jest": "^26.4.2",
+    "react-vis-types": "^0.0.6",
+    "ts-jest": "^26.3.0",
+    "typescript": "^4.0.2"
+  }
 }

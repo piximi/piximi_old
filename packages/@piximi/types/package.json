@@ -1,18 +1,24 @@
 {
-  "devDependencies": {
-    "typescript": "^3.7.3"
-  },
+  "name": "@piximi/types",
+  "version": "0.0.0",
+  "license": "BSD-3-Clause",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
-  "license": "BSD-3-Clause",
-  "main": "./dist/index.js",
-  "name": "@piximi/types",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist tsconfig.tsbuildinfo"
   },
-  "types": "./dist/index.d.ts",
-  "version": "0.0.0"
+  "dependencies": {
+    "husky": "^4.3.0",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.3.0",
+    "prettier": "^2.1.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.2"
+  }
 }
