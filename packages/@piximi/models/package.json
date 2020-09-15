@@ -27,12 +27,9 @@
     "redux-logger": "^3.0.6"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.13",
     "@types/lodash": "^4.14.149",
     "@types/react-color": "^3.0.1",
-    "@types/redux-logger": "^3.0.7",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1"
+    "@types/redux-logger": "^3.0.7"
   },
   "publishConfig": {
     "access": "public"

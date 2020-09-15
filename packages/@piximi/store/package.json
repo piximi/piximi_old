@@ -10,13 +10,7 @@
   ],
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo",
-    "test": "yarn build && jest"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    }
+    "clean": "rm -rf dist tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "@piximi/types": "*",

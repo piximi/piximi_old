@@ -10,17 +10,7 @@
   ],
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo",
-    "storybook": "start-storybook",
-    "test": "yarn build && jest"
-  },
-  "jest": {
-    "setupFiles": [
-      "<rootDir>/src/setupTests.ts"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    }
+    "clean": "rm -rf dist tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -41,17 +31,9 @@
     "three": "^0.120.1"
   },
   "devDependencies": {
-    "@storybook/react": "^6.0.21",
-    "@types/enzyme": "^3.10.4",
-    "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/jest": "^26.0.13",
     "@types/react-color": "^3.0.1",
     "@types/redux-logger": "^3.0.7",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
-    "jest": "^26.4.2",
     "react-vis-types": "^0.0.6",
-    "ts-jest": "^26.3.0",
     "typescript": "^4.0.2"
   }
 }

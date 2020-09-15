@@ -10,17 +10,7 @@
   ],
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo",
-    "storybook": "start-storybook",
-    "test": "yarn build && jest"
-  },
-  "jest": {
-    "setupFiles": [
-      "<rootDir>/src/setupTests.ts"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    }
+    "clean": "rm -rf dist tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -34,7 +24,6 @@
     "@piximi/open-example-classifier-dialog": "*",
     "@piximi/store": "*",
     "@piximi/types": "*",
-    "@teachablemachine/image": "^0.8.4",
     "@tensorflow/tfjs": "^2.4.0",
     "@tensorflow/tfjs-vis": "^1.4.3",
     "axios": "^0.20.0",
@@ -49,20 +38,13 @@
     "react-i18next": "^11.2.6",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
-    "seedrandom": "^3.0.5",
+    "seedrandom": "~2.4.3",
     "styled-components": "^5.2.0",
+    "react-is": "^16.8.0",
     "victory": "^35.0.9"
   },
   "devDependencies": {
-    "@storybook/react": "^6.0.21",
     "@types/classnames": "^2.2.9",
-    "@types/enzyme": "^3.10.4",
-    "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/jest": "^26.0.13",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
-    "jest": "^26.4.2",
-    "ts-jest": "^26.3.0",
     "typescript": "^4.0.2"
   }
 }

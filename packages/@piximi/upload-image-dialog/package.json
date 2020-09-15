@@ -10,8 +10,7 @@
   ],
   "scripts": {
     "build": "tsc --build ./tsconfig.json",
-    "clean": "rm -rf ./dist ./tsconfig.tsbuildinfo",
-    "storybook": "start-storybook"
+    "clean": "rm -rf ./dist ./tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -34,9 +33,7 @@
     "@types/crypto-js": "^3.1.43",
     "@types/jest": "^24.0.23",
     "@types/react-color": "^3.0.1",
-    "@types/redux-logger": "^3.0.7",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1"
+    "@types/redux-logger": "^3.0.7"
   },
   "publishConfig": {
     "access": "public"
