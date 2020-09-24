@@ -50,9 +50,7 @@ export const DialogAppBar = (props: DialogAppBarProps) => {
         [classes.appBarShiftLeft]: openedDrawer
       })}
     >
-      // @ts-ignore
       <Toolbar>
-        // @ts-ignore
         <Tooltip title="Close Dialog" placement="bottom">
           <IconButton
             edge="start"
@@ -64,15 +62,16 @@ export const DialogAppBar = (props: DialogAppBarProps) => {
             <ArrowBack />
           </IconButton>
         </Tooltip>
-        // @ts-ignore
+
         <Tooltip title="use cross validation" placement="bottom">
-          // @ts-ignore
-          <Switch
-            checked={useCrossValidation}
-            onChange={onUseCrossValidationChange}
-          />
+          <div>
+            <Switch
+              checked={useCrossValidation}
+              onChange={onUseCrossValidationChange}
+            />
+          </div>
         </Tooltip>
-        // @ts-ignore
+
         <Tooltip title="Evaluate the model" placement="bottom">
           <IconButton className={classes.button} onClick={evaluate} href={""}>
             <PlayCircleOutline />

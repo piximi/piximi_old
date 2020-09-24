@@ -25,6 +25,7 @@ export const GalleryDialog = (props: Props) => {
   const {updateImageCategory} = props;
 
   return (
+    // @ts-ignore
     <DndProvider backend={HTML5Backend}>
       <div className={classes.appFrame}>
         <ConnectedGalleryDialogAppBar
