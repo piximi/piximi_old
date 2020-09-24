@@ -25,6 +25,7 @@
     "@material-ui/icons": "^4.5.1",
     "@material-ui/styles": "^4.10.0",
     "@piximi/gallery-dialog": "*",
+    "@piximi/store": "*",
     "@types/react-dom": "^16.9.4",
     "@types/string-hash": "^1.1.1",
     "cli-table": "^0.3.1",
