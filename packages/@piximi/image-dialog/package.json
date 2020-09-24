@@ -34,6 +34,7 @@
     "@types/react-color": "^3.0.1",
     "@types/redux-logger": "^3.0.7",
     "react-vis-types": "^0.0.6",
+    "rimraf": "^3.0.2",
     "typescript": "^4.0.2"
   }
 }
