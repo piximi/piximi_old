@@ -16,7 +16,9 @@
     "husky": "^4.3.0",
     "lerna": "^3.22.1",
     "lint-staged": "^10.3.0",
-    "prettier": "^2.1.1"
+    "prettier": "^2.1.1",
+    "react-dnd": "9.5.1",
+    "react-dnd-html5-backend": "9.5.1"
   },
   "devDependencies": {
     "rimraf": "^3.0.2",

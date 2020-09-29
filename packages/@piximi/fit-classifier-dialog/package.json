@@ -22,6 +22,8 @@
     "@tensorflow/tfjs-vis": "^1.4.3",
     "classnames": "^2.2.6",
     "react": "^16.13.1",
+    "react-dnd": "9.5.1",
+    "react-dnd-html5-backend": "9.5.1",
     "react-i18next": "^11.2.6",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5"

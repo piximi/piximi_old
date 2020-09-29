@@ -16,6 +16,8 @@
     "@material-ui/core": "^4.11.0",
     "prettier": "^2.1.1",
     "react": "^16.13.1",
+    "react-dnd": "9.5.1",
+    "react-dnd-html5-backend": "9.5.1",
     "react-i18next": "^11.2.6"
   },
   "devDependencies": {
