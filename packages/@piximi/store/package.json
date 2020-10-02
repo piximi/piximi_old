@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo"
+    "clean": "rimraf -rf dist tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "@piximi/types": "*",

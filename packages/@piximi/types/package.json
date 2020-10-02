@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo"
+    "clean": "rimraf -rf dist tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "husky": "^4.3.0",

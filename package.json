@@ -10,7 +10,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "tsc --build ./packages/tsconfig.json",
-    "clean": "lerna clean --yes && lerna run clean",
+    "clean": "lerna clean --yes && lerna run clean && rimraf -rf ./node_modules",
     "prettier": "prettier --write '**/*.+(css|js|json|jsx|ts|tsx)'"
   },
   "devDependencies": {
