@@ -41,9 +41,7 @@ export const DialogAppBar = (props: any) => {
         [classes.appBarShiftLeft]: openedDrawer
       })}
     >
-      // @ts-ignore
       <Toolbar>
-        // @ts-ignore
         <Tooltip title="Close Dialog" placement="bottom">
           <IconButton
             edge="start"
@@ -56,13 +54,13 @@ export const DialogAppBar = (props: any) => {
           </IconButton>
         </Tooltip>
         <div className={classes.grow} />
-        // @ts-ignore
+
         <Tooltip title="Fit the model" placement="bottom">
           <IconButton className={classes.button} onClick={fit} href={""}>
             <PlayCircleOutline />
           </IconButton>
         </Tooltip>
-        // @ts-ignore
+
         <Tooltip title="Stop fitting the model" placement="bottom">
           <IconButton
             className={classes.button}

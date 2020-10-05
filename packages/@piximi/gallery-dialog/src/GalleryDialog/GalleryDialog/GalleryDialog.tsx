@@ -9,7 +9,6 @@ import {makeStyles} from "@material-ui/styles";
 import {ConnectedGalleryDialogImageList} from "../GalleryDialogImageList";
 import {NavigationDrawer} from "@piximi/navigation-drawer";
 
-// @ts-ignore
 const useStyles = makeStyles(styles);
 
 type Props = {
@@ -25,7 +24,6 @@ export const GalleryDialog = (props: Props) => {
   const {updateImageCategory} = props;
 
   return (
-    // @ts-ignore
     <DndProvider backend={HTML5Backend}>
       <div className={classes.appFrame}>
         <ConnectedGalleryDialogAppBar

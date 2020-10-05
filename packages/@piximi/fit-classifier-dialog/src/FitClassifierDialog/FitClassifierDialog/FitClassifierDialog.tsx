@@ -681,7 +681,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
         fit={onFit}
         openedDrawer={openedDrawer}
       />
-      // @ts-ignore
+
       <DialogContent>
         <List dense>
           <ListItem
@@ -689,7 +689,6 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
             onClick={onPreprocessingListClick}
             style={{padding: "12px 0px"}}
           >
-            // @ts-ignore
             <ListItemIcon>
               {collapsedPreprocessingList ? (
                 <ExpandLessIcon />
@@ -697,7 +696,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
                 <ExpandMoreIcon />
               )}
             </ListItemIcon>
-            // @ts-ignore
+
             <ListItemText primary="Preprocessing" style={{fontSize: "1em"}} />
           </ListItem>
           <Collapse
@@ -723,13 +722,12 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
               closeDialog={closeDialog}
               openedDialog={openedDialog}
             />
-            // @ts-ignore
+
             <Typography id="augmentation" gutterBottom>
               Data Augmentation
             </Typography>
-            // @ts-ignore
+
             <FormGroup row>
-              // @ts-ignore
               <FormControlLabel
                 control={
                   // @ts-ignore
@@ -738,22 +736,20 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
                 label="Random Data Augmentation"
               ></FormControlLabel>
             </FormGroup>
-            // @ts-ignore
+
             <Typography id="resizing" gutterBottom>
               Resizing
             </Typography>
-            // @ts-ignore
+
             <FormGroup row>
-              // @ts-ignore
               <FormControlLabel
                 // @ts-ignore
                 control={<Checkbox value="paddingOption1" />}
                 label="Padding Option 1"
               ></FormControlLabel>
             </FormGroup>
-            // @ts-ignore
+
             <FormGroup row>
-              // @ts-ignore
               <FormControlLabel
                 // @ts-ignore
                 control={<Checkbox value="paddingOption2" />}
@@ -766,7 +762,6 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
             onClick={onClasssifierSettingsListClick}
             style={{padding: "12px 0px"}}
           >
-            // @ts-ignore
             <ListItemIcon>
               {collapsedClasssifierSettingsList ? (
                 <ExpandLessIcon />
@@ -774,13 +769,13 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
                 <ExpandMoreIcon />
               )}
             </ListItemIcon>
-            // @ts-ignore
+
             <ListItemText
               primary="Classifier Settings"
               style={{fontSize: "20px"}}
             />
           </ListItem>
-          // @ts-ignore
+
           <Collapse
             in={collapsedClasssifierSettingsList}
             timeout="auto"
@@ -809,7 +804,6 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
             onClick={onDatasetSettingsListClick}
             style={{padding: "12px 0px"}}
           >
-            // @ts-ignore
             <ListItemIcon>
               {collapsedDatasetSettingsList ? (
                 <ExpandLessIcon />
@@ -817,19 +811,18 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
                 <ExpandMoreIcon />
               )}
             </ListItemIcon>
-            // @ts-ignore
+
             <ListItemText
               primary="Dataset Settings"
               style={{fontSize: "1em"}}
             />
           </ListItem>
-          // @ts-ignore
+
           <Collapse
             in={collapsedDatasetSettingsList}
             timeout="auto"
             unmountOnExit
           >
-            // @ts-ignore
             <Tooltip title="Initialize dataset" placement="bottom">
               <Button
                 variant="contained"
@@ -840,11 +833,10 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
               </Button>
             </Tooltip>
             <div style={{padding: "12px 0px", width: "300"}}>
-              // @ts-ignore
               <Typography id="range-slider" gutterBottom>
                 Dataset Splits
               </Typography>
-              // @ts-ignore
+
               <Slider
                 value={datasetSplits}
                 onChange={handleChange}

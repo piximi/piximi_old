@@ -155,7 +155,6 @@ export const EvaluateClassifierDialog = (
       <div>
         <Grid container spacing={3}>
           <Grid id="evaluationID">
-            // @ts-ignore
             <Paper
               style={{
                 margin: "24px",
@@ -168,7 +167,7 @@ export const EvaluateClassifierDialog = (
           </Grid>
         </Grid>
       </div>
-      // @ts-ignore
+
       <DialogContent style={{padding: "0px", margin: "12px"}}>
         <div
           id="tfjs-visor-container"

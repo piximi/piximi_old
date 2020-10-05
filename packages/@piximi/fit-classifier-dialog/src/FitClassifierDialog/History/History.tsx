@@ -30,9 +30,7 @@ export const History = (props: HistoryProps) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={4}>
-        // @ts-ignore
         <Typography classes={{root: classes.typography}}>status</Typography>
-        // @ts-ignore
         <Typography classes={{root: classes.typography}}>Loss</Typography>
         <VictoryChart
           height={100}
@@ -62,7 +60,6 @@ export const History = (props: HistoryProps) => {
       </Grid>
 
       <Grid item xs={4}>
-        // @ts-ignore
         <Typography classes={{root: classes.typography}}>Accuracy</Typography>
         <VictoryChart
           height={100}

@@ -86,7 +86,6 @@ export const RescalingForm = (props: FormProps) => {
     <form className={classes.container} noValidate autoComplete="off">
       <Grid container spacing={2}>
         <Grid item xs={2}>
-          // @ts-ignore
           <TextField
             id="lower-percentile"
             label="Lower Percentile"
@@ -100,7 +99,6 @@ export const RescalingForm = (props: FormProps) => {
         </Grid>
 
         <Grid item xs={2}>
-          // @ts-ignore
           <TextField
             id="upper-percentile"
             label="Upper Percentile"
